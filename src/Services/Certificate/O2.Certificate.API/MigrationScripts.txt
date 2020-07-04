@@ -1,0 +1,3 @@
+/Users/denisprokhorchik/TFS/O2 Business API/src/O2.Business.Database/schemas/DDL - O2.Business - Shemas.sql
+/Users/denisprokhorchik/TFS/O2 Business API/src/O2.Business.Database/dbo/functions/DDL - O2.Bisiness - udf - DateTimeToUnixTimeStamp.sql
+/Users/denisprokhorchik/TFS/O2 Business API/src/O2.Business.Database/dbo/functions/DDL - O2Bisiness - udf - UnixTimeStampToDateTime.sql

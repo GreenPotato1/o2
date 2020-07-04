@@ -1,0 +1,187 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.1.3" />
+    <PackageReference Include="QRCoder" Version="1.3.6" />
+    <PackageReference Include="runtime.osx.10.10-x64.CoreCompat.System.Drawing" Version="5.8.64" />
+    <PackageReference Include="SkiaSharp" Version="1.68.0" />
+    <PackageReference Include="SkiaSharp.QrCode" Version="0.3.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.1" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\O2. Certificate.Data\O2.Business.Data.csproj" />
+    <ProjectReference Include="..\O2. Certificate.Repositories\O2.Business.Repositories.csproj" />
+    <ProjectReference Include="..\Toolkit\O2 Black Toolkit\src\O2.Black.Toolkit.Core\O2.Black.Toolkit.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Files\not_image.jpg" />
+    <Content Include="Files\not_image.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\pft_template_cert.png" />
+    <Content Include="Files\pft_template_cert.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\template-hypnos.psd" />
+    <Content Include="Files\template-hypnos.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\template-hypnos.png" />
+    <Content Include="Files\template-hypnos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0001042019.jpg" />
+    <Content Include="Files\PFR_Photos\A0001042019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0002092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0002092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0003042019.jpg" />
+    <Content Include="Files\PFR_Photos\A0003042019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0004052019.jpg" />
+    <Content Include="Files\PFR_Photos\A0004052019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0005042019.jpg" />
+    <Content Include="Files\PFR_Photos\A0005042019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0006042019.jpg" />
+    <Content Include="Files\PFR_Photos\A0006042019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0007052019.jpg" />
+    <Content Include="Files\PFR_Photos\A0007052019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0016072019.jpg" />
+    <Content Include="Files\PFR_Photos\A0016072019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0015072019.jpg" />
+    <Content Include="Files\PFR_Photos\A0015072019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0013072019.jpg" />
+    <Content Include="Files\PFR_Photos\A0013072019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0012052019.jpg" />
+    <Content Include="Files\PFR_Photos\A0012052019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0011042019.jpg" />
+    <Content Include="Files\PFR_Photos\A0011042019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0010042019.jpg" />
+    <Content Include="Files\PFR_Photos\A0010042019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0009052019.jpg" />
+    <Content Include="Files\PFR_Photos\A0009052019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0008042019.jpg" />
+    <Content Include="Files\PFR_Photos\A0008042019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\А0049122019.jpg" />
+    <None Remove="Files\PFR_Photos\А0046122019.jpg" />
+    <None Remove="Files\PFR_Photos\А0041122019.jpg" />
+    <None Remove="Files\PFR_Photos\А0037122019.jpg" />
+    <None Remove="Files\PFR_Photos\А0036102019.jpg" />
+    <None Remove="Files\PFR_Photos\А0034112019.jpg" />
+    <None Remove="Files\PFR_Photos\А0032052019.jpg" />
+    <None Remove="Files\PFR_Photos\A0035112019.jpg" />
+    <Content Include="Files\PFR_Photos\A0035112019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0031092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0031092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0030092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0030092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0029092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0029092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0028092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0028092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0027092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0027092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0026092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0026092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0025092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0025092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0024092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0024092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0023092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0023092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0022092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0022092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0021092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0021092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0020092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0020092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0019092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0019092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0018092019.jpg" />
+    <Content Include="Files\PFR_Photos\A0018092019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Files\PFR_Photos\A0017042019.jpg" />
+    <Content Include="Files\PFR_Photos\A0017042019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+     <None Remove="Files\PFR_Photos\A0014072019.jpg" />
+    <Content Include="Files\PFR_Photos\A0014072019.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

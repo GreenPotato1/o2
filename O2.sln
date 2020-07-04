@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Black.Toolkit.Core.Data"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Black.Toolkit.Core.Repositories", "src\Services\Certificate\Toolkit\O2 Black Toolkit\src\O2.Black.Toolkit.Core.Repositories\O2.Black.Toolkit.Core.Repositories.csproj", "{8F8BBEA0-81F2-446E-8619-3BC2A1D4007A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{7BB8C1B5-FF55-4B1F-B5CF-BEC86EC95A08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

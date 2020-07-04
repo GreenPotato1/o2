@@ -15,6 +15,7 @@ namespace O2.DevTools
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -24,10 +25,12 @@ namespace O2.DevTools
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseHsts(); // https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet
+            app.UseHttpsRedirection(); // if a request comes in HTTP, it's redirect to HTTPS
+            app.UseMvcWithDefaultRoute();
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                await context.Response.WriteAsync("No middlewares could handle the request");
             });
         }
     }

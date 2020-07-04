@@ -1,9 +1,16 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{3AECD354-D657-44C8-A5AC-7B6E6344682F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{2366314C-4AE8-4BF2-88D0-A10AED955319}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2366314C-4AE8-4BF2-88D0-A10AED955319} = {3AECD354-D657-44C8-A5AC-7B6E6344682F}
 	EndGlobalSection
 EndGlobal

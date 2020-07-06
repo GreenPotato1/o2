@@ -13,11 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.DevTools", "src\DevTools
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Certificate", "Certificate", "{EF457C91-038A-46A7-BBE5-B9055D0749EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Business.Data", "src\Services\Certificate\O2. Certificate.Data\O2.Business.Data.csproj", "{BEC2012D-FC13-41FA-AACB-C4CE0340EEDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Certificate.Data", "src\Services\Certificate\O2. Certificate.Data\O2.Certificate.Data.csproj", "{BEC2012D-FC13-41FA-AACB-C4CE0340EEDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Business.Repositories", "src\Services\Certificate\O2. Certificate.Repositories\O2.Business.Repositories.csproj", "{9854AEEF-51AC-4CEC-AC17-6D0EAF574581}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Certificate.Repositories", "src\Services\Certificate\O2. Certificate.Repositories\O2.Certificate.Repositories.csproj", "{9854AEEF-51AC-4CEC-AC17-6D0EAF574581}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Business.API", "src\Services\Certificate\O2.Certificate.API\O2.Business.API.csproj", "{B222B526-BB2B-45FC-A443-0B3A2E082F7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Certificate.API", "src\Services\Certificate\O2.Certificate.API\O2.Certificate.API.csproj", "{B222B526-BB2B-45FC-A443-0B3A2E082F7F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Toolkit", "Toolkit", "{07ECCECB-FE4B-4FB8-BF38-489F06D11A6F}"
 EndProject

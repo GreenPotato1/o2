@@ -2,7 +2,7 @@ using System;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace O2.Business.API.DTOs.O2Ev
+namespace O2.Certificate.API.DTOs.O2Ev
 {
     [DataContract]
     public class O2EvMetaDto

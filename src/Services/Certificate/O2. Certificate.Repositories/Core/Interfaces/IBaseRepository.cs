@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using O2.Black.Toolkit.Core.Data;
 
-namespace O2.Business.Repositories.Core.Interfaces
+namespace O2.Certificate.Repositories.Core.Interfaces
 {
     public interface IBaseRepository<TClass> : IRepository<TClass>
         where TClass : class, IEntity

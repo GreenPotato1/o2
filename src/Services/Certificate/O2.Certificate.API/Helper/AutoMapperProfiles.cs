@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using O2.Business.API.DTOs;
-using O2.Business.API.DTOs.O2C;
-using O2.Business.API.DTOs.O2Ev;
-using O2.Business.Data.Models.O2C;
-using O2.Business.Data.Models.O2Ev;
+using O2.Certificate.API.DTOs;
+using O2.Certificate.API.DTOs.O2C;
+using O2.Certificate.API.DTOs.O2Ev;
+using O2.Certificate.Data.Models.O2C;
+using O2.Certificate.Data.Models.O2Ev;
 
-namespace O2.Business.API.Helper
+namespace O2.Certificate.API.Helper
 {
     public class AutoMapperProfiles : Profile
     {

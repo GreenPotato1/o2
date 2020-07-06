@@ -14,17 +14,17 @@ using AutoMapper;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using O2.Business.API.Helper;
-using O2.Business.Data;
 using Microsoft.EntityFrameworkCore;
 using O2.Black.Toolkit.Core;
-using O2.Business.Data.Models.O2C;
-using O2.Business.Data.Models.O2Ev;
-using O2.Business.Repositories;
-using O2.Business.Repositories.Interfaces;
+using O2.Certificate.API.Helper;
+using O2.Certificate.Data;
+using O2.Certificate.Data.Models.O2C;
+using O2.Certificate.Data.Models.O2Ev;
+using O2.Certificate.Repositories;
+using O2.Certificate.Repositories.Interfaces;
 
 
-namespace O2.Business.API
+namespace O2.Certificate.API
 {
     public class Startup
     {

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using O2.Black.Toolkit.Core.Data;
 
-namespace O2.Business.API.DTOs.O2C
+namespace O2.Certificate.API.DTOs.O2C
 {
     [DataContract]
     public class O2CLocationDto

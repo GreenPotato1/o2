@@ -1,4 +1,4 @@
-namespace O2.Business.API.Helper
+namespace O2.Certificate.API.Helper
 {
     public static class HelperDefaulter
     {

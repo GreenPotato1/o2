@@ -4,21 +4,21 @@ using System.Drawing;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using O2.Business.Repositories.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using O2.Black.Toolkit.Core;
-using O2.Business.API.DTOs.O2C;
-using O2.Business.API.Helper;
-using O2.Business.Data.Models.O2C;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
-using O2.Business.Repositories.Helper;
+using O2.Certificate.API.DTOs.O2C;
+using O2.Certificate.API.Helper;
+using O2.Certificate.Data.Models.O2C;
+using O2.Certificate.Repositories.Helper;
+using O2.Certificate.Repositories.Interfaces;
 using QRCoder;
 
 
-namespace O2.Business.API.Controllers
+namespace O2.Certificate.API.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]

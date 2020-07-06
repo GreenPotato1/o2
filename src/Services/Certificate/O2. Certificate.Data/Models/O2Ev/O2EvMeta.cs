@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using O2.Black.Toolkit.Core.Data;
 
-namespace O2.Business.Data.Models.O2Ev
+namespace O2.Certificate.Data.Models.O2Ev
 {
     public class O2EvMeta : BaseDbEntity
     {

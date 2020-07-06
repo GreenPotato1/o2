@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using O2.Business.Data;
+using O2.Certificate.Data;
 
-namespace O2.Business.Data.Migrations
+namespace O2.Certificate.Data.Migrations
 {
     [DbContext(typeof(O2BusinessDataContext))]
     partial class O2BusinessDataContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace O2.Business.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("O2.Business.Data.Models.O2C.O2CCertificate", b =>
+            modelBuilder.Entity("O2.Certificate.Data.Models.O2C.O2CCertificate", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,7 +84,7 @@ namespace O2.Business.Data.Migrations
                     b.ToTable("O2CCertificate");
                 });
 
-            modelBuilder.Entity("O2.Business.Data.Models.O2C.O2CCertificateLocation", b =>
+            modelBuilder.Entity("O2.Certificate.Data.Models.O2C.O2CCertificateLocation", b =>
                 {
                     b.Property<Guid>("O2CLocationId")
                         .HasColumnType("uniqueidentifier");
@@ -99,7 +99,7 @@ namespace O2.Business.Data.Migrations
                     b.ToTable("O2CCertificateLocation");
                 });
 
-            modelBuilder.Entity("O2.Business.Data.Models.O2C.O2CContact", b =>
+            modelBuilder.Entity("O2.Certificate.Data.Models.O2C.O2CContact", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -132,7 +132,7 @@ namespace O2.Business.Data.Migrations
                     b.ToTable("O2CContact");
                 });
 
-            modelBuilder.Entity("O2.Business.Data.Models.O2C.O2CLocation", b =>
+            modelBuilder.Entity("O2.Certificate.Data.Models.O2C.O2CLocation", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -162,7 +162,7 @@ namespace O2.Business.Data.Migrations
                     b.ToTable("O2CLocation");
                 });
 
-            modelBuilder.Entity("O2.Business.Data.Models.O2C.O2CPhoto", b =>
+            modelBuilder.Entity("O2.Certificate.Data.Models.O2C.O2CPhoto", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnName("id")
@@ -198,7 +198,7 @@ namespace O2.Business.Data.Migrations
                     b.ToTable("O2CPhoto");
                 });
 
-            modelBuilder.Entity("O2.Business.Data.Models.O2Ev.O2EvEvent", b =>
+            modelBuilder.Entity("O2.Certificate.Data.Models.O2Ev.O2EvEvent", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -238,7 +238,7 @@ namespace O2.Business.Data.Migrations
                     b.ToTable("O2EvEvent");
                 });
 
-            modelBuilder.Entity("O2.Business.Data.Models.O2Ev.O2EvMeta", b =>
+            modelBuilder.Entity("O2.Certificate.Data.Models.O2Ev.O2EvMeta", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -273,7 +273,7 @@ namespace O2.Business.Data.Migrations
                     b.ToTable("O2EvMeta");
                 });
 
-            modelBuilder.Entity("O2.Business.Data.Models.O2Ev.O2EvPhoto", b =>
+            modelBuilder.Entity("O2.Certificate.Data.Models.O2Ev.O2EvPhoto", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -310,49 +310,49 @@ namespace O2.Business.Data.Migrations
                     b.ToTable("O2EvPhoto");
                 });
 
-            modelBuilder.Entity("O2.Business.Data.Models.O2C.O2CCertificateLocation", b =>
+            modelBuilder.Entity("O2.Certificate.Data.Models.O2C.O2CCertificateLocation", b =>
                 {
-                    b.HasOne("O2.Business.Data.Models.O2C.O2CCertificate", "O2CCertificate")
+                    b.HasOne("O2.Certificate.Data.Models.O2C.O2CCertificate", "O2CCertificate")
                         .WithMany("Locations")
                         .HasForeignKey("O2CCertificateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("O2.Business.Data.Models.O2C.O2CLocation", "O2CLocation")
+                    b.HasOne("O2.Certificate.Data.Models.O2C.O2CLocation", "O2CLocation")
                         .WithMany("O2CCertificateLocation")
                         .HasForeignKey("O2CLocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("O2.Business.Data.Models.O2C.O2CContact", b =>
+            modelBuilder.Entity("O2.Certificate.Data.Models.O2C.O2CContact", b =>
                 {
-                    b.HasOne("O2.Business.Data.Models.O2C.O2CCertificate", "O2CCertificate")
+                    b.HasOne("O2.Certificate.Data.Models.O2C.O2CCertificate", "O2CCertificate")
                         .WithMany("Contacts")
                         .HasForeignKey("O2CCertificateId");
                 });
 
-            modelBuilder.Entity("O2.Business.Data.Models.O2C.O2CPhoto", b =>
+            modelBuilder.Entity("O2.Certificate.Data.Models.O2C.O2CPhoto", b =>
                 {
-                    b.HasOne("O2.Business.Data.Models.O2C.O2CCertificate", "O2CCertificate")
+                    b.HasOne("O2.Certificate.Data.Models.O2C.O2CCertificate", "O2CCertificate")
                         .WithMany("Photos")
                         .HasForeignKey("O2CCertificateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("O2.Business.Data.Models.O2Ev.O2EvMeta", b =>
+            modelBuilder.Entity("O2.Certificate.Data.Models.O2Ev.O2EvMeta", b =>
                 {
-                    b.HasOne("O2.Business.Data.Models.O2Ev.O2EvEvent", "O2EvEvent")
+                    b.HasOne("O2.Certificate.Data.Models.O2Ev.O2EvEvent", "O2EvEvent")
                         .WithOne("Meta")
-                        .HasForeignKey("O2.Business.Data.Models.O2Ev.O2EvMeta", "EventId")
+                        .HasForeignKey("O2.Certificate.Data.Models.O2Ev.O2EvMeta", "EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("O2.Business.Data.Models.O2Ev.O2EvPhoto", b =>
+            modelBuilder.Entity("O2.Certificate.Data.Models.O2Ev.O2EvPhoto", b =>
                 {
-                    b.HasOne("O2.Business.Data.Models.O2Ev.O2EvEvent", "O2EvEvent")
+                    b.HasOne("O2.Certificate.Data.Models.O2Ev.O2EvEvent", "O2EvEvent")
                         .WithMany("Photos")
                         .HasForeignKey("O2EvEventId")
                         .OnDelete(DeleteBehavior.Cascade)

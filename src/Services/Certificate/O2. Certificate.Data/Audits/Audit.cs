@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace O2.Business.Data.Audits
+namespace O2.Certificate.Data.Audits
 {
     public class Audit
     {

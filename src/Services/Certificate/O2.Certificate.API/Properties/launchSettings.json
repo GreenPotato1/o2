@@ -4,13 +4,13 @@
     "anonymousAuthentication": true
   },
   "profiles": {
-    "O2.Business.API": {
+    "O2.Certificate.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://localhost:61279"
     }
   }
 }

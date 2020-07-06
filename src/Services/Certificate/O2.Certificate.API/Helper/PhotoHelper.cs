@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using O2.Black.Toolkit.Core;
-using O2.Business.Data.Models.O2C;
+using O2.Certificate.Data.Models.O2C;
 
-namespace O2.Business.API.Helper
+namespace O2.Certificate.API.Helper
 {
     public static class PhotoHelper
     {

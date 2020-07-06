@@ -1,6 +1,6 @@
 using System;
 
-namespace O2.Business.Data.Models.O2Ev
+namespace O2.Certificate.Data.Models.O2Ev
 {
    
     public class O2EvPhoto : Photo

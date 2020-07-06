@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using O2.Black.Toolkit.Core;
-using O2.Business.Data;
-using O2.Business.Data.Models.O2Ev;
-using O2.Business.Repositories.Core;
-using O2.Business.Repositories.Interfaces;
+using O2.Certificate.Data;
+using O2.Certificate.Data.Models.O2Ev;
+using O2.Certificate.Repositories.Core;
+using O2.Certificate.Repositories.Interfaces;
 
 
-namespace O2.Business.Repositories
+namespace O2.Certificate.Repositories
 {
     public class EventBaseRepository<TClass> :
         BaseRepository<TClass>,

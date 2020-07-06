@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using O2.Business.Data.Models.O2C;
-using O2.Business.Data.Models.O2Ev;
+using O2.Certificate.Data.Models.O2C;
+using O2.Certificate.Data.Models.O2Ev;
 
-namespace O2.Business.Data
+namespace O2.Certificate.Data
 {
     public class O2BusinessDataContext : DbContext
     {

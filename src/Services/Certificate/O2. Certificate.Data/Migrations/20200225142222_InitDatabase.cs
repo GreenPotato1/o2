@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace O2.Business.Data.Migrations
+namespace O2.Certificate.Data.Migrations
 {
     public partial class InitDatabase : Migration
     {

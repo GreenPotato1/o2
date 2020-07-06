@@ -2,7 +2,7 @@ using System.IO;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace O2.Business.Data.Migrations
+namespace O2.Certificate.Data.Migrations
 {
     public static class ExtMigration
     {

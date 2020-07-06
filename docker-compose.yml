@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  mssql:
+    image: mssql
+    build:
+      context: .
+      dockerfile: build/mssql/Dockerfile
+    ports:
+      - 1433

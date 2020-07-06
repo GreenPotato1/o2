@@ -1,6 +1,6 @@
 using System;
 
-namespace O2.Business.Data
+namespace O2.Certificate.Data
 {
     public class WeatherForecast
     {

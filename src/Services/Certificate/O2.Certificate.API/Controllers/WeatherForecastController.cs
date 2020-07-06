@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using O2.Business.Data;
+using O2.Certificate.Data;
 
-namespace O2.Business.API.Controllers
+namespace O2.Certificate.API.Controllers
 {
     [ApiVersion("1.0")]
     [ApiController]

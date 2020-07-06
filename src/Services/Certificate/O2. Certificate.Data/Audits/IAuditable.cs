@@ -1,4 +1,4 @@
-namespace O2.Business.Data.Audits
+namespace O2.Certificate.Data.Audits
 {
     public interface IAuditable
     {

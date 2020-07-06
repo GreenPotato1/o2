@@ -1,4 +1,4 @@
-namespace O2.Business.Repositories.Helper
+namespace O2.Certificate.Repositories.Helper
 {
     public class CertificateParam
     {

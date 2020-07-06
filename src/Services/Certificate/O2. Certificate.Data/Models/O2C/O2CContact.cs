@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using O2.Black.Toolkit.Core.Data;
 
-namespace O2.Business.Data.Models.O2C
+namespace O2.Certificate.Data.Models.O2C
 {
     public class O2CContact : BaseDbEntity
     {

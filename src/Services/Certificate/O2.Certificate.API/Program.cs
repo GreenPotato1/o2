@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using O2.Business.API.StartupHelpers;
+using O2.Certificate.API.StartupHelpers;
 
-namespace O2.Business.API
+namespace O2.Certificate.API
 {
     public class Program
     {

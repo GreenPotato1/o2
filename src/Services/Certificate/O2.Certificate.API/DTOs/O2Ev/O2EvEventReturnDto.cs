@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace O2.Business.API.DTOs.O2Ev
+namespace O2.Certificate.API.DTOs.O2Ev
 {
     public class O2EvEventReturnDto
     {

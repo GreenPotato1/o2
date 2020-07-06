@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using O2.Business.Repositories.Interfaces;
 using AutoMapper;
 using Newtonsoft.Json;
 using O2.Black.Toolkit.Core;
-using O2.Business.API.DTOs.O2Ev;
-using O2.Business.Data.Models.O2Ev;
+using O2.Certificate.API.DTOs.O2Ev;
+using O2.Certificate.Data.Models.O2Ev;
+using O2.Certificate.Repositories.Interfaces;
 
-namespace O2.Business.API.Controllers
+namespace O2.Certificate.API.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]

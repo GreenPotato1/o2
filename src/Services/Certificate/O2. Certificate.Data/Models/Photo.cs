@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using O2.Black.Toolkit.Core.Data;
 
-namespace O2.Business.Data.Models
+namespace O2.Certificate.Data.Models
 {
     public class Photo: BaseDbEntity
     {

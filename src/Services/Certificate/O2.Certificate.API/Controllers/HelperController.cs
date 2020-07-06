@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using O2.Black.Toolkit.Core;
-using O2.Business.API.DTOs.O2C;
-using O2.Business.API.Helper;
+using O2.Certificate.API.DTOs.O2C;
+using O2.Certificate.API.Helper;
 
-namespace O2.Business.API.Controllers
+namespace O2.Certificate.API.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]

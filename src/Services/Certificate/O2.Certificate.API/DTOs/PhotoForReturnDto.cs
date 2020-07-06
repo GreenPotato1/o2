@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace O2.Business.API.DTOs
+namespace O2.Certificate.API.DTOs
 {
     public class PhotoForReturnDto
     {

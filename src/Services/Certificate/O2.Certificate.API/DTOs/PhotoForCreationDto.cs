@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using O2.Black.Toolkit.Core;
 
-namespace O2.Business.API.DTOs
+namespace O2.Certificate.API.DTOs
 {
     public class PhotoForCreationDto
     {

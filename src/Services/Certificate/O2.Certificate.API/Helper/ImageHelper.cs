@@ -3,7 +3,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace O2.Business.API.Helper
+namespace O2.Certificate.API.Helper
 {
     public static class ImageHelper
     {

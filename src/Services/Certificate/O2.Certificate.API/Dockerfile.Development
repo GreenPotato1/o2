@@ -1,10 +1,9 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
-WORKDIR /app
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster
+ARG BUILD_CONFIGURATION=Debug
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 
 COPY ["src/Services/Certificate/O2.Certificate.API/O2.Certificate.API.csproj", "src/Services/Certificate/O2.Certificate.API/"]
@@ -13,14 +12,10 @@ COPY ["src/Services/Certificate/Toolkit/O2 Black Toolkit/src/O2.Black.Toolkit.Co
 COPY ["src/Services/Certificate/Toolkit/O2 Black Toolkit/src/O2.Black.Toolkit.Core.Data/O2.Black.Toolkit.Core.Data.csproj", "src/Services/Certificate/Toolkit/O2 Black Toolkit/src/O2.Black.Toolkit.Core.Data/"]
 COPY ["src/Services/Certificate/Toolkit/O2 Black Toolkit/src/O2.Black.Toolkit.Core/O2.Black.Toolkit.Core.csproj", "src/Services/Certificate/Toolkit/O2 Black Toolkit/src/O2.Black.Toolkit.Core/"]
 COPY ["src/Services/Certificate/O2.Certificate.Data/O2.Certificate.Data.csproj", "src/Services/Certificate/O2.Certificate.Data/"]
-RUN dotnet restore "src/Services/Certificate/O2.Certificate.API/O2.Certificate.API.csproj"
+
+RUN dotnet restore "src/Services/Certificate/O2.Certificate.API/O2.Certificate.API.csproj" -nowarn:msb3202,nu1503
 COPY . .
 WORKDIR "/src/src/Services/Certificate/O2.Certificate.API"
-RUN dotnet publish "O2.Certificate.API.csproj" --no-restore -c Release -o /app
+RUN dotnet build  --no-restore -c $BUILD_CONFIGURATION
 
-FROM build AS publish
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "O2.Certificate.API.dll"]
+ENTRYPOINT ["dotnet", "run", "--no-build", "--no-launch-profile", "-c", "$BUILD_CONFIGURATION", "--"]

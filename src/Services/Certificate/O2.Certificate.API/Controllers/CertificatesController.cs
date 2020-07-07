@@ -285,17 +285,17 @@ namespace O2.Certificate.API.Controllers
         [HttpGet("generate/{id}")]
         public async Task<IActionResult> Generate_V1_0(Guid id)
         {
-            // var certifications = await _certificatesBaseRepository.GetAllAsync();
-            // var certification = certifications.SingleOrDefault(x => x.Id == Guid.Parse(id.ToString()));
-            var certification = new O2CCertificate()
-            {
-                Serial = "А",
-                Number = "A0086061820",
-                Firstname = "Анна",
-                Lastname = "Янушкевич",
-                Middlename = "Леонидовна",
-                DateOfCert = new DateTime(2020, 02, 28).ConvertToUnixTime()
-            };
+            var certifications = await _certificatesBaseRepository.GetAllAsync();
+            var certification = certifications.SingleOrDefault(x => x.Id == Guid.Parse(id.ToString()));
+            // var certification = new O2CCertificate()
+            // {
+            //     Serial = "А",
+            //     Number = "A0086061820",
+            //     Firstname = "Анна",
+            //     Lastname = "Янушкевич",
+            //     Middlename = "Леонидовна",
+            //     DateOfCert = new DateTime(2020, 02, 28).ConvertToUnixTime()
+            // };
 
             var content = " Центр Гипноза Антона Маркова" +
                           " https://antonmarkov.com/obuchenie/baza-sertifikatov-pfr/" +

@@ -40,8 +40,8 @@
     <PackageReference Include="System.Xml.XDocument" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\O2. Certificate.Data\O2.Certificate.Data.csproj" />
-    <ProjectReference Include="..\O2. Certificate.Repositories\O2.Certificate.Repositories.csproj" />
+    <ProjectReference Include="..\O2.Certificate.Data\O2.Certificate.Data.csproj" />
+    <ProjectReference Include="..\O2.Certificate.Repositories\O2.Certificate.Repositories.csproj" />
     <ProjectReference Include="..\Toolkit\O2 Black Toolkit\src\O2.Black.Toolkit.Core\O2.Black.Toolkit.Core.csproj" />
   </ItemGroup>
   <ItemGroup>

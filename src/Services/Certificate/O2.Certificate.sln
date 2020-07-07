@@ -2,9 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Certificate.API", "O2.Certificate.API\O2.Certificate.API.csproj", "{B897E0F2-4045-42BE-9EA6-40C0010AB500}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Certificate.Data", "O2. Certificate.Data\O2.Certificate.Data.csproj", "{78B6BA1D-B514-407C-84F1-A98CB3985CC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Certificate.Data", "O2.Certificate.Data\O2.Certificate.Data.csproj", "{78B6BA1D-B514-407C-84F1-A98CB3985CC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Certificate.Repositories", "O2. Certificate.Repositories\O2.Certificate.Repositories.csproj", "{21106FC0-E307-49E2-B95C-8291CD3F8906}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Certificate.Repositories", "O2.Certificate.Repositories\O2.Certificate.Repositories.csproj", "{21106FC0-E307-49E2-B95C-8291CD3F8906}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Toolkit", "Toolkit", "{734FFA4C-E0EE-42F1-B64C-531834312E41}"
 EndProject

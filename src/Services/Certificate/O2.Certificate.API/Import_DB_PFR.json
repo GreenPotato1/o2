@@ -3,7 +3,7 @@
     "serial": "A",
     "shortNumber": 1,
     "number": "0001042019",
-    "education": "Психолог, Гипнотерапевт, Мастер НЛП, Преподаватель Гипноза заочный филиал центра Маркова, Гипнотерапевт ПФР категория А",
+    "education": "Психолог, Гипнотерапевт, Мастер НЛП, Преподаватель Гипноза заочный филиал центра Маркова, Гипнотерапевт ПФР категория А. <br> Директор ПФР ЦЕНТРА Москва.",
     "dateOfCert": 1555707600,
     "firstname": "Андрей",
     "lastname": "Бобров",
@@ -26,7 +26,6 @@
       }
     ]
   },
-  
   {
     "serial": "A",
     "shortNumber": 2,
@@ -62,39 +61,7 @@
     "locations": [
       {
         "country": "Казахстан",
-        "region": "Алма Аты"
-      }
-    ]
-  },
-
-  {
-    "serial": "A",
-    "shortNumber": 3,
-    "number": "0003042019",
-    "education": "Психолог, Клинический психолог, гипнотерапевт, Гипнотерапевт ПФР категория А",
-    "dateOfCert": 1555707600,
-    "firstname": "Екатерина",
-    "lastname": "Чекалина",
-    "middlename": "Викторовна",
-    "visible": true,
-    "contacts": [
-      {
-        "key": "instagram",
-        "value": "https://www.instagram.com/katerina_chekalina"
-      },
-      {
-        "key": "phone",
-        "value": "79631839542"
-      },
-      {
-        "key": "vk",
-        "value": "https://vk.com/katerina_chekalina"
-      }
-    ],
-    "locations": [
-      {
-        "country": "Россия",
-        "region": "Сочи"
+        "region": "Алма-Ата"
       }
     ]
   },
@@ -129,8 +96,6 @@
       }
     ]
   },
-
-
   {
     "serial": "A",
     "shortNumber": 5,
@@ -158,8 +123,6 @@
       }
     ]
   },
-
-
   {
     "serial": "A",
     "shortNumber": 6,
@@ -187,8 +150,6 @@
       }
     ]
   },
-
-
   {
     "serial": "A",
     "shortNumber": 7,
@@ -212,7 +173,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 8,
@@ -229,6 +189,14 @@
         "value": "79095777790"
       },
       {
+        "key": "whatsapp",
+        "value": "79095777790"
+      },
+      {
+        "key": "whatsapp",
+        "value": "79932207448"
+      },
+      {
         "key": "vk",
         "value": "https://vk.com/baikalmakc"
       }
@@ -236,11 +204,10 @@
     "locations": [
       {
         "country": "Россия",
-        "region": "Иркутск"
+        "region": "Санкт-Петербург"
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 9,
@@ -268,8 +235,6 @@
       }
     ]
   },
-
-
   {
     "serial": "A",
     "shortNumber": 10,
@@ -297,7 +262,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 11,
@@ -325,7 +289,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 12,
@@ -353,7 +316,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 13,
@@ -389,7 +351,6 @@
       }
     ]
   },
-  
   {
     "serial": "A",
     "shortNumber": 14,
@@ -413,31 +374,21 @@
     "locations": [
       {
         "country": "Израиль",
-        "region": "Тель-Авив"
+        "region": "Назарет"
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 15,
     "number": "0015072019",
-    "education": "Сертификат анулирован. Нарушение авторских прав. Нарушение правил ПФР терапии.",
+    "education": "<p style=\"color:red !important;\">Сертификат анулирован. Нарушение авторских прав. Нарушение правил ПФР терапии.</p>",
     "dateOfCert": 1563570000,
     "firstname": "Борис",
     "lastname": "Мордухович",
     "middlename": "",
-    "visible": true,
-    "contacts": [
-      {
-        "key": "phone",
-        "value": "972527907864"
-      },
-      {
-        "key": "fb",
-        "value": "https://www.facebook.com/bera1169"
-      }
-    ],
+    "visible": false,
+    "lock": true,
     "locations": [
       {
         "country": "Израиль",
@@ -445,14 +396,13 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 16,
     "number": "0016072019",
     "education": "НЛП-Мастер, гипнотерапевт, Гипнотерапевт ПФР категория А",
     "dateOfCert": 1563570000,
-    "firstname": "Йешу",
+    "firstname": "Йешуа",
     "lastname": "Фаина",
     "middlename": "",
     "visible": true,
@@ -473,7 +423,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 17,
@@ -481,8 +430,8 @@
     "education": "Психолог-психотерапевт, гипнотерапевт, тренер.Основатель и руководитель Академии Развития Личности.Практикующий психолог \"СО Государственный педагогический институт\", диплом — 2006 г.Тренер \"Школа Политики и Бизнеса при Государственной Думе Федерального Собрания РФ\", диплом — 2008 г. Практик \"НЛП\", Московский институт НЛП — 2008 г. \"Эриксоновская терапия и гипноз\", сертификат М.Р. Гинсбург — 2012 г. Биоэнерготерапевт \"Московская школа парапсихологии\". Диплом. Ю.А. Подгорный — 2012 г. Мастер курса \"Метод Хосе Сильва\", сертификат — 2012 г. \"Современные техники гипнотерапии\", сертификат В.Н. Зябликов — 2016 г. Тренер, консультирующий психолог, использует методы НЛП, Эриксоновский гипноз, телесно-ориентированной и арт-терапии, Гипнотерапевт ПФР категория А",
     "dateOfCert": 1571518800,
     "firstname": "Ирина",
-    "lastname": "Викторовна",
-    "middlename": "Емельянова",
+    "lastname": "Емельянова",
+    "middlename": "Викторовна",
     "visible": true,
     "contacts": [
       {
@@ -509,7 +458,6 @@
       }
     ]
   },
-  
   {
     "serial": "A",
     "shortNumber": 18,
@@ -537,7 +485,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 19,
@@ -565,7 +512,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 20,
@@ -593,12 +539,11 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 21,
     "number": "0021092019",
-    "education": "Психотерапевт, Гипнотерапевт ПФР категория А",
+    "education": "Врач-психотерапевт, Гипнотерапевт ПФР категория А",
     "dateOfCert": 1568926800,
     "firstname": "Максим",
     "lastname": "Дущиц",
@@ -610,8 +555,12 @@
         "value": "79637840835"
       },
       {
-        "key": "fb",
-        "value": "https://www.facebook.com/yegoshua"
+        "key": "instagram",
+        "value": "https://www.instagram.com/dmdoc_ru/"
+      },
+      {
+        "key": "site",
+        "value": "https://dmdoc.ru"
       }
     ],
     "locations": [
@@ -621,7 +570,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 22,
@@ -645,31 +593,6 @@
       }
     ]
   },
-
-  {
-    "serial": "A",
-    "shortNumber": 23,
-    "number": "0023092019",
-    "education": "Гипнолог, Гипнотерапевт, Психодиогностик, Гипнотерапевт ПФР категория А",
-    "dateOfCert": 1568926800,
-    "firstname": "Ксения",
-    "lastname": "Неверова",
-    "middlename": "Давидовна",
-    "visible": true,
-    "contacts": [
-      {
-        "key": "phone",
-        "value": "79168207876"
-      }
-    ],
-    "locations": [
-      {
-        "country": "Россия",
-        "region": "Москва"
-      }
-    ]
-  },
-
   {
     "serial": "A",
     "shortNumber": 24,
@@ -693,7 +616,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 25,
@@ -717,7 +639,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 26,
@@ -741,7 +662,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 27,
@@ -754,8 +674,24 @@
     "visible": true,
     "contacts": [
       {
-        "key": "phone",
-        "value": "38057316302"
+        "key": "viber",
+        "value": "77006680928"
+      },
+      {
+        "key": "whatsapp",
+        "value": "77006680928"
+      },
+      {
+        "key": "email",
+        "value": "irina.syzdykowa@yandex.ru"
+      },
+      {
+        "key": "fb",
+        "value": "https://www.facebook.com/profile.php?id=100036002929868"
+      },
+      {
+        "key": "instagram",
+        "value": "https://www.instagram.com/gipnoluch"
       }
     ],
     "locations": [
@@ -765,7 +701,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 28,
@@ -789,7 +724,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 29,
@@ -813,7 +747,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 30,
@@ -837,7 +770,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 31,
@@ -861,7 +793,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 32,
@@ -885,7 +816,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 33,
@@ -909,7 +839,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 34,
@@ -933,7 +862,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 35,
@@ -957,7 +885,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 36,
@@ -981,7 +908,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 37,
@@ -989,8 +915,8 @@
     "education": "Гипнотерапевт ПФР категория А",
     "dateOfCert": 1576789200,
     "firstname": "Алексей",
-    "lastname": "Федосейский",
-    "middlename": "Владимирович",
+    "lastname": "Иванов",
+    "middlename": "Вячеславович",
     "visible": true,
     "contacts": [
       {
@@ -1001,11 +927,10 @@
     "locations": [
       {
         "country": "Россия",
-        "region": "Нижний Тагил"
+        "region": "Москва"
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 38,
@@ -1029,31 +954,6 @@
       }
     ]
   },
-
-  {
-    "serial": "A",
-    "shortNumber": 39,
-    "number": "0039122019",
-    "education": "Гипнотерапевт ПФР категория А",
-    "dateOfCert": 1576789200,
-    "firstname": "Нелли",
-    "lastname": "Бапикова",
-    "middlename": "",
-    "visible": false,
-    "contacts": [
-      {
-        "key": "phone",
-        "value": "380713349525"
-      }
-    ],
-    "locations": [
-      {
-        "country": "Россия",
-        "region": "Нижний Тагил"
-      }
-    ]
-  },
-
   {
     "serial": "A",
     "shortNumber": 40,
@@ -1073,16 +973,15 @@
     "locations": [
       {
         "country": "Россия",
-        "region": "Нижний Тагил"
+        "region": "Санкт-Петербург"
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 41,
     "number": "0041122019",
-    "education": "Гипнотерапевт ПФР категория А",
+    "education": "Социальный психолог, сексолог, сертифицированный гипнотерапевт, преподаватель Казачего СПАСа(целительство), Гипнотерапевт ПФР категория А",
     "dateOfCert": 1576789200,
     "firstname": "Ян",
     "lastname": "Галецинский",
@@ -1092,16 +991,23 @@
       {
         "key": "phone",
         "value": "380714647420"
+      },
+      {
+        "key": "viber",
+        "value": "380714647420"
+      },
+      {
+        "key": "whatsapp",
+        "value": "79897264539"
       }
     ],
     "locations": [
       {
-        "country": "Россия",
-        "region": "Нижний Тагил"
+        "country": "Украина",
+        "region": "ДНР г. Донецк"
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 42,
@@ -1121,11 +1027,10 @@
     "locations": [
       {
         "country": "Россия",
-        "region": "Нижний Тагил"
+        "region": "Краснодар - Москва; Индия - Дели"
       }
     ]
   },
-  
   {
     "serial": "A",
     "shortNumber": 43,
@@ -1145,11 +1050,10 @@
     "locations": [
       {
         "country": "Россия",
-        "region": "Санкт-Петербург"
+        "region": "Краснодар - Москва"
       }
     ]
   },
-  
   {
     "serial": "A",
     "shortNumber": 44,
@@ -1173,7 +1077,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 45,
@@ -1220,7 +1123,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 47,
@@ -1244,7 +1146,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 48,
@@ -1263,12 +1164,11 @@
     ],
     "locations": [
       {
-        "country": "Россия",
-        "region": "Санкт-Петербург"
+        "country": "Беларусь",
+        "region": "Минск"
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 49,
@@ -1287,12 +1187,11 @@
     ],
     "locations": [
       {
-        "country": "Россия",
-        "region": "Санкт-Петербург"
+        "country": "Монголия",
+        "region": "Улан-Батор"
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 50,
@@ -1316,7 +1215,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 51,
@@ -1336,11 +1234,10 @@
     "locations": [
       {
         "country": "Россия",
-        "region": "Санкт-Петербург"
+        "region": "Московская обл. г. Павловский пассад; Азербайджан"
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 52,
@@ -1364,7 +1261,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 53,
@@ -1388,7 +1284,6 @@
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 54,
@@ -1408,16 +1303,15 @@
     "locations": [
       {
         "country": "Россия",
-        "region": "Санкт-Петербург"
+        "region": "Нижний Новгород"
       }
     ]
   },
-
   {
     "serial": "A",
     "shortNumber": 55,
     "number": "0055022820",
-    "education": "Гипнотерапевт ПФР категория А",
+    "education": "Психолог, Гипнотерапевт, Гипнотерапевт ПФР категория А",
     "dateOfCert": 1582837200,
     "firstname": "Татьяна",
     "lastname": "Баженова",
@@ -1432,7 +1326,857 @@
     "locations": [
       {
         "country": "Россия",
-        "region": "Санкт-Петербург"
+        "region": "Удмуртия город Глазов"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 56,
+    "number": "0056032220",
+    "education": "Гипнотерапевт, ПФР Терапевт, специалист по проработке психосоматики, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1584835200,
+    "firstname": "Сергей",
+    "lastname": "Лейкам",
+    "middlename": "Александрович",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "89294902684"
+      },
+      {
+        "key": "instagram",
+        "value": "sergei_hipnose_"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "Амурская область г. Свободный."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 56,
+    "number": "0057032920",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "firstname": "Владимир",
+    "lastname": "Окулов",
+    "middlename": "Юрьевич",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "9089134287"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "..."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 57,
+    "number": "0057032920",
+    "education": "Гипнотерапевт-практик, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "firstname": "Игорь",
+    "lastname": "Чеботарев",
+    "middlename": "Александрович",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "79184957300"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "..."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 58,
+    "number": "0058032920",
+    "education": "Гипнотерапевт, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "firstname": "Александр",
+    "lastname": "Гардер",
+    "middlename": "Иванович",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "9509953101"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "..."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 59,
+    "number": "0059032920",
+    "education": "Гипнотерапевт, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "firstname": "Фируза",
+    "lastname": "Рахимкулова",
+    "middlename": "Зуфаровна",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "79260680103"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "..."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 60,
+    "number": "0060032920",
+    "education": "Практик - Гипнотерапевт, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "firstname": "Сергей",
+    "lastname": "Фомин",
+    "middlename": "Валентинович",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "79166147429"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "..."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 61,
+    "number": "0061032920",
+    "education": "Психотерапевт, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "firstname": "Виктор",
+    "lastname": "Ганиев",
+    "middlename": "Александрович",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "79131677171"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "..."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 62,
+    "number": "0062032920",
+    "education": "Психотерапевт, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "firstname": "Вячеслав",
+    "lastname": "Никонов",
+    "middlename": "Алексеевич",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "89788416485"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "..."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 63,
+    "number": "0063032920",
+    "education": "Гипнотерапевт, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "firstname": "Алёна",
+    "lastname": "Козина",
+    "middlename": "Сергеевна",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "79017471786"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "..."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 64,
+    "number": "0064032920",
+    "education": "Психолог-гипнолог, коуч, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "firstname": "Кира",
+    "lastname": "Булах",
+    "middlename": "Юрьевна",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "89269910047"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "..."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 65,
+    "number": "0065032920",
+    "education": "Гипнотерапевт, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "firstname": "Людмила",
+    "lastname": "Чубовская",
+    "middlename": "Васильевна",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "79265241955"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "..."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 66,
+    "number": "0066032920",
+    "education": "Психолог, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "firstname": "Сергей",
+    "lastname": "Порфирьев",
+    "middlename": "Иванович",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "79306820206"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "..."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 68,
+    "number": "0068032920",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "firstname": "Людмила",
+    "lastname": "Ананьина",
+    "middlename": "Павловна",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "79099905007"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "..."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 69,
+    "number": "0069032920",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "firstname": "Дмитрий",
+    "lastname": "Ковалев",
+    "middlename": "Ярославович",
+    "visible": true,
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "79281183500"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "..."
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 70,
+    "number": "0070042720",
+    "education": "Доктор невролог, Остеопат, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1585440000,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1587977247,
+    "firstname": "Алексей",
+    "lastname": "Гамалей",
+    "middlename": "Андреевич",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "89114819781"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "Калининград"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 71,
+    "number": "0071050520",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1588690800,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1587977247,
+    "firstname": "Виктор",
+    "lastname": "Кувшинов",
+    "middlename": "Николаевич",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "-"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 72,
+    "number": "0072050520",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1588690800,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1587977247,
+    "firstname": "Елена",
+    "lastname": "Прелкова ",
+    "middlename": "",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Испания",
+        "region": "Рокетас де Мар"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 73,
+    "number": "0073050520",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1588690800,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1587977247,
+    "firstname": "Ирина",
+    "lastname": "Ермолова",
+    "middlename": "Васильевна",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "-"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 74,
+    "number": "0074051020",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1589122800,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1587977247,
+    "firstname": "Виталий",
+    "lastname": "Балакирев",
+    "middlename": "Васильевич",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "77761265185"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Казахстан",
+        "region": "Нур-Султан"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 75,
+    "number": "0075051020",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1589122800,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1587977247,
+    "firstname": "Maryia",
+    "lastname": "Shmyrova",
+    "middlename": "",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Canada",
+        "region": "Vancouver"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 76,
+    "number": "0076051020",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1589122800,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1587977247,
+    "firstname": "Марина",
+    "lastname": "Трофимова",
+    "middlename": "Викторовна",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "89324206880 "
+      },
+      {
+        "key": "viber",
+        "value": "89324206880 "
+      },
+      {
+        "key": "whatsapp",
+        "value": "89324206880 "
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "Нижневартовск"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 77,
+    "number": "0077051420",
+    "education": "Юрист (ТГУ), Клинический психолог (НИКП), Гипнотерапевт (Сибирский Центр Гипноза), Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1589468400,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1587977247,
+    "firstname": "Екатерина",
+    "lastname": "Кононова",
+    "middlename": "Сергеевна",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "89134642080 "
+      },
+      {
+        "key": "whatsapp",
+        "value": "89134642080 "
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "Новосибирска"
+      }
+    ]
+  },
+
+  {
+    "serial": "A",
+    "shortNumber": 78,
+    "number": "0078060420",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1591282800,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1591282800,
+    "firstname": "Альфия",
+    "lastname": "Усманова",
+    "middlename": "Олеговна",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "-"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 79,
+    "number": "0079060420",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1591282800,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1591282800,
+    "firstname": "Александр",
+    "lastname": "Пыженко",
+    "middlename": "Иванович",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "-"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 80,
+    "number": "0080060420",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1591282800,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1591282800,
+    "firstname": "Яна",
+    "lastname": "Малокугаевская",
+    "middlename": "Сергеевна",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "-"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 81,
+    "number": "0081060420",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1591282800,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1591282800,
+    "firstname": "Елена",
+    "lastname": "Самарина",
+    "middlename": "Олеговна",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "-"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 82,
+    "number": "0082060420",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1591282800,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1591282800,
+    "firstname": "Самгиль",
+    "lastname": "Каппушев",
+    "middlename": "Сагитович",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "-"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 83,
+    "number": "0083061220",
+    "education": "Массажист, Телесно-ориентированный терапевт, работает с психосоматикой в гештальт подходе. Мастер дыхательных практик, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1591967374,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1591967374,
+    "firstname": "Юлия",
+    "lastname": "Николаева",
+    "middlename": "Дмитриевна",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "Иркутск"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 84,
+    "number": "0084061220",
+    "education": "Изотерик-практик,медиум, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1591967374,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1591967374,
+    "firstname": "Артем",
+    "lastname": "Зассеев",
+    "middlename": "Согратович",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "77477923592"
+      },
+      {
+        "key": "phone",
+        "value": "77017923592"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Казахстан",
+        "region": "Алматы"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 85,
+    "number": "0085061520",
+    "education": "Клинический (медицинский) психолог, гипнотерапевт, субъект инновационной деятельности ЯНАО, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1592243659,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1592243659,
+    "firstname": "Евгений",
+    "lastname": "Киселев",
+    "middlename": "Александрович",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "79222804117"
+      },
+      {
+        "key": "vk",
+        "value": "https://vk.com/kiselev_evgeny"
+      },
+      {
+        "key": "site",
+        "value": "http://www.kea89.ru/"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "г. Новый Уренгой (Ямало-Ненецкий автономный округ)"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 86,
+    "number": "0086061820",
+    "education": "Клинический (медицинский) психолог, гипнотерапевт, субъект инновационной деятельности ЯНАО, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1592492400,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1592492400,
+    "firstname": "Анна",
+    "lastname": "Янушкевич",
+    "middlename": "Леонидовна",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "79222804117"
+      },
+      {
+        "key": "vk",
+        "value": "https://vk.com/kiselev_evgeny"
+      },
+      {
+        "key": "site",
+        "value": "http://www.kea89.ru/"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Россия",
+        "region": "г. Новый Уренгой (Ямало-Ненецкий автономный округ)"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 87,
+    "number": "0087070520",
+    "education": "Энергопрактик, Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1593961200,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1593961200,
+    "firstname": "Альбина",
+    "lastname": "Каримова",
+    "middlename": "",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "79222804117"
+      },
+      {
+        "key": "vk",
+        "value": "https://vk.com/kiselev_evgeny"
+      },
+      {
+        "key": "site",
+        "value": "http://www.kea89.ru/"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Республика Башкортостан",
+        "region": "г. Уфа"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 88,
+    "number": "0087070520",
+    "education": "к.пс.н, доцент., Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1593961200,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1593961200,
+    "firstname": "Зульфия",
+    "lastname": "Чеккуева",
+    "middlename": "Николаевна",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "79222804117"
+      },
+      {
+        "key": "vk",
+        "value": "https://vk.com/kiselev_evgeny"
+      },
+      {
+        "key": "site",
+        "value": "http://www.kea89.ru/"
+      }
+    ],
+    "locations": [
+      {
+        "country": "Карачаево-Черкесская Республика",
+        "region": "г. Карачаевск"
       }
     ]
   }

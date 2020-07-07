@@ -7,23 +7,11 @@
     "O2.Certificate.API": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "http://localhost:55105",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "hhttps://localhost:5001;http://localhost:5000"
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-      "publishAllPorts": true,
-      "environmentVariables": {
-        "ASPNETCORE_URLS": "https://+:443;http://+:80",
-        "ASPNETCORE_HTTPS_PORT": "443"
-      },
-      "httpPort": 80,
-      "useSSL": true,
-      "sslPort": 443
+      "applicationUrl": "http://localhost:5000/"
     }
   }
 }

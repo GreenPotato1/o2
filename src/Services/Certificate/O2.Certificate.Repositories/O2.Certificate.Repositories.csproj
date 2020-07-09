@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>O2.Business.Repositories</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\O2.Certificate.Data\O2.Certificate.Data.csproj" />
+    <ProjectReference Include="..\Toolkit\O2 Black Toolkit\src\O2.Black.Toolkit.Core.Repositories\O2.Black.Toolkit.Core.Repositories.csproj" />
+    <ProjectReference Include="..\Toolkit\O2 Black Toolkit\src\O2.Black.Toolkit.Core\O2.Black.Toolkit.Core.csproj" />
+  </ItemGroup>
+</Project>

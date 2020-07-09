@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:2017-latest 
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"
+      
+  certificate-api:
+    image: o2bionics/o2-certificate-api
+    build:
+      context: .
+      dockerfile: src/Services/Certificate/O2.Certificate.API/Dockerfile
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Development
+     - ASPNETCORE_URLS=http://localhost:80
+    ports:
+      - "5000:80"
+      - "5001:80"
+    depends_on:
+      - sqldata

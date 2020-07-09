@@ -1,0 +1,4 @@
+include libs 
+> Microsoft.EntityFrameworkCore
+> Microsoft.EntityFrameworkCore.SqlServer
+> Microsoft.EntityFrameworkCore.SqlServer.Design

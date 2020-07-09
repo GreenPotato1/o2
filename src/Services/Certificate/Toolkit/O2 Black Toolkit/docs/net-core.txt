@@ -1,0 +1,26 @@
+# author: Denis Prokhorchik
+# date: 16.02.2020
+
+create empty solution
+> dotnet new sln --name O2.Black.Toolkit
+
+build project 
+> dotnet build O2.Black.Toolkit.sln
+
+create project libs .net core
+> dotnet new  classlib -o O2.Black.Toolkit.Core -n O2.Black.Toolkit.Core
+> dotnet new  classlib -o O2.Black.Toolkit.Core.Repositories -n O2.Black.Toolkit.Core.Repositories
+> dotnet new  classlib -o O2.Black.Toolkit.Core.Data -n O2.Black.Toolkit.Core.Data
+
+soltion add projects O2.Business.BackEnd.sln
+> dotnet sln O2.Black.Toolkit.sln add O2.Black.Toolkit.Core/O2.Black.Toolkit.Core.csproj
+> dotnet sln O2.Black.Toolkit.sln add O2.Black.Toolkit.Core.Repositories/O2.Black.Toolkit.Core.Repositories.csproj
+> dotnet sln O2.Black.Toolkit.sln add O2.Black.Toolkit.Core.Data/O2.Black.Toolkit.Core.Data.csproj
+
+create tests
+create project tests - nunit
+> dotnet new nunit -o Tests.O2.Black.Toolkit.Core.Repositories -n Tests.O2.Black.Toolkit.Core.Repositories 
+> dotnet new nunit -o Tests.O2.Black.Toolkit.Core.Data  -n Tests.O2.Black.Toolkit.Core.Data 
+> dotnet new nunit -o ests.O2.Black.Toolkit.Core  -n Tests.O2.Black.Toolkit.Core  
+
+

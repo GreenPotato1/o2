@@ -11,7 +11,7 @@ services:
       - "5433:1433"
       
   certificate-api:
-    image: ${REGISTRY:-eshop}/o2-certificate.api:${PLATFORM:-linux}-${TAG:-latest}
+    image: ${REGISTRY:-o2bionics}/o2-certificate.api:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
       dockerfile: Services/Certificate/O2.Certificate.API/Dockerfile

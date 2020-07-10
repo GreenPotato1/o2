@@ -12,7 +12,7 @@ trigger:
     - build/azure-devops/buildimages.yml
     - build/azure-devops/multiarch.yml
     - build/azure-devops/certificate-api/*
-    # - deploy/k8s/helm/identity-api/*
+    - deploy/k8s/helm/certificate-api/*
 jobs:
 - template: ../buildimages.yaml
   parameters:

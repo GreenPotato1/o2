@@ -1,18 +1,18 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.eShopOnContainers.Services.Identity.API.Extensions;
-using Microsoft.eShopOnContainers.Services.Identity.API.Models;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using O2.Identity.API.Extensions;
+using O2.Identity.API.Models;
 
-namespace Microsoft.eShopOnContainers.Services.Identity.API.Data
+namespace O2.Identity.API.Data
 {
 
 

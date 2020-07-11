@@ -1,4 +1,4 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Identity.API.Services
+﻿namespace O2.Identity.API.Services
 {
     public interface IRedirectService
     {

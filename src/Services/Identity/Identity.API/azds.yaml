@@ -1,4 +1,4 @@
-kind: helm-release
+9kind: helm-release
 apiVersion: 1.1
 build:
   context: ..\..\..\..

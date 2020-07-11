@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Microsoft.eShopOnContainers.Services.Identity.API.Services
+namespace O2.Identity.API.Services
 {
     public class RedirectService : IRedirectService
     {

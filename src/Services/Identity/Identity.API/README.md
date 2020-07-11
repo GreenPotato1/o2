@@ -9,6 +9,6 @@ This sample runs a microservices oriented application and a .net core Mvc applic
 This service is a identity provider or STS (Security Token Service) currently implemented with IdentityServer 4 wrapping ASP.NET Identity underneath.
 
 Check procedures on how to get the sample app started at the Wiki:
-https://github.com/dotnet/eShopOnContainers/wiki
+https://github.com/dotnet/O2/wiki
 
 

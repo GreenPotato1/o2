@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace O2.Certificate.Repositories
+namespace O2.Business.Repositories
 {
     public static class  ExtensionsDbSet
     {

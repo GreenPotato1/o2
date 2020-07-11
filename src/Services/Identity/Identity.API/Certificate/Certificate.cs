@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Microsoft.eShopOnContainers.Services.Identity.API.Certificates
+namespace O2.Identity.API.Certificate
 {
     static class Certificate
     {
@@ -16,7 +16,7 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API.Certificates
              *  real environment the certificate should be created and stored in a secure way, which is out
              *  of the scope of this project.
              **********************************************************************************************/
-            using (var stream = assembly.GetManifestResourceStream("Identity.API.Certificate.idsrv3test.pfx"))
+            using (var stream = assembly.GetManifestResourceStream("O2.Identity.API.Certificate.idsrv3test.pfx"))
             {
                 return new X509Certificate2(ReadStream(stream), "idsrv3test");
             }

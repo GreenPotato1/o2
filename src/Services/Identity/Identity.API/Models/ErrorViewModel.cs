@@ -4,7 +4,7 @@
 
 using IdentityServer4.Models;
 
-namespace Microsoft.eShopOnContainers.Services.Identity.API.Models
+namespace O2.Identity.API.Models
 {
     public class ErrorViewModel
     {

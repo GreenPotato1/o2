@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Microsoft.eShopOnContainers.Services.Identity.API.Models.ManageViewModels
+namespace O2.Identity.API.Models.ManageViewModels
 {
     public class AddPhoneNumberViewModel
     {

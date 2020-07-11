@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 
-namespace Microsoft.eShopOnContainers.Services.Identity.API.Models.ManageViewModels
+namespace O2.Identity.API.Models.ManageViewModels
 {
     public class IndexViewModel
     {

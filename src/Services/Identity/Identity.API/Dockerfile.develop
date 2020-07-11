@@ -5,7 +5,7 @@ ENV DOTNET_USE_POLLING_FILE_WATCHER=true
 EXPOSE 80
 
 WORKDIR /src
-COPY ["Services/Identity/Identity.API/Identity.API.csproj", "Services/Identity/Identity.API/"]
+COPY "Services/Identity/Identity.API/Identity.API.csproj" "Services/Identity/Identity.API/Identity.API.csproj"
 COPY ["BuildingBlocks/WebHostCustomization/WebHost.Customization/WebHost.Customization.csproj", "BuildingBlocks/WebHostCustomization/WebHost.Customization/"]
 RUN dotnet restore Services/Identity/Identity.API/Identity.API.csproj -nowarn:msb3202,nu1503
 COPY . .

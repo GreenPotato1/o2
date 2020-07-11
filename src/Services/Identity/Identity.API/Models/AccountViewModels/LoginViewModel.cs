@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Microsoft.eShopOnContainers.Services.Identity.API.Models.AccountViewModels
+namespace O2.Identity.API.Models.AccountViewModels
 {
     public class LoginViewModel
     {

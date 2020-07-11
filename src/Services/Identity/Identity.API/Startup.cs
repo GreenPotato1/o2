@@ -1,4 +1,6 @@
-﻿using Autofac;
+﻿using System;
+using System.Reflection;
+using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using HealthChecks.UI.Client;
 using IdentityServer4.Services;
@@ -8,21 +10,18 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.eShopOnContainers.Services.Identity.API.Certificates;
-using Microsoft.eShopOnContainers.Services.Identity.API.Data;
-using Microsoft.eShopOnContainers.Services.Identity.API.Devspaces;
-using Microsoft.eShopOnContainers.Services.Identity.API.Models;
-using Microsoft.eShopOnContainers.Services.Identity.API.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using O2.Identity.API.Data;
+using O2.Identity.API.Devspaces;
+using O2.Identity.API.Models;
+using O2.Identity.API.Services;
 using StackExchange.Redis;
-using System;
-using System.Reflection;
 
-namespace Microsoft.eShopOnContainers.Services.Identity.API
+namespace O2.Identity.API
 {
     public class Startup
     {
@@ -82,7 +81,7 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API
                 x.Authentication.CookieLifetime = TimeSpan.FromHours(2);
             })
             .AddDevspacesIfNeeded(Configuration.GetValue("EnableDevspaces", false))
-            .AddSigningCredential(Certificate.Get())
+            .AddSigningCredential(Certificate.Certificate.Get())
             .AddAspNetIdentity<ApplicationUser>()
             .AddConfigurationStore(options =>
             {
@@ -158,7 +157,7 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API
             // Fix a problem with chrome. Chrome enabled a new feature "Cookies without SameSite must be secure", 
             // the coockies shold be expided from https, but in eShop, the internal comunicacion in aks and docker compose is http.
             // To avoid this problem, the policy of cookies shold be in Lax mode.
-            app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = AspNetCore.Http.SameSiteMode.Lax });
+            app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.Lax });
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {

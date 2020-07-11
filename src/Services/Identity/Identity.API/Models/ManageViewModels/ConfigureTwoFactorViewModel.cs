@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Microsoft.eShopOnContainers.Services.Identity.API.Models.ManageViewModels
+namespace O2.Identity.API.Models.ManageViewModels
 {
     public class ConfigureTwoFactorViewModel
     {

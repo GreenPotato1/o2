@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Identity.API.Migrations.ConfigurationDb
+namespace O2.Identity.API.Migrations.ConfigurationDb
 {
     public partial class InitialConfigurationMigration : Migration
     {

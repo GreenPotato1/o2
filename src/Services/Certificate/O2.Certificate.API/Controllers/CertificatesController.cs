@@ -10,11 +10,11 @@ using O2.Black.Toolkit.Core;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using O2.Business.Repositories.Helper;
+using O2.Business.Repositories.Interfaces;
 using O2.Certificate.API.DTOs.O2C;
 using O2.Certificate.API.Helper;
 using O2.Certificate.Data.Models.O2C;
-using O2.Certificate.Repositories.Helper;
-using O2.Certificate.Repositories.Interfaces;
 using QRCoder;
 
 

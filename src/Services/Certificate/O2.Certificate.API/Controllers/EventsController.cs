@@ -9,9 +9,9 @@ using Microsoft.Extensions.Configuration;
 using AutoMapper;
 using Newtonsoft.Json;
 using O2.Black.Toolkit.Core;
+using O2.Business.Repositories.Interfaces;
 using O2.Certificate.API.DTOs.O2Ev;
 using O2.Certificate.Data.Models.O2Ev;
-using O2.Certificate.Repositories.Interfaces;
 
 namespace O2.Certificate.API.Controllers
 {

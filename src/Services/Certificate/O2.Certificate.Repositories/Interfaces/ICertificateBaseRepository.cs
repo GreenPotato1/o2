@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using O2.Black.Toolkit.Core;
 using O2.Black.Toolkit.Core.Data;
+using O2.Business.Repositories.Core.Interfaces;
+using O2.Business.Repositories.Helper;
 using O2.Certificate.Data.Models.O2C;
-using O2.Certificate.Repositories.Core.Interfaces;
-using O2.Certificate.Repositories.Helper;
 
-namespace O2.Certificate.Repositories.Interfaces
+namespace O2.Business.Repositories.Interfaces
 {
     public interface ICertificateBaseRepository<TClass>  : IBaseRepository<TClass> 
         where TClass: class, IEntity

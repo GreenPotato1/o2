@@ -1,15 +1,14 @@
-﻿using IdentityServer4.EntityFramework.DbContexts;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Entities;
 using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.eShopOnContainers.Services.Identity.API.Configuration;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using O2.Identity.API.Configuration;
 
-namespace Microsoft.eShopOnContainers.Services.Identity.API.Data
+namespace O2.Identity.API.Data
 {
     public class ConfigurationDbContextSeed
     {
@@ -42,7 +41,7 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API.Data
             // Checking always for old redirects to fix existing deployments
             // to use new swagger-ui redirect uri as of v3.0.0
             // There should be no problem for new ones
-            // ref: https://github.com/dotnet-architecture/eShopOnContainers/issues/586
+            // ref: https://github.com/dotnet-architecture/O2/issues/586
             else
             {
                 List<ClientRedirectUri> oldRedirects = (await context.Clients.Include(c => c.RedirectUris).ToListAsync())

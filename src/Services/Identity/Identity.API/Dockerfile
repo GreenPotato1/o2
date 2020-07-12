@@ -7,10 +7,10 @@ WORKDIR /src
 
 # It's important to keep lines from here down to "COPY . ." identical in all Dockerfiles
 # to take advantage of Docker's build cache, to speed up local container builds
-COPY "Services/Identity/Identity.API/Identity.API.csproj" "Services/Identity/Identity.API/Identity.API.csproj"
+COPY "Services/Identity/Identity.API/O2.Identity.API.csproj" "Services/Identity/Identity.API/"
 COPY . .
 WORKDIR "/src/Services/Identity/Identity.API/"
-RUN dotnet restore "Identity.API.csproj"
+RUN dotnet restore "O2.Identity.API.csproj"
 
 COPY . .
 WORKDIR /src/Services/Identity/Identity.API
@@ -21,4 +21,4 @@ FROM build AS publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "Identity.API.dll"]
+ENTRYPOINT ["dotnet", "O2.Identity.API.dll"]

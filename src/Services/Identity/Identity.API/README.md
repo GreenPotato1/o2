@@ -1,4 +1,4 @@
-# Containerized eShop - Identity Service
+# Containerized O2 - Identity Service
 Sample reference containerized application, cross-platform and microservices architecture.
 Powered by Microsoft
 

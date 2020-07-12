@@ -57,7 +57,7 @@ namespace O2.Identity.API
             {
                 services.AddDataProtection(opts =>
                 {
-                    opts.ApplicationDiscriminator = "eshop.identity";
+                    opts.ApplicationDiscriminator = "O2.identity";
                 })
                 .PersistKeysToRedis(ConnectionMultiplexer.Connect(Configuration["DPConnectionString"]), "DataProtection-Keys");
             }

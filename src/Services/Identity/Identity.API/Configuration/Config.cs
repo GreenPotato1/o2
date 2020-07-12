@@ -42,7 +42,7 @@ namespace O2.Identity.API.Configuration
                 new Client
                 {
                     ClientId = "js",
-                    ClientName = "eShop SPA OpenId Client",
+                    ClientName = "O2 SPA OpenId Client",
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
                     RedirectUris =           { $"{clientsUrl["Spa"]}/" },
@@ -65,7 +65,7 @@ namespace O2.Identity.API.Configuration
                 new Client
                 {
                     ClientId = "xamarin",
-                    ClientName = "eShop Xamarin OpenId Client",
+                    ClientName = "O2 Xamarin OpenId Client",
                     AllowedGrantTypes = GrantTypes.Hybrid,                    
                     //Used to retrieve the access token on the back channel.
                     ClientSecrets =

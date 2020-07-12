@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using O2.Black.Toolkit.Core.Data;
+using O2.Business.Repositories.Core.Interfaces;
 using O2.Certificate.Data.Models.O2Ev;
-using O2.Certificate.Repositories.Core.Interfaces;
 
-namespace O2.Certificate.Repositories.Interfaces
+namespace O2.Business.Repositories.Interfaces
 {
     public interface IEventBaseRepository<TClass> : IBaseRepository<TClass> 
         where TClass: class, IEntity

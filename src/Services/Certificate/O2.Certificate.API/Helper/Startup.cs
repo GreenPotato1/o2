@@ -1,30 +1,27 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Net;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System.Linq;
-using System.Net;
-using AutoMapper;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Razor.TagHelpers;
-using Microsoft.EntityFrameworkCore;
 using O2.Black.Toolkit.Core;
-using O2.Certificate.API.Helper;
+using O2.Business.Repositories;
+using O2.Business.Repositories.Interfaces;
 using O2.Certificate.Data;
 using O2.Certificate.Data.Models.O2C;
 using O2.Certificate.Data.Models.O2Ev;
-using O2.Certificate.Repositories;
-using O2.Certificate.Repositories.Interfaces;
 
-
-namespace O2.Certificate.API
+namespace O2.Certificate.API.Helper
 {
     public class Startup
     {

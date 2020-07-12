@@ -1,5 +1,5 @@
 variables:
-    registryEndpoint: eshop-registry
+    registryEndpoint: o2bionics-registry
 trigger:
   branches:
     include:

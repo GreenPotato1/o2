@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using O2.Black.Toolkit.Core;
 using O2.Black.Toolkit.Core.Data;
+using O2.Business.Repositories.Core;
+using O2.Business.Repositories.Helper;
+using O2.Business.Repositories.Interfaces;
 using O2.Certificate.Data;
 using O2.Certificate.Data.Models.O2C;
-using O2.Certificate.Repositories.Core;
-using O2.Certificate.Repositories.Helper;
-using O2.Certificate.Repositories.Interfaces;
 
-namespace O2.Certificate.Repositories
+namespace O2.Business.Repositories
 {
     public class CertificateBaseRepository<TClass> : BaseRepository<TClass>,
         ICertificateBaseRepository<TClass>

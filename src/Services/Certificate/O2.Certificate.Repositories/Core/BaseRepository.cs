@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using O2.Black.Toolkit.Core;
 using O2.Black.Toolkit.Core.Data;
+using O2.Business.Repositories.Core.Interfaces;
 using O2.Certificate.Data;
-using O2.Certificate.Repositories.Core.Interfaces;
 
-namespace O2.Certificate.Repositories.Core
+namespace O2.Business.Repositories.Core
 {
     public abstract class BaseRepository<TClass> : Repository<TClass>,
         IBaseRepository<TClass>

@@ -1,4 +1,6 @@
-o2
+# O2 Platform
+
+<img width="150" src="https://thumbsnap.com/t/U6Exv5gd.jpg"  alt="O2 Platform"/>
 
 | Image | Status | 
 | ------------- | ------------- | 

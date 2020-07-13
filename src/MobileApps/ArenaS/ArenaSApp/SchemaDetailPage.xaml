@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ArenaSApp.SchemaDetailPage">
+
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <!--<RowDefinition Height="Auto"/>-->
+                </Grid.RowDefinitions>
+                <Image Source="" Grid.Row="0" BackgroundColor="Silver"/>
+                <Label Text="Схема" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

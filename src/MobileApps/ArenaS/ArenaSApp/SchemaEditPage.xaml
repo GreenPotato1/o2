@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArenaSApp.SchemaEditPage">
+
+    <!-- <ContentPage.BindingContext> -->
+    <!--     <vm:KeyViewModel/> -->
+    <!-- </ContentPage.BindingContext> -->
+
+    <ContentPage.Content>
+         <ScrollView>
+           <Frame BorderColor="Silver">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Row="0" Grid.Column="0">
+                                    <Label Text="Сектор" FontAttributes="Bold"/>
+                                    <Entry Text="{Binding Category,Mode=TwoWay}" BackgroundColor="Yellow"/>
+                                </StackLayout >
+
+                                <StackLayout Grid.Row="0" Grid.Column="2" >
+                                    <Label Text="Тревожный ящик № ключа" FontAttributes="Bold"/>
+                                    <Entry Text="{Binding Position,Mode=TwoWay}" />
+                                </StackLayout>
+                                <StackLayout Margin="0,20,0,0"  Grid.Row="1" Grid.Column="2">
+                                    <Label Text="Номер АХО" FontAttributes="Bold"/>
+                                    <Entry Text="{Binding SpecialNumber,Mode=TwoWay}"/>
+                                
+                                </StackLayout>
+
+                                <StackLayout Margin="0,20,0,0" Grid.Row="1" Grid.ColumnSpan="3">
+                                    <Label Text="Номер двери №" FontAttributes="Bold"/>
+                                    <Entry Text="{Binding RoomNumber,Mode=TwoWay}"/>
+                                    <Label Text="Тип двери" FontAttributes="Bold"/>
+                                    <Editor Text="{Binding RootType,Mode=TwoWay}" HeightRequest="100" /> 
+                          
+                                    <!--<CheckBox Text="{Binding RoomNumber,Mode=TwoWay}"/>-->
+
+                                    <!--<Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding RootType}"/>
+                                                <Span Text="  № "/>
+                                                <Span Text="{Binding RoomNumber}" FontAttributes="Bold"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+
+                                    </Label>-->
+    
+                                    <Label Margin="0,20,0,0" Text="Назначение помещения"  HeightRequest="100" FontAttributes="Bold"/>
+                                    <Editor Text="{Binding RoomDescription,Mode=TwoWay}"/>
+                                  <Label Margin="0,20,0,0" Text="Примечание" FontAttributes="Bold" />
+                                    <Editor Text="{Binding Note,Mode=TwoWay}" HeightRequest="100"/>
+                                     <Label Margin="0,20,0,0" Text="Кол-во ключей" FontAttributes="Bold"/>
+                                      <Entry Text="{Binding KeyCount,Mode=TwoWay}"/>
+                                          <Button Margin="0,20,0,0" Text="Сохранить" Command="{Binding SaveChangesCommand}"></Button> 
+                                </StackLayout>
+                                <!--<StackLayout Grid.Row="1" Grid.Column="1">
+                                    <Label Text="Точка входа" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Room}"/>
+                                </StackLayout>-->
+                                <!--<StackLayout Grid.Row="2" Orientation="Horizontal">
+
+
+
+
+
+                                    <Label Text="{Binding SpecialNumber}"/>
+                                    <Label Text="{Binding KeyCount}"/>
+                                    <Label Text="{Binding Note}"/>
+                                </StackLayout>-->
+                            </Grid>
+                        </Frame>
+         </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

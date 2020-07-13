@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using Microsoft.AspNetCore.Builder;
@@ -5,20 +6,40 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using O2.ArenaS.Data;
 using O2.ArenaS.Helper;
 using O2.Black.Toolkit.Core;
 
 namespace O2.ArenaS
 {
+    
+   
     public class Startup
     {
+        public IConfiguration Configuration { get; set; }
+        public Startup(IWebHostEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+        }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ArenaContext>(x =>
+                x.UseSqlServer(Configuration.GetConnectionString("ArenaDb")));
+            
+            Debug.WriteLine(Configuration.GetConnectionString("ArenaDb"));
+            
             services.AddMvc();
                 // .SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddNewtonsoftJson(options =>
                 // options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);

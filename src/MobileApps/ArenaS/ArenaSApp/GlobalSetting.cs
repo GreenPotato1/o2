@@ -6,7 +6,7 @@ namespace ArenaSApp
     {
         public const string AzureTag = "Azure";
         public const string MockTag = "Mock";
-        public const string DefaultEndpoint = "http://YOUR_IP_OR_DNS_NAME"; // i.e.: "http://YOUR_IP" or "http://YOUR_DNS_NAME"
+        public const string DefaultEndpoint = "http://api-arena.azurewebsites.net"; // i.e.: "http://YOUR_IP" or "http://YOUR_DNS_NAME"
 
         private string _baseIdentityEndpoint;
         private string _baseGatewayShoppingEndpoint;
@@ -73,7 +73,7 @@ namespace ArenaSApp
 
         public string LogoutCallback { get; set; }
 
-        public string GatewayShoppingEndpoint { get; set; }
+        public string GatewayShoppingEndpoint { get; set; } 
 
         public string GatewayMarketingEndpoint { get; set; }
 

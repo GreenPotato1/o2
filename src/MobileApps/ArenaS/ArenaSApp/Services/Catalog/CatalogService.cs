@@ -14,7 +14,7 @@ namespace ArenaSApp.Services.Catalog
         private readonly IRequestProvider _requestProvider;
         private readonly IFixUriService _fixUriService;
 
-        private const string ApiUrlBase = "api/v1.0/items";
+        private const string ApiUrlBase = "api/v1.0";
 
         public CatalogService(IRequestProvider requestProvider, IFixUriService fixUriService)
         {
@@ -74,24 +74,35 @@ namespace ArenaSApp.Services.Catalog
 
 
 
-        public Task AddCatalogAsync(CatalogItem catalogItem)
+        public async Task AddCatalogAsync(CatalogItem catalogItem)
         {
-            throw new NotImplementedException();
+            var uri = UriHelper.CombineUri(GlobalSetting.Instance.GatewayShoppingEndpoint, $"{ApiUrlBase}/items/add_update");
+            CatalogItem catalog = await _requestProvider.PostAsync(uri, catalogItem);
         }
 
-        public Task DeleteCatalogAsync(CatalogItem catalogItem)
+        public async Task DeleteCatalogAsync(CatalogItem catalogItem)
         {
-            throw new NotImplementedException();
+            var uri = UriHelper.CombineUri(GlobalSetting.Instance.GatewayShoppingEndpoint, $"{ApiUrlBase}/items/delete/{catalogItem.Id}");
+
+            await _requestProvider.DeleteAsync(uri);
         }
 
-        public Task Update(CatalogItem model)
+        public async Task Update(CatalogItem model)
         {
-            throw new NotImplementedException();
+            var uri = UriHelper.CombineUri(GlobalSetting.Instance.GatewayShoppingEndpoint, $"{ApiUrlBase}/items/update");
+            CatalogItem catalog = await _requestProvider.PostAsync(uri, model);
         }
 
-        public Task<CatalogItem> GetProductByIdAsync(int navigationData)
+        public async Task<CatalogItem> GetProductByIdAsync(int navigationData)
         {
-            throw new NotImplementedException();
+            var uri = UriHelper.CombineUri(GlobalSetting.Instance.GatewayShoppingEndpoint, $"{ApiUrlBase}/items/{navigationData}");
+
+            CatalogItem catalog = await _requestProvider.GetAsync<CatalogItem>(uri);
+
+            if (catalog != null)
+                return catalog;
+            else
+                return new CatalogItem();
         }
     }
 

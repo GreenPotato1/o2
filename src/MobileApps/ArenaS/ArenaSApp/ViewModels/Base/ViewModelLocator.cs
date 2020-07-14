@@ -60,7 +60,7 @@ namespace ArenaSApp.ViewModels.Base
             _container.Register<ISettingsService, SettingsService>();
             _container.Register<IFixUriService, FixUriService>();
             // _container.Register<ILocationService, LocationService>();
-            _container.Register<ICatalogService, CatalogMockService>();
+            _container.Register<ICatalogService, CatalogService>();
             // _container.Register<IBasketService, BasketMockService>();
             // _container.Register<IOrderService, OrderMockService>();
             // _container.Register<IUserService, UserMockService>();

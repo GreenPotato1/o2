@@ -44,7 +44,7 @@ namespace ArenaSApp.ViewModels
             Model = new CatalogItem();
         }
         
-        public ICommand  DeleteCatalogItemCommand => new Command<CatalogItem>(async (CatalogItem obj) => await DeleteCatalogItem(obj));
+        public ICommand  DeleteCatalogItemCommand => new Command(async () => await DeleteCatalogItem());
 
         public ICommand  SaveChangesCommand => new Command<CatalogItem>(async (CatalogItem obj) => await SaveChangesCatalogItem());
         
@@ -66,10 +66,10 @@ namespace ArenaSApp.ViewModels
 
         }
         
-        private async Task DeleteCatalogItem(CatalogItem catalogItem)
+        private async Task DeleteCatalogItem()
         {
             // Add new item to Basket
-            MessagingCenter.Send(this, MessageKeys.AddProduct, catalogItem);
+            MessagingCenter.Send(this, MessageKeys.AddProduct, Model);
             await _productsService.DeleteCatalogAsync(Model);
             
             await NavigationService.NavigateToAsync<MainViewModel>();

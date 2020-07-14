@@ -24,13 +24,13 @@ namespace O2.ArenaS.Services
 
         public  Task<CatalogItem> GetByIdAsync(int id, CancellationToken ct)
         {
-            return _arenaContext.Items.FirstOrDefaultAsync(x => x.Id == id, cancellationToken: ct);
+            return _arenaContext.Items.SingleOrDefaultAsync(x => x.Id == id, cancellationToken: ct);
         }
 
         public Task<CatalogItem> UpdateAsync(CatalogItem catalogItem, CancellationToken ct)
         {
-            var item = _arenaContext.Items.FirstOrDefaultAsync(x => x.Id == catalogItem.Id,  ct);
-            _arenaContext.Update(item);
+            //var item = _arenaContext.Items.SingleOrDefaultAsync(x => x.Id == catalogItem.Id, ct).GetAwaiter().GetResult();
+            _arenaContext.Update(catalogItem);
             _arenaContext.SaveChanges();
             return Task.FromResult(catalogItem);
         }
@@ -44,7 +44,8 @@ namespace O2.ArenaS.Services
 
         public Task RemoveAsync(int id, CancellationToken ct)
         {
-            var item = _arenaContext.Items.FirstOrDefaultAsync(x => x.Id == id,  ct);
+            CatalogItem item = _arenaContext.Items.SingleOrDefaultAsync(x => x.Id == id, ct).GetAwaiter().GetResult();
+            _arenaContext.Items.Remove(item);
             _arenaContext.SaveChanges();
             return Task.FromResult(item);
         }

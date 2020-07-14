@@ -40,12 +40,24 @@ namespace O2.ArenaS.Controllers
                     certificate);
             //return CreatedAtAction(nameof(GetByIdAsync_V1_0),new { id = certificate.Id , ct =ct }, certificate.ToViewModel());
         }
+        [AllowAnonymous]
+        [MapToApiVersion("1.0")]
+        [HttpPost("update")]
+        // [ProducesResponseType(200, Type = typeof(O2CCertificateForReturnDto))]
+        public async Task<IActionResult> UpdateAsync( CatalogItemViewModel model, CancellationToken ct, ApiVersion apiVersion)
+        {
+            var certificate = await _catalogItemService.UpdateAsync(model.ToServiceModel(), ct);
+            return CreatedAtAction(nameof(GetByIdAsync_V1_0),
+                    new { id = certificate.Id, actualInfo = false, v = apiVersion.ToString() },
+                    certificate);
+            //return CreatedAtAction(nameof(GetByIdAsync_V1_0),new { id = certificate.Id , ct =ct }, certificate.ToViewModel());
+        }
 
         [AllowAnonymous]
         [MapToApiVersion("1.0")]
         [HttpGet("{id}")]
         // [ProducesResponseType(200, Type = typeof(O2CCertificateForReturnDto))]
-        public async Task<IActionResult> GetByIdAsync_V1_0(ApiVersion apiVersion, int id, CancellationToken ct)
+        public async Task<IActionResult> GetByIdAsync_V1_0(int id, CancellationToken ct, ApiVersion apiVersion)
         {
             var catalogItem = await _catalogItemService.GetByIdAsync(id, ct);
 
@@ -70,9 +82,9 @@ namespace O2.ArenaS.Controllers
 
         [AllowAnonymous]
         [MapToApiVersion("1.0")]
-        [HttpGet("delete/{id}")]
+        [HttpDelete("delete/{id}")]
         // [ProducesResponseType(200, Type = typeof(O2CCertificateForListDto))]
-        public async Task<IActionResult> RemoveAsync(ApiVersion apiVersion, int id, CancellationToken ct)
+        public async Task<IActionResult> RemoveAsync(int id, CancellationToken ct, ApiVersion apiVersion )
         {
             await _catalogItemService.RemoveAsync(id, ct);
 

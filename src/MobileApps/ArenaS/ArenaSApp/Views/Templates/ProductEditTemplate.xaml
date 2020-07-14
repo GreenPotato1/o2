@@ -3,11 +3,13 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArenaSApp.Views.Templates.ProductEditTemplate">
-  <ContentView.Content>
-                <ScrollView>
+
+             
+                   <ScrollView>
            <Frame BorderColor="Silver">
                             <Grid>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -34,24 +36,15 @@
                                 
                                 </StackLayout>
 
-                                <StackLayout Margin="0,20,0,0" Grid.Row="1" Grid.ColumnSpan="3">
+                                <StackLayout Margin="0,20,0,0" Grid.Row="1">
                                     <Label Text="Номер двери №" FontAttributes="Bold"/>
                                     <Entry Text="{Binding Model.RoomNumber,Mode=TwoWay}"/>
+                                    </StackLayout>
+                                     <StackLayout Margin="0,20,0,0" Grid.Row="2" Grid.ColumnSpan="3">
                                     <Label Text="Тип двери" FontAttributes="Bold"/>
                                     <Editor Text="{Binding Model.RootType,Mode=TwoWay}" HeightRequest="100" /> 
                           
-                                    <!--<CheckBox Text="{Binding RoomNumber,Mode=TwoWay}"/>-->
-
-                                    <!--<Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding RootType}"/>
-                                                <Span Text="  № "/>
-                                                <Span Text="{Binding RoomNumber}" FontAttributes="Bold"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-
-                                    </Label>-->
+  
     
                                     <Label Margin="0,20,0,0" Text="Назначение помещения"  HeightRequest="100" FontAttributes="Bold"/>
                                     <Editor Text="{Binding Model.RoomDescription,Mode=TwoWay}"/>
@@ -62,22 +55,9 @@
                                           <Button Margin="0,20,0,0" Text="Удалить" Command="{Binding DeleteCatalogItemCommand}"></Button> 
                                     <Button Margin="0,20,0,0" Text="Сохранить" Command="{Binding SaveChangesCommand}"></Button> 
                                 </StackLayout>
-                                <!--<StackLayout Grid.Row="1" Grid.Column="1">
-                                    <Label Text="Точка входа" FontAttributes="Bold"/>
-                                    <Label Text="{Binding Room}"/>
-                                </StackLayout>-->
-                                <!--<StackLayout Grid.Row="2" Orientation="Horizontal">
-
-
-
-
-
-                                    <Label Text="{Binding SpecialNumber}"/>
-                                    <Label Text="{Binding KeyCount}"/>
-                                    <Label Text="{Binding Note}"/>
-                                </StackLayout>-->
+                               
                             </Grid>
                         </Frame>
          </ScrollView>
-    </ContentView.Content>
+
 </ContentView>

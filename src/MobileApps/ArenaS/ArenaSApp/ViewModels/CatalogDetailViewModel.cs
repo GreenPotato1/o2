@@ -20,11 +20,13 @@ namespace ArenaSApp.ViewModels
         public ICommand SaveChangesCommand => new Command<CatalogItem>(async (CatalogItem obj) => await SaveItem());
         private async Task SaveItem()
         {
+            IsBusy = true;
             MessagingCenter.Send(this, MessageKeys.AddProduct, Model);
             await _productsService.AddCatalogAsync(Model);
            
             await NavigationService.NavigateToAsync<MainViewModel>();
             await NavigationService.RemoveBackStackAsync();
+            IsBusy = false;
 
         }
     }

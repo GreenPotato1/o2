@@ -4,10 +4,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArenaSApp.Views.Templates.ProductEditTemplate">
 
-                <ScrollView>
+             
+                   <ScrollView>
            <Frame BorderColor="Silver">
                             <Grid>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -34,9 +36,11 @@
                                 
                                 </StackLayout>
 
-                                <StackLayout Margin="0,20,0,0" Grid.Row="1" Grid.ColumnSpan="2">
+                                <StackLayout Margin="0,20,0,0" Grid.Row="1">
                                     <Label Text="Номер двери №" FontAttributes="Bold"/>
                                     <Entry Text="{Binding Model.RoomNumber,Mode=TwoWay}"/>
+                                    </StackLayout>
+                                     <StackLayout Margin="0,20,0,0" Grid.Row="2" Grid.ColumnSpan="3">
                                     <Label Text="Тип двери" FontAttributes="Bold"/>
                                     <Editor Text="{Binding Model.RootType,Mode=TwoWay}" HeightRequest="100" /> 
                           

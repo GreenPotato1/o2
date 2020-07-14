@@ -5,10 +5,11 @@
              x:Class="ArenaSApp.Views.Templates.ProductCreateTemplate">
 
     
-                <ScrollView>
+                   <ScrollView>
            <Frame BorderColor="Silver">
                             <Grid>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -35,25 +36,15 @@
                                 
                                 </StackLayout>
 
-
-                                <StackLayout Margin="0,20,0,0" Grid.Row="1" Grid.ColumnSpan="2">
+                                <StackLayout Margin="0,20,0,0" Grid.Row="1">
                                     <Label Text="Номер двери №" FontAttributes="Bold"/>
                                     <Entry Text="{Binding Model.RoomNumber,Mode=TwoWay}"/>
+                                    </StackLayout>
+                                     <StackLayout Margin="0,20,0,0" Grid.Row="2" Grid.ColumnSpan="3">
                                     <Label Text="Тип двери" FontAttributes="Bold"/>
                                     <Editor Text="{Binding Model.RootType,Mode=TwoWay}" HeightRequest="100" /> 
                           
-                                    <!--<CheckBox Text="{Binding RoomNumber,Mode=TwoWay}"/>-->
-
-                                    <!--<Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding RootType}"/>
-                                                <Span Text="  № "/>
-                                                <Span Text="{Binding RoomNumber}" FontAttributes="Bold"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-
-                                    </Label>-->
+  
     
                                     <Label Margin="0,20,0,0" Text="Назначение помещения"  HeightRequest="100" FontAttributes="Bold"/>
                                     <Editor Text="{Binding Model.RoomDescription,Mode=TwoWay}"/>

@@ -11,5 +11,9 @@ namespace ArenaSApp.Services.Catalog
         //Task<ObservableCollection<CatalogItem>> FilterAsync(int catalogBrandId, int catalogTypeId);
         //Task<ObservableCollection<CatalogType>> GetCatalogTypeAsync();
         Task<ObservableCollection<CatalogItem>> GetCatalogAsync();
+        Task AddCatalogAsync(CatalogItem catalogItem);
+        Task DeleteCatalogAsync(CatalogItem catalogItem);
+        Task Update(CatalogItem model);
+        Task<CatalogItem> GetProductByIdAsync(int navigationData);
     }
 }

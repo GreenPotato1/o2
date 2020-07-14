@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using ArenaSApp.Models.Catalog;
+using ArenaSApp.Helpers;
 
 namespace ArenaSApp.Services.Catalog
 {
@@ -18,11 +20,11 @@ namespace ArenaSApp.Services.Catalog
         //    new CatalogType { Id = 2, Type = "T-Shirt" }
         //};
 
-        private ObservableCollection<CatalogItem> MockCatalog = new ObservableCollection<CatalogItem>
+        private SortableObservableCollection<CatalogItem> MockCatalog = new SortableObservableCollection<CatalogItem>
         {
             new CatalogItem
             {
-                Id = Common.Common.MockCatalogItemId01
+                Id = Common.Common.MockCatalogItemId01, Category="Test"
             },
              new CatalogItem
             {
@@ -50,8 +52,33 @@ namespace ArenaSApp.Services.Catalog
         public async Task<ObservableCollection<CatalogItem>> GetCatalogAsync()
         {
             await Task.Delay(10);
-
+            MockCatalog.Sort(p => p.Id);
             return MockCatalog;
+        }
+
+        public async Task AddCatalogAsync(CatalogItem catalogItem)
+        {
+            await Task.Delay(10);
+            MockCatalog.Add(catalogItem);
+        }
+        
+        public async Task DeleteCatalogAsync(CatalogItem catalogItem)
+        {
+            await Task.Delay(10);
+            MockCatalog.Remove(catalogItem);
+        }
+
+        public async  Task Update(CatalogItem catalogItem)
+        {
+            await Task.Delay(10);
+            MockCatalog.Remove(catalogItem);
+            MockCatalog.Add(catalogItem);
+        }
+
+        public async Task<CatalogItem> GetProductByIdAsync(int productId)
+        {
+            await Task.Delay(10);
+            return MockCatalog.SingleOrDefault(c => c.Id == productId);
         }
 
         //public async Task<ObservableCollection<CatalogItem>> FilterAsync(int catalogBrandId, int catalogTypeId)

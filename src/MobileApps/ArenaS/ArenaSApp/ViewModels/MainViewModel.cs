@@ -26,7 +26,8 @@ namespace ArenaSApp.ViewModels
 
         private async Task SettingsAsync()
         {
-            await NavigationService.NavigateToAsync<SettingsViewModel>();
+
+            await NavigationService.RemoveBackStackAsync();
         }
     }
 }

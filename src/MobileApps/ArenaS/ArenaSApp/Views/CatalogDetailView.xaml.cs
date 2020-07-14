@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ArenaSApp.Views.Templates
+namespace ArenaSApp.Views
 {
-    public partial class ProductTemplate : ContentView
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CatalogDetailView : ContentPage
     {
-        public ProductTemplate()
+        public CatalogDetailView()
         {
             InitializeComponent();
         }
-        
     }
 }

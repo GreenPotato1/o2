@@ -72,5 +72,25 @@ namespace ArenaSApp.Services.Catalog
         {
             throw new NotImplementedException();
         }
+
+        public Task AddCatalogAsync(CatalogItem catalogItem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteCatalogAsync(CatalogItem catalogItem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Update(CatalogItem model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<CatalogItem> GetProductByIdAsync(int navigationData)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -9,12 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace ArenaSApp.Views.Templates
 {
-    public partial class ProductTemplate : ContentView
+    
+    public partial class ProductEditTemplate : ContentView
     {
-        public ProductTemplate()
+        public ProductEditTemplate()
         {
             InitializeComponent();
         }
-        
     }
 }

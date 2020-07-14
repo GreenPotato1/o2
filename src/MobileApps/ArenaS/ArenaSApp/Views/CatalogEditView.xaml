@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:base="clr-namespace:ArenaSApp.ViewModels.Base;assembly=ArenaSApp" xmlns:templates="clr-namespace:ArenaSApp.Views.Templates"
+             x:Class="ArenaSApp.Views.CatalogEditView"
+             base:ViewModelLocator.AutoWireViewModel="true">
+   <ContentPage.Content>
+       <StackLayout>
+           <templates:ProductEditTemplate />
+       </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

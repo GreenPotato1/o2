@@ -46,8 +46,20 @@
     <Compile Update="Views\Templates\ProductTemplate.xaml.cs">
       <DependentUpon>ProductTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\ProfileView.xaml.cs">
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Templates\ProfileView.xaml.cs">
       <DependentUpon>ProfileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CatalogDetailView.xaml.cs">
+      <DependentUpon>CatalogDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\ProductCreateTemplate.xaml.cs">
+      <DependentUpon>ProductEditTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CatalogEditView.xaml.cs">
+      <DependentUpon>CatalogEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\ProductEditTemplate.xaml.cs">
+      <DependentUpon>ProductEditTemplate.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -75,7 +87,22 @@
       <SubType>Designer</SubType>
       <Generator></Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ProfileView.xaml">
+    <EmbeddedResource Update="Views\Templates\ProfileView.xaml">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CatalogDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\ProductCreateTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CatalogEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\ProductEditTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator></Generator>
     </EmbeddedResource>

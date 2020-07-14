@@ -87,21 +87,21 @@
             <OnPlatform x:Key="MontserratRegular"
                         x:TypeArguments="x:String">
                 <On Platform="iOS" Value="Montserrat-Regular" />
-                <On Platform="Android" Value="Montserrat-Regular.ttf#Montserrat" />
+                <!-- <On Platform="Android" Value="Montserrat-Regular.ttf#Montserrat" /> -->
                 <On Platform="UWP, WinRT, WinPhone" Value="Assets/Fonts/Montserrat-Regular.ttf#Montserrat" />
             </OnPlatform>
 
             <OnPlatform x:Key="MontserratBold"
                         x:TypeArguments="x:String">
                 <On Platform="iOS" Value="Montserrat-Bold" />
-                <On Platform="Android" Value="Montserrat-Bold.ttf#Montserrat" />
+                <!-- <On Platform="Android" Value="Montserrat-Bold.ttf#Montserrat" /> -->
                 <On Platform="UWP, WinRT, WinPhone" Value="Assets/Fonts/Montserrat-Bold.ttf#Montserrat" />
             </OnPlatform>
 
             <OnPlatform x:Key="SourceSansProRegular"
                         x:TypeArguments="x:String">
                 <On Platform="iOS" Value="SourceSansPro-Regular" />
-                <On Platform="Android" Value="SourceSansPro-Regular.ttf#Source Sans Pro" />
+                <!-- <On Platform="Android" Value="SourceSansPro-Regular.ttf#Source Sans Pro" /> -->
                 <On Platform="UWP, WinRT, WinPhone" Value="Assets/Fonts/SourceSansPro-Regular.ttf#Source Sans Pro" />
             </OnPlatform>
             

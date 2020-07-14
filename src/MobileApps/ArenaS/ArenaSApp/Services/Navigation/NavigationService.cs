@@ -120,5 +120,10 @@ namespace ArenaSApp.Services.Navigation
             Page page = Activator.CreateInstance(pageType) as Page;
             return page;
         }
+
+        public Task Clear()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

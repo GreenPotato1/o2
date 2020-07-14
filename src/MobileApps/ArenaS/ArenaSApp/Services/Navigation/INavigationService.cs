@@ -16,5 +16,6 @@ namespace ArenaSApp.Services.Navigation
         Task RemoveLastFromBackStackAsync();
 
         Task RemoveBackStackAsync();
+      
     }
 }

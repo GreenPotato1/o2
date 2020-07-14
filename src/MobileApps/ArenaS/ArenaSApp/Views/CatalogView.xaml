@@ -20,16 +20,28 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
         
-           
-            <!-- CATALOG -->
+            <Grid Grid.Row="0">
+                <Button Text="+" Command="{Binding AddCatalogItemCommand}"></Button>
+            </Grid>
+            
+                <!-- CATALOG -->
             <Grid Grid.Row="1">
-                <ListView x:Name="Products"
+                <ListView x:Name="Products" RowHeight="100" 
+                          HasUnevenRows="True"
                           IsVisible="{Binding Products.Count, Converter={StaticResource CountToBoolConverter}}"
                           ItemsSource="{Binding Products}">
+                    <ListView.Behaviors>
+                        <behaviors:EventToCommandBehavior
+                            EventName="ItemTapped"
+                            Command="{Binding OpenItemCommand}"
+                            EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+                    </ListView.Behaviors>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <templates:ProductTemplate />
+                                <Frame BorderColor="Silver">
+                                <templates:ProductTemplate/>
+                                </Frame>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

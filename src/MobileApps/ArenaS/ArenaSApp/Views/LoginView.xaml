@@ -139,7 +139,7 @@
                         Text="["
                         TextColor="{StaticResource LightGreenColor}"/>
                     <Label
-                        Text="LOGIN"
+                        Text="Вход"
                         FontAttributes="Bold"/>
                     <Label
                         Text="]"
@@ -149,7 +149,7 @@
                   Grid.Column="1"
                   HorizontalOptions="Center">
                     <Label
-                        Text="REGISTER"
+                        Text="Регистрация"
                         TextColor="Gray"/>
                 </Grid>
                 <StackLayout  
@@ -157,7 +157,7 @@
                   Orientation="Horizontal"
                   HorizontalOptions="Center">
                     <Label
-                        Text="SETTINGS"/>
+                        Text="Настройки"/>
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer
                             Command="{Binding SettingsCommand}"
@@ -168,14 +168,14 @@
             <!-- INFO -->
             <Label
               Grid.Row="1"
-              Text="ARE YOU REGISTERED?"
+              Text="Вы зарегистрированы?"
               Style="{StaticResource TitleLabelStyle}"/>
             <!-- LOGIN FORM -->
             <StackLayout   
                 Grid.Row="2"
                 Margin="24">
                 <Label
-                  Text="User name or email"
+                  Text="Имя пользователя или почта"
                   Style="{StaticResource HeaderLabelStyle}" />
                 <Entry Text="{Binding UserName.Value, Mode=TwoWay}">
 					<Entry.Style>
@@ -202,7 +202,7 @@
 					Text="{Binding UserName.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
 					Style="{StaticResource ValidationErrorLabelStyle}" />
                 <Label
-                  Text="Password"
+                  Text="Пароль"
                   Style="{StaticResource HeaderLabelStyle}"/>
                 <Entry
                   IsPassword="True"
@@ -239,7 +239,7 @@
                 ColumnSpacing="0"
                 RowSpacing="0">
                 <Label
-                  Text="[ LOGIN ]"
+                  Text="[ Вход ]"
                   Style="{StaticResource LoginButtonStyle}"/>
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer
@@ -302,7 +302,7 @@
                 Grid.Row="1"
                 Style="{StaticResource RegisterPanelStyle}">
                 <Label
-                  Text="[ REGISTER ]"
+                  Text="[ Регистрация ]"
                   Style="{StaticResource LoginButtonStyle}"/>
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer

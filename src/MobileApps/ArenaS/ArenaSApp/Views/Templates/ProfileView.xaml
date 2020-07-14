@@ -5,7 +5,7 @@
              x:Class="ArenaSApp.Views.ProfileView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Hello, world!"
+            <Label Text="Информация о профиле"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" />
         </StackLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArenaSApp.Views.ProfileView"
+             xmlns:base="clr-namespace:ArenaSApp.ViewModels.Base;assembly=ArenaSApp"
+             base:ViewModelLocator.AutoWireViewModel="true">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="LoginButtonStyle" 
+               TargetType="{x:Type Label}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MontserratRegular}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+            </Style>
+            
+            <Style x:Key="MyOrdersLabelStyle" 
+               TargetType="{x:Type Label}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MediumSize}" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="Margin"
+                        Value="0, 12" />
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid    
+        Padding="0"     
+        ColumnSpacing="0"   
+        RowSpacing="0"
+        BackgroundColor="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+         <!--LOG OUT BUTTON--> 
+        <Button         
+            Grid.Row="0"
+            Text="Выход" 
+            TextColor="{StaticResource BlackColor}"
+            BackgroundColor="{StaticResource GrayColor}"
+            Command="{Binding LogoutCommand}" />
+                </Grid>
+   
+</ContentPage>

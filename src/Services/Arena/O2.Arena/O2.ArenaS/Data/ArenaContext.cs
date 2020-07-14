@@ -17,7 +17,7 @@ namespace O2.ArenaS.Data
         #endregion
 
         #region Fields
-        public DbSet<Item> Items { get; set; }
+        public DbSet<CatalogItem> Items { get; set; }
         #endregion
     }
 }

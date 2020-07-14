@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using O2.ArenaS.Data;
 using O2.ArenaS.Helper;
+using O2.ArenaS.Services;
 using O2.Black.Toolkit.Core;
 
 namespace O2.ArenaS
@@ -35,6 +36,9 @@ namespace O2.ArenaS
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddScoped<ICatalogItemService, InMemoryCatalogItemService>();
+            services.AddScoped<ICatalogItemService, DbContextCatalogItemService>();
+            
             services.AddDbContext<ArenaContext>(x =>
                 x.UseSqlServer(Configuration.GetConnectionString("ArenaDb")));
             
@@ -51,6 +55,7 @@ namespace O2.ArenaS
                 o.DefaultApiVersion = new ApiVersion(1, 0);
             });
 
+            
             IServiceCollection serviceCollection = services.AddSwaggerGen(c =>
             {
                 // c.SwaggerDoc("v1.1", new OpenApiInfo {Title = "Versioned Api v1.1", Version = "v1.1"});

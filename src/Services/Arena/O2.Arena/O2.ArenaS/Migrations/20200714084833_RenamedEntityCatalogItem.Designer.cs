@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using O2.ArenaS.Data;
 
 namespace O2.ArenaS.Migrations
 {
     [DbContext(typeof(ArenaContext))]
-    partial class ArenaContextModelSnapshot : ModelSnapshot
+    [Migration("20200714084833_RenamedEntityCatalogItem")]
+    partial class RenamedEntityCatalogItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

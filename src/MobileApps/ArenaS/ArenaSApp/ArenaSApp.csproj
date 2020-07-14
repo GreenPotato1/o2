@@ -46,9 +46,6 @@
     <Compile Update="Views\Templates\ProductTemplate.xaml.cs">
       <DependentUpon>ProductTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Templates\ProfileView.xaml.cs">
-      <DependentUpon>ProfileView.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\CatalogDetailView.xaml.cs">
       <DependentUpon>CatalogDetailView.xaml</DependentUpon>
     </Compile>
@@ -87,9 +84,6 @@
       <SubType>Designer</SubType>
       <Generator></Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\ProfileView.xaml">
-      <Generator></Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\CatalogDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator></Generator>
@@ -104,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\ProductEditTemplate.xaml">
       <SubType>Designer</SubType>
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProfileView.xaml">
       <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>

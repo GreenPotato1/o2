@@ -1,22 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using ArenaSApp.Helpers;
 using ArenaSApp.Models.Catalog;
+using ArenaSApp.Services.FixUri;
+using ArenaSApp.Services.RequestProvider;
 
 namespace ArenaSApp.Services.Catalog
 {
     public class CatalogService : ICatalogService
     {
-        //private readonly IRequestProvider _requestProvider;
-        //private readonly IFixUriService _fixUriService;
+        private readonly IRequestProvider _requestProvider;
+        private readonly IFixUriService _fixUriService;
 
-        //private const string ApiUrlBase = "api/v1/c/catalog";
+        private const string ApiUrlBase = "api/v1.0/items";
 
-        //public CatalogService(IRequestProvider requestProvider, IFixUriService fixUriService)
-        //{
-        //    _requestProvider = requestProvider;
-        //    _fixUriService = fixUriService;
-        //}
+        public CatalogService(IRequestProvider requestProvider, IFixUriService fixUriService)
+        {
+            _requestProvider = requestProvider;
+            _fixUriService = fixUriService;
+        }
 
         //public async Task<ObservableCollection<CatalogItem>> FilterAsync(int catalogBrandId, int catalogTypeId)
         //{
@@ -30,20 +34,6 @@ namespace ArenaSApp.Services.Catalog
         //        return new ObservableCollection<CatalogItem>();
         //}
 
-        //public async Task<ObservableCollection<CatalogItem>> GetCatalogAsync()
-        //{
-        //    var uri = UriHelper.CombineUri(GlobalSetting.Instance.GatewayShoppingEndpoint, $"{ApiUrlBase}/items");
-
-        //    CatalogRoot catalog = await _requestProvider.GetAsync<CatalogRoot>(uri);
-
-        //    if (catalog?.Data != null)
-        //    {
-        //        _fixUriService.FixCatalogItemPictureUri(catalog?.Data);
-        //        return catalog?.Data.ToObservableCollection();
-        //    }
-        //    else
-        //        return new ObservableCollection<CatalogItem>();
-        //}
 
         //public async Task<ObservableCollection<CatalogBrand>> GetCatalogBrandAsync()
         //{
@@ -68,10 +58,21 @@ namespace ArenaSApp.Services.Catalog
         //    else
         //        return new ObservableCollection<CatalogType>();
         //}
-        public Task<ObservableCollection<CatalogItem>> GetCatalogAsync()
+
+
+        public async Task<ObservableCollection<CatalogItem>> GetCatalogAsync()
         {
-            throw new NotImplementedException();
+            var uri = UriHelper.CombineUri(GlobalSetting.Instance.GatewayShoppingEndpoint, $"{ApiUrlBase}/items");
+
+            IEnumerable < CatalogItem> catalog = await _requestProvider.GetAsync< IEnumerable < CatalogItem >>(uri);
+
+            if (catalog != null)
+                return catalog.ToObservableCollection();
+            else
+                return new ObservableCollection<CatalogItem>();
         }
+
+
 
         public Task AddCatalogAsync(CatalogItem catalogItem)
         {
@@ -91,6 +92,21 @@ namespace ArenaSApp.Services.Catalog
         public Task<CatalogItem> GetProductByIdAsync(int navigationData)
         {
             throw new NotImplementedException();
+        }
+    }
+
+    public static class ObservableExtension
+    {
+        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> source)
+        {
+            ObservableCollection<T> collection = new ObservableCollection<T>();
+
+            foreach (T item in source)
+            {
+                collection.Add(item);
+            }
+
+            return collection;
         }
     }
 }

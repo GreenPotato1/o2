@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace O2.ArenaS.Data
 {
-    public class Item
+    public class CatalogItem
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

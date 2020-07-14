@@ -4,6 +4,7 @@ using System.Reflection;
 using ArenaSApp.Services.Catalog;
 using ArenaSApp.Services.Dependency;
 using ArenaSApp.Services.Dialog;
+using ArenaSApp.Services.FixUri;
 using ArenaSApp.Services.Identity;
 using ArenaSApp.Services.Navigation;
 using ArenaSApp.Services.OpenUrl;
@@ -57,7 +58,7 @@ namespace ArenaSApp.ViewModels.Base
             _container.Register<IRequestProvider, RequestProvider>();
             _container.Register<IDependencyService, Services.Dependency.DependencyService>();
             _container.Register<ISettingsService, SettingsService>();
-            // _container.Register<IFixUriService, FixUriService>();
+            _container.Register<IFixUriService, FixUriService>();
             // _container.Register<ILocationService, LocationService>();
             _container.Register<ICatalogService, CatalogMockService>();
             // _container.Register<IBasketService, BasketMockService>();
@@ -72,6 +73,7 @@ namespace ArenaSApp.ViewModels.Base
             if (useMockServices)
             {
                 // _container.Register<ICatalogService, CatalogMockService>();
+                _container.Register<ICatalogService, CatalogService>();
                 // _container.Register<IBasketService, BasketMockService>();
                 // _container.Register<IOrderService, OrderMockService>();
                 // _container.Register<IUserService, UserMockService>();
@@ -81,7 +83,7 @@ namespace ArenaSApp.ViewModels.Base
             }
             else
             {
-                // _container.Register<ICatalogService, CatalogService>();
+                _container.Register<ICatalogService, CatalogService>();
                 // _container.Register<IBasketService, BasketService>();
                 // _container.Register<IOrderService, OrderService>();
                 // _container.Register<IUserService, UserService>();

@@ -23,4 +23,7 @@
     <ProjectReference Include="..\..\..\Certificate\Toolkit\O2 Black Toolkit\src\O2.Black.Toolkit.Core.Repositories\O2.Black.Toolkit.Core.Repositories.csproj" />
     <ProjectReference Include="..\..\..\Certificate\Toolkit\O2 Black Toolkit\src\O2.Black.Toolkit.Core\O2.Black.Toolkit.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DTOs\" />
+  </ItemGroup>
 </Project>

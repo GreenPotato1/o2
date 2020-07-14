@@ -3,7 +3,8 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArenaSApp.Views.Templates.ProductCreateTemplate">
-    <ContentView.Content>
+
+    
                 <ScrollView>
            <Frame BorderColor="Silver">
                             <Grid>
@@ -33,6 +34,7 @@
                                     <Entry Text="{Binding Model.SpecialNumber,Mode=TwoWay}"/>
                                 
                                 </StackLayout>
+
 
                                 <StackLayout Margin="0,20,0,0" Grid.Row="1" Grid.ColumnSpan="2">
                                     <Label Text="Номер двери №" FontAttributes="Bold"/>
@@ -78,5 +80,4 @@
                             </Grid>
                         </Frame>
          </ScrollView>
-    </ContentView.Content>
 </ContentView>

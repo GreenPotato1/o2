@@ -50,29 +50,35 @@ namespace ArenaSApp.ViewModels
         
         private async Task OpenCatalogItem(CatalogItem catalogItem)
         {
+            IsBusy = true;
             MessagingCenter.Send(this, MessageKeys.AddProduct, catalogItem);
             
             await NavigationService.NavigateToAsync<MainViewModel>();
-            
+            IsBusy = false;
+
+
         }
         private async Task SaveChangesCatalogItem()
         {
+            IsBusy = true;
             // Add new item to Basket
             MessagingCenter.Send(this, MessageKeys.AddProduct, Model);
             await _productsService.Update(Model);
             
             await NavigationService.NavigateToAsync<MainViewModel>();
-          
+            IsBusy = false;
 
         }
         
         private async Task DeleteCatalogItem()
         {
+            IsBusy = true;
             // Add new item to Basket
             MessagingCenter.Send(this, MessageKeys.AddProduct, Model);
             await _productsService.DeleteCatalogAsync(Model);
             
             await NavigationService.NavigateToAsync<MainViewModel>();
+            IsBusy = false;
         }
     }
 }

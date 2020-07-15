@@ -3,6 +3,9 @@ using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
 using PFRCenterGlobal.Services.Settings;
+using PFRCenterGlobal.ViewModels;
+using PFRCenterGlobal.ViewModels.Base;
+using PFRCenterGlobal.Views;
 using Xamarin.Forms;
 
 namespace PFRCenterGlobal.Services.Navigation

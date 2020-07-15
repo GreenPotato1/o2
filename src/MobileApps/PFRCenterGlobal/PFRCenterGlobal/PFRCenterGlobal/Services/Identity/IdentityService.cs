@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using IdentityModel;
 using PFRCenterGlobal.Helpers;
 using PFRCenterGlobal.Models.Token;
 using PFRCenterGlobal.Services.RequestProvider;
+using PCLCrypto;
+using static PCLCrypto.WinRTCrypto;
 
 namespace PFRCenterGlobal.Services.Identity
 {

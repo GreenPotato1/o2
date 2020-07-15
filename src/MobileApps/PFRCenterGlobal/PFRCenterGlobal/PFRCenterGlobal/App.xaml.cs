@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
+using PFRCenterGlobal.Services.Dependency;
+using PFRCenterGlobal.Services.Navigation;
+using PFRCenterGlobal.Services.Settings;
+using PFRCenterGlobal.ViewModels.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,23 +11,91 @@ namespace PFRCenterGlobal
 {
     public partial class App : Application
     {
+        ISettingsService _settingsService;
+        
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            InitApp();
+            if (Device.RuntimePlatform == Device.UWP)
+            {
+                InitNavigation();
+            }
+        }
+        private void InitApp()
+        {
+            _settingsService = ViewModelLocator.Resolve<ISettingsService>();
+            if (!_settingsService.UseMocks)
+                ViewModelLocator.UpdateDependencies(_settingsService.UseMocks);
         }
 
-        protected override void OnStart()
+        private Task InitNavigation()
         {
+            var navigationService = ViewModelLocator.Resolve<INavigationService>();
+            return navigationService.InitializeAsync();
+        }
+         protected override async void OnStart()
+        {
+            base.OnStart();
+
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                await InitNavigation();
+            }
+            // if (_settingsService.AllowGpsLocation && !_settingsService.UseFakeLocation)
+            // {
+            //     await GetGpsLocation();
+            // }
+            if (!_settingsService.UseMocks && !string.IsNullOrEmpty(_settingsService.AuthAccessToken))
+            {
+                await SendCurrentLocation();
+            }
+
+            base.OnResume();
         }
 
         protected override void OnSleep()
         {
+            // Handle when your app sleeps
         }
 
-        protected override void OnResume()
+        private async Task GetGpsLocation()
         {
+            var dependencyService = ViewModelLocator.Resolve<IDependencyService>();
+            // var locator = dependencyService.Get<ILocationServiceImplementation>();
+
+            // if (locator.IsGeolocationEnabled && locator.IsGeolocationAvailable)
+            // {
+            //     locator.DesiredAccuracy = 50;
+            //
+            //     try
+            //     {
+            //         var position = await locator.GetPositionAsync();
+            //         _settingsService.Latitude = position.Latitude.ToString();
+            //         _settingsService.Longitude = position.Longitude.ToString();
+            //     }
+            //     catch (Exception ex)
+            //     {
+            //         Debug.WriteLine(ex);
+            //     }
+            // }
+            // else
+            // {
+            //     _settingsService.AllowGpsLocation = false;
+            // }
+        }
+
+        private async Task SendCurrentLocation()
+        {
+            // var location = new Location
+            // {
+            //     Latitude = double.Parse(_settingsService.Latitude, CultureInfo.InvariantCulture),
+            //     Longitude = double.Parse(_settingsService.Longitude, CultureInfo.InvariantCulture)
+            // };
+            //
+            // var locationService = ViewModelLocator.Resolve<ILocationService>();
+            // await locationService.UpdateUserLocation(location, _settingsService.AuthAccessToken);
         }
     }
 }

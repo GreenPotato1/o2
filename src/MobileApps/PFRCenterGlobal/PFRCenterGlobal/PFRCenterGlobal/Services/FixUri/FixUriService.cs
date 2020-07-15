@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using PFRCenterGlobal.Models.Catalog;
 using PFRCenterGlobal.Services.Settings;
+using PFRCenterGlobal.ViewModels.Base;
 
 namespace PFRCenterGlobal.Services.FixUri
 {

@@ -1600,7 +1600,7 @@ namespace PFRCenterGlobal.TinyIoC
         /// <returns>RegisterOptions for fluent API</returns>
         public RegisterOptions Register<RegisterType, RegisterImplementation>()
             where RegisterType : class
-            where RegisterImplementation : class, RegisterType
+            where RegisterImplementation : RegisterType
         {
             return this.Register(typeof(RegisterType), typeof(RegisterImplementation));
         }

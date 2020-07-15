@@ -1,4 +1,6 @@
-﻿namespace PFRCenterGlobal.Models.User
+﻿using Newtonsoft.Json;
+
+namespace PFRCenterGlobal.Models.User
 {
     public class UserInfo
     {

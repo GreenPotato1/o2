@@ -1,7 +1,7 @@
-﻿using ArenaSApp.Animations.Base;
+﻿using PFRCenterGlobal.Animations.Base;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Helpers
+namespace PFRCenterGlobal.Helpers
 {
     public static class EasingHelper
     {

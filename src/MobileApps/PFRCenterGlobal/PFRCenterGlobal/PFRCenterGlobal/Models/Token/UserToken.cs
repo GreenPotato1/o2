@@ -1,6 +1,4 @@
-﻿﻿using Newtonsoft.Json;
-
- namespace ArenaSApp.Models.Token
+﻿﻿ namespace PFRCenterGlobal.Models.Token
 {
     public class UserToken
     {

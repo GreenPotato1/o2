@@ -1,9 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using ArenaSApp.Models.Catalog;
+using PFRCenterGlobal.Models.Catalog;
 
-
-namespace ArenaSApp.Services.Catalog
+namespace PFRCenterGlobal.Services.Catalog
 {
     public interface ICatalogService
     {

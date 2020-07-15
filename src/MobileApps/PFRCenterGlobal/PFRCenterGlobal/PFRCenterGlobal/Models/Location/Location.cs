@@ -1,4 +1,4 @@
-﻿﻿namespace ArenaSApp.Models.Location
+﻿﻿namespace PFRCenterGlobal.Models.Location
 {
     public class Location
     {

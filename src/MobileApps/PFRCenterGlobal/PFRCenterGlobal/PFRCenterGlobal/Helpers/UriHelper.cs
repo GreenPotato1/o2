@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace ArenaSApp.Helpers
+namespace PFRCenterGlobal.Helpers
 {
     public static class UriHelper
     {

@@ -94,18 +94,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Threading;
 #if SERIALIZABLE
-using System.Runtime.Serialization;
 
 #endif
 
-namespace ArenaSApp.TinyIoC
+namespace PFRCenterGlobal.TinyIoC
 {
 #if EXPRESSIONS
-    using System.Linq.Expressions;
-
 #endif
 
 #if NETFX_CORE

@@ -1,4 +1,4 @@
-namespace ArenaSApp.Models.Location.Catalog
+namespace PFRCenterGlobal.Models.Location.Catalog
 {
     public class CatalogItem
     {

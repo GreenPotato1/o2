@@ -2,13 +2,10 @@ using System;
 using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
-using ArenaSApp.Services.Settings;
-using ArenaSApp.ViewModels;
-using ArenaSApp.ViewModels.Base;
-using ArenaSApp.Views;
+using PFRCenterGlobal.Services.Settings;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Services.Navigation
+namespace PFRCenterGlobal.Services.Navigation
 {
     public class NavigationService : INavigationService
     {

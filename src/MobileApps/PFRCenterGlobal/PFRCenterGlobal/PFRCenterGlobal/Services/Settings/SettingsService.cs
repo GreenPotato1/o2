@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Services.Settings
+namespace PFRCenterGlobal.Services.Settings
 {
     public class SettingsService : ISettingsService
     {

@@ -1,4 +1,4 @@
-namespace ArenaSApp.Models
+namespace PFRCenterGlobal.Models
 {
     public class LogoutParameter
     {

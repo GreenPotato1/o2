@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace ArenaSApp.Helpers
+namespace PFRCenterGlobal.Helpers
 {
     public class NavigationCommander
     {

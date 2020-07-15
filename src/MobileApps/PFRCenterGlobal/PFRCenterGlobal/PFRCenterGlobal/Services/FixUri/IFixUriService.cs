@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using ArenaSApp.Models.Catalog;
+using PFRCenterGlobal.Models.Catalog;
 
-namespace ArenaSApp.Services.FixUri
+namespace PFRCenterGlobal.Services.FixUri
 {
     public interface IFixUriService
     {

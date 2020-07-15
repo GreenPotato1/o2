@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using ArenaSApp.Helpers;
-using ArenaSApp.Models.Catalog;
-using ArenaSApp.Services.FixUri;
-using ArenaSApp.Services.RequestProvider;
+using PFRCenterGlobal.Helpers;
+using PFRCenterGlobal.Models.Catalog;
+using PFRCenterGlobal.Services.FixUri;
+using PFRCenterGlobal.Services.RequestProvider;
 
-namespace ArenaSApp.Services.Catalog
+namespace PFRCenterGlobal.Services.Catalog
 {
     public class CatalogService : ICatalogService
     {

@@ -2,7 +2,7 @@
 using System.Globalization;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Converters
+namespace PFRCenterGlobal.Converters
 {
     public class ItemTappedEventArgsConverter : IValueConverter
     {

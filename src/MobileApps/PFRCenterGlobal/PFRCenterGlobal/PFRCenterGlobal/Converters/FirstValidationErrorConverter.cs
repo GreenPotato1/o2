@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Converters
+namespace PFRCenterGlobal.Converters
 {
 	public class FirstValidationErrorConverter : IValueConverter
 	{

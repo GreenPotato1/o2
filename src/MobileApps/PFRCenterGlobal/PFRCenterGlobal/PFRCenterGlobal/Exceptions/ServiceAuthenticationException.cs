@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ArenaSApp.Exceptions
+namespace PFRCenterGlobal.Exceptions
 {
     public class ServiceAuthenticationException : Exception
     {

@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace ArenaSApp.Services.Dialog
+namespace PFRCenterGlobal.Services.Dialog
 {
     public interface IDialogService
     {

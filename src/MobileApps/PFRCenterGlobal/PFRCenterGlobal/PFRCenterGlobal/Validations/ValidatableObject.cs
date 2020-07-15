@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ArenaSApp.ViewModels.Base;
 
-namespace ArenaSApp.Validations
+namespace PFRCenterGlobal.Validations
 {
     public class ValidatableObject<T> : ExtendedBindableObject, IValidity
     {

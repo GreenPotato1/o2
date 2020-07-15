@@ -1,4 +1,4 @@
-﻿namespace ArenaSApp.Services.Common
+﻿namespace PFRCenterGlobal.Services.Common
 {
     public static class Common
     {

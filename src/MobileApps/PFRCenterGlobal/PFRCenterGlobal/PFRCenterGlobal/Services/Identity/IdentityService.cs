@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using ArenaSApp.Helpers;
-using ArenaSApp.Models.Token;
-using ArenaSApp.Services.RequestProvider;
-using IdentityModel;
-using PCLCrypto;
-using static PCLCrypto.WinRTCrypto;
+using PFRCenterGlobal.Helpers;
+using PFRCenterGlobal.Models.Token;
+using PFRCenterGlobal.Services.RequestProvider;
 
-namespace ArenaSApp.Services.Identity
+namespace PFRCenterGlobal.Services.Identity
 {
     public class IdentityService : IIdentityService
     {

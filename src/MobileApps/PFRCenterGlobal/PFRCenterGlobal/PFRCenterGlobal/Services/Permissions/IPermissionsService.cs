@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ArenaSApp.Models.Permissions;
+using PFRCenterGlobal.Models.Permissions;
 
-namespace ArenaSApp.Services.Permissions
+namespace PFRCenterGlobal.Services.Permissions
 {
     public interface IPermissionsService
     {

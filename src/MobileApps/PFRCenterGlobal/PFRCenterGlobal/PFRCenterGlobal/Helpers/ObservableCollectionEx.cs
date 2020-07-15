@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace ArenaSApp.Helpers
+namespace PFRCenterGlobal.Helpers
 {
     public class SortableObservableCollection<T> : ObservableCollection<T>
     {

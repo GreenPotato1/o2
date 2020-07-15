@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Behaviors.Base
+namespace PFRCenterGlobal.Behaviors.Base
 {
     public class BindableBehavior<T> : Behavior<T> where T : BindableObject
     {

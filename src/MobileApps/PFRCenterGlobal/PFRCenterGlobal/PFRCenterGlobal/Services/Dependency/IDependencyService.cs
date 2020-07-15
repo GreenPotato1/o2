@@ -1,4 +1,4 @@
-﻿﻿namespace ArenaSApp.Services.Dependency
+﻿﻿namespace PFRCenterGlobal.Services.Dependency
 {
     public interface IDependencyService
     {

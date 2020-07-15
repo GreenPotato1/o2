@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Services.OpenUrl
+namespace PFRCenterGlobal.Services.OpenUrl
 {
     public class OpenUrlService : IOpenUrlService
     {

@@ -1,7 +1,7 @@
-﻿using ArenaSApp.Animations.Base;
+﻿using PFRCenterGlobal.Animations.Base;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Triggers
+namespace PFRCenterGlobal.Triggers
 {
     public class BeginAnimation : TriggerAction<VisualElement>
     {

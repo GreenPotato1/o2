@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
-using Acr.UserDialogs;
 
-namespace ArenaSApp.Services.Dialog
+namespace PFRCenterGlobal.Services.Dialog
 {
     public class DialogService : IDialogService
     {

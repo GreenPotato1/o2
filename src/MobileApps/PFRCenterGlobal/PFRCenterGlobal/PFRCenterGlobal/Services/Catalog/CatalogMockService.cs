@@ -1,10 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using ArenaSApp.Models.Catalog;
-using ArenaSApp.Helpers;
+using PFRCenterGlobal.Helpers;
+using PFRCenterGlobal.Models.Catalog;
 
-namespace ArenaSApp.Services.Catalog
+namespace PFRCenterGlobal.Services.Catalog
 {
     public class CatalogMockService : ICatalogService
     {

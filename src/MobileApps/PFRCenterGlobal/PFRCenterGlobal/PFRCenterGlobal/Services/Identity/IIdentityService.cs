@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using ArenaSApp.Models.Token;
+using PFRCenterGlobal.Models.Token;
 
-namespace ArenaSApp.Services.Identity
+namespace PFRCenterGlobal.Services.Identity
 {
     public interface IIdentityService
     {

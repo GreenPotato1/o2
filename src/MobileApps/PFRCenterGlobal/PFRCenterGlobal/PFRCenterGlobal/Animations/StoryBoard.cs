@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ArenaSApp.Animations.Base;
+using PFRCenterGlobal.Animations.Base;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Animations
+namespace PFRCenterGlobal.Animations
 {
     [ContentProperty("Animations")]
     public class StoryBoard : AnimationBase

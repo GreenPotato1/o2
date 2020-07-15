@@ -1,4 +1,4 @@
-﻿namespace ArenaSApp.Validations
+﻿namespace PFRCenterGlobal.Validations
 {
     public interface IValidationRule<T>
     {

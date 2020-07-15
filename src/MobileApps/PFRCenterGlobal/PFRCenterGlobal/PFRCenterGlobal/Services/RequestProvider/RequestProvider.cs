@@ -3,12 +3,9 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using ArenaSApp.Exceptions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
+using PFRCenterGlobal.Exceptions;
 
-namespace ArenaSApp.Services.RequestProvider
+namespace PFRCenterGlobal.Services.RequestProvider
 {
     public class RequestProvider : IRequestProvider
     {

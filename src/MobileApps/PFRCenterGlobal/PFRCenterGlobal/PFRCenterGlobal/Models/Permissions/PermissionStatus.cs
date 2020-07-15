@@ -1,4 +1,4 @@
-﻿namespace ArenaSApp.Models.Permissions
+﻿namespace PFRCenterGlobal.Models.Permissions
 {
     public enum PermissionStatus
     {

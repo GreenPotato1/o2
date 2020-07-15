@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
-using ArenaSApp.ViewModels.Base;
 
-namespace ArenaSApp.Services.Navigation
+namespace PFRCenterGlobal.Services.Navigation
 {
     public interface INavigationService
     {

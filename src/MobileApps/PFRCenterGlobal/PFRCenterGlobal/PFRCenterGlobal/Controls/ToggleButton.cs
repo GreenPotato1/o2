@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Controls
+namespace PFRCenterGlobal.Controls
 {
     public class ToggleButton : ContentView
     {

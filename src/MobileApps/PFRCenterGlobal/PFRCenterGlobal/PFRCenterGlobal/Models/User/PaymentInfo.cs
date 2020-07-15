@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ArenaSApp.Models.User
+namespace PFRCenterGlobal.Models.User
 {
     public class PaymentInfo
     {

@@ -1,4 +1,4 @@
-﻿namespace ArenaSApp.Services.OpenUrl
+﻿namespace PFRCenterGlobal.Services.OpenUrl
 {
     public interface IOpenUrlService
     {

@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using ArenaSApp.Effects;
+using PFRCenterGlobal.Effects;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Behaviors
+namespace PFRCenterGlobal.Behaviors
 {
     public static class LineColorBehavior
     {

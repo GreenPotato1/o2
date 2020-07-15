@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-using ArenaSApp.Models.Catalog;
-using ArenaSApp.Services.Settings;
-using ArenaSApp.ViewModels.Base;
+using PFRCenterGlobal.Models.Catalog;
+using PFRCenterGlobal.Services.Settings;
 
-namespace ArenaSApp.Services.FixUri
+namespace PFRCenterGlobal.Services.FixUri
 {
     public class FixUriService : IFixUriService
     {

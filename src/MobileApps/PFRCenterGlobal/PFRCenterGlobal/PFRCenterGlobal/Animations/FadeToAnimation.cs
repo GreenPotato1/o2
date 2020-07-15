@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using ArenaSApp.Animations.Base;
-using ArenaSApp.Helpers;
+using PFRCenterGlobal.Animations.Base;
+using PFRCenterGlobal.Helpers;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Animations
+namespace PFRCenterGlobal.Animations
 {
     public class FadeToAnimation : AnimationBase
     {

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Animations.Base
+namespace PFRCenterGlobal.Animations.Base
 {
     public abstract class AnimationBase : BindableObject
     {

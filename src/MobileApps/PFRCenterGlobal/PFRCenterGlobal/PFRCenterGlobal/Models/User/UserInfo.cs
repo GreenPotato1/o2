@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace ArenaSApp.Models.User
+﻿namespace PFRCenterGlobal.Models.User
 {
     public class UserInfo
     {

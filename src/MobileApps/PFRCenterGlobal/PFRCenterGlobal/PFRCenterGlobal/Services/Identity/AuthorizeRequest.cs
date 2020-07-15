@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 
-namespace ArenaSApp.Services.Identity
+namespace PFRCenterGlobal.Services.Identity
 {
     public class AuthorizeRequest
     {

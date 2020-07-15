@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using ArenaSApp.Helpers;
-using ArenaSApp.Services.RequestProvider;
+using PFRCenterGlobal.Helpers;
+using PFRCenterGlobal.Services.RequestProvider;
 
-namespace ArenaSApp.Services.Location
+namespace PFRCenterGlobal.Services.Location
 {
     public class LocationService : ILocationService
     {

@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace ArenaSApp.Effects
+namespace PFRCenterGlobal.Effects
 {
 	public class EntryLineColorEffect : RoutingEffect
 	{

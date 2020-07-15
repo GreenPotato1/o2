@@ -1,4 +1,4 @@
-﻿namespace ArenaSApp.Models.Navigation
+﻿namespace PFRCenterGlobal.Models.Navigation
 {
     public class TabParameter
     {

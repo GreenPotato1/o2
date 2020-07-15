@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace ArenaSApp.Services.Settings
+namespace PFRCenterGlobal.Services.Settings
 {
     public interface ISettingsService
     {

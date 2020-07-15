@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace ArenaSApp.Controls
+namespace PFRCenterGlobal.Controls
 {
     public class CustomTabbedPage : TabbedPage
     {

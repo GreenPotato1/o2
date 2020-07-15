@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace ArenaSApp.Helpers
+namespace PFRCenterGlobal.Helpers
 {
     public static class TaskExtensions
     {

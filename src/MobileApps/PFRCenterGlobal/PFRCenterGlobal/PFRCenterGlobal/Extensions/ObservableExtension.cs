@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace ArenaSApp.Extensions
+namespace PFRCenterGlobal.Extensions
 {
     public static class ObservableExtension
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using ArenaSApp.Models.Location;
+using PFRCenterGlobal.Models.Location;
 
-namespace ArenaSApp.Services.Location
+namespace PFRCenterGlobal.Services.Location
 {
     public interface ILocationServiceImplementation
     {

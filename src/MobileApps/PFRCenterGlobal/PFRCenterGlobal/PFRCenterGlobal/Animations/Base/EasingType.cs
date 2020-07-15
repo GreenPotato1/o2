@@ -1,4 +1,4 @@
-﻿namespace ArenaSApp.Animations.Base
+﻿namespace PFRCenterGlobal.Animations.Base
 {
     public enum EasingType
     {

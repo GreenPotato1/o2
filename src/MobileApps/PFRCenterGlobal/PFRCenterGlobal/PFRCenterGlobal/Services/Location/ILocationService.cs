@@ -1,9 +1,9 @@
 ﻿﻿using System.Threading.Tasks;
 
- namespace ArenaSApp.Services.Location
+ namespace PFRCenterGlobal.Services.Location
 {    
     public interface ILocationService
     {
-        Task UpdateUserLocation(ArenaSApp.Models.Location.Location newLocReq, string token);
+        Task UpdateUserLocation(Models.Location.Location newLocReq, string token);
     }
 }

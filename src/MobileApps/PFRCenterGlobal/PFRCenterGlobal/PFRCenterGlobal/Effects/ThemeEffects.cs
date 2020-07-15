@@ -2,7 +2,7 @@
 using System.Linq;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Effects
+namespace PFRCenterGlobal.Effects
 {
     public static class ThemeEffects
     {

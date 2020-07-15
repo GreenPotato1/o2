@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace ArenaSApp.Services.RequestProvider
+namespace PFRCenterGlobal.Services.RequestProvider
 {
     public class HttpRequestExceptionEx : HttpRequestException
     {

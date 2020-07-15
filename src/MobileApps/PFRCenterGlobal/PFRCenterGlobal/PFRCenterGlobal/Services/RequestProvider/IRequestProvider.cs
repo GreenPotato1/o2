@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ArenaSApp.Services.RequestProvider
+namespace PFRCenterGlobal.Services.RequestProvider
 {
     public interface IRequestProvider
     {

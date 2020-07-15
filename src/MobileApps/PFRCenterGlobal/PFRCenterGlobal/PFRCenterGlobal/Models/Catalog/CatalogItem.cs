@@ -1,6 +1,4 @@
-﻿using SQLite;
-
-namespace ArenaSApp.Models.Catalog
+﻿namespace PFRCenterGlobal.Models.Catalog
 {
     public class CatalogItem
     {

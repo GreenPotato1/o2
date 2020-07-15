@@ -4,10 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Windows.Input;
-using ArenaSApp.Behaviors.Base;
+using PFRCenterGlobal.Behaviors.Base;
 using Xamarin.Forms;
 
-namespace ArenaSApp.Behaviors
+namespace PFRCenterGlobal.Behaviors
 {
     public class EventToCommandBehavior : BindableBehavior<View>
     {

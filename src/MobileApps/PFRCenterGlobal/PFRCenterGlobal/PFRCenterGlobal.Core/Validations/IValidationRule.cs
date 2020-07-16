@@ -1,4 +1,4 @@
-﻿namespace PFRCenterGlobal.Core.Core.Validations
+﻿namespace PFRCenterGlobal.Core.Validations
 {
     public interface IValidationRule<T>
     {

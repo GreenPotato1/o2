@@ -1,11 +1,11 @@
-using System.Threading.Tasks;
-using PFRCenterGlobal.Core.Core.ViewModels.Base;
+﻿using System.Threading.Tasks;
+using PFRCenterGlobal.Core.ViewModels.Base;
 
-namespace PFRCenterGlobal.Core.Core.Services.Navigation
+namespace PFRCenterGlobal.Core.Services.Navigation
 {
     public interface INavigationService
     {
-        ViewModelBase PreviousPageViewModel { get; }
+		ViewModelBase PreviousPageViewModel { get; }
 
         Task InitializeAsync();
 
@@ -16,6 +16,5 @@ namespace PFRCenterGlobal.Core.Core.Services.Navigation
         Task RemoveLastFromBackStackAsync();
 
         Task RemoveBackStackAsync();
-      
     }
 }

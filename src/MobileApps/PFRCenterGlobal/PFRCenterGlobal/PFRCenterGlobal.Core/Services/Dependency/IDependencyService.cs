@@ -1,4 +1,4 @@
-﻿﻿namespace PFRCenterGlobal.Core.Core.Services.Dependency
+﻿namespace PFRCenterGlobal.Core.Services.Dependency
 {
     public interface IDependencyService
     {

@@ -1,73 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PFRCenterGlobal.Core.Core.Views.Templates.ProductTemplate">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <StackLayout Grid.Row="0" Grid.Column="0">
-            <Label Text="Сектор" FontAttributes="Bold" />
-            <Label Text="{Binding Category}" BackgroundColor="Yellow" />
-        </StackLayout>
-
-        <StackLayout Grid.Row="0" Grid.Column="2">
-            <Label Text="Тревожный ящик № ключа" FontAttributes="Bold" />
-            <Label Text="{Binding Position}" />
-        </StackLayout>
-        <StackLayout Margin="0,20,0,0" Grid.Row="1" Grid.Column="2">
-            <Label Text="Номер АХО" FontAttributes="Bold" />
-            <Label Text="{Binding SpecialNumber}" />
-            <!-- <Button Margin="0,20,0,0" Text="Схема" Command="{Binding GoToCommand}"></Button> -->
-            <!-- <Button Margin="0,20,0,0" Text="Редактировать" Command="{Binding GoEditCommand}" FontSize="14"></Button> -->
-            <!-- <Button Margin="0,20,0,0" Text="Удалить" Command="{Binding DeleteCatalogItemCommand}" FontSize="14"></Button> -->
-        </StackLayout>
-
-        <StackLayout Margin="0,20,0,0" Grid.Row="1" Grid.ColumnSpan="2">
-            <Label Text="Номер двери " FontAttributes="Bold" />
-            <Label>
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="{Binding RootType}" />
-                        <Span Text="  № " />
-                        <Span Text="{Binding RoomNumber}" FontAttributes="Bold" />
-                    </FormattedString>
-                </Label.FormattedText>
-
-            </Label>
-
-            <Label Margin="0,20,0,0" Text="Назначение помещения" FontAttributes="Bold" />
-            <Label Text="{Binding RoomDescription}" />
-            <Label Margin="0,20,0,0" Text="Примечание" FontAttributes="Bold" />
-            <Label Text="{Binding Note}" />
-            <Label Margin="0,20,0,0" Text="Кол-во ключей" FontAttributes="Bold" />
-            <Label Text="{Binding KeyCount}" />
-
-        </StackLayout>
-        <!--<StackLayout Grid.Row="1" Grid.Column="1">
-                                    <Label Text="Точка входа" FontAttributes="Bold"/>
-                                    <Label Text="{Binding Room}"/>
-                                </StackLayout>-->
-        <!--<StackLayout Grid.Row="2" Orientation="Horizontal">
-
-
-
-
-
-                                    <Label Text="{Binding SpecialNumber}"/>
-                                    <Label Text="{Binding KeyCount}"/>
-                                    <Label Text="{Binding Note}"/>
-                                </StackLayout>-->
-    </Grid>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:controls="clr-namespace:PFRCenterGlobal.Core.Controls;assembly=PFRCenterGlobal.Core"
+    x:Class="PFRCenterGlobal.Core.Views.Templates.ProductTemplate">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            
+            <Style x:Key="ProductNameStyle" 
+               TargetType="{x:Type Label}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource LargeSize}" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="Margin"
+                        Value="0, 12, 0, 6" />
+            </Style>
+            
+            <Style x:Key="ProductPriceStyle" 
+               TargetType="{x:Type Label}">
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource BigSize}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource BlackColor}" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="Margin"
+                        Value="0, 6, 0, 12" />
+            </Style>
+            
+            <Style x:Key="AddButtonStyle" 
+               TargetType="{x:Type Grid}">
+                <Setter Property="HeightRequest"
+                        Value="42" />
+                <Setter Property="WidthRequest"
+                        Value="42" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="VerticalOptions"
+                        Value="End" />
+                <Setter Property="Margin"
+                        Value="0,0,0,24" />
+            </Style>
+            
+            <Style x:Key="AddImageStyle" 
+               TargetType="{x:Type Image}">
+                <Setter Property="HeightRequest"
+                        Value="24" />
+                <Setter Property="WidthRequest"
+                        Value="24" />
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid
+            BackgroundColor="{StaticResource BackgroundColor}"
+            Padding="0"
+            Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <!-- IMAGE -->
+            <ffimageloading:CachedImage 
+                Grid.Row="0"
+                Source="{Binding PictureUri}"     
+                Aspect="AspectFill">
+                <ffimageloading:CachedImage.LoadingPlaceholder>
+                    <OnPlatform x:TypeArguments="ImageSource">
+                        <On Platform="iOS, Android" Value="default_product" />
+                        <On Platform="UWP, WinRT, WinPhone" Value="Assets/default_product.png" />
+                    </OnPlatform>
+                </ffimageloading:CachedImage.LoadingPlaceholder>
+                <ffimageloading:CachedImage.ErrorPlaceholder>
+                    <OnPlatform x:TypeArguments="ImageSource">
+                        <On Platform="iOS, Android" Value="noimage" />
+                        <On Platform="UWP, WinRT, WinPhone" Value="Assets/noimage.png" />
+                    </OnPlatform>
+                </ffimageloading:CachedImage.ErrorPlaceholder>
+            </ffimageloading:CachedImage>
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Style="{StaticResource AddButtonStyle}">
+                <controls:AddBasketButton />
+            </Grid>
+            <!-- NAME -->
+            <Label 
+                Grid.Row="1"
+                Text="{Binding Name, Converter={StaticResource ToUpperConverter}}"
+                Style="{StaticResource ProductNameStyle}"/>
+            <!-- PRICE -->
+            <Label 
+                Grid.Row="2"
+                Text="{Binding Price, StringFormat='${0:N}'}"
+                Style="{StaticResource ProductPriceStyle}"/>
+        </Grid>
+    </ContentView.Content>
 </ContentView>

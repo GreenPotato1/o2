@@ -1,15 +1,15 @@
-using System.Globalization;
+﻿using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using PFRCenterGlobal.Core.Core.Models.Location;
-using PFRCenterGlobal.Core.Core.Models.User;
-using PFRCenterGlobal.Core.Core.Services.Dependency;
-using PFRCenterGlobal.Core.Core.Services.Location;
-using PFRCenterGlobal.Core.Core.Services.Settings;
-using PFRCenterGlobal.Core.Core.ViewModels.Base;
+using PFRCenterGlobal.Core.Models.Location;
+using PFRCenterGlobal.Core.Models.User;
+using PFRCenterGlobal.Core.Services.Dependency;
+using PFRCenterGlobal.Core.Services.Location;
+using PFRCenterGlobal.Core.Services.Settings;
+using PFRCenterGlobal.Core.ViewModels.Base;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.ViewModels
+namespace PFRCenterGlobal.Core.ViewModels
 {
     public class SettingsViewModel : ViewModelBase
     {
@@ -46,7 +46,7 @@ namespace PFRCenterGlobal.Core.Core.ViewModels
 
         public string TitleUseAzureServices
         {
-            get { return !UseAzureServices ? "Use Mock Services" : "Use Microservices/Containers from eShopOnContainers"; }
+            get { return !UseAzureServices ? "Use Mock Services" : "Use Microservices/Containers from PFRCenterGlobal"; }
         }
 
         public string DescriptionUseAzureServices

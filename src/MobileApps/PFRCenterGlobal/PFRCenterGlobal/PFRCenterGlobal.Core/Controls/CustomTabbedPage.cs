@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Controls
+namespace PFRCenterGlobal.Core.Controls
 {
     public class CustomTabbedPage : TabbedPage
     {

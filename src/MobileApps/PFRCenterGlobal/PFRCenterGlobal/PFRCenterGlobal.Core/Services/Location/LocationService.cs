@@ -1,8 +1,6 @@
 ﻿using System.Threading.Tasks;
-using PFRCenterGlobal.Core.Core;
-using PFRCenterGlobal.Core.Core.Helpers;
-using PFRCenterGlobal.Core.Core.Services.Location;
-using PFRCenterGlobal.Core.Core.Services.RequestProvider;
+using PFRCenterGlobal.Core.Helpers;
+using PFRCenterGlobal.Core.Services.RequestProvider;
 
 namespace PFRCenterGlobal.Core.Services.Location
 {
@@ -17,7 +15,7 @@ namespace PFRCenterGlobal.Core.Services.Location
             _requestProvider = requestProvider;
         }
 
-        public async Task UpdateUserLocation(Core.Models.Location.Location newLocReq, string token)
+        public async Task UpdateUserLocation(Models.Location.Location newLocReq, string token)
         {
             var uri = UriHelper.CombineUri(GlobalSetting.Instance.GatewayMarketingEndpoint, ApiUrlBase);
 

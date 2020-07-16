@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Services.Settings
+namespace PFRCenterGlobal.Core.Services.Settings
 {
     public class SettingsService : ISettingsService
     {

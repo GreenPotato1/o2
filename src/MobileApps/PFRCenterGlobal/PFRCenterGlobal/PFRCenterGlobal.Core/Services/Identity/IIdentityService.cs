@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using PFRCenterGlobal.Core.Core.Models.Token;
+using PFRCenterGlobal.Core.Models.Token;
 
-namespace PFRCenterGlobal.Core.Core.Services.Identity
+namespace PFRCenterGlobal.Core.Services.Identity
 {
     public interface IIdentityService
     {

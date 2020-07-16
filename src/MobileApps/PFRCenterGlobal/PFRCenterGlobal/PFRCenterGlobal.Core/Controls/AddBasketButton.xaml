@@ -2,9 +2,8 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:effects="clr-namespace:PFRCenterGlobal.Core.Core.Effects;assembly=PFRCenterGlobal.Core"
-
-    x:Class="PFRCenterGlobal.Core.Core.Controls.AddBasketButton">
+    xmlns:effects="clr-namespace:PFRCenterGlobal.Core.Effects;assembly=PFRCenterGlobal.Core"
+    x:Class="PFRCenterGlobal.Core.Controls.AddBasketButton">
     <ContentView.Resources>
         <ResourceDictionary>
 

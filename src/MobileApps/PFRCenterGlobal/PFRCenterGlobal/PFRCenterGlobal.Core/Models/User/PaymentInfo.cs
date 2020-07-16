@@ -1,6 +1,7 @@
 ﻿using System;
+using PFRCenterGlobal.Core.Models.Orders;
 
-namespace PFRCenterGlobal.Core.Core.Models.User
+namespace PFRCenterGlobal.Core.Models.User
 {
     public class PaymentInfo
     {
@@ -10,7 +11,7 @@ namespace PFRCenterGlobal.Core.Core.Models.User
         public int ExpirationMonth { get; set; }
         public int ExpirationYear { get; set; }
         public string CardHolderName { get; set; }
-        // public CardType CardType { get; set; }
+        public CardType CardType { get; set; }
         public string Expiration { get; set; }
     }
 }

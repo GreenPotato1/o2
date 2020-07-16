@@ -1,6 +1,6 @@
-﻿﻿using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
- namespace PFRCenterGlobal.Core.Core.Services.Location
+namespace PFRCenterGlobal.Core.Services.Location
 {    
     public interface ILocationService
     {

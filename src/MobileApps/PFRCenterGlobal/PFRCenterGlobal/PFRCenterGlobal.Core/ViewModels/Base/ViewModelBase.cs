@@ -1,9 +1,9 @@
-using System.Threading.Tasks;
-using PFRCenterGlobal.Core.Core.Services.Dialog;
-using PFRCenterGlobal.Core.Core.Services.Navigation;
-using PFRCenterGlobal.Core.Core.Services.Settings;
+﻿using System.Threading.Tasks;
+using PFRCenterGlobal.Core.Services.Dialog;
+using PFRCenterGlobal.Core.Services.Navigation;
+using PFRCenterGlobal.Core.Services.Settings;
 
-namespace PFRCenterGlobal.Core.Core.ViewModels.Base
+namespace PFRCenterGlobal.Core.ViewModels.Base
 {
     public abstract class ViewModelBase : ExtendedBindableObject
     {
@@ -33,9 +33,9 @@ namespace PFRCenterGlobal.Core.Core.ViewModels.Base
 
             var settingsService = ViewModelLocator.Resolve<ISettingsService>();
 
-            // GlobalSetting.Instance.BaseIdentityEndpoint = settingsService.IdentityEndpointBase;
-            // GlobalSetting.Instance.BaseGatewayShoppingEndpoint = settingsService.GatewayShoppingEndpointBase;
-            // GlobalSetting.Instance.BaseGatewayMarketingEndpoint = settingsService.GatewayMarketingEndpointBase;
+            GlobalSetting.Instance.BaseIdentityEndpoint = settingsService.IdentityEndpointBase;
+            GlobalSetting.Instance.BaseGatewayShoppingEndpoint = settingsService.GatewayShoppingEndpointBase;
+            GlobalSetting.Instance.BaseGatewayMarketingEndpoint = settingsService.GatewayMarketingEndpointBase;
         }
 
         public virtual Task InitializeAsync(object navigationData)

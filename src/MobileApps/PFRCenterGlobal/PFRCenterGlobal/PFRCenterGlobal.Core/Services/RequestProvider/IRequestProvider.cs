@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace PFRCenterGlobal.Core.Core.Services.RequestProvider
+namespace PFRCenterGlobal.Core.Services.RequestProvider
 {
     public interface IRequestProvider
     {

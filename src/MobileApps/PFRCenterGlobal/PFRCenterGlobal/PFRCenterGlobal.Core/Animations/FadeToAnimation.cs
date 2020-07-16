@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using PFRCenterGlobal.Core.Core.Animations.Base;
-using PFRCenterGlobal.Core.Core.Helpers;
+using PFRCenterGlobal.Core.Animations.Base;
+using PFRCenterGlobal.Core.Helpers;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Animations
+namespace PFRCenterGlobal.Core.Animations
 {
     public class FadeToAnimation : AnimationBase
     {

@@ -1,19 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:base="clr-namespace:PFRCenterGlobal.Core.Core.ViewModels.Base;assembly=PFRCenterGlobal.Core"
-            xmlns:views="clr-namespace:PFRCenterGlobal.Core.Core.Views;assembly=PFRCenterGlobal.Core"
-
-
-            x:Class="PFRCenterGlobal.Core.Core.Views.MainView"
-          
+            x:Class="PFRCenterGlobal.Core.Views.MainView"
+            xmlns:views="clr-namespace:PFRCenterGlobal.Core.Views;assembly=PFRCenterGlobal.Core"
+			xmlns:viewModelBase="clr-namespace:PFRCenterGlobal.Core.ViewModels.Base;assembly=PFRCenterGlobal.Core"
+            xmlns:controls="clr-namespace:PFRCenterGlobal.Core.Controls;assembly=PFRCenterGlobal.Core"
             BarBackgroundColor="{StaticResource DarkGreenColor}"
             BackgroundColor="{StaticResource BackgroundColor}"
             BarTextColor="{StaticResource WhiteColor}"
-            base:ViewModelLocator.AutoWireViewModel="true">
- <TabbedPage.Title>
+			viewModelBase:ViewModelLocator.AutoWireViewModel="true">
+    <TabbedPage.Title>
         <OnPlatform x:TypeArguments="x:String">
-            <On Platform="iOS, UWP, WinRT, WinPhone" Value="Arena S" />
+            <On Platform="iOS, UWP, WinRT, WinPhone" Value="eShop on Containers" />
         </OnPlatform>
     </TabbedPage.Title>
     <ContentPage.ToolbarItems>
@@ -29,7 +27,7 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <!-- CATALOG -->
-    <views:CatalogView
+    <views:CatalogView  
         x:Name="HomeView">
         <views:CatalogView.Icon>
             <OnPlatform x:TypeArguments="FileImageSource">
@@ -48,26 +46,26 @@
             </OnPlatform>
         </views:ProfileView.Icon>
     </views:ProfileView>
-    <!-- ~1~ BASKET @1@ -->
-    <!-- <views:BasketView -->
-    <!--     x:Name="BasketView" -->
-    <!--     controls:CustomTabbedPage.BadgeText="{Binding BadgeCount}" -->
-    <!--     controls:CustomTabbedPage.BadgeColor="{StaticResource LightGreenColor}"> -->
-    <!--     <views:BasketView.Icon> -->
-    <!--         <OnPlatform x:TypeArguments="FileImageSource"> -->
-    <!--             <On Platform="iOS, Android" Value="menu_cart" /> -->
-    <!--             <On Platform="UWP, WinRT, WinPhone" Value="Assets\menu_cart.png" /> -->
-    <!--         </OnPlatform> -->
-    <!--     </views:BasketView.Icon> -->
-    <!-- </views:BasketView> -->
-    <!-- ~1~ CAMPAIGNS @1@ -->
-    <!-- <views:CampaignView   -->
-    <!--     x:Name="CampaignView"> -->
-    <!--     <views:CampaignView.Icon> -->
-    <!--         <OnPlatform x:TypeArguments="FileImageSource"> -->
-    <!--             <On Platform="iOS, Android" Value="menu_campaigns" /> -->
-    <!--             <On Platform="UWP, WinRT, WinPhone" Value="Assets\menu_campaigns.png" /> -->
-    <!--         </OnPlatform> -->
-    <!--     </views:CampaignView.Icon> -->
-    <!-- </views:CampaignView> -->
+    <!-- BASKET -->
+    <views:BasketView
+        x:Name="BasketView"
+        controls:CustomTabbedPage.BadgeText="{Binding BadgeCount}"
+        controls:CustomTabbedPage.BadgeColor="{StaticResource LightGreenColor}">
+        <views:BasketView.Icon>
+            <OnPlatform x:TypeArguments="FileImageSource">
+                <On Platform="iOS, Android" Value="menu_cart" />
+                <On Platform="UWP, WinRT, WinPhone" Value="Assets\menu_cart.png" />
+            </OnPlatform>
+        </views:BasketView.Icon>
+    </views:BasketView>
+    <!-- CAMPAIGNS -->
+    <views:CampaignView  
+        x:Name="CampaignView">
+        <views:CampaignView.Icon>
+            <OnPlatform x:TypeArguments="FileImageSource">
+                <On Platform="iOS, Android" Value="menu_campaigns" />
+                <On Platform="UWP, WinRT, WinPhone" Value="Assets\menu_campaigns.png" />
+            </OnPlatform>
+        </views:CampaignView.Icon>
+    </views:CampaignView>
 </TabbedPage>

@@ -1,6 +1,6 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace PFRCenterGlobal.Core.Core.Services.Dialog
+namespace PFRCenterGlobal.Core.Services.Dialog
 {
     public interface IDialogService
     {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using PFRCenterGlobal.Core.Core.ViewModels.Base;
+using PFRCenterGlobal.Core.ViewModels.Base;
 
-namespace PFRCenterGlobal.Core.Core.Validations
+namespace PFRCenterGlobal.Core.Validations
 {
     public class ValidatableObject<T> : ExtendedBindableObject, IValidity
     {

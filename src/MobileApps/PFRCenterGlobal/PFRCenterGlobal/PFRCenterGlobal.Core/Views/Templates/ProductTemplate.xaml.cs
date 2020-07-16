@@ -1,6 +1,6 @@
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Views.Templates
+namespace PFRCenterGlobal.Core.Views.Templates
 {
     public partial class ProductTemplate : ContentView
     {
@@ -8,6 +8,5 @@ namespace PFRCenterGlobal.Core.Core.Views.Templates
         {
             InitializeComponent();
         }
-        
     }
 }

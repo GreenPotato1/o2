@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.ViewModels.Base
+namespace PFRCenterGlobal.Core.ViewModels.Base
 {
     public abstract class ExtendedBindableObject : BindableObject
     {

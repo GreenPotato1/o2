@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using PFRCenterGlobal.Core.Core.Models.Permissions;
+using PFRCenterGlobal.Core.Models.Permissions;
 
-namespace PFRCenterGlobal.Core.Core.Services.Permissions
+namespace PFRCenterGlobal.Core.Services.Permissions
 {
     public interface IPermissionsService
     {

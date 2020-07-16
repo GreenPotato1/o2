@@ -1,6 +1,6 @@
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Views
+namespace PFRCenterGlobal.Core.Views
 {
     public partial class CustomNavigationView : NavigationPage
     {

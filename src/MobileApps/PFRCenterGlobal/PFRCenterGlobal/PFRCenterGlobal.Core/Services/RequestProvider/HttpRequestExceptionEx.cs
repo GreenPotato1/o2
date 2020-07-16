@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace PFRCenterGlobal.Core.Core.Services.RequestProvider
+namespace PFRCenterGlobal.Core.Services.RequestProvider
 {
     public class HttpRequestExceptionEx : HttpRequestException
     {

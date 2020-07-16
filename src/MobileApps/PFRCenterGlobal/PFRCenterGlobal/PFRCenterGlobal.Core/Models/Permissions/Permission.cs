@@ -1,4 +1,4 @@
-﻿﻿namespace PFRCenterGlobal.Core.Core.Models.Permissions
+﻿namespace PFRCenterGlobal.Core.Models.Permissions
 {
     public enum Permission
     {

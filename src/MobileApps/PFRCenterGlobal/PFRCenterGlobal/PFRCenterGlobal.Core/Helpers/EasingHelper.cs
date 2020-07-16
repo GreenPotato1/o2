@@ -1,7 +1,7 @@
-﻿using PFRCenterGlobal.Core.Core.Animations.Base;
+﻿using PFRCenterGlobal.Core.Animations.Base;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Helpers
+namespace PFRCenterGlobal.Core.Helpers
 {
     public static class EasingHelper
     {

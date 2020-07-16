@@ -1,22 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:base="clr-namespace:PFRCenterGlobal.Core.Core.ViewModels.Base;assembly=PFRCenterGlobal.Core"
-             xmlns:converters="clr-namespace:PFRCenterGlobal.Core.Core.Converters;assembly=PFRCenterGlobal.Core"
-             xmlns:triggers="clr-namespace:PFRCenterGlobal.Core.Core.Triggers;assembly=PFRCenterGlobal.Core"
-             xmlns:animations="clr-namespace:PFRCenterGlobal.Core.Core.Animations;assembly=PFRCenterGlobal.Core"
-             xmlns:behaviors="clr-namespace:PFRCenterGlobal.Core.Core.Behaviors;assembly=PFRCenterGlobal.Core"
-
-
-             x:Class="PFRCenterGlobal.Core.Core.Views.LoginView"
-             base:ViewModelLocator.AutoWireViewModel="true">
+             x:Class="PFRCenterGlobal.Core.Views.LoginView"
+		 	 xmlns:viewModelBase="clr-namespace:PFRCenterGlobal.Core.ViewModels.Base;assembly=PFRCenterGlobal.Core"
+             xmlns:animations="clr-namespace:PFRCenterGlobal.Core.Animations;assembly=PFRCenterGlobal.Core"
+             xmlns:converters="clr-namespace:PFRCenterGlobal.Core.Converters;assembly=PFRCenterGlobal.Core"
+             xmlns:triggers="clr-namespace:PFRCenterGlobal.Core.Triggers;assembly=PFRCenterGlobal.Core"
+             xmlns:behaviors="clr-namespace:PFRCenterGlobal.Core.Behaviors;assembly=PFRCenterGlobal.Core"
+			 viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <ContentPage.Title>
         <OnPlatform x:TypeArguments="x:String">
-            <On Platform="Arena S" />
+            <On Platform="iOS, UWP, WinRT, WinPhone" Value="eShop on Containers" />
         </OnPlatform>
     </ContentPage.Title>
-     <ContentPage.Resources>
+    <ContentPage.Resources>
         <ResourceDictionary>
             <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
             <converters:WebNavigatingEventArgsConverter x:Key="WebNavigatingEventArgsConverter" />
@@ -109,7 +106,7 @@
                 Animation="{StaticResource LoginAnimation}" />
         </EventTrigger>
     </ContentPage.Triggers>
-   <Grid
+    <Grid
       BackgroundColor="{StaticResource BackgroundColor}">
         <!-- MOCK AUTH -->
         <Grid
@@ -141,7 +138,7 @@
                         Text="["
                         TextColor="{StaticResource LightGreenColor}"/>
                     <Label
-                        Text="Вход"
+                        Text="LOGIN"
                         FontAttributes="Bold"/>
                     <Label
                         Text="]"
@@ -151,7 +148,7 @@
                   Grid.Column="1"
                   HorizontalOptions="Center">
                     <Label
-                        Text="Регистрация"
+                        Text="REGISTER"
                         TextColor="Gray"/>
                 </Grid>
                 <StackLayout  
@@ -159,7 +156,7 @@
                   Orientation="Horizontal"
                   HorizontalOptions="Center">
                     <Label
-                        Text="Настройки"/>
+                        Text="SETTINGS"/>
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer
                             Command="{Binding SettingsCommand}"
@@ -170,14 +167,14 @@
             <!-- INFO -->
             <Label
               Grid.Row="1"
-              Text="Вы зарегистрированы?"
+              Text="ARE YOU REGISTERED?"
               Style="{StaticResource TitleLabelStyle}"/>
             <!-- LOGIN FORM -->
             <StackLayout   
                 Grid.Row="2"
                 Margin="24">
                 <Label
-                  Text="Имя пользователя или почта"
+                  Text="User name or email"
                   Style="{StaticResource HeaderLabelStyle}" />
                 <Entry Text="{Binding UserName.Value, Mode=TwoWay}">
 					<Entry.Style>
@@ -204,7 +201,7 @@
 					Text="{Binding UserName.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
 					Style="{StaticResource ValidationErrorLabelStyle}" />
                 <Label
-                  Text="Пароль"
+                  Text="Password"
                   Style="{StaticResource HeaderLabelStyle}"/>
                 <Entry
                   IsPassword="True"
@@ -241,7 +238,7 @@
                 ColumnSpacing="0"
                 RowSpacing="0">
                 <Label
-                  Text="[ Вход ]"
+                  Text="[ LOGIN ]"
                   Style="{StaticResource LoginButtonStyle}"/>
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer
@@ -304,7 +301,7 @@
                 Grid.Row="1"
                 Style="{StaticResource RegisterPanelStyle}">
                 <Label
-                  Text="[ Регистрация ]"
+                  Text="[ REGISTER ]"
                   Style="{StaticResource LoginButtonStyle}"/>
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer

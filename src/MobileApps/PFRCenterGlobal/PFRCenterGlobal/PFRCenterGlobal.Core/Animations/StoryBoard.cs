@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using PFRCenterGlobal.Core.Core.Animations.Base;
+using PFRCenterGlobal.Core.Animations.Base;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Animations
+namespace PFRCenterGlobal.Core.Animations
 {
     [ContentProperty("Animations")]
     public class StoryBoard : AnimationBase

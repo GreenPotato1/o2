@@ -2,7 +2,7 @@
 using System.Linq;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Effects
+namespace PFRCenterGlobal.Core.Effects
 {
     public static class ThemeEffects
     {
@@ -46,7 +46,7 @@ namespace PFRCenterGlobal.Core.Core.Effects
         private class CircleEffect : RoutingEffect
         {
             public CircleEffect()
-                : base("eShopOnContainers.CircleEffect")
+                : base("PFRCenterGlobal.CircleEffect")
             {
             }
         }

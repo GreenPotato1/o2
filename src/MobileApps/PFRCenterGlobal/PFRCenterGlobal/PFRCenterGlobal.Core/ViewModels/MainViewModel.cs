@@ -1,12 +1,12 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
-using PFRCenterGlobal.Core.Core.Models.Navigation;
-using PFRCenterGlobal.Core.Core.ViewModels.Base;
+using PFRCenterGlobal.Core.Models.Navigation;
+using PFRCenterGlobal.Core.ViewModels.Base;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.ViewModels
+namespace PFRCenterGlobal.Core.ViewModels
 {
-    public class MainViewModel: ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
         public ICommand SettingsCommand => new Command(async () => await SettingsAsync());
 
@@ -16,9 +16,9 @@ namespace PFRCenterGlobal.Core.Core.ViewModels
 
             if (navigationData is TabParameter)
             {
-                 //Change selected application tab
-                 var tabIndex = ((TabParameter)navigationData).TabIndex;
-                 MessagingCenter.Send(this, MessageKeys.ChangeTab, tabIndex);
+                // Change selected application tab
+                var tabIndex = ((TabParameter)navigationData).TabIndex;
+                MessagingCenter.Send(this, MessageKeys.ChangeTab, tabIndex);
             }
 
             return base.InitializeAsync(navigationData);

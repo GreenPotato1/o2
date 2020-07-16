@@ -1,4 +1,4 @@
-﻿namespace PFRCenterGlobal.Core.Core.Models.Navigation
+﻿namespace PFRCenterGlobal.Core.Models.Navigation
 {
     public class TabParameter
     {

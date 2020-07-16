@@ -1,4 +1,4 @@
-﻿﻿namespace PFRCenterGlobal.Core.Core.Models.Location
+﻿namespace PFRCenterGlobal.Core.Models.Location
 {
     public class Location
     {

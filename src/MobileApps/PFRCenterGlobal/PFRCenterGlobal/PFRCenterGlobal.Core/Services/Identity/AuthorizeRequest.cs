@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 
-namespace PFRCenterGlobal.Core.Core.Services.Identity
+namespace PFRCenterGlobal.Core.Services.Identity
 {
     public class AuthorizeRequest
     {

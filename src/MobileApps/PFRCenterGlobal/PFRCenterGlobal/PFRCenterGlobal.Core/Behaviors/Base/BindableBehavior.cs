@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Behaviors.Base
+namespace PFRCenterGlobal.Core.Behaviors.Base
 {
     public class BindableBehavior<T> : Behavior<T> where T : BindableObject
     {

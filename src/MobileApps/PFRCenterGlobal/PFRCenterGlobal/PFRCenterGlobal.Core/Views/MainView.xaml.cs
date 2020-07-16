@@ -1,8 +1,8 @@
-﻿using PFRCenterGlobal.Core.Core.ViewModels;
-using PFRCenterGlobal.Core.Core.ViewModels.Base;
+﻿using PFRCenterGlobal.Core.ViewModels;
+using PFRCenterGlobal.Core.ViewModels.Base;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Views
+namespace PFRCenterGlobal.Core.Views
 {
     public partial class MainView : TabbedPage
     {
@@ -17,7 +17,7 @@ namespace PFRCenterGlobal.Core.Core.Views
 
             MessagingCenter.Subscribe<MainViewModel, int>(this, MessageKeys.ChangeTab, (sender, arg) =>
             {
-                switch (arg)
+               switch(arg)
                 {
                     case 0:
                         CurrentPage = HomeView;
@@ -25,40 +25,40 @@ namespace PFRCenterGlobal.Core.Core.Views
                     case 1:
                         CurrentPage = ProfileView;
                         break;
-                        // case 2:
-                        //     CurrentPage = BasketView;
-                        //     break;
-                        // case 3:
-                        //     CurrentPage = CampaignView;
-                        //     break;
+                    case 2:
+                        CurrentPage = BasketView;
+                        break;
+                    case 3:
+                        CurrentPage = CampaignView;
+                        break;
                 }
             });
 
-            await ((CatalogViewModel)HomeView.BindingContext).InitializeAsync(null);
-            // await ((BasketViewModel)BasketView.BindingContext).InitializeAsync(null);
-            // await ((ProfileViewModel)ProfileView.BindingContext).InitializeAsync(null);
-            // await ((CampaignViewModel)CampaignView.BindingContext).InitializeAsync(null);
+			await ((CatalogViewModel)HomeView.BindingContext).InitializeAsync(null);
+			await ((BasketViewModel)BasketView.BindingContext).InitializeAsync(null);
+			await ((ProfileViewModel)ProfileView.BindingContext).InitializeAsync(null);
+            await ((CampaignViewModel)CampaignView.BindingContext).InitializeAsync(null);
         }
 
         protected override async void OnCurrentPageChanged()
         {
             base.OnCurrentPageChanged();
 
-            // if (CurrentPage is BasketView)
-            // {
-            //     // Force basket view refresh every time we access it
-            //     await (BasketView.BindingContext as ViewModelBase).InitializeAsync(null);
-            // }
-            // else if (CurrentPage is CampaignView)
-            // {
-            //     // Force campaign view refresh every time we access it
-            //     await (CampaignView.BindingContext as ViewModelBase).InitializeAsync(null);
-            // }
-            // else if (CurrentPage is ProfileView)
-            // {
-            //     // Force profile view refresh every time we access it
-            //     await (ProfileView.BindingContext as ViewModelBase).InitializeAsync(null);
-            // }
+            if (CurrentPage is BasketView)
+            {
+                // Force basket view refresh every time we access it
+                await (BasketView.BindingContext as ViewModelBase).InitializeAsync(null);
+            }
+            else if (CurrentPage is CampaignView)
+            {
+                // Force campaign view refresh every time we access it
+                await (CampaignView.BindingContext as ViewModelBase).InitializeAsync(null);
+            }
+            else if (CurrentPage is ProfileView)
+            {
+                // Force profile view refresh every time we access it
+                await (ProfileView.BindingContext as ViewModelBase).InitializeAsync(null);
+            }
         }
     }
 }

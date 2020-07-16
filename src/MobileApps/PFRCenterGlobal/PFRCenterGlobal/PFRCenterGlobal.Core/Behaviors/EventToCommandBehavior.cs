@@ -4,10 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Windows.Input;
-using PFRCenterGlobal.Core.Core.Behaviors.Base;
+using PFRCenterGlobal.Core.Behaviors.Base;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Behaviors
+namespace PFRCenterGlobal.Core.Behaviors
 {
     public class EventToCommandBehavior : BindableBehavior<View>
     {

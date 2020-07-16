@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace PFRCenterGlobal.Core.Core.Helpers
+namespace PFRCenterGlobal.Core.Helpers
 {
     internal static class RandomNumberGenerator
     {

@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Controls
+namespace PFRCenterGlobal.Core.Controls
 {
     public class ToggleButton : ContentView
     {

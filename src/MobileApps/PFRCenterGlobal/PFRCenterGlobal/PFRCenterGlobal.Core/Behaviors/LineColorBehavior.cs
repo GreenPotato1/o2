@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using PFRCenterGlobal.Core.Core.Effects;
+using PFRCenterGlobal.Core.Effects;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Behaviors
+namespace PFRCenterGlobal.Core.Behaviors
 {
     public static class LineColorBehavior
     {

@@ -1,6 +1,6 @@
-﻿﻿ using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-  namespace PFRCenterGlobal.Core.Core.Models.Token
+namespace PFRCenterGlobal.Core.Models.Token
 {
     public class UserToken
     {

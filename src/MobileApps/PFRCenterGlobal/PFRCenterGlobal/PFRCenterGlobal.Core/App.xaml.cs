@@ -1,16 +1,24 @@
-﻿using System.Threading.Tasks;
-using PFRCenterGlobal.Core.Core.Services.Dependency;
-using PFRCenterGlobal.Core.Core.Services.Navigation;
-using PFRCenterGlobal.Core.Core.Services.Settings;
-using PFRCenterGlobal.Core.Core.ViewModels.Base;
+﻿
+using System;
+using System.Diagnostics;
+using System.Globalization;
+using System.Threading.Tasks;
+using PFRCenterGlobal.Core.Models.Location;
+using PFRCenterGlobal.Core.Services.Dependency;
+using PFRCenterGlobal.Core.Services.Location;
+using PFRCenterGlobal.Core.Services.Navigation;
+using PFRCenterGlobal.Core.Services.Settings;
+using PFRCenterGlobal.Core.ViewModels.Base;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace PFRCenterGlobal.Core.Core
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+namespace PFRCenterGlobal.Core
 {
     public partial class App : Application
     {
         ISettingsService _settingsService;
-        
+
         public App()
         {
             InitializeComponent();
@@ -21,6 +29,7 @@ namespace PFRCenterGlobal.Core.Core
                 InitNavigation();
             }
         }
+
         private void InitApp()
         {
             _settingsService = ViewModelLocator.Resolve<ISettingsService>();
@@ -33,7 +42,8 @@ namespace PFRCenterGlobal.Core.Core
             var navigationService = ViewModelLocator.Resolve<INavigationService>();
             return navigationService.InitializeAsync();
         }
-         protected override async void OnStart()
+
+        protected override async void OnStart()
         {
             base.OnStart();
 
@@ -41,10 +51,10 @@ namespace PFRCenterGlobal.Core.Core
             {
                 await InitNavigation();
             }
-            // if (_settingsService.AllowGpsLocation && !_settingsService.UseFakeLocation)
-            // {
-            //     await GetGpsLocation();
-            // }
+            if (_settingsService.AllowGpsLocation && !_settingsService.UseFakeLocation)
+            {
+                await GetGpsLocation();
+            }
             if (!_settingsService.UseMocks && !string.IsNullOrEmpty(_settingsService.AuthAccessToken))
             {
                 await SendCurrentLocation();
@@ -61,39 +71,39 @@ namespace PFRCenterGlobal.Core.Core
         private async Task GetGpsLocation()
         {
             var dependencyService = ViewModelLocator.Resolve<IDependencyService>();
-            // var locator = dependencyService.Get<ILocationServiceImplementation>();
+            var locator = dependencyService.Get<ILocationServiceImplementation>();
 
-            // if (locator.IsGeolocationEnabled && locator.IsGeolocationAvailable)
-            // {
-            //     locator.DesiredAccuracy = 50;
-            //
-            //     try
-            //     {
-            //         var position = await locator.GetPositionAsync();
-            //         _settingsService.Latitude = position.Latitude.ToString();
-            //         _settingsService.Longitude = position.Longitude.ToString();
-            //     }
-            //     catch (Exception ex)
-            //     {
-            //         Debug.WriteLine(ex);
-            //     }
-            // }
-            // else
-            // {
-            //     _settingsService.AllowGpsLocation = false;
-            // }
+            if (locator.IsGeolocationEnabled && locator.IsGeolocationAvailable)
+            {
+                locator.DesiredAccuracy = 50;
+
+                try
+                {
+                    var position = await locator.GetPositionAsync();
+                    _settingsService.Latitude = position.Latitude.ToString();
+                    _settingsService.Longitude = position.Longitude.ToString();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                }
+            }
+            else
+            {
+                _settingsService.AllowGpsLocation = false;
+            }
         }
 
         private async Task SendCurrentLocation()
         {
-            // var location = new Location
-            // {
-            //     Latitude = double.Parse(_settingsService.Latitude, CultureInfo.InvariantCulture),
-            //     Longitude = double.Parse(_settingsService.Longitude, CultureInfo.InvariantCulture)
-            // };
-            //
-            // var locationService = ViewModelLocator.Resolve<ILocationService>();
-            // await locationService.UpdateUserLocation(location, _settingsService.AuthAccessToken);
+            var location = new Location
+            {
+                Latitude = double.Parse(_settingsService.Latitude, CultureInfo.InvariantCulture),
+                Longitude = double.Parse(_settingsService.Longitude, CultureInfo.InvariantCulture)
+            };
+
+            var locationService = ViewModelLocator.Resolve<ILocationService>();
+            await locationService.UpdateUserLocation(location, _settingsService.AuthAccessToken);
         }
     }
 }

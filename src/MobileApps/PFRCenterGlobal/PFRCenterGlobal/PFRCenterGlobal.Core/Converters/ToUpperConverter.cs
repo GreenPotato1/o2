@@ -2,7 +2,7 @@
 using System.Globalization;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Converters
+namespace PFRCenterGlobal.Core.Converters
 {
     public class ToUpperConverter : IValueConverter
     {

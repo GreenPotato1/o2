@@ -1,10 +1,10 @@
 ﻿using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Effects
+namespace PFRCenterGlobal.Core.Effects
 {
 	public class EntryLineColorEffect : RoutingEffect
 	{
-		public EntryLineColorEffect() : base("eShopOnContainers.EntryLineColorEffect")
+		public EntryLineColorEffect() : base("PFRCenterGlobal.EntryLineColorEffect")
 		{
 		}
 	}

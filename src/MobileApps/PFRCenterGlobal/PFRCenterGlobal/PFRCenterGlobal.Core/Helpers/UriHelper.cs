@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace PFRCenterGlobal.Core.Core.Helpers
+namespace PFRCenterGlobal.Core.Helpers
 {
     public static class UriHelper
     {

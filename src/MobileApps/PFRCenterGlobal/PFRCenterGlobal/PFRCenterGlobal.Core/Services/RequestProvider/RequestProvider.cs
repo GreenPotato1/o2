@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using PFRCenterGlobal.Core.Core.Exceptions;
+using PFRCenterGlobal.Core.Exceptions;
 
-namespace PFRCenterGlobal.Core.Core.Services.RequestProvider
+namespace PFRCenterGlobal.Core.Services.RequestProvider
 {
     public class RequestProvider : IRequestProvider
     {

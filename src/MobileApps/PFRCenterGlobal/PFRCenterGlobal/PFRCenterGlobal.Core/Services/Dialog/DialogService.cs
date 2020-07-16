@@ -1,7 +1,7 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Acr.UserDialogs;
 
-namespace PFRCenterGlobal.Core.Core.Services.Dialog
+namespace PFRCenterGlobal.Core.Services.Dialog
 {
     public class DialogService : IDialogService
     {
@@ -9,6 +9,5 @@ namespace PFRCenterGlobal.Core.Core.Services.Dialog
         {
             return UserDialogs.Instance.AlertAsync(message, title, buttonLabel);
         }
-        
     }
 }

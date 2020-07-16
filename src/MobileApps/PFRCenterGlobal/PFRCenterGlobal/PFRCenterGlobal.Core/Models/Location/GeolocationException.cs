@@ -1,6 +1,6 @@
-﻿﻿using System;
+﻿using System;
 
- namespace PFRCenterGlobal.Core.Core.Models.Location
+namespace PFRCenterGlobal.Core.Models.Location
 {
     public class GeolocationException : Exception
     {

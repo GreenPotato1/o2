@@ -1,4 +1,4 @@
-﻿namespace PFRCenterGlobal.Core.Core.Animations.Base
+﻿namespace PFRCenterGlobal.Core.Animations.Base
 {
     public enum EasingType
     {

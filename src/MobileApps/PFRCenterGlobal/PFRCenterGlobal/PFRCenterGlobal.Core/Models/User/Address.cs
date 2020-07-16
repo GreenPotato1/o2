@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PFRCenterGlobal.Core.Core.Models.User
+namespace PFRCenterGlobal.Core.Models.User
 {
     public class Address
     {

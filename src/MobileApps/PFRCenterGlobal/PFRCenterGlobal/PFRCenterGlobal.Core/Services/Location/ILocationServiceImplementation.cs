@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using PFRCenterGlobal.Core.Core.Models.Location;
+using PFRCenterGlobal.Core.Models.Location;
 
-namespace PFRCenterGlobal.Core.Core.Services.Location
+namespace PFRCenterGlobal.Core.Services.Location
 {
     public interface ILocationServiceImplementation
     {

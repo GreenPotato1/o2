@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using IdentityModel;
 using PCLCrypto;
-using PFRCenterGlobal.Core.Core.Helpers;
-using PFRCenterGlobal.Core.Core.Models.Token;
-using PFRCenterGlobal.Core.Core.Services.RequestProvider;
+using PFRCenterGlobal.Core.Helpers;
+using PFRCenterGlobal.Core.Models.Token;
+using PFRCenterGlobal.Core.Services.RequestProvider;
 using static PCLCrypto.WinRTCrypto;
 
-namespace PFRCenterGlobal.Core.Core.Services.Identity
+namespace PFRCenterGlobal.Core.Services.Identity
 {
     public class IdentityService : IIdentityService
     {

@@ -1,6 +1,6 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace PFRCenterGlobal.Core.Core.Services.Settings
+namespace PFRCenterGlobal.Core.Services.Settings
 {
     public interface ISettingsService
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PFRCenterGlobal.Core.Core.Exceptions
+namespace PFRCenterGlobal.Core.Exceptions
 {
     public class ServiceAuthenticationException : Exception
     {

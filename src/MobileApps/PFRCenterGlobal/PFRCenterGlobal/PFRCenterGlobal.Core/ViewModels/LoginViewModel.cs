@@ -1,19 +1,19 @@
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using IdentityModel.Client;
-using PFRCenterGlobal.Core.Core.Models.User;
-using PFRCenterGlobal.Core.Core.Services.Identity;
-using PFRCenterGlobal.Core.Core.Services.OpenUrl;
-using PFRCenterGlobal.Core.Core.Services.Settings;
-using PFRCenterGlobal.Core.Core.Validations;
-using PFRCenterGlobal.Core.Core.ViewModels.Base;
+using PFRCenterGlobal.Core.Models.User;
+using PFRCenterGlobal.Core.Services.Identity;
+using PFRCenterGlobal.Core.Services.OpenUrl;
+using PFRCenterGlobal.Core.Services.Settings;
+using PFRCenterGlobal.Core.Validations;
+using PFRCenterGlobal.Core.ViewModels.Base;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.ViewModels
+namespace PFRCenterGlobal.Core.ViewModels
 {
-     public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelBase
     {
         private ValidatableObject<string> _userName;
         private ValidatableObject<string> _password;

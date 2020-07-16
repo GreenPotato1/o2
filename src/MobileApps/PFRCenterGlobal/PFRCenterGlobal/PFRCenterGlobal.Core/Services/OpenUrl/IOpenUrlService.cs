@@ -1,4 +1,4 @@
-﻿namespace PFRCenterGlobal.Core.Core.Services.OpenUrl
+﻿namespace PFRCenterGlobal.Core.Services.OpenUrl
 {
     public interface IOpenUrlService
     {

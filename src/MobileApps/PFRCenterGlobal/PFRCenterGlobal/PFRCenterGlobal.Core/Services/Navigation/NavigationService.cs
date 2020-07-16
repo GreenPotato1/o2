@@ -1,14 +1,14 @@
-using System;
+﻿using System;
 using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
-using PFRCenterGlobal.Core.Core.Services.Settings;
-using PFRCenterGlobal.Core.Core.ViewModels;
-using PFRCenterGlobal.Core.Core.ViewModels.Base;
-using PFRCenterGlobal.Core.Core.Views;
+using PFRCenterGlobal.Core.Services.Settings;
+using PFRCenterGlobal.Core.ViewModels;
+using PFRCenterGlobal.Core.ViewModels.Base;
+using PFRCenterGlobal.Core.Views;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.Services.Navigation
+namespace PFRCenterGlobal.Core.Services.Navigation
 {
     public class NavigationService : INavigationService
     {
@@ -119,11 +119,6 @@ namespace PFRCenterGlobal.Core.Core.Services.Navigation
 
             Page page = Activator.CreateInstance(pageType) as Page;
             return page;
-        }
-
-        public Task Clear()
-        {
-            throw new NotImplementedException();
         }
     }
 }

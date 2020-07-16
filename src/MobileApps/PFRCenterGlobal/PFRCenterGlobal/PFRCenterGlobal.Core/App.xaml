@@ -1,23 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:converters="clr-namespace:PFRCenterGlobal.Core.Core.Converters;assembly=PFRCenterGlobal.Core"
-             xmlns:behaviors="clr-namespace:PFRCenterGlobal.Core.Core.Behaviors;assembly=PFRCenterGlobal.Core"
+             xmlns:converters="clr-namespace:PFRCenterGlobal.Core.Converters;assembly=PFRCenterGlobal.Core"
+             xmlns:behaviors="clr-namespace:PFRCenterGlobal.Core.Behaviors;assembly=PFRCenterGlobal.Core"
 
-             mc:Ignorable="d"
-             x:Class="PFRCenterGlobal.Core.Core.App">
+             x:Class="eShopOnContainers.App">
     <Application.Resources>
-   <ResourceDictionary>
+        <ResourceDictionary>
+
             <!-- COLORS -->
             <Color x:Key="WhiteColor">#ffffff</Color>
             <Color x:Key="BlackColor">#000000</Color>
             <Color x:Key="BackgroundColor">#F4F6FA</Color>
             <Color x:Key="AccentColor">#00857D</Color>
             <Color x:Key="LightGreenColor">#83D01B</Color>
-            <Color x:Key="GreenColor">#2b2f8f</Color>
-            <Color x:Key="DarkGreenColor">#ba1c24</Color>
+            <Color x:Key="GreenColor">#00A69C</Color>
+            <Color x:Key="DarkGreenColor">#00857D</Color>
             <Color x:Key="GrayColor">#e2e2e2</Color>
             <Color x:Key="ErrorColor">#ff5252</Color>
             <Color x:Key="TextColor">#757575</Color>
@@ -36,7 +34,7 @@
             <Color x:Key="AndroidDefaultAccentColorColor">#1FAECE</Color>
             <Color x:Key="AndroidListViewBackgroundColor">Transparent</Color>
             <Color x:Key="iOSListViewBackgroundColor">Transparent</Color>
-            
+
             <OnPlatform x:TypeArguments="Color"
                         x:Key="ActivityIndicatorColor">
                 <On Platform="iOS" Value="{ StaticResource iOSDefaultTintColor }" />
@@ -87,21 +85,21 @@
             <OnPlatform x:Key="MontserratRegular"
                         x:TypeArguments="x:String">
                 <On Platform="iOS" Value="Montserrat-Regular" />
-                <!-- <On Platform="Android" Value="Montserrat-Regular.ttf#Montserrat" /> -->
+                <On Platform="Android" Value="Montserrat-Regular.ttf#Montserrat" />
                 <On Platform="UWP, WinRT, WinPhone" Value="Assets/Fonts/Montserrat-Regular.ttf#Montserrat" />
             </OnPlatform>
 
             <OnPlatform x:Key="MontserratBold"
                         x:TypeArguments="x:String">
                 <On Platform="iOS" Value="Montserrat-Bold" />
-                <!-- <On Platform="Android" Value="Montserrat-Bold.ttf#Montserrat" /> -->
+                <On Platform="Android" Value="Montserrat-Bold.ttf#Montserrat" />
                 <On Platform="UWP, WinRT, WinPhone" Value="Assets/Fonts/Montserrat-Bold.ttf#Montserrat" />
             </OnPlatform>
 
             <OnPlatform x:Key="SourceSansProRegular"
                         x:TypeArguments="x:String">
                 <On Platform="iOS" Value="SourceSansPro-Regular" />
-                <!-- <On Platform="Android" Value="SourceSansPro-Regular.ttf#Source Sans Pro" /> -->
+                <On Platform="Android" Value="SourceSansPro-Regular.ttf#Source Sans Pro" />
                 <On Platform="UWP, WinRT, WinPhone" Value="Assets/Fonts/SourceSansPro-Regular.ttf#Source Sans Pro" />
             </OnPlatform>
             
@@ -299,7 +297,7 @@
                 <Setter Property="BarBackgroundColor" Value="{StaticResource GreenColor}"/>
                 <Setter Property="BarTextColor" Value="{StaticResource WhiteColor}"/>
             </Style>
+            
         </ResourceDictionary>
-        
     </Application.Resources>
 </Application>

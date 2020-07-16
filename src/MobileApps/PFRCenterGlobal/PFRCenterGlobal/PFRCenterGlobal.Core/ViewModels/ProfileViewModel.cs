@@ -1,15 +1,53 @@
+﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using PFRCenterGlobal.Core.Core.Models.User;
-using PFRCenterGlobal.Core.Core.ViewModels.Base;
+using PFRCenterGlobal.Core.Extensions;
+using PFRCenterGlobal.Core.Models.Orders;
+using PFRCenterGlobal.Core.Models.User;
+using PFRCenterGlobal.Core.Services.Order;
+using PFRCenterGlobal.Core.Services.Settings;
+using PFRCenterGlobal.Core.ViewModels.Base;
 using Xamarin.Forms;
 
-namespace PFRCenterGlobal.Core.Core.ViewModels
+namespace PFRCenterGlobal.Core.ViewModels
 {
     public class ProfileViewModel : ViewModelBase
     {
+        private readonly ISettingsService _settingsService;
+        private readonly IOrderService _orderService;
+        private ObservableCollection<Order> _orders;
+
+        public ProfileViewModel(ISettingsService settingsService, IOrderService orderService)
+        {
+            _settingsService = settingsService;
+            _orderService = orderService;
+        }
+
+        public ObservableCollection<Order> Orders
+        {
+            get { return _orders; }
+            set
+            {
+                _orders = value;
+                RaisePropertyChanged(() => Orders);
+            }
+        }
 
         public ICommand LogoutCommand => new Command(async () => await LogoutAsync());
+
+        public ICommand OrderDetailCommand => new Command<Order>(async (order) => await OrderDetailAsync(order));
+
+        public override async Task InitializeAsync(object navigationData)
+        {
+            IsBusy = true;
+
+            // Get orders
+            var authToken = _settingsService.AuthAccessToken;
+            var orders = await _orderService.GetOrdersAsync(authToken);
+            Orders = orders.ToObservableCollection();
+
+            IsBusy = false;
+        }
 
         private async Task LogoutAsync()
         {
@@ -20,6 +58,11 @@ namespace PFRCenterGlobal.Core.Core.ViewModels
             await NavigationService.RemoveBackStackAsync();
 
             IsBusy = false;
+        }
+
+        private async Task OrderDetailAsync(Order order)
+        {
+            await NavigationService.NavigateToAsync<OrderDetailViewModel>(order);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace PFRCenterGlobal.Core.Core.Extensions
+namespace PFRCenterGlobal.Core.Extensions
 {
     public static class ObservableExtension
     {

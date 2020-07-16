@@ -6,7 +6,7 @@ using MinskArenaApp.Droid.Effects;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ResolutionGroupName("eShopOnContainers")]
+[assembly: ResolutionGroupName("PFRCenterGlobal")]
 [assembly: ExportEffect(typeof(EntryLineColorEffect), "EntryLineColorEffect")]
 namespace MinskArenaApp.Droid.Effects
 {

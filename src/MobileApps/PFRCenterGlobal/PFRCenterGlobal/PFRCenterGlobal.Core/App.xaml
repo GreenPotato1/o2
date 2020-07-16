@@ -12,10 +12,10 @@
             <Color x:Key="WhiteColor">#ffffff</Color>
             <Color x:Key="BlackColor">#000000</Color>
             <Color x:Key="BackgroundColor">#F4F6FA</Color>
-            <Color x:Key="AccentColor">#00857D</Color>
-            <Color x:Key="LightGreenColor">#83D01B</Color>
-            <Color x:Key="GreenColor">#00A69C</Color>
-            <Color x:Key="DarkGreenColor">#00857D</Color>
+            <Color x:Key="AccentColor">#003885</Color>
+            <Color x:Key="LightGreenColor">#14bbe5</Color>
+            <Color x:Key="GreenColor">#148be5</Color>
+            <Color x:Key="DarkGreenColor">#0986ce</Color>
             <Color x:Key="GrayColor">#e2e2e2</Color>
             <Color x:Key="ErrorColor">#ff5252</Color>
             <Color x:Key="TextColor">#757575</Color>

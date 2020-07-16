@@ -1,4 +1,7 @@
-﻿namespace PFRCenterGlobal.UnitTests.Mocks
+﻿using PFRCenterGlobal.Core.Validations;
+using PFRCenterGlobal.Core.ViewModels.Base;
+
+namespace PFRCenterGlobal.UnitTests.Mocks
 {
     public class MockViewModel : ViewModelBase
 	{

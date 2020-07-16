@@ -1,4 +1,8 @@
-﻿namespace PFRCenterGlobal.Windows
+﻿using Windows.Foundation.Metadata;
+using Windows.UI;
+using Windows.UI.ViewManagement;
+
+namespace PFRCenterGlobal.UWP
 {
     public sealed partial class MainPage
     {

@@ -1,5 +1,6 @@
 ﻿using FFImageLoading.Forms.Touch;
 using Foundation;
+using PFRCenterGlobal.Core;
 using UIKit;
 
 namespace PFRCenterGlobal.iOS

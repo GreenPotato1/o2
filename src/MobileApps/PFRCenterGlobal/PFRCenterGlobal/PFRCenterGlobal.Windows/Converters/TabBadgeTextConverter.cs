@@ -1,4 +1,8 @@
-﻿using UI = Windows.UI;
+﻿
+using System;
+using PFRCenterGlobal.Core.Controls;
+using Xamarin.Forms;
+using UI = Windows.UI;
 
 namespace PFRCenterGlobal.Windows.Converters
 {

@@ -1,6 +1,13 @@
 ﻿using PFRCenterGlobal.Windows.Controls;
+using PFRCenterGlobal.Windows.Extensions;
 using PFRCenterGlobal.Windows.Helpers;
 using PFRCenterGlobal.Windows.Renderers;
+using System.Diagnostics;
+using System.Linq;
+using PFRCenterGlobal.Core.Controls;
+using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+using Xamarin.Forms.Platform.UWP;
 using Xaml = Windows.UI.Xaml;
 
 [assembly: ExportRenderer(typeof(TabbedPage), typeof(CustomTabbedPageRenderer))]

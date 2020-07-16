@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using CoreLocation;
 using Foundation;
+using PFRCenterGlobal.Core.Models.Permissions;
+using PFRCenterGlobal.Core.Services.Permissions;
 using UIKit;
 
 namespace PFRCenterGlobal.iOS.Services

@@ -1,4 +1,8 @@
-﻿namespace PFRCenterGlobal.Windows.Helpers
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace PFRCenterGlobal.Windows.Helpers
 {
     internal class Timeout
     {

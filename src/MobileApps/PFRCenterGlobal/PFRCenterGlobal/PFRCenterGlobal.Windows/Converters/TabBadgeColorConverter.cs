@@ -1,4 +1,8 @@
 ﻿using PFRCenterGlobal.Windows.Helpers;
+using System;
+using Windows.UI.Xaml.Media;
+using PFRCenterGlobal.Core.Controls;
+using Xamarin.Forms;
 using UI = Windows.UI;
 
 namespace PFRCenterGlobal.Windows.Converters

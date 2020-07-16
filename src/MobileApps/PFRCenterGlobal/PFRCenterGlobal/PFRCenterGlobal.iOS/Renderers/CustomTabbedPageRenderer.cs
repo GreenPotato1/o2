@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Foundation;
+using PFRCenterGlobal.Core.Controls;
 using PFRCenterGlobal.iOS.Renderers;
 using UIKit;
 using Xamarin.Forms;

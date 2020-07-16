@@ -1,4 +1,8 @@
-﻿namespace PFRCenterGlobal.Windows.Controls
+﻿using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+
+namespace PFRCenterGlobal.Windows.Controls
 {
     public sealed partial class TabItem : UserControl
     {

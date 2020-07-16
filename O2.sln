@@ -54,7 +54,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{AC19F914-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Targets", "Targets", "{DB392A89-901A-4849-A65C-295575D4D30F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PFRCenterGlobal.Core", "src\MobileApps\PFRCenterGlobal\PFRCenterGlobal\PFRCenterGlobal.Core\PFRCenterGlobal.Core.csproj", "{C047CAA3-430B-4B08-B283-08938D53C15F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PFRCenterGlobal.Core", "src\MobileApps\PFRCenterGlobal\PFRCenterGlobal\PFRCenterGlobal.Core\PFRCenterGlobal.Core.csproj", "{C047CAA3-430B-4B08-B283-08938D53C15F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PFRCenterGlobal.Droid", "src\MobileApps\PFRCenterGlobal\PFRCenterGlobal\PFRCenterGlobal.Droid\PFRCenterGlobal.Droid.csproj", "{62DBB163-9CA9-4818-B48B-13233DF37C24}"
 EndProject
@@ -506,6 +506,7 @@ Global
 		{C3C1E2CF-B1F7-4654-BBDC-50143DB22E0B}.Release|x64.Build.0 = Release|x64
 		{C3C1E2CF-B1F7-4654-BBDC-50143DB22E0B}.Release|x86.ActiveCfg = Release|x86
 		{C3C1E2CF-B1F7-4654-BBDC-50143DB22E0B}.Release|x86.Build.0 = Release|x86
+		{C3C1E2CF-B1F7-4654-BBDC-50143DB22E0B}.Release|x86.Deploy.0 = Release|x86
 		{A289A7F0-ACD8-42AE-87B6-AB1AFD310BF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A289A7F0-ACD8-42AE-87B6-AB1AFD310BF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A289A7F0-ACD8-42AE-87B6-AB1AFD310BF1}.Debug|ARM.ActiveCfg = Debug|Any CPU

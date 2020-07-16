@@ -1,4 +1,15 @@
-﻿namespace PFRCenterGlobal.Windows
+﻿using FFImageLoading.Forms;
+using FFImageLoading.Forms.WinUWP;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using Windows.ApplicationModel;
+using Windows.ApplicationModel.Activation;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
+
+namespace PFRCenterGlobal.UWP
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

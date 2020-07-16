@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using CoreLocation;
 using Foundation;
+using PFRCenterGlobal.Core.Models.Location;
 
 namespace PFRCenterGlobal.iOS.Services
 {

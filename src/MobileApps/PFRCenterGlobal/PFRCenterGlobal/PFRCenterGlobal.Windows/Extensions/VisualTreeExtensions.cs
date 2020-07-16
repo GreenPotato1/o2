@@ -1,4 +1,15 @@
-﻿namespace PFRCenterGlobal.Windows.Extensions
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using Windows.ApplicationModel;
+using Windows.Foundation;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Media;
+
+namespace PFRCenterGlobal.Windows.Extensions
 {
     public static class VisualTreeExtensions
     {

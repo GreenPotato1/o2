@@ -1,5 +1,12 @@
-﻿using PFRCenterGlobal.Windows.Helpers;
+﻿
 using PFRCenterGlobal.Windows.Services;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
+using Windows.Foundation;
+using PFRCenterGlobal.Core.Models.Location;
+using PFRCenterGlobal.Core.Services.Location;
 
 [assembly: Xamarin.Forms.Dependency(typeof(LocationServiceImplementation))]
 namespace PFRCenterGlobal.Windows.Services
@@ -81,8 +88,8 @@ namespace PFRCenterGlobal.Windows.Services
 
         public Task<Position> GetPositionAsync(TimeSpan? timeout = null, CancellationToken? cancelToken = null)
         {
-            var timeoutMilliseconds = timeout.HasValue ? (int)timeout.Value.TotalMilliseconds : Timeout.Infinite;
-            if (timeoutMilliseconds < 0 && timeoutMilliseconds != Timeout.Infinite)
+            var timeoutMilliseconds = timeout.HasValue ? (int)timeout.Value.TotalMilliseconds : PFRCenterGlobal.Windows.Helpers.Timeout.Infinite;
+            if (timeoutMilliseconds < 0 && timeoutMilliseconds != PFRCenterGlobal.Windows.Helpers.Timeout.Infinite)
                 throw new ArgumentOutOfRangeException(nameof(timeout));
 
             if (!cancelToken.HasValue)
@@ -90,7 +97,7 @@ namespace PFRCenterGlobal.Windows.Services
 
             var pos = _locator.GetGeopositionAsync(TimeSpan.FromTicks(0), TimeSpan.FromDays(365));
             cancelToken.Value.Register(o => ((IAsyncOperation<Geoposition>)o).Cancel(), pos);
-            var timer = new Timeout(timeoutMilliseconds, pos.Cancel);
+            var timer = new PFRCenterGlobal.Windows.Helpers.Timeout(timeoutMilliseconds, pos.Cancel);
             var tcs = new TaskCompletionSource<Position>();
 
             pos.Completed = (op, s) =>

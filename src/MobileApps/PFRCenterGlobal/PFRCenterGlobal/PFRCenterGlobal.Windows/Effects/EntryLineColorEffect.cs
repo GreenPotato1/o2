@@ -1,4 +1,11 @@
 ﻿using PFRCenterGlobal.Windows.Effects;
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using Windows.UI.Xaml.Controls;
+using PFRCenterGlobal.Core.Behaviors;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.UWP;
 using Media = Windows.UI.Xaml.Media;
 using UI = Windows.UI;
 using Xaml = Windows.UI.Xaml;

@@ -2,13 +2,13 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="PFRCenterGlobal.Core.Views.MainView"
+            xmlns:base="clr-namespace:PFRCenterGlobal.Core.ViewModels.Base;assembly=PFRCenterGlobal.Core"
             xmlns:views="clr-namespace:PFRCenterGlobal.Core.Views;assembly=PFRCenterGlobal.Core"
-			xmlns:viewModelBase="clr-namespace:PFRCenterGlobal.Core.ViewModels.Base;assembly=PFRCenterGlobal.Core"
             xmlns:controls="clr-namespace:PFRCenterGlobal.Core.Controls;assembly=PFRCenterGlobal.Core"
             BarBackgroundColor="{StaticResource DarkGreenColor}"
             BackgroundColor="{StaticResource BackgroundColor}"
             BarTextColor="{StaticResource WhiteColor}"
-			viewModelBase:ViewModelLocator.AutoWireViewModel="true">
+            base:ViewModelLocator.AutoWireViewModel="true">
     <TabbedPage.Title>
         <OnPlatform x:TypeArguments="x:String">
             <On Platform="iOS, UWP, WinRT, WinPhone" Value="eShop on Containers" />

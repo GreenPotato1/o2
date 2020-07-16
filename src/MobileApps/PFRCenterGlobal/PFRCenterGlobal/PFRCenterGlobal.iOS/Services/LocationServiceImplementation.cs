@@ -3,6 +3,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using CoreLocation;
 using Foundation;
+using PFRCenterGlobal.Core.Models.Location;
+using PFRCenterGlobal.Core.Models.Permissions;
+using PFRCenterGlobal.Core.Services.Location;
+using PFRCenterGlobal.Core.Services.Permissions;
 using PFRCenterGlobal.iOS.Services;
 using UIKit;
 

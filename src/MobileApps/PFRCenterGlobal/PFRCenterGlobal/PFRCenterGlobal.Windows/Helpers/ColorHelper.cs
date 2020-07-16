@@ -1,4 +1,5 @@
-﻿using UI = Windows.UI;
+﻿using Xamarin.Forms;
+using UI = Windows.UI;
 
 namespace PFRCenterGlobal.Windows.Helpers
 {

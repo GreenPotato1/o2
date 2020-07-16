@@ -1,4 +1,9 @@
 ﻿using PFRCenterGlobal.Windows.Renderers;
+using SlideOverKit.UWP;
+using System;
+using PFRCenterGlobal.Core.Views;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.UWP;
 
 [assembly: ExportRenderer(typeof(CatalogView), typeof(SlideDownMenuPageRenderer))]
 namespace PFRCenterGlobal.Windows.Renderers

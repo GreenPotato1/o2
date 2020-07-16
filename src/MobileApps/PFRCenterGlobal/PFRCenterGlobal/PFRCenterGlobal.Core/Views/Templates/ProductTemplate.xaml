@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentView 
-    xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:controls="clr-namespace:PFRCenterGlobal.Core.Controls;assembly=PFRCenterGlobal.Core"
     x:Class="PFRCenterGlobal.Core.Views.Templates.ProductTemplate">
     <ContentView.Resources>
         <ResourceDictionary>
-            
-            <Style x:Key="ProductNameStyle" 
-               TargetType="{x:Type Label}">
+
+            <Style x:Key="ProductNameStyle"
+                   TargetType="{x:Type Label}">
                 <Setter Property="FontFamily"
                         Value="{StaticResource MontserratRegular}" />
                 <Setter Property="FontSize"
@@ -19,9 +20,9 @@
                 <Setter Property="Margin"
                         Value="0, 12, 0, 6" />
             </Style>
-            
-            <Style x:Key="ProductPriceStyle" 
-               TargetType="{x:Type Label}">
+
+            <Style x:Key="ProductPriceStyle"
+                   TargetType="{x:Type Label}">
                 <Setter Property="FontAttributes"
                         Value="Bold" />
                 <Setter Property="FontFamily"
@@ -35,9 +36,9 @@
                 <Setter Property="Margin"
                         Value="0, 6, 0, 12" />
             </Style>
-            
-            <Style x:Key="AddButtonStyle" 
-               TargetType="{x:Type Grid}">
+
+            <Style x:Key="AddButtonStyle"
+                   TargetType="{x:Type Grid}">
                 <Setter Property="HeightRequest"
                         Value="42" />
                 <Setter Property="WidthRequest"
@@ -49,15 +50,15 @@
                 <Setter Property="Margin"
                         Value="0,0,0,24" />
             </Style>
-            
-            <Style x:Key="AddImageStyle" 
-               TargetType="{x:Type Image}">
+
+            <Style x:Key="AddImageStyle"
+                   TargetType="{x:Type Image}">
                 <Setter Property="HeightRequest"
                         Value="24" />
                 <Setter Property="WidthRequest"
                         Value="24" />
             </Style>
-            
+
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
@@ -71,9 +72,9 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <!-- IMAGE -->
-            <ffimageloading:CachedImage 
+            <ffimageloading:CachedImage
                 Grid.Row="0"
-                Source="{Binding PictureUri}"     
+                Source="{Binding PictureUri}"
                 Aspect="AspectFill">
                 <ffimageloading:CachedImage.LoadingPlaceholder>
                     <OnPlatform x:TypeArguments="ImageSource">
@@ -95,15 +96,15 @@
                 <controls:AddBasketButton />
             </Grid>
             <!-- NAME -->
-            <Label 
+            <Label
                 Grid.Row="1"
                 Text="{Binding Name, Converter={StaticResource ToUpperConverter}}"
-                Style="{StaticResource ProductNameStyle}"/>
+                Style="{StaticResource ProductNameStyle}" />
             <!-- PRICE -->
-            <Label 
+            <Label
                 Grid.Row="2"
                 Text="{Binding Price, StringFormat='${0:N}'}"
-                Style="{StaticResource ProductPriceStyle}"/>
+                Style="{StaticResource ProductPriceStyle}" />
         </Grid>
     </ContentView.Content>
 </ContentView>

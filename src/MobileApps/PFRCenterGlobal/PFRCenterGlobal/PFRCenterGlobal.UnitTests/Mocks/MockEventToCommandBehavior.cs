@@ -1,4 +1,6 @@
-﻿namespace PFRCenterGlobal.UnitTests.Mocks
+﻿using PFRCenterGlobal.Core.Behaviors;
+
+namespace PFRCenterGlobal.UnitTests.Mocks
 {
 	public class MockEventToCommandBehavior : EventToCommandBehavior
 	{

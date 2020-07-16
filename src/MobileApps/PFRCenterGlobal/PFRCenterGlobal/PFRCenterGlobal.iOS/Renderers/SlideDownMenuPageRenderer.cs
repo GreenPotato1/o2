@@ -1,5 +1,6 @@
 ﻿using System;
 using CoreGraphics;
+using PFRCenterGlobal.Core.Views;
 using PFRCenterGlobal.iOS.Renderers;
 using SlideOverKit.iOS;
 using UIKit;

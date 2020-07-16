@@ -7,8 +7,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>PFRCenterGlobal.Droid</RootNamespace>
-    <AssemblyName>PFRCenterGlobal.Android</AssemblyName>
+    <RootNamespace>PFRCenterGlobal.Core.Droid</RootNamespace>
+    <AssemblyName>PFRCenterGlobal.Core.Android</AssemblyName>
     <Deterministic>True</Deterministic>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
@@ -68,6 +68,19 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\banner.png" />
+    <AndroidResource Include="Resources\drawable\default_campaign.png" />
+    <AndroidResource Include="Resources\drawable\default_product.png" />
+    <AndroidResource Include="Resources\drawable\fake_campaign_01.png" />
+    <AndroidResource Include="Resources\drawable\fake_campaign_02.png" />
+    <AndroidResource Include="Resources\drawable\fake_product_01.png" />
+    <AndroidResource Include="Resources\drawable\fake_product_02.png" />
+    <AndroidResource Include="Resources\drawable\fake_product_03.png" />
+    <AndroidResource Include="Resources\drawable\fake_product_04.png" />
+    <AndroidResource Include="Resources\drawable\fake_product_05.png" />
+    <AndroidResource Include="Resources\drawable\icon.png" />
+    <AndroidResource Include="Resources\drawable\Logo.png" />
+    <AndroidResource Include="Resources\drawable\noimage.png" />
     <AndroidResource Include="Resources\layout\Tabbar.xml" />
     <AndroidResource Include="Resources\layout\Toolbar.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
@@ -89,7 +102,11 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PFRCenterGlobal\PFRCenterGlobal.csproj">
+    <ProjectReference Include="..\PFRCenterGlobal.Core\PFRCenterGlobal.Core.csproj">
+      <Project>{1e76b956-275e-489c-a091-b1af37fe11b5}</Project>
+      <Name>PFRCenterGlobal.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PFRCenterGlobal\PFRCenterGlobal.Core.csproj">
       <Project>{1D832D3D-58DB-42A3-9E0C-BBFEDB4433D6}</Project>
       <Name>PFRCenterGlobal</Name>
     </ProjectReference>

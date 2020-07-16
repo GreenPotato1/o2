@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace PFRCenterGlobal.UWP
+namespace PFRCenterGlobal.Core.UWP
 {
     public sealed partial class MainPage
     {
@@ -21,7 +21,7 @@ namespace PFRCenterGlobal.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new PFRCenterGlobal.App());
+            LoadApplication(new PFRCenterGlobal.Core.App());
         }
     }
 }

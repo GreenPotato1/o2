@@ -6,8 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using PFRCenterGlobal.Core.Core;
 
-namespace PFRCenterGlobal.Droid
+namespace PFRCenterGlobal.Core.Droid
 {
     [Activity(Label = "PFRCenterGlobal", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity

@@ -9,9 +9,9 @@
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>PFRCenterGlobal.iOS</RootNamespace>
+    <RootNamespace>PFRCenterGlobal.Core.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>PFRCenterGlobal.iOS</AssemblyName>
+    <AssemblyName>PFRCenterGlobal.Core.iOS</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <ProvisioningType>automatic</ProvisioningType>
@@ -128,7 +128,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\PFRCenterGlobal\PFRCenterGlobal.csproj">
+    <ProjectReference Include="..\PFRCenterGlobal\PFRCenterGlobal.Core.csproj">
       <Project>{1D832D3D-58DB-42A3-9E0C-BBFEDB4433D6}</Project>
       <Name>PFRCenterGlobal</Name>
     </ProjectReference>

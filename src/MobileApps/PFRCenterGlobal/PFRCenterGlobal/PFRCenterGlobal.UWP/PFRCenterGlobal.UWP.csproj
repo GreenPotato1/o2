@@ -7,8 +7,8 @@
     <ProjectGuid>{43656F9A-2240-4C66-A3BA-10A10C860B79}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PFRCenterGlobal.UWP</RootNamespace>
-    <AssemblyName>PFRCenterGlobal.UWP</AssemblyName>
+    <RootNamespace>PFRCenterGlobal.Core.UWP</RootNamespace>
+    <AssemblyName>PFRCenterGlobal.Core.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
@@ -148,7 +148,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PFRCenterGlobal\PFRCenterGlobal.csproj">
+    <ProjectReference Include="..\PFRCenterGlobal\PFRCenterGlobal.Core.csproj">
       <Project>{1D832D3D-58DB-42A3-9E0C-BBFEDB4433D6}</Project>
       <Name>PFRCenterGlobal</Name>
     </ProjectReference>

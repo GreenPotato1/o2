@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace PFRCenterGlobal.iOS
+namespace PFRCenterGlobal.Core.iOS
 {
     public class Application
     {

@@ -2180,5 +2180,175 @@
         "region": "г. Карачаевск"
       }
     ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 89,
+    "number": "0089071920",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1594990037,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1594990037,
+    "firstname": "Виктория",
+    "lastname": "Субботина",
+    "middlename": "Валерьевна",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      },
+      {
+        "key": "vk",
+        "value": "-"
+      },
+      {
+        "key": "site",
+        "value": "-"
+
+      }
+    ],
+    "locations": [
+      {
+        "country": "-",
+        "region": "-"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 90,
+    "number": "0090071920",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1594990037,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1594990037,
+    "firstname": "Василий",
+    "lastname": "Данилов",
+    "middlename": "Александрович",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      },
+      {
+        "key": "vk",
+        "value": "-"
+      },
+      {
+        "key": "site",
+        "value": "-"
+
+      }
+    ],
+    "locations": [
+      {
+        "country": "-",
+        "region": "-"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 91,
+    "number": "0091071920",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1594990037,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1594990037,
+    "firstname": "Мария",
+    "lastname": "Лимина",
+    "middlename": "Ивановна",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      },
+      {
+        "key": "vk",
+        "value": "-"
+      },
+      {
+        "key": "site",
+        "value": "-"
+
+      }
+    ],
+    "locations": [
+      {
+        "country": "-",
+        "region": "-"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 92,
+    "number": "0092071920",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1594990037,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1594990037,
+    "firstname": "Русанна",
+    "lastname": "Борисова",
+    "middlename": "Маратовна",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      },
+      {
+        "key": "vk",
+        "value": "-"
+      },
+      {
+        "key": "site",
+        "value": "-"
+
+      }
+    ],
+    "locations": [
+      {
+        "country": "-",
+        "region": "-"
+      }
+    ]
+  },
+  {
+    "serial": "A",
+    "shortNumber": 93,
+    "number": "0093071920",
+    "education": "Гипнотерапевт ПФР категория А",
+    "dateOfCert": 1594990037,
+    "visible": true,
+    "lock": false,
+    "modifiedDate": 1594990037,
+    "firstname": "Филипп",
+    "lastname": "Широков",
+    "middlename": "Георгиевич",
+    "contacts": [
+      {
+        "key": "phone",
+        "value": "-"
+      },
+      {
+        "key": "vk",
+        "value": "-"
+      },
+      {
+        "key": "site",
+        "value": "-"
+
+      }
+    ],
+    "locations": [
+      {
+        "country": "-",
+        "region": "-"
+      }
+    ]
   }
 ]

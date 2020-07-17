@@ -21,6 +21,7 @@
     </NuGetPackageImportStamp>
     <AndroidTlsProvider>
     </AndroidTlsProvider>
+    <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,7 +34,6 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <LangVersion>default</LangVersion>
-    <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -45,7 +45,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -93,7 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PFRCenterGlobal.UnitTests\PFRCenterGlobal.UnitTests.csproj">
-      <Project>{FDD910BC-DF0F-483D-B7D5-C7D831855172}</Project>
+      <Project>{DB825DF5-3375-4809-B0D2-E79989A6C17D}</Project>
       <Name>PFRCenterGlobal.UnitTests</Name>
     </ProjectReference>
   </ItemGroup>

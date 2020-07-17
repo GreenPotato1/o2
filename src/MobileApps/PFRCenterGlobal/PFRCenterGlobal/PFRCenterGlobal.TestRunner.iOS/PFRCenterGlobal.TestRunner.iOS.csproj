@@ -91,7 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PFRCenterGlobal.UnitTests\PFRCenterGlobal.UnitTests.csproj">
-      <Project>{FDD910BC-DF0F-483D-B7D5-C7D831855172}</Project>
+      <Project>{DB825DF5-3375-4809-B0D2-E79989A6C17D}</Project>
       <Name>PFRCenterGlobal.UnitTests</Name>
     </ProjectReference>
   </ItemGroup>

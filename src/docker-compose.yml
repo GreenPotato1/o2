@@ -1,22 +1,12 @@
 version: '3.4'
 
 services:
-
-  seq:
-    image: datalust/seq:latest
-
+    
+  # MSSQL
   sqldata:
     image: mcr.microsoft.com/mssql/server:2017-latest 
-
-  nosqldata:
-    image: mongo
-
-  basketdata:
-    image: redis:alpine
-
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-
+  
+  # O2 Account  
   identity-api:
     image: ${REGISTRY:-o2bionics}/identity.api:${PLATFORM:-linux}-${TAG:-latest}
     build:
@@ -24,7 +14,8 @@ services:
       dockerfile: Services/Identity/Identity.API/Dockerfile
     depends_on:
       - sqldata
-
+   
+  # O2 Certificate
   certificate-api:
     image: ${REGISTRY:-o2bionics}/o2-certificate.api:${PLATFORM:-linux}-${TAG:-latest}
     build:

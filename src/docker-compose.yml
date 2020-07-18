@@ -2,52 +2,33 @@ version: '3.4'
 
 services:
 
+  seq:
+    image: datalust/seq:latest
+
   sqldata:
     image: mcr.microsoft.com/mssql/server:2017-latest 
-    environment:
-      - SA_PASSWORD=Pass@word
-      - ACCEPT_EULA=Y
-    ports:
-      - "5433:1433"
-  
+
+  nosqldata:
+    image: mongo
+
+  basketdata:
+    image: redis:alpine
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+
   identity-api:
-  image: ${REGISTRY:-o2bionics}/o2-identity.api:${PLATFORM:-linux}-${TAG:-latest}
-  build:
-    context: .
-    dockerfile: Services/Identity/Identity.API/Dockerfile
-  depends_on:
-    - sqldata
-  environment:
-    - ASPNETCORE_ENVIRONMENT=Development
-    - ASPNETCORE_URLS=http://0.0.0.0:80
-    - SpaClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5104
-    - XamarinCallback=http://${ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP}:5105/xamarincallback
-    - ConnectionString=${ESHOP_AZURE_IDENTITY_DB:-Server=sqldata;Database=Microsoft.eShopOnContainers.Service.IdentityDb;User Id=sa;Password=Pass@word}
-    - MvcClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5100
-    - LocationApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5109
-    - MarketingApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5110
-    - BasketApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5103
-    - OrderingApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5102
-    - MobileShoppingAggClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5120
-    - WebShoppingAggClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5121
-    - WebhooksApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5113
-    - WebhooksWebClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5114
-    - UseCustomizationData=True
-    - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
-    - OrchestratorType=${ORCHESTRATOR_TYPE}
-  ports:
-    - "5105:80"
+    image: ${REGISTRY:-o2bionics}/identity.api:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Services/Identity/Identity.API/Dockerfile
+    depends_on:
+      - sqldata
 
   certificate-api:
     image: ${REGISTRY:-o2bionics}/o2-certificate.api:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
       dockerfile: Services/Certificate/O2.Certificate.API/Dockerfile
-    environment:
-     - ASPNETCORE_ENVIRONMENT=Development
-     - ASPNETCORE_URLS=http://localhost:80
-    ports:
-      - "5000:80"
-      - "5001:443"
     depends_on:
       - sqldata

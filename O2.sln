@@ -2,6 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3AF739CD-81D8-428D-A08A-0A58372DEBF6}"
+	ProjectSection(SolutionItems) = preProject
+		.env = .env
+		Local.testsettings = Local.testsettings
+		NuGet.config = NuGet.config
+	EndProjectSection
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{3AECD354-D657-44C8-A5AC-7B6E6344682F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{2366314C-4AE8-4BF2-88D0-A10AED955319}"
@@ -71,6 +78,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PFRCenterGlobal.TestRunner.Windows", "src\MobileApps\PFRCenterGlobal\PFRCenterGlobal\PFRCenterGlobal.TestRunner.Windows\PFRCenterGlobal.TestRunner.Windows.csproj", "{A7337243-33B8-463A-87AD-944B75EFD820}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PFRCenterGlobal.UnitTests", "src\MobileApps\PFRCenterGlobal\PFRCenterGlobal\PFRCenterGlobal.UnitTests\PFRCenterGlobal.UnitTests.csproj", "{DB825DF5-3375-4809-B0D2-E79989A6C17D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "docker-compose", "src\docker-compose.dcproj", "{FEA0C318-FFED-4D39-8781-265718CA43DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

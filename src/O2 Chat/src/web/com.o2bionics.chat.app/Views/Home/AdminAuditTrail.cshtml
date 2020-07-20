@@ -1,0 +1,201 @@
+﻿@model Com.O2Bionics.ChatService.Web.Console.Models.AuditTrail.AuditTrailModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<!-- Main bar -->
+<div class="mainbar">
+    <!-- Matter -->
+    <div class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="objectTable" class="widget wblue">
+                        <div class="widget-head">
+                            <div class="pull-left">
+                                <h1>@Model.Title</h1>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="widget-content">
+                            <div class="row ">
+                                <div class="col-md-12">
+                                    <div class="search-board audit-trial-search container">
+                                        <div class="row">
+                                            <div class="col-md-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 col-sm-12 col-xs-12 control-label">Dates: </label>
+                                                    <div class="col-md-10 col-sm-12 col-xs-12">
+                                                        <input id="reportrange" class="date-input form-control"
+                                                               data-bind="daterangepicker: dateRange, daterangepickerOptions: dateRangeOptions" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-3 col-sm-12 col-xs-12 control-label">Operations: </label>
+                                                    <div class="col-md-9 col-sm-12 col-xs-12">
+                                                        <select id="selectOperationsSelect"
+                                                                multiple="multiple"
+                                                                data-bind="
+                                                            options: operations,
+                                                            optionsText: 'DisplayName',
+                                                            optionsValue: 'Id',
+                                                            multiselect: {},
+                                                            selectedOptions: operationsSelected" class="form-control"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 col-sm-12 col-xs-12 control-label">Statuses: </label>
+                                                    <div class="col-md-10 col-sm-12 col-xs-12">
+                                                        <select id="selectStatusSelect"
+                                                                multiple="multiple"
+                                                                data-bind="
+                                                            options: statuses,
+                                                            optionsText: 'DisplayName',
+                                                            optionsValue: 'Id',
+                                                            multiselect: {},
+                                                            selectedOptions: statusesSelected" class="form-control"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 col-sm-12 col-xs-12 control-label">Authors: </label>
+                                                    <div class="col-md-10 col-sm-12 col-xs-12">
+                                                        <select id="selectAgentSelect"
+                                                                multiple="multiple"
+                                                                data-bind="
+                                                            options: authors,
+                                                            optionsText: 'DisplayName',
+                                                            optionsValue: 'Id',
+                                                            multiselect: {},
+                                                            selectedOptions: authorsSelected" class="form-control"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 col-sm-12 col-xs-12 control-label">Text:</label>
+                                                    <div class="col-md-10 col-sm-12 col-xs-12">
+                                                        <input data-bind="textInput: wordSearch" class="form-control" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 ">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 col-sm-12 col-xs-12 control-label">Only changed:</label>
+                                                    <div class="col-md-8 col-sm-12 col-xs-12">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" data-bind="checked: changedOnly" class="" />
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <button name="searchbtn" data-bind="click: startSearch" class="btn btn-primary ">Search</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12" style="display: none;" data-bind="visible: errorModel.errorMessages().length > 0">
+                                <div class="padd statement alert-danger" data-bind="foreach: errorModel.errorMessages">
+                                    <p class="" data-bind="text: $data"></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-open-odd-row" data-bind="visible: records().length > 0">
+                                        <thead>
+                                            <tr>
+                                                <th>Time</th>
+                                                <th>Operation</th>
+                                                <th>Status</th>
+                                                <th>Author</th>
+                                                <th>Value</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody data-bind="foreach: records">
+                                            <tr data-bind="click: lazyFormDetails">
+                                                <td style="display: none">
+                                                    <strong data-bind="text: Id"></strong>
+                                                </td>
+                                                <td data-bind="html: Dt.asHtml(Timestamp)"></td>
+                                                <td data-bind="text: Operation"></td>
+                                                <td data-bind="text: Status"></td>
+                                                <td data-bind="text: Author"></td>
+                                                <td data-bind="text: Name"></td>
+                                                <td > <i class="material-icons show-details-btn" data-bind="html:(IsDetailsVisible() ? '&#xE316;' : '&#xE313;')"></i> </td>
+                                            </tr>
+                                            <tr data-bind="visible: IsDetailsVisible, css:(IsDetailsVisible() ? 'show-details-tr' : '')">
+                                                <td colspan="6">
+                                                    <div data-bind="html: Details"></div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" style="text-align: center;">
+                                    <button data-bind="visible: hasMore, click: loadMore" class="btn btn-default btn-raised">Load More</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts_include {
+}
+
+@section scripts{
+    <script type="text/javascript">
+        var currentUserId = @UserIdentity.GetUserId(User.Identity);
+
+        require(
+            ['pages/AuditTrail', 'Dt', 'bindings/daterangepicker'],
+            function (app, dt)
+            {
+                window.Dt = dt.default;
+
+                $(
+                    function ()
+                    {
+                        new app.default(currentUserId, '@Model.FormKind', @Model.MaxDays).run();
+                    });
+            });
+
+        var width = '150px';
+        $("#selectAgentSelect").multiselect(
+            {
+                buttonWidth: width
+            });
+        $("#selectOperationsSelect").multiselect(
+            {
+                buttonWidth: width
+            });
+        $("#selectStatusSelect").multiselect(
+            {
+                buttonWidth: width
+            });
+    </script>
+}

@@ -1,0 +1,71 @@
+body {
+    background: #e5e5e5 !important;
+}
+.chat-title-bar {
+    background: #8d8d8d !important;
+    color: rgba(255,255,255,1) !important;
+}
+
+div.dialog div.message {
+    color: rgb(68, 72, 74);
+}
+#chat-messages-dialog #chat-container {
+    background: #bdbdbd;
+}
+
+#chat-messages-dialog .discussion {
+    background: #bdbdbd;
+}
+
+#chat-messages-dialog .message {
+    background: #ccc;
+}
+
+#chat-messages-dialog .self .message {
+    background: #fefefe;
+}
+
+#chat-messages-dialog .self .message:after {
+    border-color:#fefefe transparent transparent  transparent;
+}
+
+#chat-messages-dialog .other .message {
+    background: #f0f0f0;
+}
+
+#chat-messages-dialog .other .message:after {
+    border-color: transparent #f0f0f0 transparent transparent;
+}
+
+#chat-messages-dialog .system .message {
+    color:#fff;
+}
+
+#chat-messages-dialog textarea.message-text {
+    border-top:1px solid #eaeaea;
+    background-color: #efefef;
+}
+
+#chat-messages-dialog textarea.message-text:disabled { background-color: #bdbdbd; }
+
+#enter-visitor-info-banner {
+    background: #efefef;
+}
+
+.info-banner_visitor {
+    color: #ccc;
+}
+
+.info-banner_transcript {
+    color: #ccc;
+}
+
+#chat-messages-dialog #rtc-call-notification {
+    background: #60ad5e;
+}
+#rtc-call-video {
+    background: #bdbdbd;
+}
+#rtc-call-controls {
+    background: #8d8d8d;
+}

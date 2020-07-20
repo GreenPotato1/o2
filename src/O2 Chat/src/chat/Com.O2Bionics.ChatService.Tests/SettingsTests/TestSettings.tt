@@ -1,0 +1,33 @@
+﻿<#@ template debug="true" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ include file="..\..\Com.O2Bionics.ChatService\Settings\SettingsGenerator.ttinclude" #>
+<#
+    NamespaceName = "Com.O2Bionics.ChatService.Tests.SettingsTests";
+    ClassName = "TestSettings";
+
+    Settings.Add(new SettingsProperty<bool>("BoolProperty", true));
+    Settings.Add(new SettingsProperty<bool?>("NullableBoolProperty1", true));
+    Settings.Add(new SettingsProperty<bool?>("NullableBoolProperty2", null));
+    Settings.Add(new SettingsProperty<int>("IntProperty", 20));
+    Settings.Add(new SettingsProperty<int?>("NullableIntProperty1", 20));
+    Settings.Add(new SettingsProperty<int?>("NullableIntProperty2", null));
+    Settings.Add(new SettingsProperty<float>("FloatProperty", 20));
+    Settings.Add(new SettingsProperty<float?>("NullableFloatProperty1", 20));
+    Settings.Add(new SettingsProperty<float?>("NullableFloatProperty2", null));
+    Settings.Add(new SettingsProperty<double>("DoubleProperty", 20));
+    Settings.Add(new SettingsProperty<double?>("NullableDoubleProperty1", 20));
+    Settings.Add(new SettingsProperty<double?>("NullableDoubleProperty2", null));
+    Settings.Add(new SettingsProperty<decimal>("DecimalProperty", 20));
+    Settings.Add(new SettingsProperty<decimal?>("NullableDecimalProperty1", 20));
+    Settings.Add(new SettingsProperty<decimal?>("NullableDecimalProperty2", null));
+    Settings.Add(new SettingsProperty<string>("StringProperty1", "te\"stTEST1"));
+    Settings.Add(new SettingsProperty<string>("StringProperty2", null));
+    Settings.Add(new SettingsProperty<DateTime>("DateTimeProperty", new DateTime(2014, 1, 2, 3, 4, 5)));
+    Settings.Add(new SettingsProperty<DateTime?>("NullableDateTimeProperty1", new DateTime(2014, 1, 2, 3, 4, 5)));
+    Settings.Add(new SettingsProperty<DateTime?>("NullableDateTimeProperty2", null));
+    Settings.Add(new SettingsProperty<TimeSpan>("TimeSpanProperty", TimeSpan.FromHours(2)));
+    Settings.Add(new SettingsProperty<TimeSpan?>("NullableTimeSpanProperty1", TimeSpan.FromHours(12)));
+    Settings.Add(new SettingsProperty<TimeSpan?>("NullableTimeSpanProperty2", null));
+
+    Generate();
+#>

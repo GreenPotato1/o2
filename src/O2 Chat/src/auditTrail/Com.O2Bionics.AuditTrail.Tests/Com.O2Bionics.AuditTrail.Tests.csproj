@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\packages\NUnit.3.10.1\build\NUnit.props" Condition="Exists('..\..\..\packages\NUnit.3.10.1\build\NUnit.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F34B1F11-5877-462F-A24E-6D0FA3B30EDD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Com.O2Bionics.AuditTrail.Tests</RootNamespace>
+    <AssemblyName>Com.O2Bionics.AuditTrail.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Elasticsearch.Net, Version=6.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Elasticsearch.Net.6.0.2\lib\net46\Elasticsearch.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions, Version=5.2.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\FluentAssertions.5.2.0\lib\net47\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Jil, Version=2.15.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Jil.2.15.4\lib\net45\Jil.dll</HintPath>
+    </Reference>
+    <Reference Include="Nest, Version=6.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NEST.6.0.2\lib\net46\Nest.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NSubstitute, Version=3.1.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NSubstitute.3.1.0\lib\net46\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Sigil, Version=4.7.0.0, Culture=neutral, PublicKeyToken=2d06c3494341c8ab, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Sigil.4.7.0\lib\net45\Sigil.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\common\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="SelectByPagesTest.cs" />
+    <Compile Include="SetUpFixture.cs" />
+    <Compile Include="SeveralCustomersTest.cs" />
+    <Compile Include="AllVsChangedFilterTest.cs" />
+    <Compile Include="AuditMicroServiceTests.cs" />
+    <Compile Include="ZincSeveralAuditOperationsTest.cs" />
+    <Compile Include="AuditTrailServiceTest.cs" />
+    <Compile Include="BaseElasticTest.cs" />
+    <Compile Include="AnalyzedFieldsTests.cs" />
+    <Compile Include="ClassDiffTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnknownDomainStorageTests.cs" />
+    <Compile Include="Utils\AuditEventBuilder.cs" />
+    <Compile Include="Utils\AuditEventHelper.cs" />
+    <Compile Include="Utils\AuditTrailServiceExtensions.cs" />
+    <Compile Include="Utils\FacetHelper.cs" />
+    <Compile Include="Utils\TestNameResolver.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\chat\Com.O2Bionics.ChatService.Contract\Com.O2Bionics.ChatService.Contract.csproj">
+      <Project>{017f459a-d86b-4dd9-bc8c-2d73568c76da}</Project>
+      <Name>Com.O2Bionics.ChatService.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\chat\Com.O2Bionics.ChatService\Com.O2Bionics.ChatService.csproj">
+      <Project>{81f04964-931e-4a90-a6f1-b5e5bccde5c9}</Project>
+      <Name>Com.O2Bionics.ChatService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.Elastic\Com.O2Bionics.Elastic.csproj">
+      <Project>{32182b64-c191-488b-8e4b-11aeaa6a5c0d}</Project>
+      <Name>Com.O2Bionics.Elastic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.Tests.Common\Com.O2Bionics.Tests.Common.csproj">
+      <Project>{a4d0aace-3ff5-4030-a5b2-883f16ac1a82}</Project>
+      <Name>Com.O2Bionics.Tests.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.Utils\Com.O2Bionics.Utils.csproj">
+      <Project>{0e93b727-715a-4e47-9c1c-9ba6afd5829e}</Project>
+      <Name>Com.O2Bionics.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Com.O2Bionics.AuditTrail.Client\Com.O2Bionics.AuditTrail.Client.csproj">
+      <Project>{c99575a7-bfd2-4f3e-831a-ccd7836e4b06}</Project>
+      <Name>Com.O2Bionics.AuditTrail.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Com.O2Bionics.AuditTrail.Contract\Com.O2Bionics.AuditTrail.Contract.csproj">
+      <Project>{7f960e94-73e9-4c84-9741-7b08f10043bd}</Project>
+      <Name>Com.O2Bionics.AuditTrail.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Com.O2Bionics.AuditTrail\Com.O2Bionics.AuditTrail.csproj">
+      <Project>{5bd1b58f-2ded-4050-8c0e-4982939cf861}</Project>
+      <Name>Com.O2Bionics.AuditTrail</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\NUnit.3.10.1\build\NUnit.props'))" />
+  </Target>
+</Project>

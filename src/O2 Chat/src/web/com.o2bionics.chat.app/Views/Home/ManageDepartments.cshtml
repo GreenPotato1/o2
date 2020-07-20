@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "Manage Customer Departments";
+}
+
+<div>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="objectTable" class="widget">
+                        <div class="widget-head">
+                            <div class="row">
+                                <div class="pull-left col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                                    <h1>
+                                        Департаменты
+                                        <span class="error" data-bind="visible: showCountWarning" style="display: none;"
+                                              title="Based on your current subscription package">
+                                            <span data-bind="text: count"></span> of <span data-bind="text: maxDepartments"></span>
+                                        </span>
+                                    </h1>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                                    <button class="btn btn-primary btn-raised pull-right" title="Refresh" 
+                                            data-bind="command: commands.refresh">
+                                        <i class="material-icons">&#xE5D5;</i>
+                                    </button>
+                                    <button class="btn btn-primary btn-raised pull-right" title="Add new" 
+                                            data-bind="command: commands.create">
+                                        <i class="material-icons">&#xE145;</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-content manage-table-area">
+                            <div class="row">
+                                <div class="col-md-12" style="display: none;" 
+                                     data-bind="visible: errorMessages().length === 0">
+                                    <div class="row head-row hidden-sm hidden-xs">
+                                        <div class="col-md-1">Status</div>
+                                        <div class="col-md-2">IsPublic</div>
+                                        <div class="col-md-3">Name</div>
+                                        <div class="col-md-4">Description</div>
+                                        <div class="col-md-2"></div>
+                                    </div>
+                                    <div data-bind="template: { name: 'departmentTemplate', foreach: list }"></div>
+                                </div>
+                                <div class="col-md-12" style="display: none;" 
+                                     data-bind="visible: errorMessages().length > 0">
+                                    <h4>Department list load error</h4>
+                                    <div class="alert-danger" data-bind="foreach: errorMessages">
+                                        <p data-bind="text: $data"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="departmentTemplate">
+    <div class="row hidden-sm hidden-xs">
+        <div class="col-md-1" data-bind="attr: { title: statusText() }">
+            <i class="material-icons" data-bind="html: ( !isActive() ? '&#xE7FC;' : '&#xE7FB;' )"></i>
+        </div>
+        <div class="col-md-2">
+            <i class="material-icons" data-bind="visible: isPublic()">&#xE5CA;</i>
+            <i data-bind="visible: !isPublic()">&nbsp;</i>
+        </div>
+        <div class="col-md-3" data-bind="text: name"></div>
+        <div class="col-md-4" data-bind="text: description"></div>
+        <div class="col-md-2">
+            <div class="btn-group">
+                <button class="btn btn-default" title="Edit"
+                        data-bind="click: $parent.editItem">
+                    <i class="material-icons">&#xE254;</i>
+                </button>
+                <button class="btn btn-default" title="Delete"
+                        data-bind="click: $parent.deleteItem">
+                    <i class="material-icons">&#xE14C;</i>
+                </button>
+                <button class="btn btn-default" title="Canned Messages"
+                        data-bind="click: $parent.showItemCannedMessages">
+                    <i class="material-icons">&#xE86D;</i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="hidden-lg hidden-md">
+        <div class="row head-row">
+            <div class="col-sm-4 col-xs-4">Name</div>
+            <div class="col-sm-8 col-xs-8" data-bind="text: name"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-xs-4">Status</div>
+            <div class="col-sm-8 col-xs-8" data-bind="attr: { title: statusText() }">
+                <i class="material-icons" data-bind="html: ( !isActive() ? '&#xE7FC;' : '&#xE7FB;' )"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-xs-4">IsPublic</div>
+            <div class="col-sm-8 col-xs-8">
+                <i class="material-icons" data-bind="visible: isPublic()">&#xE5CA;</i>
+                <i data-bind="visible: !isPublic()">&nbsp;</i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-xs-4">Description</div>
+            <div class="col-sm-8 col-xs-8" data-bind="text: description"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-xs-4"></div>
+            <div class="col-sm-8 col-xs-8">
+                <div class="btn-group">
+                    <button class="btn btn-default" title="Edit"
+                            data-bind="click: $parent.editItem">
+                        <i class="material-icons">&#xE254;</i>
+                    </button>
+                    <button class="btn btn-default" title="Delete"
+                            data-bind="click: $parent.deleteItem">
+                        <i class="material-icons">&#xE14C;</i>
+                    </button>
+                    <button class="btn btn-default" title="Canned Messages"
+                            data-bind="click: $parent.showItemCannedMessages">
+                        <i class="material-icons">&#xE86D;</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+@section dialogs {
+    @Html.Partial("Dialogs/DialogDepartmentEdit")
+    @Html.Partial("Dialogs/DialogDeleteObject")
+    @Html.Partial("Dialogs/DialogCannedMessageEdit")
+    @Html.Partial("Dialogs/DialogCannedMessages")
+}
+
+@section scripts_include {
+}
+
+@section scripts {
+
+    <script type="text/javascript">
+
+        var currentUserId = @UserIdentity.GetUserId(User.Identity);
+
+        require(
+            ['pages/ManageDepartments'],
+            function (app)
+            {
+                $(
+                    function ()
+                    {
+// ReSharper disable once InconsistentNaming
+                        new app.default(currentUserId).run();
+                    });
+            });
+
+    </script>
+}

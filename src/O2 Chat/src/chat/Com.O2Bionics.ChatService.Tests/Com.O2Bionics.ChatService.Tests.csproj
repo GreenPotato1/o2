@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\packages\NUnit.3.10.1\build\NUnit.props" Condition="Exists('..\..\..\packages\NUnit.3.10.1\build\NUnit.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{77586804-E598-4558-A3B9-E8DB36F70FB3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Com.O2Bionics.ChatService.Tests</RootNamespace>
+    <AssemblyName>Com.O2Bionics.ChatService.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions, Version=5.2.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\FluentAssertions.5.2.0\lib\net47\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Jil, Version=2.15.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Jil.2.15.4\lib\net45\Jil.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="linq2db, Version=1.9.0.0, Culture=neutral, PublicKeyToken=f19f8aed7feff67e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\linq2db.1.9.0\lib\net45\linq2db.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NSubstitute, Version=3.1.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NSubstitute.3.1.0\lib\net46\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectExtensions.Copy">
+      <HintPath>..\..\..\packages\ObjectExtensions.Copy.1.0.1\lib\net45\ObjectExtensions.Copy.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Sigil, Version=4.7.0.0, Culture=neutral, PublicKeyToken=2d06c3494341c8ab, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Sigil.4.7.0\lib\net45\Sigil.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Configuration, Version=5.2.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.8.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception, Version=5.5.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception.Configuration, Version=5.1.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RegistrationByConvention, Version=2.1.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ServiceLocation, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.ServiceLocation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\common\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="CannedMessageStorageTests.cs" />
+    <Compile Include="CannedMessageTests.cs" />
+    <Compile Include="ChatServiceSettingsTests.cs" />
+    <Compile Include="Class1Tests.cs" />
+    <Compile Include="CustomerSettingsTests.cs" />
+    <Compile Include="O2Bionics3DesEncryptTests.cs" />
+    <Compile Include="Mocks\AuditTrailClientSaveMock.cs" />
+    <Compile Include="DatabaseTestBase.cs" />
+    <Compile Include="WidgetLoadLimiter\ChatFrameHelperTests.cs" />
+    <Compile Include="WidgetLoadLimiter\CustomerCacheNotifierTests.cs" />
+    <Compile Include="WidgetLoadLimiter\UnknownDomainAuditServiceTests.cs" />
+    <Compile Include="WidgetLoadLimiter\Mocks\CustomerWidgetLoadStorageMock.cs" />
+    <Compile Include="WidgetLoadLimiter\CustomerWidgetLoadsDatabaseTests.cs" />
+    <Compile Include="Mocks\FeatureServiceClientMock.cs" />
+    <Compile Include="JsonTests.cs" />
+    <Compile Include="ManagementServiceTests.cs" />
+    <Compile Include="OracleDatabaseBehaviorTests.cs" />
+    <Compile Include="WidgetLoadLimiter\DomainNameMatcherTests.cs" />
+    <Compile Include="WidgetLoadLimiter\ValueHolder.cs" />
+    <Compile Include="WidgetLoadLimiter\WidgetTestBase.cs" />
+    <Compile Include="WidgetLoadLimiter\PageLoadServiceTests.cs" />
+    <Compile Include="SessionLoadPerformanceTests.cs" />
+    <Compile Include="SessionStorageTests.cs" />
+    <Compile Include="SettingsTests\TestSettingsTests.cs" />
+    <Compile Include="SettingsTests\TestSettings.cs">
+      <DependentUpon>TestSettings.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="InitializeTestDatabase.cs" />
+    <Compile Include="NonAsciiStorageTests.cs" />
+    <Compile Include="UserStorageTests.cs" />
+    <Compile Include="VisitorChatServiceTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetUpFixture.cs" />
+    <Compile Include="TestChatServiceSettings.cs" />
+    <Compile Include="VisitorStorageTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\auditTrail\Com.O2Bionics.AuditTrail.Client\Com.O2Bionics.AuditTrail.Client.csproj">
+      <Project>{c99575a7-bfd2-4f3e-831a-ccd7836e4b06}</Project>
+      <Name>Com.O2Bionics.AuditTrail.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\auditTrail\Com.O2Bionics.AuditTrail.Contract\Com.O2Bionics.AuditTrail.Contract.csproj">
+      <Project>{7f960e94-73e9-4c84-9741-7b08f10043bd}</Project>
+      <Name>Com.O2Bionics.AuditTrail.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.Tests.Common\Com.O2Bionics.Tests.Common.csproj">
+      <Project>{a4d0aace-3ff5-4030-a5b2-883f16ac1a82}</Project>
+      <Name>Com.O2Bionics.Tests.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.ErrorTracker\Com.O2Bionics.ErrorTracker.csproj">
+      <Project>{6b74f4bb-8587-4af6-a404-0d2f4d8665df}</Project>
+      <Name>Com.O2Bionics.ErrorTracker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\featureService\Com.O2Bionics.FeatureService.Client\Com.O2Bionics.FeatureService.Client.csproj">
+      <Project>{58A3A5C2-DA25-4760-9EA8-1975776F2DD3}</Project>
+      <Name>Com.O2Bionics.FeatureService.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\featureService\Com.O2Bionics.FeatureService.Constants\Com.O2Bionics.FeatureService.Constants.csproj">
+      <Project>{e97e7e6a-63fa-4d71-bfd6-f0b916db97bd}</Project>
+      <Name>Com.O2Bionics.FeatureService.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mailerService\Com.O2Bionics.MailerService.Client\Com.O2Bionics.MailerService.Client.csproj">
+      <Project>{8899d1b8-2cbd-4b98-b842-053ddedc0b63}</Project>
+      <Name>Com.O2Bionics.MailerService.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mailerService\Com.O2Bionics.MailerService.Contract\Com.O2Bionics.MailerService.Contract.csproj">
+      <Project>{29f01de4-32f3-4d92-b2ea-be75788868cc}</Project>
+      <Name>Com.O2Bionics.MailerService.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Com.O2Bionics.ChatService.Contract\Com.O2Bionics.ChatService.Contract.csproj">
+      <Project>{017F459A-D86B-4DD9-BC8C-2D73568C76DA}</Project>
+      <Name>Com.O2Bionics.ChatService.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.Utils\Com.O2Bionics.Utils.csproj">
+      <Project>{0E93B727-715A-4E47-9C1C-9BA6AFD5829E}</Project>
+      <Name>Com.O2Bionics.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Com.O2Bionics.ChatService.Widget\Com.O2Bionics.ChatService.Widget.csproj">
+      <Project>{e47e7c18-f8a2-4e86-991b-8a703b0a7bac}</Project>
+      <Name>Com.O2Bionics.ChatService.Widget</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Com.O2Bionics.ChatService\Com.O2Bionics.ChatService.csproj">
+      <Project>{81f04964-931e-4a90-a6f1-b5e5bccde5c9}</Project>
+      <Name>Com.O2Bionics.ChatService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SettingsTests\TestSettings.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TestSettings.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\NUnit.3.10.1\build\NUnit.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

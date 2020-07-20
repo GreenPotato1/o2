@@ -1,0 +1,106 @@
+﻿@inherits MailMessageViewBase<dynamic>
+@{
+    Subject = "Chat session transcript";
+
+    List<string> MessageLines(string text)
+    {
+        return text.Split('\n').Select(x => x.Trim('\r').TrimEnd()).ToList();
+    }
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>O2Chat</title>
+    <style>
+        html, body {
+            margin: 15px;
+            padding: 0;
+        }
+
+        .system {
+            background-color: #fbfce4;
+            font-size: 14px;
+        }
+
+        .agent { background-color: #ededed; }
+
+        .visitor { background-color: #c6e1eb; }
+
+        .header {
+            margin-top: 14px;
+            margin-bottom: 14px;
+        }
+
+        .visitor .header { background-color: #a8d3e3; }
+
+        .agent .header { background-color: #d3d3d3; }
+
+        .messages {
+            font-family: Arial;
+            font-size: 12px;
+            color: #000000;
+            padding: 5px 5px 5px 15px;
+        }
+
+        .system .messages {
+            font-size: 14px;
+            color: #666666;
+            padding: 5px 5px 5px 5px;
+        }
+
+        p {
+            color: #666666;
+            padding: 5px 5px 5px 5px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+            font-family: Arial;
+            font-size: 12px;
+        }
+
+        .system p { margin: 0; }
+    </style>
+</head>
+<body>
+<table width="640" border="0" cellpadding="0" cellspacing="0">
+    @foreach (var message in Model.Messages)
+    {
+        var timestamp = message.TimestampUtc;
+        var lines = MessageLines(message.Text);
+        <tr>
+            <td>
+                <table class='@message.SenderClass' width="640" border="0" cellpadding="0" cellspacing="0">
+                    <tr class="header">
+                        @if (message.SenderClass != "system")
+                        {
+                            <td width="320">
+                                <p>@(message.SenderName)</p>
+                            </td>
+                            <td width="320" style="text-align: right;">
+                                <p>@WriteUtcDate(timestamp, Model.VisitorTimezoneOffsetMinutes)</p>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <p>@WriteUtcDate(timestamp, Model.VisitorTimezoneOffsetMinutes)</p>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>
+                            @foreach (var line in lines)
+                            {
+                                <p class="messages">@(line)</p>
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+    }
+</table>
+</body>
+</html>

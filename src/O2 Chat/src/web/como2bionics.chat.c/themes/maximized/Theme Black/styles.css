@@ -1,0 +1,131 @@
+﻿body {
+    background: #000!important;
+}
+.chat-title-bar {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+div.dialog div.message {
+    color: #fff;
+}
+
+div.field-title { color: rgba(255,255,255,0.7); }
+
+div.field-title span {
+    color: red;
+    font-weight: normal;
+}
+
+div.buttons button.back {
+    color: rgba(255,255,255,1);
+}
+div.field textarea {
+    color: #fff;
+}
+div.visitor-info {
+    color: rgba(255,255,255,1);
+}
+div.visitor-info .button {
+    color: #fff;
+}
+div.visitor-info .button:hover { color: #fff; }
+
+#chat-messages-dialog {
+    height: 100%;
+    width: 100%;
+}
+#chat-messages-dialog #chat-container {
+    background: #000;
+}
+#chat-messages-dialog .discussion {
+    background: #000;
+}
+.message-sendler-name {
+    color: rgba(255,255,255,0.7);
+}
+#chat-messages-dialog .message {
+    background: #ccc;
+}
+#chat-messages-dialog .self .message {
+    background: #eeeeee;
+}
+#chat-messages-dialog .self .message:after {
+    border-color:#eeeeee transparent transparent  transparent;
+}
+
+#chat-messages-dialog .other .message {
+    background: #bcbcbc;
+}
+
+#chat-messages-dialog .other .message:after {
+    border-color: transparent #bcbcbc transparent transparent;
+}
+
+#chat-messages-dialog  time {
+    color: rgba(0,0,0,0.54);
+}
+
+#chat-messages-dialog .message p {
+    color: rgba(0,0,0,0.87);
+}
+#chat-messages-dialog .other .message p {
+    color: rgba(0,0,0,0.87);
+}
+
+#chat-messages-dialog .system .message p {
+    color: rgba(255,255,255,0.7);
+}
+#chat-messages-dialog .system .message {
+    color: #fff;
+}
+
+#chat-messages-dialog .system time {
+    color: rgba(255,255,255,0.7);
+}
+
+#chat-messages-dialog textarea.message-text {
+    border-top:1px solid #eaeaea;
+    color: #fff;
+    background-color: #000;
+}
+
+#chat-messages-dialog textarea.message-text:disabled { background-color: #000; }
+
+#chat-messages-dialog div.buttons .buttons-send {
+    color:#bdbdbd;
+}
+
+#enter-visitor-info-banner {
+    color: #BDBDBD;
+    background: #2c2c2c;
+
+}
+.info-banner_visitor {
+    color: #ccc;
+}
+
+.info-banner_transcript {
+    color: #ccc;
+}
+
+#rtc-call-video {
+    background-color: #000;
+}
+
+#video-local {
+    background-color: #000;
+    border: 1px solid gray;
+}
+
+#rtc-call-controls {
+    background-color: #000;
+}
+
+#edit-visitor-info-dialog {
+    background: #000;
+}
+
+.rtc-call_radio .btn {
+    color: #000;
+}

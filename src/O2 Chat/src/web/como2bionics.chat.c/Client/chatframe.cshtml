@@ -1,0 +1,496 @@
+﻿@using Com.O2Bionics.ChatService.Web.Chat
+@using Com.O2Bionics.ChatService.Widget
+@using Com.O2Bionics.Utils
+@{
+    var now = DateTime.UtcNow;
+    var modeId = Request["m"];
+    var isDemoMode = modeId == "demo";
+    uint customerId;
+    uint.TryParse(Request["cid"], out customerId);
+    var visitorId = isDemoMode ? 0u : ChatFrameHelper.GetVisitorId(Context, customerId);
+    var widgetSettings = GlobalContainer.Resolve<WidgetSettings>();
+    var result = ChatFrameHelper.Load(Request, customerId, visitorId, now, isDemoMode, widgetSettings.WorkspaceUrl, Response);
+    if (null == result)
+    {
+        return; //Disable the page.
+    }
+
+    var mode = modeId == "po" ? "popout" : "iframe";
+    var chatWidgetAppearance = result.CustomerSettings.ChatWidgetAppearanceInfo.AppearanceData;
+    var chatWidgetThemeUrl = ThemesHelper.GetCssUrl(chatWidgetAppearance);
+    var chatWidgetMinThemeUrl = ThemesMinHelper.GetCssUrl(chatWidgetAppearance);
+    var chatWidgetMinLayout = ThemesMinHelper.GetHtmlLayout(chatWidgetAppearance);
+
+    var agentConsoleUrl = widgetSettings.WorkspaceUrl.ToString();
+    var pageTrackerUrl = widgetSettings.PageTrackerClient.Url.ToString();
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>O2Chat</title>
+
+    <link rel="icon" href="data:;base64,=">
+
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/material-icons.css" rel="stylesheet" />
+    <!--
+        need to use themes/maximized/default/styles.css instead of /css/chatframe.css
+        but probably we have to leave local theme file when move static resources to remote server, so we will be sure we have styles if remote server is down
+    -->
+    <link href="~/css/chatframe.css" rel="stylesheet" />
+    @*<link href="~/themes/maximized/default/styles.css" rel="stylesheet" />*@
+    <link id="themeStyleLink" href="@chatWidgetThemeUrl" rel="stylesheet" />
+    <link id="themeMinStyleLink" href="@chatWidgetMinThemeUrl" rel="stylesheet" />
+
+    <style>
+        #settings-bar {
+            height: 100%;
+            width: 100%;
+            background-color: #016193;
+            margin-bottom: 3px;
+        }
+    </style>
+
+    <!--[if lt IE 10]>
+        <script type="text/javascript" src="../Scripts/es5-shim.min.js"></script>
+        <script language="javascript">
+            window.console = window.console || {};
+            window.console.log = window.console.log || function () {};
+        </script>
+    <![endif]-->
+    <script type="text/javascript" src="~/Scripts/adapter-4.2.1.js"></script>
+</head>
+<body>
+<div id="collapsed-state" class="collapsed-state collapsed-state_image" data-bind="visible: isMinimized">
+    
+    @if (chatWidgetMinLayout == null)
+            {
+        <div class="chat-title-bar" data-bind="click: onClickTitleBar, css: windowTitleClass">
+            <div class="title-text" data-bind="text: minimizedTitleText">Minimized version</div>
+            <div class="title-buttons title-buttons-f" style="padding-left: 3px;" title="Popout" data-bind="click: onClickPopoutButton">
+                <span><i class="material-icons">&#xE89E;</i></span>
+            </div>
+            <div class="title-buttons" style="padding-left: 0; padding-right: 3px;">
+                <span><i class="material-icons">&#xE15B;</i></span>
+            </div>
+        </div>
+        <div class="chat-title-img" data-bind="click: onClickTitleBar">
+        </div>
+    }
+    else
+    {
+        @Html.Raw(chatWidgetMinLayout)
+    }
+</div>
+<div id="expanded-state" data-bind="visible: !isMinimized()">
+    <table style="height: 100%; width: 100%" cellspacing="0" cellpadding="0">
+        <tr style="height: 37px; display: none;" data-bind="visible: iframeMode">
+            <td>
+                <div class="chat-title-bar" data-bind="click: onClickTitleBar, css: windowTitleClass">
+                    <div class="title-text" data-bind="text: windowTitleText">Загрузка...</div>
+                    <div class="title-buttons title-buttons-f" style="padding-left:3px;" title="Popout" data-bind="click: onClickPopoutButton">
+                        <span><i class="material-icons">&#xE89E;</i></span>
+                    </div>
+                    <div class="title-buttons" style="padding-left:0; padding-right:3px;">
+                        <span><i class="material-icons">&#xE15B;</i></span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr data-bind="visible: isLoadingDialogVisible">
+            <td class="page" style="display: table-cell;">
+                <div class="dialog">
+                    <div class="message">Загрузка...</div>
+                    @*<div class="loader">
+            <i></i>
+        </div>*@
+                    @*loader*@
+                    <div class="multi-spinner-container">
+                        <div class="multi-spinner">
+                            <div class="multi-spinner">
+                                <div class="multi-spinner">
+                                    <div class="multi-spinner">
+                                        <div class="multi-spinner">
+                                            <div class="multi-spinner"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr id="chat-start-dialog" style="display: none;" data-bind="with: startChatDialog, visible: isStartChatDialogVisible">
+            <td class="page">
+                <div class="dialog">
+                    <div class="field-title" data-bind="style: { visibility: isVisitorKnown() ? 'visible' : 'hidden' }">Здравствуйте!</div>
+                    <div class="visitor-info" data-bind="click: onClickEditVisitorInfo" style="cursor: pointer;">
+                        <div style="float: left;">
+                            <div data-bind="visible: !isVisitorKnown()">
+                                Представьтесь
+                            </div>
+                            <div>
+                                <b data-bind="text: visitorName"></b>
+                            </div>
+                            <div data-bind="text: visitorEmail"></div>
+                            <div data-bind="text: visitorPhone"></div>
+                        </div>
+                        <div class="buttons">
+                            <span class="button" title="Edit user information" data-bind="click: onClickEditVisitorInfo">
+                                <i class="material-icons">&#xE254;</i>
+                            </span>
+                            <span class="button" title="Clean user information" data-bind="click: onClickDeleteVisitorInfo, visible: isVisitorKnown()">
+                                <i class="material-icons">&#xE14C;</i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field-title">Отдел</div>
+                    <div class="field">
+                        <select id="chatDepartments"
+                                data-bind="options: departments,
+                                value: selectedDepartmentId,
+                                optionsText: 'title',
+                                optionsValue: 'id',
+                                optionsAfterRender: function (el, x) { $(el).attr('class', x.isOnline() ? 'online' : 'offline' ); },
+                                style: { color: isSelectedDepartmentOffline() ? '#666' : '#44484a' } ">
+                            <option value="0">Loading..</option>
+                        </select>
+                    </div>
+
+                    <div class="field-title"></div>
+                    <div class="field-title"><span class="error" data-bind="validationMessage: message"></span></div>
+                    <div class="field">
+                        <textarea id="message" data-bind="textInput: message, validationElement: message" placeholder="Текст сообщения"></textarea>
+                    </div>
+                    <div class="buttons">
+                        <button id="chatStartOffline" data-bind="click: onClickSendOfflineMessage, visible: isSelectedDepartmentOffline()" class="flat-btn flat-btn_submit">Отправить сообщение</button>
+                        <button id="chatStart" data-bind="click: onClickStartChat, visible: !isSelectedDepartmentOffline()" class="flat-btn flat-btn_submit">Начать чат</button>
+                        <button data-bind="visible: $parent.debugMode, click: onClickT1">T1</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr id="edit-visitor-info-dialog" style="display: none;" data-bind="with: editVisitorInfoDialog, visible: isEditVisitorInfoDialogVisible">
+            <td class="page" data-bind="event: { keydown: onKeyPressed }">
+                <div class="dialog">
+
+                    <div class="message" style="margin: 10px 0px 20px 0px"
+                         data-bind="visible: messageText, text: messageText">
+                    </div>
+                    <div class="field-title"><span class="error" data-bind="validationMessage: visitorName"></span></div>
+                    <div class="field">
+                        <input type="text" required
+                               data-bind="textInput: visitorName, validationElement: visitorName, hasFocus: hasFocusVisitorName" placeholder="Ваше имя" />
+                    </div>
+                    <div class="field-title"><span class="error" data-bind="validationMessage: visitorEmail"></span></div>
+                    <div class="field">
+                        <input type="text" data-bind="textInput: visitorEmail, validationElement: visitorEmail" placeholder="Ваш email" />
+                    </div>
+                    <div class="field-title"></div>
+                    <div class="field">
+                        <input type="text" data-bind="textInput: visitorPhone" placeholder="Телефон" />
+                    </div>
+                    <div class="field-title">Отправлять историю сообщений на ваш адрес</div>
+                    <div class="field">
+                        <select data-bind="options: transcriptModes,
+                                            optionsText: 'text',
+                                            optionsValue: 'id',
+                                            value: transcriptMode"></select>
+                    </div>
+                    <div class="buttons m-top">
+                        <button class="back flat-btn flat-btn_default" data-bind="click: onClickBack">Назад</button>
+                        <button class="flat-btn flat-btn_submit" data-bind="click: onClickSave, text: saveButtonText">Сохранить</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr id="chat-messages-dialog" style="display: none;" data-bind="with: chatDialog, visible: isChatDialogVisible">
+            <td class="page">
+                <div id="enter-visitor-info-banner">
+                    <div data-bind="foreach: agents">
+                        <div class="agent-icon">
+                            <img data-bind="attr: { src: avatarUrl, title: name }" />
+                        </div>
+                    </div>
+                    <div class="info-banner_visitor" title="Пожалуйста, представьтесь" data-bind="click: onClickEnterVisitorInfoBanner">
+                        <i class="material-icons" data-bind="css: visitorIconClass">&#xE7FD;</i>
+                    </div>
+                    <div class="info-banner_transcript"><i class="material-icons">&#xE884;</i></div>
+                </div>
+                <div id="rtc-call-video" data-bind="visible: isMediaCallVideoVisible">
+                    <video id="video-remote" autoplay></video>
+                    <video id="video-local" autoplay muted data-bind="visible: isMediaCallVisitorVideoVisible"></video>
+                </div>
+                <div id="rtc-call-controls" class="buttons" data-bind="visible: isMediaControlsVisible">
+                    <button class="" title="Mute"
+                            data-bind="click: onClickMediaCallPauseAudio">
+                        <i class="material-icons"
+                           data-bind="html:( isMediaCallAudioPaused() ? '&#xE04F;' : '&#xE050;') ">
+                        </i>
+                    </button>
+                    <button class="" title="Pause Video"
+                            data-bind="
+                                click: onClickMediaCallPauseVideo,
+                                visible: isMediaCallVisitorVideoVisible
+                                ">
+                        <i class="material-icons"
+                           data-bind="html:(  isMediaCallVideoPaused() ? '&#xE037;' : '&#xE034;' )">
+                        </i>
+                    </button>
+                    <button class="" title="End Call"
+                            data-bind="click: onClickMediaCallStop">
+                        <i class="material-icons">&#xE047;</i>
+                    </button>
+                </div>
+                <div id="chat-container">
+                    <ol class="discussion" data-bind="foreach: messages">
+                        <li data-bind="css: sender">
+                            <p data-bind="if: senderName" class="message-sendler-name">
+                                <div class="message-img" data-bind="if: avatarUrl">
+                                    <img data-bind="attr: { src: avatarUrl, title: avatarUrl ? senderName : '' }" />
+                                </div>
+                                <span data-bind="text: senderName"></span>
+                            </p>
+                            <div class="message">
+                                <!-- ko foreach: lines -->
+                                <p data-bind="html: $data"></p>
+                                <!-- /ko -->
+                                <time data-bind="text: time.toMessageTimeString(), attr: { datetime: time.toJSON() }"></time>
+                            </div>
+
+
+                        </li>
+                        @*
+                        <li class="other">
+                            <div class="message">
+                                <!-- ko foreach: lines -->
+                                <p data-bind="text: $data"></p>
+                                <!-- /ko -->
+                            </div>
+                            <time data-bind="text: time.toMessageTimeString(), attr: { datetime: time.toJSON() }"></time>
+
+                        </li>
+                        <li class="system">
+                            <div class="message">
+                                <!-- ko foreach: lines -->
+                                <p data-bind="text: $data"></p>
+                                <!-- /ko -->
+                                <time data-bind="text: time.toMessageTimeString(), attr: { datetime: time.toJSON() }"></time>
+                            </div>
+
+                        </li>
+                        *@
+                    </ol>
+                    <div id="message-flow-end" style="height: 0;"></div>
+                </div>
+                <div id="rtc-call-notification" data-bind="visible: isCallNotificationVisible">
+                    <div class="rtc-call_text">
+                        <span data-bind="text: mediaCallTypeText"></span> Звонок от агента
+                    </div>
+                    <div class="rtc-call_radio">
+                        <button class="btn btn-fab" data-bind="visible: mediaCallProposalHasVideo,click: onMediaCallAcceptedClick" title="Answer with Video">
+                            <i class="material-icons">&#xE04B;</i>
+                        </button>
+                        <button class="btn btn-fab" data-bind="click: onMediaCallAcceptedClick" title="Ответить голосом">
+                            <i class="material-icons">&#xE029;</i>
+                        </button>
+                        <button class="btn btn-fab" data-bind="click: onMediaCallAcceptedClick" title="Не используйте медиа, используйте только текст">
+                            <i class="material-icons">&#xE033;</i>
+                        </button>
+
+                        <!--
+                       <div class="radio">
+                            <label for="media-answer-1">
+                               <input type="radio" id="media-answer-1" name="media-answer" value="voice" data-bind="checked: mediaAnswerType"/>
+                               Answer with Voice
+                               <span class="circle"></span>
+                               <span class="check"></span>
+                            </label>
+                       </div>
+                       <div class="radio" data-bind="visible: mediaCallProposalHasVideo">
+                           <label for="media-answer-2">
+                               <input type="radio" id="media-answer-2" name="media-answer" value="video" data-bind="checked: mediaAnswerType"/>
+                               Answer with Video
+                                <span class="circle"></span>
+                                <span class="check"></span>
+                           </label>
+                       </div>
+                       <div class="radio">
+                          <label for="media-answer-3">
+                               <input type="radio" id="media-answer-3" name="media-answer" value="text" data-bind="checked: mediaAnswerType"/>
+                               Don't use media, use text only
+                               <span class="circle"></span>
+                               <span class="check"></span>
+                           </label>
+                       </div>
+                       -->
+                    </div>
+                    <!--
+                <div class="rtc-call_btn">
+                    <button data-bind="visible: mediaAnswerType, click: onMediaCallAcceptedClick" class="btn btn-success">Ok</button>
+                </div>
+                -->
+                </div>
+                <div id="chat-message-text">
+                    <textarea class="message-text"
+                              data-bind="textInput: text,
+                                    hasFocus: textFocus,
+                                    disable: textDisabled,
+                                    valueUpdate: 'afterkeydown',
+                                    event: { keypress: enterSend }" placeholder="Пишите ваше сообщение здесь..."></textarea>
+
+                    <div id="chat-buttons" class="buttons">
+                        <button data-bind="click: send, visible: !isSessionClosed()" class="buttons-send" title="Send (Ctrl+Enter)"><i class="material-icons">&#xE163;</i></button>
+                        <button data-bind="visible: $parent.debugMode, click: onClickT1">T1</button>
+                        <button data-bind="visible: $parent.debugMode, click: onClickT2">T2</button>
+                    </div>
+                    <button data-bind="click: back, visible: isSessionClosed" class="flat-btn flat-btn_submit buttons-end">Закончить чат</button>
+                </div>
+
+            </td>
+        </tr>
+        <tr style="display: none;" data-bind="with: offlineMessageSentDialog, visible: isOfflineMessageSentDialogVisible">
+            <td class="page">
+                <div class="dialog">
+                    <div class="message">
+                        <p>Оффлайн сообщение было отправлено.</p>
+                    </div>
+                    <div class="buttons">
+                        <button id="back" class="back btn flat-btn flat-btn_default" data-bind="click: cancel">Назад</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr style="display: none;" data-bind="with: transcriptProposalDialog, visible: isTranscriptProposalDialogVisible">
+            <td class="page">
+                <div class="dialog">
+                    <div class="dialog">
+
+                        <div class="message">
+                            <p>Хотели бы вы получить историю чата на свою электронную почту??</p>
+                        </div>
+                        <div class="field-title"><span class="error" data-bind="validationMessage: visitorEmail"></span></div>
+                        <div class="field">
+                            <input type="text" data-bind="textInput: visitorEmail, validationElement: visitorEmail" placeholder="Ваш email" />
+                        </div>
+                        <div class="field-title">Keep sending session transcripts at chat end</div>
+                        <div class="field">
+                            <select data-bind="options: transcriptModes,
+                                            optionsText: 'text',
+                                            optionsValue: 'id',
+                                            value: transcriptMode"></select>
+                        </div>
+                        <div class="buttons m-top">
+                            <button class="back flat-btn flat-btn_default" data-bind="click: onClickOk">Yes, please</button>
+                            <button class="flat-btn flat-btn_submit" data-bind="click: onClickSkip">No, thank You</button>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div id="poweredBy" data-bind="visible: isPoweredByVisible" style="background-color:#eeeeee; width: 100%; font-size:0.7em; text-align:right; line-height:20px; vertical-align:central; text-align:right; position:absolute; top:auto; bottom:0;">
+        <span style="padding-right:10px">Powered by <a href="http://o2bionics.com" target="_blank">O2 Bionics Inc.</a></span>
+    </div>
+</div>
+<script language="javascript">
+    // TODO: ie8!
+
+
+</script>
+
+<script type="text/javascript" src="~/Scripts/lodash-3.7.0.min.js"></script>
+<script type="text/javascript" src="~/Scripts/json2.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.scrollTo-2.1.0.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.signalR-2.2.3.min.js"></script>
+<script type="text/javascript" src="~/Scripts/knockout-3.3.0.js"></script>
+<script type="text/javascript" src="~/Scripts/knockout.validation.debug.js"></script>
+<script type="text/javascript" src="~/Scripts/ba-emotify.js"></script>
+<script type="text/javascript" src="~/Scripts/events.js"></script>
+<script type="text/javascript" src="~/Scripts/DetectRTC-1.3.5.js"></script>
+<script type="text/javascript" src="~/Scripts/Autolinker.js"></script>
+
+<script type="text/javascript" src="~/ScriptsApp/ErrorLogger.js"></script>
+<script type="text/javascript" src="~/ScriptsApp/Enums.js"></script>
+<script type="text/javascript" src="~/ScriptsApp/Ui.js"></script>
+<script type="text/javascript" src="~/ScriptsApp/Strings.js"></script>
+
+<script type="text/javascript" src="~/ScriptsApp/AvatarConstants.js"></script>
+<script type="text/javascript" src="~/ScriptsApp/Common.js"></script>
+<script type="text/javascript" src="~/ScriptsApp/Cookies.js"></script>
+<script type="text/javascript" src="~/ScriptsApp/models/AgentModel.js"></script>
+<script type="text/javascript" src="~/ScriptsApp/models/AgentStorage.js"></script>
+
+@if (isDemoMode)
+{
+    <script type="text/javascript" src="~/ScriptsApp/models/Demo/DemoChatDialogViewModel.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/models/Demo/DemoEditVisitorInfoDialogViewModel.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/models/Demo/DemoOfflineMessageSentDialogViewModel.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/models/Demo/DemoStartChatDialogViewModel.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/models/Demo/TranscriptProposalDialogViewModel.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/models/Demo/DemoViewModel.js?v=@now.Ticks"></script>
+}
+else
+{
+    <script type="text/javascript" src="~/ScriptsApp/DetectRTCHelper.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/RtcChannel.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/Tracker.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/VisitorChatHubProxy.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/ChatParameters.js"></script>
+
+    <script type="text/javascript" src="~/ScriptsApp/models/ChatDialogViewModel.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/models/EditVisitorInfoDialogViewModel.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/models/OfflineMessageSentDialogViewModel.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/models/StartChatDialogViewModel.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/models/ViewModel.js"></script>
+    <script type="text/javascript" src="~/ScriptsApp/models/TranscriptProposalDialogViewModel.js"></script>
+}
+
+<script type="text/javascript" src="~/ScriptsApp/WindowMessageHandler.js"></script>
+<script type="text/javascript" src="~/ScriptsApp/ChatApplication.js"></script>
+
+<script language="javascript">
+    'use strict';
+
+    $(function ()
+    {
+        var params = {
+                mode: '@mode',
+                isDemo: @(isDemoMode ? "true" : "false"),
+                customerId: @(customerId.ToString("#")),
+                visitorId: '@visitorId',
+                isSessionStarted: @(result.HasActiveSession ? "true" : "false"),
+                pageTrackerUrl: '@Html.Raw(HttpUtility.JavaScriptStringEncode(pageTrackerUrl))',
+                isChatEnabled: @(result.CustomerSettings.IsEnabled ? "true" : "false"),
+                isProactiveChatEnabled: @(result.CustomerSettings.IsProactiveChatEnabled ? "true" : "false"),
+
+                appearance: {
+                        minimizedTitleText: {
+                                value: '@Html.Raw(HttpUtility.JavaScriptStringEncode(chatWidgetAppearance.MinimizedStateTitle))'
+                            },
+                        positioning: {
+                                location: @(((int)chatWidgetAppearance.Location).ToString("#")),
+                                offsetX: '@chatWidgetAppearance.OffsetX',
+                                offsetY: '@chatWidgetAppearance.OffsetY'
+                            },
+                        poweredByVisible: {
+                                value: @(chatWidgetAppearance.PoweredByVisible ? "true" : "false")
+                            },
+                    },
+            };
+
+        AvatarConstants.defaultAvatarsBaseUrl = '@Html.Raw(HttpUtility.JavaScriptStringEncode(agentConsoleUrl))';
+
+        var wmh = new WindowMessageHandler();
+        var app = new ChatApplication(params, window, console, $, ko, wmh);
+        window.application = app;
+        app.start();
+    });
+
+</script>
+</body>
+</html>

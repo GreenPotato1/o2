@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.o2bionics.chat.c", "com.o2bionics.chat.c.csproj", "{C77363AB-5CD3-4D82-A02E-4D0ABAAB9687}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C77363AB-5CD3-4D82-A02E-4D0ABAAB9687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C77363AB-5CD3-4D82-A02E-4D0ABAAB9687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C77363AB-5CD3-4D82-A02E-4D0ABAAB9687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C77363AB-5CD3-4D82-A02E-4D0ABAAB9687}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75D2096A-61A0-4497-AAE8-E0BAC1CEF3AA}
+	EndGlobalSection
+EndGlobal

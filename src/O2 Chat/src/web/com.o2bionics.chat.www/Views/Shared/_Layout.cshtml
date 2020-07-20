@@ -1,0 +1,140 @@
+﻿@using Com.O2Bionics.Utils.Web.StaticFile
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - O2Chat</title>
+
+    @Html.RenderStyleBundle("~/bundles/css/common")
+
+</head>
+<body>
+        <!--Header Area Start-->
+        <header class="header-blue">
+            <!--Mainmenu Start-->
+            <div id="main-menu" class="sticker">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-2 hidden-sm hidden-xs">
+                            <div class="logo">
+                                <a href="index.html"><img src="i/logo/logo-2.png" alt="APNEW" /></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-10 hidden-sm hidden-xs">    
+                            <div class="main-menu float-right align-right">
+                                <nav>
+                                    <ul>
+                                        <li><a href="">@Html.ActionLink("Home", "Index", "Home")</a></li>
+                                        <li><a href="">@Html.ActionLink("About", "About", "Home")</a></li>
+                                        <li><a href="">@Html.ActionLink("Features", "Features", "Home")</a></li>
+                                        <li><a href="">@Html.ActionLink("Pricing", "Pricing", "Home")</a></li>
+                                        <li><a href="">@Html.ActionLink("Contact Us", "Contact", "Home")</a></li>
+                                        <li><a href="#" class="login-toggle">log in</a>
+                                          <div class="popup login-popup desktop-login-popup">
+                                             <form action="login">
+                                                  <div class="form-group">                                                    
+                                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                                  </div>
+                                                  <div class="form-group">                                                    
+                                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                                  </div>                                          
+                                                  <div class="checkbox">
+                                                    <label>
+                                                      <input type="checkbox"> Remember me
+                                                    </label>
+                                                  </div>                                                  
+                                                  <button type="submit" class="btn btn-default">Sing in</button> 
+                                                </form>
+                                               <a href="#" class="forgot-password-lnk">Forgot the password?</a>
+                                          </div>                                        
+                                        </li>
+                                        
+                                    </ul>
+                                </nav>
+                            </div>
+                          
+                        </div>
+                        <div class="col-sm-12 hidden-lg hidden-md">
+                            <div class="mobile-menu">
+                                <nav>
+                                    <ul>                              
+                                        <li><a href="">@Html.ActionLink("Home", "Index", "Home")</a></li>
+                                        <li><a href="">@Html.ActionLink("About", "About", "Home")</a></li>
+                                        <li><a href="">@Html.ActionLink("Features", "Features", "Home")</a></li>
+                                        <li><a href="">@Html.ActionLink("Pricing", "Pricing", "Home")</a></li>
+                                        <li><a href="">@Html.ActionLink("Contact Us", "Contact", "Home")</a></li>
+                                        <li><a href="#" class="mobile-login-toggle">log in</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End of Mainmenu-->
+        </header>
+        <!--End of Header Area--> 
+         
+    @RenderBody()
+
+
+  <!--Footer Area Start-->
+        <footer class="footer-area footer-blue" id="support">
+            <div class="footer-bg"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center title-blue">
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center title-blue">
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
+                        <div class="footer-links text-center">
+                            <a href="#"><i class="zmdi zmdi-facebook"></i></a>
+                            <a href="#"><i class="zmdi zmdi-twitter"></i></a>
+                            <a href="#"><i class="zmdi zmdi-google"></i></a>
+                            <a href="#"><i class="zmdi zmdi-linkedin"></i></a>
+                            <a href="#"><i class="zmdi zmdi-pinterest"></i></a>
+                            <a href="#"><i class="zmdi zmdi-youtube"></i></a>
+                        </div>
+                        <div class="footer-text text-center">
+                            <span>Copyright &copy; 2016 <a href="#">Dev Items</a></span>
+                        </div>    
+                    </div>    
+                </div>
+            </div>
+        </footer>
+
+               <div class="popup login-popup mobile-login-popup">
+                   <a href="#" class="close-popup-btn">&times;</a>
+                                             <form action="login">
+                                                  <div class="form-group">
+                                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                                  </div>                                          
+                                                  <div class="checkbox">
+                                                    <label>
+                                                      <input type="checkbox"> Remember me
+                                                    </label>
+                                                  </div>                                                  
+                                                  <button type="submit" class="btn btn-default">Sing in</button> 
+                                                </form>
+                                               <a href="#" class="forgot-password-lnk">Forgot the password?</a>
+                                          </div>  
+@Html.RenderScriptBundle("~/bundles/js/common")
+
+@RenderSection("scripts", required: false)
+</body>
+</html>

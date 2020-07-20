@@ -1,0 +1,26 @@
+body {
+    background: none!important;
+}
+#collapsed-state .chat-title-bar {
+    background: none!important;
+    color: #fff !important;
+    border: 0 !important;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+#collapsed-state .chat-title-bar.disconnected {
+    background: #774444 !important;
+}
+
+#collapsed-state .chat-title-bar .title-text {
+    float: right;
+    padding: 8px 12px 8px 40px;
+    background: url(ic_forum.png) no-repeat 12px 12px;
+    background-size: auto 22px;
+    background-color: #3eb5f1;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    line-height: 26px; 
+}

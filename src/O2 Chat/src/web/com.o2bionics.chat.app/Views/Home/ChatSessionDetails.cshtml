@@ -1,0 +1,318 @@
+@using Com.O2Bionics.ChatService.Contract.Settings;
+@using Com.O2Bionics.Utils
+@using Com.O2Bionics.Utils.Web;
+@model uint
+@{
+    ViewBag.Title = "Chat Session";
+    var pageTrackerUrl = GlobalContainer.Resolve<WorkspaceSettings>().PageTrackerClient.Url.ToString();
+}
+@section style {
+    <link rel="stylesheet" href="~/st/css/style-console.css"/>
+    <link rel="stylesheet" href="~/st/css/widgets.css"/>
+    <style>
+        .tab-pane {
+            padding: 0 0 0 0;
+            margin: 0 0 0 0;
+            height: 100%;
+            overflow-y: auto;
+        }
+    </style>
+}
+<!-- Main bar -->
+<div class="mainbar">
+<!-- Matter -->
+<div class="matter">
+<div class="container">
+<div class="row" data-bind="visible: loading" style="display: none;">
+    <h2>Loading session data...</h2>
+</div>
+<div class="row" data-bind="visible: notFound" style="display: none;">
+    <h2>Sorry, but the requested session wasn't found.</h2>
+</div>
+<div class="row" data-bind="visible: ready" style="display: none;">
+<div class="col-md-12">
+<div id="sessionDetails" class="widget wblue" data-bind="with: session">
+<div class="widget-head">
+    <div class="pull-left">
+        <a href="#" onclick="window.history.back();" class="page-back-btn">
+            <i class="material-icons">&#xE5C4;</i>
+        </a>
+        <h3>
+            Session <span data-bind="text: skey"></span>
+        </h3>
+
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+<div class="widget-content">
+<div id="right-container">
+
+<div id="current-session-info-tab-headers" class="basic session-nav_style">
+    <ul class="nav nav-tabs">
+        <li>
+            <a id="session-info-tab-header" href="#session-info-tab" data-toggle="tab" aria-expanded="true">
+                session
+            </a>
+        </li>
+        <li data-bind="if: visitor, visible: visitor">
+            <a id="visitor-details-tab-header" href="#visitor-details-tab" data-toggle="tab" aria-expanded="false">
+                visitor details
+            </a>
+        </li>
+        <li data-bind="if: visitor, visible: visitor">
+            <a id="page-history-tab-header" href="#page-history-tab" data-toggle="tab" aria-expanded="false">
+                page history
+            </a>
+        </li>
+        <li>
+            <a id="session-attachments-tab-header" href="#session-attachments-tab" data-toggle="tab" aria-expanded="false">
+                attachments
+            </a>
+        </li>
+        <li>
+            <a id="session-flow-tab-header" href="#session-flow-tab" data-toggle="tab" aria-expanded="false">
+                session flow
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="tab-content">
+
+    <div id="session-info-tab" class="tab-pane active">
+
+        <table class="table table-hover table-default-color">
+            <tr>
+                <td style="width: 120px;">Created:</td>
+                <td data-bind="html: Dt.asHtml(addTimestamp)"></td>
+            </tr>
+            <tr>
+                <td>Is&#160;Online&#160;Session:</td>
+                <td data-bind="text: isOnline ? 'Yes' : 'No'"></td>
+            </tr>
+            <tr>
+                <td>Started&#160;By:</td>
+                <td data-bind="html: starterHtml"></td>
+            </tr>
+            <tr>
+                <td>Started&#160;To:</td>
+                <td data-bind="html: targetHtml"></td>
+            </tr>
+            <tr data-bind="if: visitor">
+                <td title="Transcript sent to Visitor">Transcript&#160;sent:</td>
+                <td data-bind="html: Dt.asHtml(transcriptSentTime())"></td>
+            </tr>
+        </table>
+
+        <h5>Invite history</h5>
+        <table class="table table-hover">
+            <tbody data-bind="foreach: invites">
+            <tr>
+                <td>
+                    <table class="table-default-color">
+                        <tr>
+                            <td>Created:</td>
+                            <td data-bind="html: Dt.asHtml(createdTime)"></td>
+                        </tr>
+                        <tr>
+                            <td>Created&#160;By:</td>
+                            <td>
+                                <span data-bind="html: createdByHtml"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Created&#160;To:</td>
+                            <td>
+                                <span data-bind="html: createdToHtml"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px;">Status:</td>
+                            <td>
+                                <span data-bind="html: status"></span>
+                            </td>
+                        </tr>
+                        <!-- ko if: statusChangeTime -->
+                        <tr>
+                            <td>Accepted&#160;at:</td>
+                            <td data-bind="html: Dt.asHtml(statusChangeTime)"></td>
+                        </tr>
+                        <!-- /ko -->
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h5>Participating Agents</h5>
+        <table class="table table-hover">
+            <tbody data-bind="foreach: agents">
+            <tr>
+                <td>
+                    <span data-bind="text: $data"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="visitor-details-tab" class="tab-pane" data-bind="if: visitor">
+        <table data-bind="with: visitor" class="table table-hover table-default-color">
+            <tr>
+                <td style="width: 120px;">Local Time:</td>
+                <td data-bind="if: timeZoneOffset">
+                    <offset-clock params="offset: timeZoneOffset"></offset-clock>
+                </td>
+            </tr>
+            <tr>
+                <td>Media:</td>
+                <td>
+                    <!-- ko if: mediaSupport -->
+                    <!-- ko if: mediaSupportVideo --><i class="fa fa-video-camera"></i>&nbsp;<!-- /ko -->
+                    <!-- ko if: mediaSupportAudio --><i class="fa fa-microphone"></i>&nbsp;<!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko if: !mediaSupport() -->
+                    No Media Support
+                    <!-- /ko -->
+                    <span data-bind="text: mediaSupport"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td data-bind="text: name() ? name() : 'Not specified'"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td data-bind="text: email() ? email() : 'Not specified'"></td>
+            </tr>
+            <tr data-bind="if: phone">
+                <td>Phone:</td>
+                <td data-bind="text: phone() ? phone() : ''"></td>
+            </tr>
+            <tr>
+                <td>Added:</td>
+                <td data-bind="html: Dt.asHtml(addTimestamp)"></td>
+            </tr>
+            <tr data-bind="if: externalId">
+                <td>External Id:</td>
+                <td data-bind="text: externalId"></td>
+            </tr>
+            <tr>
+                <td>Id:</td>
+                <td data-bind="text: uniqueId"></td>
+            </tr>
+            <tr data-bind="if: location">
+                <td>Location:</td>
+                <td data-bind="text: location"></td>
+            </tr>
+            <tr>
+                <td>UA:</td>
+                <td data-bind="text: userAgent"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="page-history-tab" class="tab-pane" data-bind="if: visitor">
+        <table data-bind="with: visitor" class="table table-hover">
+            <tbody data-bind="foreach: pageHistory">
+            <tr>
+                <td><span data-bind="html: Dt.asHtml(timestamp), attr: { title: visitorZoneTimestamp } "></span></td>
+                <td>
+                    <a href="" data-bind="text: url, attr: { href: url }" target="_blank"></a>
+                </td>
+                <td data-bind="text: customText"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="pageHistoryEnd" data-bind="visible: hasMorePageHistory" class="text-center" style="display: none;">
+            <div class="btn btn-primary" data-bind="text: morePageHistoryButtonText, click: loadMorePageHistory"></div>
+        </div>
+    </div>
+
+    <div id="session-attachments-tab" class="tab-pane" data-bind="">
+        <table class="table table-hover">
+            <tbody data-bind="">
+            <tr>
+                <td>attachment link 1</td>
+            </tr>
+            <tr>
+                <td>attachment link 2</td>
+            </tr>
+            <tr>
+                <td>attachment link 3</td>
+            </tr>
+            <tr>
+                <td>attachment link 4</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="session-flow-tab" class="tab-pane">
+        <div id="messages-container" style="overflow-x: hidden;">
+            <ul class="chats" data-bind="foreach: messages">
+
+                <li data-bind="css: senderClass">
+                    <div class="chat-content">
+                        <div class="chat-meta">
+                            <span class="image" data-bind="if: senderAvatarUrl">
+                                <img data-bind="attr: {src: senderAvatarUrl}">
+                            </span>
+                            <span data-bind="visible: iconHtml, html: iconHtml"></span>
+                            <div class="info">
+                                <span data-bind="text: senderName" class="name"></span>
+                                <span data-bind="html: Dt.asHtml(timestamp)"></span>
+                            </div>
+                        </div>
+                        <div class="message-text" data-bind="foreach: lines">
+                            <p data-bind="html: $data"></p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </li>
+
+            </ul>
+            <div id="sessionFlowEnd" data-bind="visible: hasMoreMessages" class="text-center" style="display: none;">
+                <div class="btn btn-primary" data-bind="text: moreMessagesButtonText, click: loadMoreMessages"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+@section scripts_include {
+}
+
+@section scripts{
+    <script type="text/javascript">
+
+        var currentUserId = @UserIdentity.GetUserId(User.Identity);
+        var customerId = @UserIdentity.GetCustomerId(User.Identity);
+        var sessionSkey = @Model;
+        var pageTrackerUrl = '@Html.Raw(HttpUtility.JavaScriptStringEncode(pageTrackerUrl))';
+
+        require(
+            ['pages/ChatSessionDetails', 'Dt'],
+            function (app, dt)
+            {
+                window.Dt = dt.default;
+
+                $(
+                    function ()
+                    {
+                        $('.nav-tabs a').tab();
+
+                        new app.default(currentUserId, customerId, sessionSkey, pageTrackerUrl).run();
+                    });
+            });
+    </script>
+}

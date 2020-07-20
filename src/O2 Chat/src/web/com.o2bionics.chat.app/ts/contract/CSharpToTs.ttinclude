@@ -1,0 +1,179 @@
+<#@ template debug="true" hostSpecific="true" language="C#" compilerOptions="platform:x64" #>
+<#@ output extension=".ts" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.ComponentModel.DataAnnotations" #>
+<#@ Assembly Name="System.Runtime.Serialization" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Net" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.Text" #>
+<#
+    // When changing this file, make sure the following test passes "\webTests\Com.O2Bionics.Web.App.Tests\t4\CSharpToTs.ttinclude.test.cmd".
+
+    AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve += (sender, argument) => Assembly.ReflectionOnlyLoad(argument.Name);
+#>
+// This file was auto-generated. If necessary, make changes only to the source .t4 files.
+
+// ReSharper disable InconsistentNaming
+<#+
+    private readonly HashSet<Type> m_knownTypes = new HashSet<Type>();
+
+    public string Class(Assembly assembly, string typeName, string classBase = null, string interfaceBases = null)
+        => ClassImpl(true, assembly, typeName, classBase, interfaceBases);
+
+    public string Enums(Assembly assembly, string typeName)
+    {
+        var t = GetUnregisteredType(assembly, typeName, out var error);
+        if (t == null) return error;
+        if (!t.IsEnum) return FormatError($"{t.FullName} must be enum.");
+
+        var fields = GetStaticFields(t);
+        if (0 == fields.Length) return FormatError($"enum {t.FullName} must have values.");
+
+        var sb = new StringBuilder("export enum ").Append(t.Name).AppendLine(" {");
+        foreach (var field in fields)
+            sb.AppendLine($"  {field.Name} = {field.GetRawConstantValue()},");
+
+        sb.AppendLine("}");
+        m_knownTypes.Add(t);
+        return sb.ToString();
+    }
+
+    public string Interface(Assembly assembly, string typeName, string bases = null)
+        => ClassImpl(false, assembly, typeName, bases, null);
+
+    public Assembly LoadAssembly(string filename)
+        => Assembly.ReflectionOnlyLoadFrom(Host.ResolvePath(filename));
+
+    private static FieldInfo[] GetStaticFields(Type t)
+        => t.GetFields(BindingFlags.Public | BindingFlags.Static);
+
+    private static IEnumerable<MemberInfo> GetInterfaceFieldsProps(Type t)
+        => t.GetMembers(BindingFlags.Public | BindingFlags.Instance)
+            .Where(mi => 0 != (mi.MemberType & (MemberTypes.Field | MemberTypes.Property)));
+
+    private static Type GetMemberType(MemberInfo mi)
+        => mi is PropertyInfo propertyInfo ? propertyInfo.PropertyType : ((FieldInfo)mi).FieldType;
+
+    private static string GetNameAttributeValue(MemberInfo field, string name)
+        => field.GetCustomAttributesData()?.Where(a => name == a.AttributeType.Name && null != a.NamedArguments)
+            .SelectMany(a => a.NamedArguments).Where(a => "Name" == a.MemberName && TypeEquals(typeof(string), a.TypedValue.ArgumentType))
+            .Select(a => a.TypedValue.Value as string).FirstOrDefault();
+
+    // For some reasons, Type comparison does not work - compare by name.
+    private static bool TypeEquals(Type a, Type b)
+        => a.AssemblyQualifiedName == b.AssemblyQualifiedName;
+
+    private string ClassImpl(bool isClass, Assembly assembly, string typeName, string classBase, string interfaceBases)
+    {
+        var t = GetUnregisteredType(assembly, typeName, out var error);
+        if (t == null) return error;
+
+        var kind = isClass ? "class" : "interface";
+
+        var members = GetInterfaceFieldsProps(t).ToList();
+        if (0 == members.Count) return FormatError($"The {kind} {typeName} must have members.");
+
+        var sb = new StringBuilder($"export {kind} {t.Name}");
+        if (!string.IsNullOrEmpty(classBase))
+        {
+            if (!System.CodeDom.Compiler.CodeGenerator.IsValidLanguageIndependentIdentifier(classBase))
+                return FormatError($"The {kind} {typeName} base '{classBase}' must be a valid identifier.");
+            sb.Append($" extends {classBase}");
+        }
+
+        if (!string.IsNullOrEmpty(interfaceBases))
+        {
+            var names = interfaceBases.Split(new []{','}, StringSplitOptions.RemoveEmptyEntries);
+            if (0 == names.Length)
+                return FormatError($"The {kind} {typeName} bases '{interfaceBases}' must be valid identifiers.");
+
+            // ReSharper disable once ForCanBeConvertedToForeach
+            for (var i = 0; i < names.Length; i++)
+            {
+                var name = names[i].Trim();
+                if (!System.CodeDom.Compiler.CodeGenerator.IsValidLanguageIndependentIdentifier(name))
+                    return this.FormatError($"One of {kind} {typeName} bases '{name}' must be a valid identifier.");
+            }
+
+            sb.Append($" implements {interfaceBases}");
+        }
+
+        sb.AppendLine(" {");
+        var accessibility = isClass ? "public " : null;
+
+        foreach (var mi in members)
+        {
+            var mt = GetMemberType(mi);
+
+            // Look for [JilDirective("minStateTitle")].
+            var name = GetNameAttributeValue(mi, "DataMemberAttribute");
+            if (string.IsNullOrEmpty(name)) name = mi.Name;
+
+            var p = mt.IsEnum ? " enum" : null;
+            sb.AppendLine($"  {accessibility}{name}: {GetTypeName(mi)}; //{p} {mt}");
+        }
+
+        sb.AppendLine("}");
+        m_knownTypes.Add(t);
+        return sb.ToString();
+    }
+
+    private string FormatError(string message)
+    {
+        var result = "//Error: " + message;
+        Error(result);
+        return result;
+    }
+
+    private string GetTypeName(MemberInfo mi) => GetTypeName(GetMemberType(mi));
+
+    private string GetTypeName(Type t)
+    {
+        if (t.IsPrimitive)
+        {
+            if (TypeEquals(t, typeof(bool))) return "boolean";
+            if (TypeEquals(t, typeof(char))) return "string";
+            return "number";
+        }
+
+        if (TypeEquals(t, typeof(decimal))) return "number";
+
+        if (TypeEquals(t, typeof(string)) || TypeEquals(t, typeof(DateTime)) ||
+            TypeEquals(t, typeof(Uri)) || TypeEquals(t, typeof(IPAddress)))
+            return "string";
+
+        if (t.IsArray) return GetTypeName(t.GetElementType()) + "[]";
+
+        if (typeof(IEnumerable).IsAssignableFrom(t)) // all enumerables should be generic
+            return GetTypeName(t.GetGenericArguments()[0]) + "[]";
+
+        var underlyingType = Nullable.GetUnderlyingType(t);
+        if (underlyingType != null) return GetTypeName(underlyingType) + " | null";
+
+        if (m_knownTypes.Contains(t)) return t.Name;
+
+        return "any " + Environment.NewLine + FormatError($"unknown type: {t.Name}.") + Environment.NewLine;
+    }
+
+    private Type GetUnregisteredType(Assembly assembly, string typeName, out string error)
+    {
+        var t = assembly.GetType(typeName);
+        if (t == null)
+        {
+            error = FormatError($"null returned for type {typeName}.");
+            return null;
+        }
+
+        if (m_knownTypes.Contains(t))
+        {
+            error = FormatError($"the code for type {typeName} has already been generated.");
+            return null;
+        }
+
+        error = null;
+        return t;
+    }
+#>

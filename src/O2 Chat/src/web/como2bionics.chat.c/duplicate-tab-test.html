@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+<input type="hidden" id="myStateInput" value=""/>
+
+<script type="text/javascript" src="Scripts/jquery-1.11.3.min.js"></script>
+<script language="javascript">
+
+    $(function ()
+    {
+        onLoad();
+    });
+
+    function onLoad()
+    {
+        if ($('#myStateInput').val() === '') // Load with no state.
+            $('#myStateInput').val('already loaded'); // Set state
+        else
+            alert("Duplicate tab! Do something.");
+
+        $(window)
+            .on('beforeunload',
+                function () // Back or Forward buttons
+                {
+                    $('#myStateInput').val(''); // Blank the state out.
+                });
+    }
+</script>
+</body>
+</html>

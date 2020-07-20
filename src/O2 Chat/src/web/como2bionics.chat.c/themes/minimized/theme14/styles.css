@@ -1,0 +1,38 @@
+body {
+    background: none!important;
+}
+#collapsed-state {
+    width: 280px;
+    position: relative;
+}
+#collapsed-state .chat-title-bar {
+    background: none!important;
+    position: relative;
+    width: 280px;
+}
+#collapsed-state .title-text {
+    background: #3eb5f1!important;
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+    padding: 14px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    font-size: 14px;
+    line-height: 14px;
+}
+#collapsed-state .title-text:before {
+    content: "";
+    position: absolute;
+    right: -10px;
+    bottom:12px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 15px;
+    border-color: transparent transparent transparent #3eb5f1;
+}
+#collapsed-state .chat-title-img {
+    display: none;
+}

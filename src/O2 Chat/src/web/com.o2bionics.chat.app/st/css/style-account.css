@@ -1,0 +1,14 @@
+.center-form {
+    width: 35em;
+    max-width: 35em;
+    margin: 0 auto;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    background: url('~/st/i/backgrounds/dark-material-bg.jpg') no-repeat;
+    background-size: cover;
+}

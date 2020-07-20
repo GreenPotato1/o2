@@ -1,0 +1,17 @@
+﻿<script id="dialog-delete-object-tmpl" type="text/html" height="250" width="300">
+    <div class="col-md-12" data-bind="dialog: dialog" title="Delete">
+        <div class="row">
+            <div class="col-md-12">
+                Delete <span data-bind="text: objectType"></span> "<span data-bind="text: objectName"></span>"?
+            </div>
+        </div>
+        <div class="dialog-button-set">
+            <button class="btn btn-primary" data-bind="command: commands.delete">
+                delete
+            </button>
+            <button class="btn btn-default" data-bind="command: commands.close">
+                cancel
+            </button>
+        </div>
+    </div>
+</script>

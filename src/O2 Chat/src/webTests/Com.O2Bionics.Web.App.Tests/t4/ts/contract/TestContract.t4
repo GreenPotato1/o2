@@ -1,0 +1,55 @@
+<#@ include file="..\..\..\..\..\web\com.o2bionics.chat.app\ts\contract\CSharpToTs.ttinclude" #>
+<#@ include file="..\..\..\..\..\web\com.o2bionics.chat.app\ts\contract\IdToNameMap.ttinclude" #>
+<#
+    //Jil is required when loading [JilDirective("minStateTitle")].
+    LoadAssembly("..\\..\\..\\..\\..\\chat\\Com.O2Bionics.ChatService.Contract\\bin\\Debug\\Jil.dll");
+    var aUt = LoadAssembly("..\\..\\..\\..\\..\\common\\Com.O2Bionics.Utils\\bin\\Debug\\Com.O2Bionics.Utils.dll");
+    var a = LoadAssembly("..\\..\\..\\..\\..\\chat\\Com.O2Bionics.ChatService.Contract\\bin\\Debug\\Com.O2Bionics.ChatService.Contract.dll");
+    var au = LoadAssembly("..\\..\\..\\..\\..\\auditTrail\\Com.O2Bionics.AuditTrail.Contract\\bin\\Debug\\Com.O2Bionics.AuditTrail.Contract.dll");
+#>
+// This file is used to test the .ttinclude files.
+// The generated .ts files should compile without errors.
+
+export interface INamed {
+  Name: string;
+}
+
+export interface BaseInterface1 {
+  Name: string;
+}
+
+export interface BaseInterface2 {
+  Count: number;
+}
+
+export class BaseClass {
+  public OtherName: string;
+}
+
+<#= Enums(a, "Com.O2Bionics.ChatService.Contract.CallResultStatusCode") #>
+<#= Enums(a, "Com.O2Bionics.ChatService.Contract.CallResultStatusCode") #>
+<#= Enums(a, "Com.O2Bionics.ChatService.Contract.OnlineStatusInfo") #>
+<#= Enums(a, "Com.O2Bionics.ChatService.Contract.CallResultStatusCode_BadName") #>
+
+<#= EnumsAndNameMap(a, "Com.O2Bionics.ChatService.Contract.ObjectStatus") #>
+<#= EnumsAndNameMap(a, "Com.O2Bionics.ChatService.Contract.ObjectStatus") #>
+<#= EnumsAndNameMap(a, "Com.O2Bionics.ChatService.Contract.ObjectStatus_BadName") #>
+<#= EnumsAndNameMap(a, "Com.O2Bionics.ChatService.Contract.ResetPasswordCodeStatus") #>
+
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.DepartmentInfo", "INamed") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.DepartmentInfo") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.DepartmentInfo_BadName", "INamed") #>
+
+<#= Class(au, "Com.O2Bionics.AuditTrail.Contract.Facet", "bad base name") #>
+<#= Class(au, "Com.O2Bionics.AuditTrail.Contract.Facet", "BaseClass", " , ") #>
+<#= Class(au, "Com.O2Bionics.AuditTrail.Contract.Facet", "BaseClass", "BaseInterface1, BaseInterface 2") #>
+<#= Class(au, "Com.O2Bionics.AuditTrail.Contract.Facet", "BaseClass", "BaseInterface1, BaseInterface2") #>
+<#= Class(au, "Com.O2Bionics.AuditTrail.Contract.Facet") #>
+<#= Class(au, "Com.O2Bionics.AuditTrail.Contract.Facet_BadName") #>
+
+<#= Class(au, "Com.O2Bionics.AuditTrail.Contract.Filter") #>
+
+<#= KeyValueConstantStrings(a, "Com.O2Bionics.ChatService.Contract.AuditTrail.OperationStatus") #>
+<#= KeyValueConstantStrings(a, "Com.O2Bionics.ChatService.Contract.AuditTrail.OperationStatus") #>
+<#= KeyValueConstantStrings(a, "Com.O2Bionics.ChatService.Contract.AuditTrail.OperationStatus_BadName") #>
+<#= KeyValueConstantStrings(a, "Com.O2Bionics.ChatService.Contract.AuditTrail.ProductCodes") #>

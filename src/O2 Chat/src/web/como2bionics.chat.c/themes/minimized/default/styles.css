@@ -1,0 +1,32 @@
+﻿#collapsed-state .chat-title-bar {
+    background: #f47527s !important;
+    color: #fff !important;
+    border: 0 !important;
+    height: 37px;
+    line-height: 37px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+#collapsed-state .chat-title-bar.disconnected { background: #774444 !important; }
+
+#collapsed-state .chat-title-bar .title-text {
+    float: left;
+    padding-left: 15px;    
+}
+
+#collapsed-state .chat-title-bar .title-buttons {
+    position: absolute;
+    right: 42px;  
+    top:13px;
+}
+#collapsed-state .chat-title-bar .title-buttons.title-buttons-f {    
+    right: 15px;
+    top:1px;
+}
+#collapsed-state .chat-title-bar .title-buttons.title-buttons-m .material-icons{
+    margin-top: 6px;
+}
+#collapsed-state .chat-title-bar .title-buttons.title-buttons-f .material-icons{
+    margin-top: 6px;
+}

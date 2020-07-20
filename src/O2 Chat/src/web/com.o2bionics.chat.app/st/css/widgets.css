@@ -1,0 +1,584 @@
+/* Widget css */
+
+/* Chat Widget starts */
+
+.chats{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0;
+}
+
+.chats li{
+	margin-bottom: 1px;
+	padding-bottom: 10px;
+}
+.chats li .message-text p img {
+    max-width:20px;
+	margin:0;
+    vertical-align: top;
+}
+.chats .by-me img{
+	max-width:40px;
+	margin-top: 5px;
+	margin-right:10px;
+}
+.chats .chat-content .chat-meta .image {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin: 0px 5px 0 0;
+	border-radius: 16px;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+	overflow: hidden;
+    float: left;    
+}
+.chats .chat-meta {
+    float: left;
+    width: 100%;
+}
+.chats .chat-content span.name {
+    font-size: 11px;
+}
+.chats .chat-content .chat-meta .info {
+    float: left;
+}
+.chats .chat-content .message-text {
+    box-sizing: border-box;
+    max-width: 90%;
+    min-width: 90%;
+    float: left;
+}
+.chats .chat-content .message-text a {
+    text-decoration: underline;
+}
+.chats  .chat-content .chat-meta .image img {
+	max-width: 100%;
+	margin: 0;
+}
+.chats .by-me .chat-meta{
+	font-size: 12px;
+    float: right;
+    max-width: 90%;
+    margin-right: 0px;
+}
+
+.chats .by-me .chat-content {
+	margin-left: 0px;
+	position: relative;
+	padding:0px 8px 0px 8px;
+	font-size: 14px;
+}
+.chats .by-me .chat-content span.name {
+	font-weight: bold;
+	font-size: 11px;
+	color: rgba(0,0,0,0.87);
+    display: none;
+}
+.chats .by-me .chat-content .chat-meta .image {
+    float: right;
+}
+.chats .by-me .chat-content .chat-meta .info {
+    float: left;
+    margin-left: 0;
+}
+.chats .by-me .chat-content span.time {
+	color: rgba(0,0,0,0.54);
+	font-size: 11px;
+    float: left;
+    margin-right: 5px;
+}
+.chats .by-me .chat-content .message-text {
+	background: #E1F5FE;
+	margin-right: 5px;
+	padding: 4px 4px 4px 4px;
+	border-radius: 8px 8px 8px 8px;
+	-webkit-border-radius: 8px 8px 8px 8px;
+	-moz-border-radius: 8px 8px 8px 8px;
+	position: relative;
+    float: right;
+}
+
+.chats .by-me .chat-content .message-text:before {
+	content:"";
+	position: absolute; right: -6px; top:10px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px 0px 8px 8px;
+	border-color: transparent transparent transparent #E1F5FE;
+}
+.chats .by-me .chat-content .chat-meta .image {
+    margin-left: 5px;
+}
+.chats .by-system img{
+	max-width:40px;
+	margin-top: 5px;
+	margin-right:10px;
+}
+
+.chats .by-system .chat-meta{
+	font-size: 12px;
+    float: none;
+    margin-bottom: -8px;
+}
+
+.chats .by-system .chat-content {
+	margin-left: 0px;
+	position: relative;
+	padding:8px 8px 8px 8px;
+	font-size: 14px;
+	font-weight: normal;
+	border-width: 0px;
+	color: rgb(62,74,72);
+	text-align: center;
+}
+.chats .by-system .chat-content p {
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(0,0,0,0.54);
+}
+.chats .by-system .chat-content .info {
+	color: rgba(0,0,0,0.54);
+    float: none;
+    margin-left: 0;
+}
+.chats .by-system .chat-content .image {
+	display: none;
+}
+.chats .by-system .chat-content .message-text {
+	padding:  0;
+    width: 100%;
+    max-width: 100%;
+}
+
+.chats .by-other img{
+	max-width:40px;
+	margin-top: 5px;
+	margin-left:10px;
+}
+
+.chats .by-other .chat-meta{
+	font-size: 12px;
+}
+
+.chats .by-other .chat-content{
+	margin-right: 0px;
+	position: relative;
+	border-width:0px;
+	padding: 8px 8px 8px 8px;
+	font-size: 14px;
+}
+.chats .by-other .chat-content span.name {
+	font-weight: bold;
+	color: rgba(0,0,0,0.87);
+}
+.chats .by-other .chat-content span.time {
+	color: rgba(0,0,0,0.54);
+	font-size: 11px;
+}
+.chats .by-other .chat-content .message-text {
+	background: #F5F5F5;
+	padding: 8px;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	position: relative;    
+}
+
+.chats .by-other .chat-content .message-text:before {
+	content:"";
+	position: absolute; left: -6px; top:10px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px 8px 8px 0;;
+	border-color: transparent #F5F5F5 transparent transparent;
+}
+
+/* Recent posts & Comments widgets starts */
+
+.chats .by-visitor img{
+	max-width:40px;
+	margin-top: 5px;
+	margin-left:10px;
+}
+
+.chats .by-visitor .chat-meta{
+	font-size: 12px;
+}
+
+.chats .by-visitor .chat-content{
+	margin-right: 0px;
+	position: relative;
+	border-width:0px;
+	padding: 8px 8px 8px 8px;
+	font-size: 14px;
+}
+.chats .by-visitor .chat-content span.name {
+	font-weight: bold;
+	color: rgba(0,0,0,0.87);
+}
+.chats .by-visitor .chat-content span.time {
+	color: rgba(0,0,0,0.54);
+	font-size: 11px;
+}
+.chats .by-visitor .chat-content .message-text {
+	margin: 0 0 0 47px;
+	background:#e0f2f1;
+	padding: 8px;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	position: relative;
+}
+
+.chats .by-visitor .chat-content .message-text:before {
+	content:"";
+	position: absolute; left: -6px; top:10px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px 8px 8px 0;
+	border-color: transparent #e0f2f1 transparent transparent;
+}
+
+.chats .by-visitor .chat-content .image {
+	position: relative;
+}
+.chats .by-visitor .chat-content .image img {
+	display: none;
+}
+.chats .by-visitor .chat-content .image:before {
+	content:"";
+	position: absolute;
+	left:0; top:0;
+	background: url("../i/visitor.jpg");
+    background-size: 32px 32px;
+	width: 32px;
+	height: 32px;
+	border-radius: 32px;
+	-moz-border-radius: 32px;
+	-webkit-border-radius: 32px;
+}
+
+/* Recent posts & Comments widgets starts */
+.chats .private .chat-content .chat-meta,
+.chats .as-me .chat-content .chat-meta,
+.chats .as-other .chat-content .chat-meta {    
+    position: relative;
+}
+.chats .private .chat-content .chat-meta i,
+.chats .as-me .chat-content .chat-meta i,
+.chats .as-other .chat-content .chat-meta i {
+    position: absolute; 
+    left: 10px;
+    top:50px;
+}
+
+.chats .as-me .chat-content .message-text:after,
+.chats .as-other .chat-content .message-text:after  {
+    content: "";
+    width: 3px;
+    height: auto;
+    background: #81d4fa;
+    position: absolute;
+    left: 0; top:8px;
+    bottom: 8px;
+}
+.chats .as-other .chat-content .message-text:after {
+    background: #9e9e9e;
+}
+
+.recent-content .btn{
+	font-size: 11px !important;
+	margin-top: 5px;
+}
+
+.recent-meta{
+	font-size: 10px;
+	color: #999;
+}
+
+.recent {
+	list-style-type: none;
+	margin: 0px;
+	font-size: 13px;
+	line-height: 23px;
+}
+
+.recent img{
+	max-width:40px;
+	margin-top: 5px;
+	margin-right:10px;
+}
+
+.recent li{
+	margin-bottom: 8px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #eee;
+}
+
+/* Recent posts and comments widget ends */
+
+/* File upload widget starts */
+
+.file-upload{
+	list-style-type: none;
+	margin: 0px;
+	padding:0px;
+}
+
+.file-upload .btn{
+	font-size: 8px !important;
+}
+
+.file-upload li{
+	padding:9px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.file-upload li:first-child{
+	border-top: 0px;
+}
+
+.file-upload .file-meta{
+	font-size: 12px;
+	padding: 3px 0px;
+}
+
+.file-upload .progress{
+	margin: 7px 0px !important;
+}
+
+/* File upload widget ends */
+
+
+/* Tasks starts */
+
+.task{
+	list-style-type: none;
+	margin: 0px;
+	padding:0px;
+}
+
+.task li{
+	padding:12px 10px;	
+  border-top: 1px solid #ddd;
+}
+
+.task li:first-child{
+	border-top: 0px;
+}
+
+.task input{
+	margin-right:5px;
+}
+
+.task .label{
+	margin-left: 5px;
+}
+
+.task .btn{
+	font-size: 11px !important;
+}
+
+/* Tasks ends */
+
+/* Referrer - OS and Browser */
+
+.referrer img{
+	max-width: 20px;
+	width: 20px;
+	display: block;
+	margin: 0 auto;
+}
+
+/* Referrer ends */
+
+/* Latest news */
+
+.latest-news{
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.latest-news li{
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+
+.latest-news li:last-child{
+	border-bottom: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.latest-news h6{
+	line-height: 20px;
+}
+
+.latest-news h6 span{
+	font-weight: normal;
+	font-size: 11px;
+	color: #666;
+}
+
+/* Quick post */
+
+.quick-post{
+	margin-top: 20px;
+}
+
+/* Project starts */
+
+.project{
+	list-style-type: none;
+	margin: 0px;
+	padding:0px;
+}
+
+.project li{
+	padding:10px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.project li:first-child{
+	border-top: 0px;
+}
+
+.project p{
+	font-weight: bold;
+	margin: 0px !important;
+	padding: 0px !important
+}
+
+.project .p-meta{
+	font-size: 11px;
+	font-weight: normal;
+	margin-left: 20px !important;
+	margin-bottom: 5px !important;
+}
+
+.project .progress{
+	margin:0px !important;
+	padding: 0px !important;
+	margin-left: 20px !important;
+}
+
+/* Proejct ends */
+
+/* Recent Activity starts */
+
+.activity{
+	list-style-type: none;
+	margin: 0px;
+	padding:0px;
+}
+
+.activity li{
+	padding:10px 10px;
+  background-color: #fff;	
+  border-top: 1px solid #ddd;
+}
+
+.activity li:first-child{
+	border-top: 0px;
+}
+
+.activity i{
+	margin-right: 5px;
+}
+
+/* Recent activity ends */
+
+/* Google maps */
+
+.gmap iframe{
+	width: 100%;
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+/* Google maps ends */
+
+/* Users starts */
+
+.user h6{
+	line-height: 17px !important;
+}
+
+.user{
+	font-size: 12px !important;
+	line-height: 20px !important;
+}
+
+.user img{
+	max-width: 70px;
+	margin-top: 10px;
+}
+
+.user .user-pic{
+	float: left;
+	width: 80px;
+}
+
+.user .user-details{
+	margin-left: 85px;
+}
+
+.user .btn{
+	font-size: 11px !important;
+}
+
+/* Users ends */
+
+@media (min-width: 768px) {
+    .chats .chat-content .message-text {
+        max-width: 80%;
+        min-width: 80%;
+    }
+    .chats  .chat-content .chat-meta .image {        
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        left: 5px;
+        top:32px;
+    }
+    .chats .by-me .chat-meta{
+        font-size: 12px;
+        float: right;
+        max-width: 80%;
+        margin-right: 47px;
+    }
+    .chats .by-other .chat-content .message-text {
+        margin: 0px 0 0 47px;
+    }
+    .chats .by-me .chat-content .chat-meta .info {        
+        margin-right: 49px;
+    }
+    .chats .by-me .chat-content .message-text {
+        margin-right: 47px;
+        padding: 8px;
+    }
+    .chats .by-me .chat-content .chat-meta .image {   
+        position: absolute;
+        right: 5px;
+        top: 32px;
+        left: auto;
+    } 
+    .chats .by-me .chat-content {
+        padding: 8px;
+    }
+    .chats .by-me .chat-content span.name {
+        font-size: 12px
+    }
+    .chats .chat-content span.name {
+        font-size: 12px;
+    }
+    .chats .chat-content .chat-meta .info {
+        margin-left: 49px;
+    }
+}

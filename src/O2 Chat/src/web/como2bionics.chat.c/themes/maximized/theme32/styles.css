@@ -1,0 +1,34 @@
+.chat-title-bar {
+    background:#004ba0!important;
+}
+#chat-messages-dialog #chat-container {
+    background: #e3f2fd url("i/theme32-bg.png") no-repeat 100% 100%;
+}
+#chat-start-dialog {
+    background: #e3f2fd;
+}
+#chat-messages-dialog .discussion {
+    background: transparent!important;
+}
+#enter-visitor-info-banner {
+    background: #1976d2;
+}
+#rtc-call-controls,#rtc-call-video,
+#chat-messages-dialog textarea.message-text:disabled {
+    background: #e3f2fd!important;
+}
+#enter-visitor-info-banner:after {
+    display: none;
+}
+.info-banner_visitor i {
+    color: #fff;
+}
+#chat-messages-dialog .self .message {
+    background: #fff;
+}
+#chat-messages-dialog .self .message:after {
+    border-color: #fff transparent transparent transparent;
+}
+#chat-messages-dialog div.buttons .buttons-send i {
+    color:#1976d2;
+}

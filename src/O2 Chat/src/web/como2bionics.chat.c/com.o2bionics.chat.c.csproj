@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{36C3D2CC-2F2A-4986-A7FF-DD05383015AF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Com.O2Bionics.ChatService.Web.Chat</RootNamespace>
+    <AssemblyName>Com.O2Bionics.ChatService.Web.Chat</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ERRORTRACKERTEST</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.SignalR.Core.2.2.3\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.3\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\src\common\Com.O2Bionics.Utils.Web\Scripts\Common.js">
+      <Link>ScriptsApp\Common.js</Link>
+    </Content>
+    <Content Include="..\..\..\src\common\Com.O2Bionics.Utils.Web\Scripts\DetectRTCHelper.js">
+      <Link>ScriptsApp\DetectRTCHelper.js</Link>
+    </Content>
+    <Content Include="..\..\..\src\common\Com.O2Bionics.Utils.Web\Scripts\Enums.js">
+      <Link>ScriptsApp\Enums.js</Link>
+    </Content>
+    <Content Include="..\..\..\src\common\Com.O2Bionics.Utils.Web\Scripts\RtcChannel.js">
+      <Link>ScriptsApp\RtcChannel.js</Link>
+    </Content>
+    <Content Include="..\..\common\Com.O2Bionics.Utils.Web\Scripts\AvatarConstants.js">
+      <Link>ScriptsApp\AvatarConstants.js</Link>
+    </Content>
+    <Content Include="..\..\common\Com.O2Bionics.Utils.Web\Scripts\ErrorLogger.js">
+      <Link>ScriptsApp\ErrorLogger.js</Link>
+    </Content>
+    <Content Include="captcha\readme.txt" />
+    <Content Include="Content\emotify\gerty\cry.png" />
+    <Content Include="Content\emotify\gerty\grin.png" />
+    <Content Include="Content\emotify\gerty\happy.png" />
+    <Content Include="Content\emotify\gerty\neutral.png" />
+    <Content Include="Content\emotify\gerty\puzzled.png" />
+    <Content Include="Content\emotify\gerty\sad.png" />
+    <Content Include="Content\emotify\gerty\suprised.png" />
+    <Content Include="Content\emotify\gerty\worried.png" />
+    <Content Include="css\bootstrap-material-design.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\material-icons.css" />
+    <Content Include="duplicate-tab-test.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="bootchat.js" />
+    <Content Include="css\chatframe.css" />
+    <Content Include="fonts\icomoon.svg" />
+    <Content Include="fonts\MaterialIcons-Regular.svg" />
+    <Content Include="i\captcha-loading.png" />
+    <Content Include="i\collapse-state.png" />
+    <Content Include="i\man-h.gif" />
+    <Content Include="i\man-w.gif" />
+    <Content Include="i\man.gif" />
+    <Content Include="ScriptsApp\Cookies.js" />
+    <Content Include="ScriptsApp\models\AgentModel.js" />
+    <Content Include="ScriptsApp\models\AgentStorage.js" />
+    <Content Include="ScriptsApp\models\Demo\DemoChatDialogViewModel.js" />
+    <Content Include="ScriptsApp\models\ChatDialogViewModel.js" />
+    <Content Include="ScriptsApp\models\Demo\DemoStartChatDialogViewModel.js" />
+    <Content Include="ScriptsApp\models\Demo\DemoEditVisitorInfoDialogViewModel.js" />
+    <Content Include="ScriptsApp\models\Demo\DemoOfflineMessageSentDialogViewModel.js" />
+    <Content Include="ScriptsApp\models\Demo\TranscriptProposalDialogViewModel.js" />
+    <Content Include="ScriptsApp\models\TranscriptProposalDialogViewModel.js" />
+    <Content Include="ScriptsApp\models\EditVisitorInfoDialogViewModel.js" />
+    <Content Include="ScriptsApp\models\OfflineMessageSentDialogViewModel.js" />
+    <Content Include="ScriptsApp\models\StartChatDialogViewModel.js" />
+    <Content Include="ScriptsApp\models\Demo\DemoViewModel.js" />
+    <Content Include="ScriptsApp\models\ViewModel.js" />
+    <Content Include="ScriptsApp\Strings.js" />
+    <Content Include="ScriptsApp\Ui.js" />
+    <Content Include="ScriptsApp\WindowMessageHandler.js" />
+    <Content Include="ScriptsApp\ChatApplication.js" />
+    <Content Include="ScriptsApp\VisitorChatHubProxy.js" />
+    <Content Include="ScriptsApp\ChatParameters.js" />
+    <None Include="packages.config" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Client\chatframe.cshtml" />
+    <Content Include="CaptchaTest.cshtml" />
+    <Content Include="Scripts\adapter-4.2.1.js" />
+    <Content Include="Scripts\Autolinker.js" />
+    <Content Include="Scripts\ba-emotify.js" />
+    <Content Include="Scripts\ba-emotify.min.js" />
+    <Content Include="ScriptsApp\Tracker.js" />
+    <Content Include="Scripts\DetectRTC-1.3.5.js" />
+    <Content Include="Scripts\DetectRTC-1.3.5.min.js" />
+    <Content Include="Scripts\es5-shim.js" />
+    <Content Include="Scripts\es5-shim.min.js" />
+    <Content Include="Scripts\events.js" />
+    <Content Include="Scripts\intercom.js" />
+    <Content Include="css\codepoints" />
+    <Content Include="fonts\icomoon.eot" />
+    <Content Include="fonts\icomoon.ttf" />
+    <Content Include="fonts\icomoon.woff" />
+    <Content Include="fonts\MaterialIcons-Regular.eot" />
+    <Content Include="fonts\MaterialIcons-Regular.ttf" />
+    <Content Include="fonts\MaterialIcons-Regular.woff" />
+    <Content Include="fonts\MaterialIcons-Regular.woff2" />
+    <Content Include="Scripts\jquery-1.11.3.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.scrollTo-2.1.0.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.3.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.3.min.js" />
+    <Content Include="Scripts\knockout-3.3.0.debug.js" />
+    <Content Include="Scripts\knockout-3.3.0.js" />
+    <Content Include="Scripts\knockout.validation.debug.js" />
+    <Content Include="Scripts\knockout.validation.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\test2.pubxml" />
+    <Content Include="playground.html" />
+    <Content Include="Scripts\json2.js" />
+    <Content Include="Scripts\json2.min.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\lodash-3.7.0.min.js" />
+    <Content Include="test-track.html" />
+    <Content Include="themes\maximized\default\i\man.gif" />
+    <Content Include="themes\maximized\default\styles.css" />
+    <Content Include="themes\maximized\Theme Black\styles.css" />
+    <Content Include="themes\maximized\Theme Gray\styles.css" />
+    <Content Include="themes\maximized\Theme White\styles.css" />
+    <Content Include="themes\maximized\theme01\i\theme1-bg-top.png" />
+    <Content Include="themes\maximized\theme01\i\theme1-bg.png" />
+    <Content Include="themes\maximized\theme01\styles.css" />
+    <Content Include="themes\maximized\theme02\i\theme2-bg-top.png" />
+    <Content Include="themes\maximized\theme02\i\theme2-bg-top_.png" />
+    <Content Include="themes\maximized\theme02\i\theme2-bg.png" />
+    <Content Include="themes\maximized\theme02\styles.css" />
+    <Content Include="themes\maximized\theme03\i\theme3-bg.png" />
+    <Content Include="themes\maximized\theme03\styles.css" />
+    <Content Include="themes\maximized\theme04\i\theme4-bg.png" />
+    <Content Include="themes\maximized\theme04\styles.css" />
+    <Content Include="themes\maximized\theme05\i\theme5-bg.png" />
+    <Content Include="themes\maximized\theme05\styles.css" />
+    <Content Include="themes\maximized\theme06\i\theme6-bg.png" />
+    <Content Include="themes\maximized\theme06\styles.css" />
+    <Content Include="themes\maximized\theme07\i\theme7-bg.png" />
+    <Content Include="themes\maximized\theme07\styles.css" />
+    <Content Include="themes\maximized\theme08\i\theme8-bg.png" />
+    <Content Include="themes\maximized\theme08\styles.css" />
+    <Content Include="themes\maximized\theme09\i\theme9-bg.png" />
+    <Content Include="themes\maximized\theme09\styles.css" />
+    <Content Include="themes\maximized\theme10\i\theme10-bg.png" />
+    <Content Include="themes\maximized\theme10\styles.css" />
+    <Content Include="themes\maximized\theme11\i\theme11-bg.png" />
+    <Content Include="themes\maximized\theme11\styles.css" />
+    <Content Include="themes\maximized\theme12\i\theme12-bg.png" />
+    <Content Include="themes\maximized\theme12\styles.css" />
+    <Content Include="themes\maximized\theme13\i\theme13-bg.png" />
+    <Content Include="themes\maximized\theme13\styles.css" />
+    <Content Include="themes\maximized\theme14\i\theme14-bg.png" />
+    <Content Include="themes\maximized\theme14\styles.css" />
+    <Content Include="themes\maximized\theme15\i\theme15-bg.png" />
+    <Content Include="themes\maximized\theme15\styles.css" />
+    <Content Include="themes\maximized\theme16\i\theme16-bg.png" />
+    <Content Include="themes\maximized\theme16\styles.css" />
+    <Content Include="themes\maximized\theme17\i\theme17-bg.png" />
+    <Content Include="themes\maximized\theme17\styles.css" />
+    <Content Include="themes\maximized\theme18\i\theme18-bg.png" />
+    <Content Include="themes\maximized\theme18\styles.css" />
+    <Content Include="themes\maximized\theme19\i\theme19-bg.png" />
+    <Content Include="themes\maximized\theme19\styles.css" />
+    <Content Include="themes\maximized\theme20\i\theme20-bg.png" />
+    <Content Include="themes\maximized\theme20\i\theme20_-bg.png" />
+    <Content Include="themes\maximized\theme20\styles.css" />
+    <Content Include="themes\maximized\theme21\i\theme21-bg.png" />
+    <Content Include="themes\maximized\theme21\styles.css" />
+    <Content Include="themes\maximized\theme22\i\theme22-bg.png" />
+    <Content Include="themes\maximized\theme22\styles.css" />
+    <Content Include="themes\maximized\theme23\i\theme23-bg.png" />
+    <Content Include="themes\maximized\theme23\styles.css" />
+    <Content Include="themes\maximized\theme24\i\theme24-bg.png" />
+    <Content Include="themes\maximized\theme24\styles.css" />
+    <Content Include="themes\maximized\theme25\i\theme25-bg.png" />
+    <Content Include="themes\maximized\theme25\styles.css" />
+    <Content Include="themes\maximized\theme26\i\theme26-bg.png" />
+    <Content Include="themes\maximized\theme26\styles.css" />
+    <Content Include="themes\maximized\theme27\i\theme27-bg.png" />
+    <Content Include="themes\maximized\theme27\styles.css" />
+    <Content Include="themes\maximized\theme28\i\theme28-bg.png" />
+    <Content Include="themes\maximized\theme28\styles.css" />
+    <Content Include="themes\maximized\theme29\i\theme29-bg.png" />
+    <Content Include="themes\maximized\theme29\styles.css" />
+    <Content Include="themes\maximized\theme30\i\theme30-bg.png" />
+    <Content Include="themes\maximized\theme30\styles.css" />
+    <Content Include="themes\maximized\theme31\i\theme31-bg.png" />
+    <Content Include="themes\maximized\theme31\styles.css" />
+    <Content Include="themes\maximized\theme32\i\theme32-bg.png" />
+    <Content Include="themes\maximized\theme32\styles.css" />
+    <Content Include="themes\maximized\theme33\i\theme33-bg.png" />
+    <Content Include="themes\maximized\theme33\styles.css" />
+    <Content Include="themes\minimized\default\min.html" />
+    <Content Include="themes\minimized\default\styles.css" />
+    <Content Include="themes\minimized\theme01\agent.png" />
+    <Content Include="themes\minimized\theme01\min.html" />
+    <Content Include="themes\minimized\theme01\styles.css" />
+    <Content Include="themes\minimized\theme02\ic_forum.png" />
+    <Content Include="themes\minimized\theme02\min.html" />
+    <Content Include="themes\minimized\theme02\styles.css" />
+    <Content Include="themes\minimized\theme03\agent.png" />
+    <Content Include="themes\minimized\theme03\min.html" />
+    <Content Include="themes\minimized\theme03\styles.css" />
+    <Content Include="themes\minimized\theme04\cs-4.png" />
+    <Content Include="themes\minimized\theme04\min.html" />
+    <Content Include="themes\minimized\theme04\styles.css" />
+    <Content Include="themes\minimized\theme05\agent-icon.png" />
+    <Content Include="themes\minimized\theme05\min.html" />
+    <Content Include="themes\minimized\theme05\styles.css" />
+    <Content Include="themes\minimized\theme06\agent.png" />
+    <Content Include="themes\minimized\theme06\min.html" />
+    <Content Include="themes\minimized\theme06\styles.css" />
+    <Content Include="themes\minimized\theme07\agent.png" />
+    <Content Include="themes\minimized\theme07\min.html" />
+    <Content Include="themes\minimized\theme07\styles.css" />
+    <Content Include="themes\minimized\theme08\icon.png" />
+    <Content Include="themes\minimized\theme08\min.html" />
+    <Content Include="themes\minimized\theme08\styles.css" />
+    <Content Include="themes\minimized\theme09\agent.png" />
+    <Content Include="themes\minimized\theme09\min.html" />
+    <Content Include="themes\minimized\theme09\styles.css" />
+    <Content Include="themes\minimized\theme10\agent.png" />
+    <Content Include="themes\minimized\theme10\min.html" />
+    <Content Include="themes\minimized\theme10\styles.css" />
+    <Content Include="themes\minimized\theme11\agent.png" />
+    <Content Include="themes\minimized\theme11\min.html" />
+    <Content Include="themes\minimized\theme11\styles.css" />
+    <Content Include="themes\minimized\theme12\ic_forum.png" />
+    <Content Include="themes\minimized\theme12\min.html" />
+    <Content Include="themes\minimized\theme12\styles.css" />
+    <Content Include="themes\minimized\theme13\agent.png" />
+    <Content Include="themes\minimized\theme13\min.html" />
+    <Content Include="themes\minimized\theme13\styles.css" />
+    <Content Include="themes\minimized\theme14\agent.png" />
+    <Content Include="themes\minimized\theme14\min.html" />
+    <Content Include="themes\minimized\theme14\styles.css" />
+    <Content Include="themes\minimized\theme15\ic_send.png" />
+    <Content Include="themes\minimized\theme15\min.html" />
+    <Content Include="themes\minimized\theme15\styles.css" />
+    <Content Include="themes\minimized\theme16\ic_email.png" />
+    <Content Include="themes\minimized\theme16\min.html" />
+    <Content Include="themes\minimized\theme16\styles.css" />
+    <Content Include="themes\minimized\theme17\ic_email.png" />
+    <Content Include="themes\minimized\theme17\min.html" />
+    <Content Include="themes\minimized\theme17\styles.css" />
+    <Content Include="themes\minimized\theme18\agent.png" />
+    <Content Include="themes\minimized\theme18\min.html" />
+    <Content Include="themes\minimized\theme18\styles.css" />
+    <Content Include="themes\minimized\theme19\ic_email.png" />
+    <Content Include="themes\minimized\theme19\min.html" />
+    <Content Include="themes\minimized\theme19\styles.css" />
+    <Content Include="themes\minimized\theme20\ic_email.png" />
+    <Content Include="themes\minimized\theme20\min.html" />
+    <Content Include="themes\minimized\theme20\styles.css" />
+    <Content Include="themes\minimized\theme21\ic_help.png" />
+    <Content Include="themes\minimized\theme21\min.html" />
+    <Content Include="themes\minimized\theme21\styles.css" />
+    <Content Include="themes\minimized\theme22\ic_forum.png" />
+    <Content Include="themes\minimized\theme22\min.html" />
+    <Content Include="themes\minimized\theme22\styles.css" />
+    <Content Include="themes\minimized\theme23\ic_forum.png" />
+    <Content Include="themes\minimized\theme23\min.html" />
+    <Content Include="themes\minimized\theme23\styles.css" />
+    <Content Include="themes\minimized\theme24\ic_forum.png" />
+    <Content Include="themes\minimized\theme24\min.html" />
+    <Content Include="themes\minimized\theme24\styles.css" />
+    <Content Include="themes\minimized\theme25\ic_forum.png" />
+    <Content Include="themes\minimized\theme25\min.html" />
+    <Content Include="themes\minimized\theme25\styles.css" />
+    <Content Include="themes\minimized\theme26\ic_help.png" />
+    <Content Include="themes\minimized\theme26\min.html" />
+    <Content Include="themes\minimized\theme26\styles.css" />
+    <Content Include="themes\minimized\theme27\ic_help.png" />
+    <Content Include="themes\minimized\theme27\min.html" />
+    <Content Include="themes\minimized\theme27\styles.css" />
+    <Content Include="themes\minimized\theme28\ic_help.png" />
+    <Content Include="themes\minimized\theme28\min.html" />
+    <Content Include="themes\minimized\theme28\styles.css" />
+    <Content Include="themes\minimized\theme29\ic_forum.png" />
+    <Content Include="themes\minimized\theme29\min.html" />
+    <Content Include="themes\minimized\theme29\styles.css" />
+    <Content Include="themes\minimized\theme30\ic_forum.png" />
+    <Content Include="themes\minimized\theme30\min.html" />
+    <Content Include="themes\minimized\theme30\styles.css" />
+    <Content Include="themes\minimized\theme31\ic_forum.png" />
+    <Content Include="themes\minimized\theme31\min.html" />
+    <Content Include="themes\minimized\theme31\styles.css" />
+    <Content Include="themes\minimized\theme32\ic_help.png" />
+    <Content Include="themes\minimized\theme32\min.html" />
+    <Content Include="themes\minimized\theme32\styles.css" />
+    <Content Include="themes\minimized\theme33\ic_help.png" />
+    <Content Include="themes\minimized\theme33\min.html" />
+    <Content Include="themes\minimized\theme33\styles.css" />
+    <Content Include="themes\minimized\theme34\ic_help.png" />
+    <Content Include="themes\minimized\theme34\min.html" />
+    <Content Include="themes\minimized\theme34\styles.css" />
+    <Content Include="themes\minimized\theme35\ic_help.png" />
+    <Content Include="themes\minimized\theme35\min.html" />
+    <Content Include="themes\minimized\theme35\styles.css" />
+    <Content Include="themes\minimized\theme36\ic_help.png" />
+    <Content Include="themes\minimized\theme36\min.html" />
+    <Content Include="themes\minimized\theme36\styles.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\common\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Code\GroupNames.cs" />
+    <Compile Include="Code\Handlers\TestWcfHandler.cs" />
+    <Compile Include="Code\Handlers\CaptchaImageHandler.cs" />
+    <Compile Include="Code\ThemesHelper.cs" />
+    <Compile Include="Code\VisitorChatEventReceiver.cs" />
+    <Compile Include="Code\Startup.Container.cs" />
+    <Compile Include="Code\Startup.EventReceiver.cs" />
+    <Compile Include="Code\Startup.SignalR.cs" />
+    <Compile Include="Code\VisitorIdentifierReader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Hubs\VisitorChatHub.cs" />
+    <Compile Include="Code\Handlers\ThemesHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\chat\Com.O2Bionics.ChatService.Contract\Com.O2Bionics.ChatService.Contract.csproj">
+      <Project>{017f459a-d86b-4dd9-bc8c-2d73568c76da}</Project>
+      <Name>Com.O2Bionics.ChatService.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\chat\Com.O2Bionics.ChatService.Widget\Com.O2Bionics.ChatService.Widget.csproj">
+      <Project>{e47e7c18-f8a2-4e86-991b-8a703b0a7bac}</Project>
+      <Name>Com.O2Bionics.ChatService.Widget</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.ErrorTracker.Web\Com.O2Bionics.ErrorTracker.Web.csproj">
+      <Project>{4d53a19c-991f-448e-a0ec-dc4d266be0d2}</Project>
+      <Name>Com.O2Bionics.ErrorTracker.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.ErrorTracker\Com.O2Bionics.ErrorTracker.csproj">
+      <Project>{6b74f4bb-8587-4af6-a404-0d2f4d8665df}</Project>
+      <Name>Com.O2Bionics.ErrorTracker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.Utils\Com.O2Bionics.Utils.csproj">
+      <Project>{0E93B727-715A-4E47-9C1C-9BA6AFD5829E}</Project>
+      <Name>Com.O2Bionics.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.Utils.Web\Com.O2Bionics.Utils.Web.csproj">
+      <Project>{4CE4A4C2-FD6F-4A23-B5B9-01D5DCFE4C9B}</Project>
+      <Name>Com.O2Bionics.Utils.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\featureService\Com.O2Bionics.FeatureService.Constants\Com.O2Bionics.FeatureService.Constants.csproj">
+      <Project>{e97e7e6a-63fa-4d71-bfd6-f0b916db97bd}</Project>
+      <Name>Com.O2Bionics.FeatureService.Constants</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="CopyLinkedContentFiles" BeforeTargets="Build">
+    <Copy SourceFiles="%(Content.Identity)" DestinationFiles="%(Content.Link)" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Condition="'%(Content.Link)' != ''" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1329</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://c.chat.o2bionics.com</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>https://c.chat.o2bionics.com/index-dev.html</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>https://dev.net.customer/index-dev.html</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

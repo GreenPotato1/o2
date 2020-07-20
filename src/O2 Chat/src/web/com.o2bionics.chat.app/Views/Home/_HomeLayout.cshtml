@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+@{
+    bool isOwner = User.IsInRole(RoleNames.Owner), isAdmin = User.IsInRole(RoleNames.Admin);
+
+    bool canViewAudit = isOwner, canViewLogin = isOwner;
+    if (!isOwner && isAdmin)
+    {
+        var days = FeatureServiceHelper.AuditAndLoginVisibleDays(UserIdentity.GetCustomerId(User.Identity));
+
+        canViewAudit = 0 < days.Item1;
+        canViewLogin = 0 < days.Item2;
+    }
+}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="language" content="en"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:;base64,=">
+
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="~/st/lib/jquery-ui/themes/base/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="~/st/lib/jquery.gritter/css/jquery.gritter.css"/>
+    <link rel="stylesheet" href="~/st/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/st/lib/bootstrap-material-design/dist/css/bootstrap-material-design.min.css"/>
+    <link rel="stylesheet" href="~/st/lib/bootstrap-material-design/dist/css/ripples.min.css"/>
+    <link rel="stylesheet" href="~/st/lib/material-design-icons-iconfont/dist/fonts/material-icons.css"/>
+    <link rel="stylesheet" href="~/st/lib/bootstrap-dialog/dist/css/bootstrap-dialog.min.css"/>
+    <link rel="stylesheet" href="~/st/lib/bootstrap-multiselect/dist/css/bootstrap-multiselect.css"/>
+
+    <link rel="stylesheet" href="~/st/css/priority-nav-core.css"/>
+    
+    <link rel="stylesheet" href="~/st/css/widgets.css"/>
+    <link rel="stylesheet" href="~/st/lib/bootstrap-daterangepicker/daterangepicker.css"/>
+    <link rel="stylesheet" href="~/st/css/style.css"/>
+    <link rel="stylesheet" href="~/st/css/wpopup.css"/>
+    @RenderSection("style", false)
+
+    <style>
+        .modal-backdrop { z-index: -1; }
+    </style>
+</head>
+<body>
+@Html.AntiForgeryToken()
+<div id="all-body">
+    <div class="navbar-fixed-top bs-docs-nav navbar navbar-inverse navbar-toggleable-md" role="banner">
+        <div class="container">
+            <!-- Menu button for smallar screens -->
+            <div class="navbar-header ">
+                <!-- <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> -->
+
+                <a href="@Url.Action("Index")" class="navbar-brand">
+                    <img src="~/st/i/logo_small.png" alt="logo"/>
+                </a>
+            </div>
+            <!-- Site name for smallar screens -->
+
+            <div class="nav-bar nav-bar-fixed">
+                <ul class="nav navbar-nav navbar-right">
+                    @if (IsSectionDefined("agent_status"))
+                    {
+                        @RenderSection("agent_status", false)
+                        ;
+                    }
+                    else
+                    {
+                        <li class="dropdown dropdown-big">&nbsp;</li>
+                    }
+                    <li class="dropdown">
+
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <div class="user-pic">
+                                <img id="current-user-avatar" src="~/st/i/avatar-loading.png">
+                            </div>
+                            <span id="current-user-name">@User.Identity.Name</span> <b class="caret"></b>
+                        </a>
+                        <!-- Dropdown menu -->
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="@Url.Action("ManageUser")"><i class="material-icons">&#xE7FD;</i> Управление аккаунтом</a>
+                            </li>
+                            <!--
+                            <li>
+                                <a href="#"><i class="material-icons">&#xE8B8;</i> Settings</a>
+                            </li>
+                            -->
+                            <li>
+                                <a href="#" onclick="document.getElementById('logoutForm').submit();return false;"><i class="material-icons">&#xE879;</i> Выйти из аккаунта</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- Navigation starts -->
+            <div class="wrapper--big">
+                <nav class=" " role="navigation">
+                    <!-- Links -->
+                    <div class="wrapper resize-drag nav-wrapper priority-nav">
+                        <ul class="nav navbar-nav nav-ul">
+                            @if (User.IsInRole(RoleNames.Agent))
+                            {
+                                <li class="dropdown">
+                                    <a href="@Url.Action("ChatSessions")">
+                                        <span>Диалоги</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (User.IsInRole(RoleNames.Agent) && !User.IsInRole(RoleNames.Supervisor))
+                            {
+                                <li>
+                                    <a href="@Url.Action("ChatSessionHistory")"><i class="fa fa-user"></i> История диалогов</a>
+                                </li>
+                            }
+                            @if (User.IsInRole(RoleNames.Supervisor))
+                            {
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        <span>Supervisor</span> <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="@Url.Action("AgentStatistics")"><i class="fa fa-users"></i> Agent Performance Statistics</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("ChatSessionHistory")"><i class="fa fa-user"></i> Chat Session History</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            @if (isAdmin || canViewAudit || canViewLogin)
+                            {
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        <span>Управление</span> <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        @if (isAdmin)
+                                        {
+                                        <li>
+                                            <a href="@Url.Action("ManageUsers")"><i class="material-icons">&#xE7FB;</i> Управление пользователями</a>
+                                        </li>
+                                            <li>
+                                                <a href="@Url.Action("ManageDepartments")"><i class="material-icons">&#xE7EE;</i> Управление департаментами</a>
+                                            </li>
+                                        }
+                                        @if (canViewLogin)
+                                        {
+                                            <li>
+                                                <a href="@Url.Action("UserLoginLog")"><i class="material-icons">&#xE8EF;</i> Действия пользователей</a>
+                                            </li>
+                                        }
+                                        @if (canViewAudit)
+                                        {
+                                            <li>
+                                                <a href="@Url.Action("AdminAuditTrail")"><i class="material-icons">&#xE873;</i> Контрольный журнал администратора</a>
+                                            </li>
+                                        }
+                                        @if (isAdmin)
+                                        {
+                                            <li>
+                                                <a href="@Url.Action("InstallCode")"><i class="material-icons">&#xE884;</i> Установить чат на своем сайте</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("ChatWidgetAppearance")"><i class="material-icons">&#xE869;</i> Настройка чат Виджет Внешний вид</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("WidgetLoadStatistics")"><i class="material-icons">&#xE8EF;</i> Виджет Загрузка статистики</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                            @if (isOwner || isAdmin)
+                            {
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        <span>Customer</span> <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="@Url.Action("ManageCustomer")"><i class="material-icons">&#xE8D3;</i>Управленение компанией</a>
+                                        </li>
+                                        @if (isOwner)
+                                        {
+                                            <li>
+                                                <a href="@Url.Action("ManageCustomerFeatures")"><i class="material-icons">&#xE8B8;</i> Manage Customer Features</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div id="body-container">
+
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", style = "display:none;" }))
+            {
+                @Html.AntiForgeryToken()
+            }
+        }
+
+        @RenderBody()
+
+    </div>
+    
+    <div id="dialogs-stack" data-bind="if: $data.dialogStack">
+        <div data-bind="template: { name: dialogStackItemTemplate, foreach: dialogStack }"></div>
+    </div>
+
+    @RenderSection("dialogs", false)
+
+</div>
+
+<script type="text/javascript" src="~/st/lib/es5-shim/es5-shim.min.js"></script>
+<script type="text/javascript" src="~/st/lib/es6-shim/es6-shim.min.js"></script>
+
+<script type="text/javascript" src="~/st/lib/lodash/dist/lodash.min.js"></script>
+<script type="text/javascript" src="~/st/lib/moment/min/moment.min.js"></script>
+
+<script type="text/javascript" src="~/st/js/ErrorLogger.js"></script>
+<script type="text/javascript" src="~/st/js/events.js"></script>
+<script type="text/javascript" src="~/st/lib/jquery/dist/jquery.min.js"></script>
+
+<script type="text/javascript" src="~/st/js/Enums.js"></script>
+<script type="text/javascript" src="~/st/js/AvatarConstants.js"></script>
+<script type="text/javascript" src="~/st/js/Helpers.js"></script>
+
+<script type="text/javascript" src="~/st/lib/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="~/st/lib/jquery.scrollTo/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="~/st/lib/jquery.gritter/js/jquery.gritter.min.js"></script>
+<script type="text/javascript" src="~/st/lib/blockui/jquery.blockUI.js"></script>
+<script type="text/javascript" src="~/st/lib/jquery.signalR/jquery.signalR.min.js"></script>
+<script type="text/javascript" src="~/st/lib/jquery-textcomplete/dist/jquery.textcomplete.min.js"></script>
+
+<script type="text/javascript" src="~/st/lib/priority-nav.js/dist/priority-nav.min.js"></script>
+
+<script type="text/javascript" src="~/st/lib/knockout/dist/knockout.debug.js"></script>
+<script type="text/javascript" src="~/st/lib/knockout-mapping/build/output/knockout.mapping-latest.js"></script>
+<script type="text/javascript" src="~/st/lib/knockout-jqueryui/dist/knockout-jqueryui.min.js"></script>
+<script type="text/javascript" src="~/st/lib/knockout-validation/dist/knockout.validation.min.js"></script>
+<script type="text/javascript" src="~/st/lib/kolite/knockout.activity.js"></script>
+<script type="text/javascript" src="~/st/lib/kolite/knockout.command.js"></script>
+<script type="text/javascript" src="~/st/lib/kolite/knockout.dirtyFlag.js"></script>
+
+<script type="text/javascript" src="~/st/lib/webrtc-adapter/release/adapter.js"></script>
+<script type="text/javascript" src="~/st/lib/detectrtc/DetectRTC.min.js"></script>
+
+<script type="text/javascript" src="~/st/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/st/lib/bootstrap-dialog/dist/js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript" src="~/st/lib/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
+
+<script type="text/javascript" src="~/st/lib/arrive/minified/arrive.min.js"></script>
+<script type="text/javascript" src="~/st/lib/bootstrap-material-design/dist/js/material.min.js"></script>
+<script type="text/javascript" src="~/st/lib/bootstrap-material-design/dist/js/ripples.min.js"></script>
+
+<script type="text/javascript" src="~/st/lib/javascript-emotify/ba-emotify.min.js"></script>
+<script type="text/javascript" src="~/st/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="~/st/lib/autolinker/Autolinker.min.js"></script>
+
+@*<script type="text/javascript" src="~/st/lib/chart/Chart.js"></script>*@
+
+@RenderSection("scripts_include", false)
+
+
+<script type="text/javascript" src="~/st/lib/requirejs/require.js"></script>
+<script type="text/javascript" src="~/st/js/require-config.js"></script>
+
+@RenderSection("scripts", true)
+
+<script type="text/javascript">
+
+    function setCurrentUserAvatar(avatar)
+    {
+        $('#current-user-avatar').attr('src', AvatarConstants.toAvatarUrl(avatar));
+    }
+
+    function setCurrentUserName(name)
+    {
+        $('#current-user-name').text(name);
+    }
+
+    $(document).ready(
+        function ()
+        {
+            $.material.init();
+
+            var wrapper = document.querySelector(".nav-wrapper");
+            var nav = priorityNav.init(
+                {
+                    mainNavWrapper: '.nav-wrapper', // mainnav wrapper selector (must be direct parent from mainNav)
+                    mainNav: '.nav-ul', // mainnav selector. (must be inline-block)
+                    navDropdownLabel: '<i class="material-icons">more_vert</i>',
+                    navDropdownBreakpointLabel: '<i class="material-icons">more_vert</i>',
+                    navDropdownClassName: 'nav__dropdown', // class used for the dropdown.
+                    navDropdownToggleClassName: 'nav__dropdown-toggle', // class used for the dropdown toggle.
+                });
+
+            $.ajaxSetup({
+                    beforeSend: (xhr, settings) =>{
+                        if (settings.type !== 'GET' && !xhr.isCrossDomain){
+                            var tokenName = '__RequestVerificationToken';
+                            var token;
+                            var elements = window.document.getElementsByTagName('input');
+                            for (let i = 0; i < elements.length; i++){
+                                var el = elements[i];
+                                if ('hidden' === el.type && tokenName === el.name) { token = el.value; break;}
+                            }
+                            if (token) xhr.setRequestHeader(tokenName, token);
+                        }
+                        console.debug('beforeSend', xhr, settings, settings.crossDomain, window.location);
+                    }
+                });
+
+            var avatar = '@Html.Raw(HttpUtility.JavaScriptStringEncode(UserIdentity.GetAvatar(User.Identity)))';
+            setCurrentUserAvatar(avatar);
+        });
+
+</script>
+
+</body>
+</html>

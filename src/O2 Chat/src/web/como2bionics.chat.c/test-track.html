@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+<button id="testAdd">Call Add</button>
+<input id="visitorId" type="text" value=""/>
+<input id="historyId" type="text" value=""/>
+<br/>
+
+<button id="testGet">Call Get</button>
+
+
+<script type="text/javascript" src="Scripts/jquery-1.11.3.min.js"></script>
+
+<script language="javascript">
+    'use strict';
+
+    Date.prototype.getTimezone = function ()
+    {
+        var ts = this.toTimeString();
+        var start = ts.indexOf('GMT');
+        if (start < 0) start = ts.indexOf('UTC');
+        return { offset: -this.getTimezoneOffset(), description: start >= 0 ? ts.substr(start) : '' };
+    };
+
+    $(function ()
+    {
+        $('#testAdd')
+            .click(function ()
+            {
+                var timezone = new Date().getTimezone();
+
+                $.ajax({
+                            url: 'https://tr.chat.o2bionics.com/a',
+                            type: 'POST',
+                            crossDomain: true,
+                            dataType: 'json',
+                            data: {
+                                    cid: 1,
+                                    vid: $('#visitorId').val(),
+                                    veid: null,
+                                    tzof: timezone.offset,
+                                    tzde: timezone.description,
+                                    u: window.location.href, // url
+                                    ct: "some test data",
+                                }
+                        })
+                    .done(function (r)
+                    {
+                        console.log(JSON.stringify(r));
+                        $('#visitorId').val(r.vid);
+                        $('#historyId').val(r.hid);
+                    })
+                    .fail(function (r)
+                    {
+                        console.log('error:', JSON.stringify(r));
+                    });
+            });
+
+        $('#testGet')
+            .click(function ()
+            {
+                $.ajax({
+                            url: 'https://tr.track-dev.o2bionics.com/g',
+                            type: 'GET',
+                            crossDomain: true,
+                            dataType: 'json',
+                            data: {
+                                    hid: $('#historyId').val(),
+                                    vid: $('#visitorId').val(),
+                                }
+                        })
+                    .done(function (r)
+                    {
+                        console.log(JSON.stringify(r));
+                    })
+                    .fail(function (r)
+                    {
+                        console.log('error:', JSON.stringify(r));
+                    });
+            });
+    });
+</script>
+
+</body>
+</html>

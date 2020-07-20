@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{81F04964-931E-4A90-A6F1-B5E5BCCDE5C9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Com.O2Bionics.ChatService</RootNamespace>
+    <AssemblyName>Com.O2Bionics.ChatService</AssemblyName>
+    <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <XsdCodeGenEnabled>False</XsdCodeGenEnabled>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <XsdCodeGenSerializerMode>XmlSerializer</XsdCodeGenSerializerMode>
+    <XsdCodeGenReuseTypesFlag>True</XsdCodeGenReuseTypesFlag>
+    <XsdCodeGenReuseTypesMode>All</XsdCodeGenReuseTypesMode>
+    <XsdCodeGenReferences />
+    <XsdCodeGenNamespaceMappings>%2a, Com.O2Bionics.ChatService.ContractTypes</XsdCodeGenNamespaceMappings>
+    <XsdCodeGenCollectionTypes>System.Array%3bSystem.Collections.Generic.Dictionary`2</XsdCodeGenCollectionTypes>
+    <XsdCodeGenExcludedTypes />
+    <XsdCodeGenImportXmlTypes>True</XsdCodeGenImportXmlTypes>
+    <XsdCodeGenGenerateSerializableTypes>True</XsdCodeGenGenerateSerializableTypes>
+    <XsdCodeGenGenerateInternalTypes>False</XsdCodeGenGenerateInternalTypes>
+    <XsdCodeGenEnableDataBinding>False</XsdCodeGenEnableDataBinding>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ERRORTRACKERTEST</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="Elasticsearch.Net, Version=6.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Elasticsearch.Net.6.0.2\lib\net46\Elasticsearch.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Jil, Version=2.15.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Jil.2.15.4\lib\net45\Jil.dll</HintPath>
+    </Reference>
+    <Reference Include="linq2db, Version=1.9.0.0, Culture=neutral, PublicKeyToken=f19f8aed7feff67e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\linq2db.1.9.0\lib\net45\linq2db.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nest, Version=6.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NEST.6.0.2\lib\net46\Nest.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectExtensions.Copy">
+      <HintPath>..\..\..\packages\ObjectExtensions.Copy.1.0.1\lib\net45\ObjectExtensions.Copy.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Sigil, Version=4.7.0.0, Culture=neutral, PublicKeyToken=2d06c3494341c8ab, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Sigil.4.7.0\lib\net45\Sigil.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Configuration, Version=5.2.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.8.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception, Version=5.5.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception.Configuration, Version=5.1.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RegistrationByConvention, Version=2.1.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ServiceLocation, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.ServiceLocation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\common\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="DataModel\DatabaseManager.cs" />
+    <Compile Include="DataModel\DatabaseObjectHelper.cs" />
+    <Compile Include="ICannedMessageStorage.cs" />
+    <Compile Include="IChatWidgetAppearanceManager.cs" />
+    <Compile Include="Impl\AccessManager.cs" />
+    <Compile Include="IAccessManager.cs" />
+    <Compile Include="ICustomerWidgetLoadStorage.cs" />
+    <Compile Include="Impl\CustomerCacheNotifier.cs" />
+    <Compile Include="Impl\Storage\DailyCacheStorage.cs" />
+    <Compile Include="Impl\Storage\UnknownDomainCounter.cs" />
+    <Compile Include="Impl\AuditTrail\AuditIndexHelper.cs" />
+    <Compile Include="Impl\AuditTrail\AuditEventExtensions.cs" />
+    <Compile Include="Impl\AuditTrail\AuditEventFullText.cs" />
+    <Compile Include="Impl\AuditTrail\Names\CustomFieldNames.cs" />
+    <Compile Include="Impl\AuditTrail\DictionaryChangeHelper.cs" />
+    <Compile Include="Impl\AuditTrail\Names\EntityNames.cs" />
+    <Compile Include="Impl\CallResultException.cs" />
+    <Compile Include="Impl\AuditTrail\SpecificClassDiff.cs" />
+    <Compile Include="Impl\ChatWidgetAppearanceManager.cs" />
+    <Compile Include="Impl\AuditTrail\NameResolver.cs" />
+    <Compile Include="Impl\MailHelper.cs" />
+    <Compile Include="Impl\Storage\CannedMessageStorage.cs" />
+    <Compile Include="Impl\Storage\CustomerStorage.cs" />
+    <Compile Include="ICustomerStorage.cs" />
+    <Compile Include="Impl\Storage\WidgetLoadCounter.cs" />
+    <Compile Include="Impl\Storage\WidgetLoadStatus.cs" />
+    <Compile Include="Impl\UserManager.cs" />
+    <Compile Include="Impl\ValidationException.cs" />
+    <Compile Include="INotifyableStorage.cs" />
+    <Compile Include="IWidgetLoadUnknownDomainStorage.cs" />
+    <Compile Include="IUnknownDomainLoader.cs" />
+    <Compile Include="IWidgetLoadCounterStorage.cs" />
+    <Compile Include="Impl\Storage\WidgetLoadCounterStorage.cs" />
+    <Compile Include="Impl\Storage\WidgetLoadUnknownDomainStorage.cs" />
+    <Compile Include="Impl\Storage\UnknownDomainLoader.cs" />
+    <Compile Include="IUserManager.cs" />
+    <Compile Include="Impl\Storage\AgentSessionStorage.cs" />
+    <Compile Include="Impl\Storage\UserStorage.cs" />
+    <Compile Include="Impl\Storage\DbUpdater.cs" />
+    <Compile Include="Impl\Storage\DepartmentStorage.cs" />
+    <Compile Include="IUserStorage.cs" />
+    <Compile Include="IDepartmentStorage.cs" />
+    <Compile Include="IAgentSessionStorage.cs" />
+    <Compile Include="IDbUpdater.cs" />
+    <Compile Include="IDbUpdaterStorage.cs" />
+    <Compile Include="Objects\BusinessObjectValidatorBase.cs" />
+    <Compile Include="Objects\CannedMessage.cs" />
+    <Compile Include="Objects\ChatEvents\AgentClosesSessionChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\AgentMediaCallProposalChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\AgentStoppedMediaCallChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\VisitorRequestedTranscriptSentChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\SendSessionTranscriptToVisitorChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\VisitorAcceptedMediaCallProposalChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\VisitorRejectedMediaCallProposalChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\VisitorSetsMediaCallConnectionIdChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\VisitorStoppedMediaCallChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\VisitorUpdatesInfoChatEvent.cs" />
+    <Compile Include="Objects\AgentSession.cs" />
+    <Compile Include="Objects\ChatEvents\AgentAcceptsAgentSessionChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\AgentAcceptsDepartmentSessionChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\AgentCancelsInviteAgentChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\AgentCancelsInviteDeptChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\AgentCreatesSessionChatEventBase.cs" />
+    <Compile Include="Objects\ChatEvents\AgentCreatesSessionToAgentChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\AgentCreatesSessionToDepartmentChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\AgentInvitesAgentChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\AgentInvitesDepartmentChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\AgentLeavesSessionChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\AgentRejectsAgentSessionChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\AgentSendsMessageChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\VisitorReconnectChatEvent.cs" />
+    <Compile Include="Impl\ObjectResolver.cs" />
+    <Compile Include="IObjectResolver.cs" />
+    <Compile Include="Impl\Storage\ChatSessionStorage.cs" />
+    <Compile Include="IChatSessionStorage.cs" />
+    <Compile Include="Impl\ChatSessionManager.cs" />
+    <Compile Include="DataModel\ChatDatabase.generated.cs">
+      <DependentUpon>ChatDatabase.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="IChatSessionManager.cs" />
+    <Compile Include="Impl\DataContext.cs" />
+    <Compile Include="IDataContext.cs" />
+    <Compile Include="DataModel\SqlMethod.cs" />
+    <Compile Include="IChatDatabaseFactory.cs" />
+    <Compile Include="IAgentManager.cs" />
+    <Compile Include="IVisitorStorage.cs" />
+    <Compile Include="Impl\Storage\VisitorStorage.cs" />
+    <Compile Include="ISubscriberCollection.cs" />
+    <Compile Include="Impl\SubscriberCollection.cs" />
+    <Compile Include="ISettingsStorage.cs" />
+    <Compile Include="ISubscriptionManager.cs" />
+    <Compile Include="Objects\Customer.cs" />
+    <Compile Include="Impl\Storage\CustomerWidgetLoadStorage.cs" />
+    <Compile Include="Objects\User.cs" />
+    <Compile Include="Objects\ChatEvents\ChatEventBase.cs" />
+    <Compile Include="Objects\ChatEvents\VisitorCreatesSessionToDepartmentChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\VisitorLeavesSessionChatEvent.cs" />
+    <Compile Include="Objects\ChatEvents\VisitorSendsMessageChatEvent.cs" />
+    <Compile Include="Objects\ChatSession.cs" />
+    <Compile Include="Objects\ChatSessionAgent.cs" />
+    <Compile Include="Objects\ChatSessionInvite.cs" />
+    <Compile Include="Objects\ChatSessionMessage.cs" />
+    <Compile Include="Objects\Department.cs" />
+    <Compile Include="Objects\UserRole.cs" />
+    <Compile Include="Objects\UserRoleCode.cs" />
+    <Compile Include="Objects\Visitor.cs" />
+    <Compile Include="ChatServiceHost.cs" />
+    <Compile Include="Impl\AgentConsoleService.cs" />
+    <Compile Include="Impl\AgentManager.cs" />
+    <Compile Include="Impl\ChatDatabaseFactory.cs" />
+    <Compile Include="DataModel\ChatDatabase.cs" />
+    <Compile Include="ChatServiceBase.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\AgentSettings.cs">
+      <DependentUpon>AgentSettings.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Settings\CustomerSettings.cs">
+      <DependentUpon>CustomerSettings.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Settings\ServiceSettings.cs">
+      <DependentUpon>ServiceSettings.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Settings\SettingsBase.cs" />
+    <Compile Include="Impl\Storage\SettingsStorage.cs" />
+    <Compile Include="ChatServiceSettings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\SettingsPropertyTypes.cs" />
+    <Compile Include="Impl\ManagementService.cs" />
+    <Compile Include="Impl\VisitorChatService.cs" />
+    <Compile Include="Impl\SubscriptionManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DataModel\ChatDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ChatDatabase.generated.cs</LastGenOutput>
+    </None>
+    <None Include="LinqToDB.Templates\DataAnnotations.ttinclude" />
+    <None Include="LinqToDB.Templates\DataModel.ttinclude" />
+    <None Include="LinqToDB.Templates\EditableObject.ttinclude" />
+    <None Include="LinqToDB.Templates\Humanizer.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Access.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.DB2.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Firebird.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Informix.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.MySql.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Oracle.Managed.Tools.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Oracle.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.PostgreSQL.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SapHana.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SqlCe.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SQLite.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SqlServer.SqlTypes.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SqlServer.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Sybase.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Tools.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.ttinclude" />
+    <None Include="LinqToDB.Templates\NotifyDataErrorInfo.ttinclude" />
+    <None Include="LinqToDB.Templates\NotifyPropertyChanged.ttinclude" />
+    <None Include="LinqToDB.Templates\ObsoleteAttributes.ttinclude" />
+    <None Include="LinqToDB.Templates\PluralizationService.ttinclude" />
+    <None Include="LinqToDB.Templates\README.md" />
+    <None Include="LinqToDB.Templates\T4Model.ttinclude" />
+    <None Include="LinqToDB.Templates\Validation.ttinclude" />
+    <None Include="packages.config" />
+    <None Include="Settings\AgentSettings.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AgentSettings.cs</LastGenOutput>
+    </None>
+    <None Include="Settings\CustomerSettings.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CustomerSettings.cs</LastGenOutput>
+    </None>
+    <None Include="Settings\ServiceSettings.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ServiceSettings.cs</LastGenOutput>
+    </None>
+    <None Include="Settings\SettingsGenerator.ttinclude" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataModel\database.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\auditTrail\Com.O2Bionics.AuditTrail.Client\Com.O2Bionics.AuditTrail.Client.csproj">
+      <Project>{c99575a7-bfd2-4f3e-831a-ccd7836e4b06}</Project>
+      <Name>Com.O2Bionics.AuditTrail.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\auditTrail\Com.O2Bionics.AuditTrail.Contract\Com.O2Bionics.AuditTrail.Contract.csproj">
+      <Project>{7f960e94-73e9-4c84-9741-7b08f10043bd}</Project>
+      <Name>Com.O2Bionics.AuditTrail.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.Elastic\Com.O2Bionics.Elastic.csproj">
+      <Project>{32182b64-c191-488b-8e4b-11aeaa6a5c0d}</Project>
+      <Name>Com.O2Bionics.Elastic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.ErrorTracker\Com.O2Bionics.ErrorTracker.csproj">
+      <Project>{6b74f4bb-8587-4af6-a404-0d2f4d8665df}</Project>
+      <Name>Com.O2Bionics.ErrorTracker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\featureService\Com.O2Bionics.FeatureService.Client\Com.O2Bionics.FeatureService.Client.csproj">
+      <Project>{58A3A5C2-DA25-4760-9EA8-1975776F2DD3}</Project>
+      <Name>Com.O2Bionics.FeatureService.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\featureService\Com.O2Bionics.FeatureService.Constants\Com.O2Bionics.FeatureService.Constants.csproj">
+      <Project>{e97e7e6a-63fa-4d71-bfd6-f0b916db97bd}</Project>
+      <Name>Com.O2Bionics.FeatureService.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mailerService\Com.O2Bionics.MailerService.Client\Com.O2Bionics.MailerService.Client.csproj">
+      <Project>{8899d1b8-2cbd-4b98-b842-053ddedc0b63}</Project>
+      <Name>Com.O2Bionics.MailerService.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mailerService\Com.O2Bionics.MailerService.Contract\Com.O2Bionics.MailerService.Contract.csproj">
+      <Project>{29f01de4-32f3-4d92-b2ea-be75788868cc}</Project>
+      <Name>Com.O2Bionics.MailerService.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Com.O2Bionics.ChatService.Contract\Com.O2Bionics.ChatService.Contract.csproj">
+      <Project>{017F459A-D86B-4DD9-BC8C-2D73568C76DA}</Project>
+      <Name>Com.O2Bionics.ChatService.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.Utils\Com.O2Bionics.Utils.csproj">
+      <Project>{0E93B727-715A-4E47-9C1C-9BA6AFD5829E}</Project>
+      <Name>Com.O2Bionics.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataModel\procedures.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="LinqToDB.Templates\CopyMe.Oracle.Managed.tt.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">
+        <WcfProjectProperties>
+          <AutoStart>False</AutoStart>
+        </WcfProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,1 @@
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Com.O2Bionics.ChatService.Web.Console.MvcApplication" Language="C#" %>

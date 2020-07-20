@@ -1,0 +1,12 @@
+﻿<#@ template debug="true" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ include file="SettingsGenerator.ttinclude" #>
+<#
+        NamespaceName = "Com.O2Bionics.ChatService.Settings";
+        ClassName = "AgentSettings";
+
+        Settings.Add(new SettingsProperty<TimeSpan>("MediaCallProposalTimeout", TimeSpan.FromSeconds(40)));
+        Settings.Add(new SettingsProperty<TimeSpan>("MediaCallConnectTimeout", TimeSpan.FromSeconds(40)));
+
+        Generate();
+#>

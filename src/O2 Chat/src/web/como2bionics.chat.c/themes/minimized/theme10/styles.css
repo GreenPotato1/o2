@@ -1,0 +1,38 @@
+body {
+    background: none!important;
+}
+#collapsed-state {
+    position: relative;
+}
+#collapsed-state .chat-title-bar {
+    background: none!important;
+    position: relative; 
+    float: right;
+}
+#collapsed-state .title-text {
+    float: right;
+    font-size: 14px;
+    line-height: 14px;
+    white-space:nowrap;
+    background: #599255;
+    padding: 12px 12px 12px 46px;
+    border-radius: 0px 12px 12px 0px;
+    -webkit-border-radius: 0px 12px 12px 0px;
+    -moz-border-radius: 0px 12px 12px 0px;
+    margin: -52px 0 0 26px;
+    z-index: -3;
+    position: relative;
+}
+#collapsed-state .chat-title-img {
+    width: 60px;
+    height: 60px;
+    background: url(agent.png);
+    display: block;
+    border: 4px solid #599255;
+    background-size: 60px 60px;
+    border-radius: 60px;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    position: relative;
+    z-index: -2;
+}

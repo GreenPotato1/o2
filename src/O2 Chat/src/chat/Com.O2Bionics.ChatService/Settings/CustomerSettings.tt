@@ -1,0 +1,14 @@
+﻿<#@ template debug="true" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ include file="SettingsGenerator.ttinclude" #>
+<#
+        NamespaceName = "Com.O2Bionics.ChatService.Settings";
+        ClassName = "CustomerSettings";
+
+        Settings.Add(new SettingsProperty<int>("MaxPagesInHistory", 20));
+        Settings.Add(new SettingsProperty<bool>("IsVisitorCaptchaRequired", false));
+        Settings.Add(new SettingsProperty<bool>("IsProactiveChatEnabled", false));
+        Settings.Add(new SettingsProperty<string>("Customization", null));
+
+        Generate();
+#>

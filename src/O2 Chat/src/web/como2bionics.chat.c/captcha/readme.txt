@@ -1,0 +1,1 @@
+﻿This folder is required for CAPTCHA images generation HttpHandler

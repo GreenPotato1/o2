@@ -1,0 +1,829 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>tests</title>
+    <style>
+        div { margin-top: 10px; }
+
+        #video1 {
+            width: 250px;
+            border: 1px solid black;
+        }
+
+        #video2 {
+            width: 500px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div>
+    ConnectionId: <span id="cid1"></span>
+</div>
+<div>
+    Connect to: <input type="text" id="cid2" style="width: 250px;"/>
+</div>
+<div>
+    <button id="call">Call</button>
+    <button id="hangup">Hang Up</button>
+    <button id="acceptCall">Accept Call</button>
+    <button id="rejectCall">Reject Call</button>
+</div>
+<div>
+    <span id="status"></span>
+</div>
+<div>
+    <video id="video1" autoplay muted>text1</video>
+    <video id="video2" autoplay></video>
+</div>
+
+<script type="text/javascript" src="~/st/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="~/st/lib/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="~/st/lib/jquery.scrollTo/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="~/st/lib/jquery.signalR/jquery.signalR.min.js"></script>
+<script type="text/javascript" src="~/st/lib/lodash/dist/lodash.min.js"></script>
+<script type="text/javascript" src="~/st/lib/knockout/dist/knockout.js"></script>
+<script type="text/javascript" src="~/st/lib/knockout-jqueryui/dist/knockout-jqueryui.min.js"></script>
+<script type="text/javascript" src="~/st/lib/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="~/st/lib/javascript-emotify/ba-emotify.min.js"></script>
+<script type="text/javascript" src="~/st/lib/webrtc-adapter/release/adapter.js"></script>
+<script type="text/javascript" src="~/st/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/st/lib/bootstrap-dialog/dist/js/bootstrap-dialog.min.js"></script>
+
+<script type="text/javascript" src="~/st/js/helpers.js"></script>
+
+<script language="javascript">
+    var ChatVideoHub = function ($, console, window)
+    {
+        var hubPath = '';
+        var hubName = 'videoHub';
+        var reconnectInterval = 30000;
+        var hub = createHub(hubPath, hubName);
+        var wasConnectionIdSet = false;
+        var reconnectAttempt = 0;
+        var isReconnectScheduled = false;
+        var isClosing = false; // at least one subscription must be added before connect to receive events
+        hub.on('ping', function () {});
+        hub.connection.starting(function ()
+        {
+            console.log('hub.connection: starting');
+            callConnectingHandler();
+        });
+        hub.connection.connectionSlow(function ()
+        {
+            console.log('hub.connection: connectionSlow');
+        });
+        hub.connection.reconnecting(function ()
+        {
+            console.log('hub.connection: reconnecting');
+            callConnectingHandler();
+        });
+        hub.connection.reconnected(function ()
+        {
+            console.log('hub.connection: reconnected');
+            callConnectedHandler();
+        });
+        hub.connection.disconnected(function ()
+        {
+            console.log('hub.connection: disconnected');
+            if (!isClosing)
+                callDisconnectHandler();
+            if (!isReconnectScheduled && !isClosing)
+            {
+                console.log('hub.connection: scheduling reconnection in ' + reconnectInterval + 'ms.');
+                setTimeout(tryReconnect, reconnectInterval);
+                isReconnectScheduled = true;
+            }
+        });
+        $(window)
+            .unload(function ()
+            {
+                isClosing = true;
+                if (hub.connection.state !== $.signalR.connectionState.disconnected)
+                    hub.connection.stop(false, true);
+            });
+
+        function createHub(hubPath, hubName)
+        {
+            var connection = $.hubConnection(hubPath);
+            connection.logging = true;
+            connection.qs = connection.qs || {};
+            return connection.createHubProxy(hubName);
+        }
+
+        function invoke()
+        {
+            var self = this;
+            var args = Array.prototype.slice.call(arguments);
+            var connectionState = hub.connection.state;
+            return hub.connection.start()
+                .then(function ()
+                    {
+                        self.connectionId = hub.connection.id;
+                        if (connectionState !== $.signalR.connectionState.connected)
+                            callConnectedHandler(hub.connection.id);
+                        if (!wasConnectionIdSet)
+                        {
+                            hub.connection.qs.coid = hub.connection.id;
+                            wasConnectionIdSet = true;
+                        }
+                        return hub.invoke.apply(hub, args)
+                            .fail(function (x)
+                            {
+                                console.log('hub.connection: method ' + args[0] + ' call error: ' + x);
+                            });
+                    },
+                    function (x)
+                    {
+                        console.log('hub.connection: connection start error: ' + x);
+                    });
+        }
+
+        function tryReconnect()
+        {
+            var n = reconnectAttempt++;
+            console.log('hub.connection: trying to reconnect after disconnect, attempt ' + n);
+            callConnectingHandler();
+            hub.connection.start()
+                .then(function ()
+                    {
+                        console.log('hub.connection: reconnected successfully!');
+                        callConnectedHandler();
+                        isReconnectScheduled = false;
+                    },
+                    function (x)
+                    {
+                        console.log('hub.connection: reconnect attempt ' +
+                            n +
+                            ' failure: ' +
+                            x +
+                            '; scheduling reconnection in ' +
+                            reconnectInterval +
+                            'ms.');
+                        setTimeout(tryReconnect, reconnectInterval);
+                    });
+        }
+
+        // connection events
+        var onDisconnectedHandler = null;
+        this.onDisconnected = function (callback)
+        {
+            console.log('hub.connection: disconnected handler set');
+            onDisconnectedHandler = callback;
+        };
+
+        function callDisconnectHandler()
+        {
+            console.log('hub.connection: calling disconnected handler');
+            if (onDisconnectedHandler)
+                onDisconnectedHandler();
+        }
+
+        var onConnectedHandler = null;
+        this.onConnected = function (callback)
+        {
+            console.log('hub.connection: connected handler set');
+            onConnectedHandler = callback;
+        };
+
+        function callConnectedHandler(cid)
+        {
+            console.log('hub.connection: calling connected handler');
+            if (onConnectedHandler)
+                onConnectedHandler(cid);
+        }
+
+        var onConnectingHandler = null;
+        this.onConnecting = function (callback)
+        {
+            console.log('hub.connection: connecting handler set');
+            onConnectingHandler = callback;
+        };
+
+        function callConnectingHandler()
+        {
+            console.log('hub.connection: calling connecting handler');
+            if (onConnectingHandler)
+                onConnectingHandler();
+        } // hub events
+
+        this.onUserConnected = function (callback)
+        {
+            hub.on('UserConnected',
+                function (cid, name)
+                {
+                    callback.call(this, cid, name);
+                });
+        };
+        this.onUserDisconnected = function (callback)
+        {
+            hub.on('UserDisconnected',
+                function (cid)
+                {
+                    callback.call(this, cid, name);
+                });
+        };
+        this.onCallRequest = function (callback)
+        {
+            hub.on('CallRequest',
+                function (cid)
+                {
+                    callback.call(this, cid);
+                });
+        };
+        this.onCallAccepted = function (callback)
+        {
+            hub.on('CallAccepted',
+                function (cid)
+                {
+                    callback.call(this, cid);
+                });
+        };
+        this.onCallRejected = function (callback)
+        {
+            hub.on('CallRejected',
+                function (cid, message)
+                {
+                    callback.call(this, cid, message);
+                });
+        };
+        this.onExitCall = function (callback)
+        {
+            hub.on('ExitCall',
+                function (cid)
+                {
+                    callback.call(this, cid);
+                });
+        };
+        this.onCallOffer = function (callback)
+        {
+            hub.on('CallOffer',
+                function (cid, sdp)
+                {
+                    callback.call(this, cid, sdp);
+                });
+        };
+        this.onCallAnswer = function (callback)
+        {
+            hub.on('CallAnswer',
+                function (cid, sdp)
+                {
+                    callback.call(this, cid, sdp);
+                });
+        };
+        this.onIceCandidate = function (callback)
+        {
+            hub.on('IceCandidate',
+                function (cid, c)
+                {
+                    callback.call(this, cid, c);
+                });
+        };
+
+        // hub methods
+        this.start = function ()
+        {
+            return invoke('start');
+        };
+        this.sendCallRequest = function (cid)
+        {
+            return invoke('sendCallRequest', cid);
+        };
+        this.acceptCall = function (cid)
+        {
+            return invoke('acceptCall', cid);
+        };
+        this.rejectCall = function (cid, message)
+        {
+            return invoke('rejectCall', cid, message);
+        };
+        this.exitCall = function (cid)
+        {
+            return invoke('exitCall', cid);
+        };
+        this.sendCallOffer = function (cid, sdp)
+        {
+            return invoke('sendCallOffer', cid, sdp);
+        };
+        this.sendCallAnswer = function (cid, sdp)
+        {
+            return invoke('sendCallAnswer', cid, sdp);
+        };
+        this.sendIceCandidate = function (cid, candidate)
+        {
+            return invoke('sendIceCandidate', cid, candidate);
+        };
+    };
+
+    var connectionConfig = webrtcDetectedBrowser === 'firefox'
+                               ? { 'iceServers': [{ 'url': 'stun:23.21.150.121' }] }
+                               : { 'iceServers': [{ 'url': 'stun:stun.l.google.com:19302' }] };
+    var connectionConstraints = {
+            'optional': [
+                    { 'DtlsSrtpKeyAgreement': true }, { 'RtpDataChannels': true }
+                ]
+        };
+    var sdpConstraints = {
+            'mandatory': {
+                    'OfferToReceiveAudio': true,
+                    'OfferToReceiveVideo': true
+                }
+        };
+    var mediaConstraints = {
+            video: true,
+            audio: true
+        };
+    var CallStatus = {
+            connecting: 0,
+            connected: 1,
+
+            initiating: 2,
+            callRequestSent: 3,
+            callRequestReceived: 4,
+            callRequestAccepted: 5,
+            established: 6,
+        };
+
+    // use DetectRTC.js
+    $(function ()
+    {
+        console.log(webrtcDetectedBrowser);
+
+        var localVideo = document.querySelector('#video1');
+        var remoteVideo = document.querySelector('#video2');
+
+        var callStatus;
+        var pc;
+        var localStream;
+        var remoteStream;
+        var hub = new ChatVideoHub($, console, window);
+
+        hub.onConnected(function (cid)
+        {
+            $('#cid1').text(cid);
+            setStatus(CallStatus.connected);
+        });
+        hub.onIceCandidate(function (cid, candidateJson)
+        {
+            console.log('received remote ice candidate:', cid, candidateJson);
+            var x = JSON.parse(candidateJson);
+            var candidate = new RTCIceCandidate({ sdpMLineIndex: x.label, candidate: x.candidate });
+            pc.addIceCandidate(candidate);
+        });
+        hub.onCallOffer(function (cid, offerJson)
+        {
+            console.log('received remote offer', cid, offerJson);
+
+            var x = JSON.parse(offerJson);
+            var offer = new RTCSessionDescription(x.sdp);
+            pc.setRemoteDescription(offer);
+            pc.createAnswer(
+                function (sessionDescription)
+                {
+                    sessionDescription.sdp = preferOpus(sessionDescription.sdp);
+                    pc.setLocalDescription(sessionDescription);
+                    console.log('sending answer', sessionDescription);
+                    hub.sendCallAnswer(cid, JSON.stringify({ sdp: sessionDescription }));
+                },
+                function (e)
+                {
+                    console.log('createAnswer error', e);
+                    stopVideo();
+                    setStatus(CallStatus.connected);
+                    hub.rejectCall(cid, 'createAnswer failed');
+                },
+                sdpConstraints);
+        });
+        hub.onCallAnswer(function (cid, answerJson)
+        {
+            console.log('received answer', cid, answerJson);
+            var x = JSON.parse(answerJson);
+            var answer = new RTCSessionDescription(x.sdp);
+            pc.setRemoteDescription(answer);
+        });
+        hub.onCallRequest(function (cid)
+        {
+            console.log('received call request', cid);
+            $('#cid2').val(cid);
+            setStatus(CallStatus.callRequestReceived);
+        });
+        hub.onCallAccepted(function (cid)
+        {
+            console.log('call accepted', cid);
+
+            setStatus(CallStatus.callRequestAccepted);
+
+            createPeerConnection(
+                cid,
+                function ()
+                {
+                    stopVideo();
+                    setStatus(CallStatus.connected);
+                    hub.rejectCall(cid, 'createPeerConnection() failed');
+                });
+
+            console.log('sending offer to peer');
+            pc.createOffer(
+                function (sessionDescription)
+                {
+                    sessionDescription.sdp = preferOpus(sessionDescription.sdp);
+                    pc.setLocalDescription(sessionDescription);
+
+                    console.log('sending offer message', sessionDescription);
+                    hub.sendCallOffer(cid, JSON.stringify({ sdp: sessionDescription }));
+                },
+                function (e)
+                {
+                    console.log('createOffer() failed', e);
+                    stopVideo();
+                    setStatus(CallStatus.connected);
+                    hub.rejectCall(cid, 'createOffer() failed');
+                });
+        });
+        hub.onCallRejected(function (cid, message)
+        {
+            console.log('call rejected', cid, message);
+            stopVideo();
+            $('#cid2').val('');
+            setStatus(CallStatus.connected);
+        });
+        hub.onExitCall(function (cid)
+        {
+            console.log('exit call from', cid);
+            stopVideo();
+            $('#cid2').val('');
+            setStatus(CallStatus.connected);
+        });
+
+        $('#call')
+            .on('click',
+                function ()
+                {
+                    var cid = $('#cid2').val().trim();
+                    if (cid.length === 0)
+                    {
+                        console.log('no peer cid provided');
+                        return;
+                    }
+
+                    if (callStatus !== CallStatus.connected)
+                    {
+                        console.log('invalid call status ', callStatus);
+                        return;
+                    }
+
+                    console.log('initiating call to ', cid);
+                    setStatus(CallStatus.initiating);
+
+                    attachMedia(
+                        function ()
+                        {
+                            hub.sendCallRequest(cid)
+                                .then(
+                                    function ()
+                                    {
+                                        console.log('call request sent, waiting for accept or reject from', cid);
+                                        setStatus(CallStatus.callRequestSent);
+                                    },
+                                    function ()
+                                    {
+                                        console.log('call request failed');
+                                        stopVideo();
+                                        setStatus(CallStatus.connected);
+                                    });
+                        },
+                        function (error)
+                        {
+                            console.log('start call failed because of getUserMedia() error', error);
+                            stopVideo();
+                            setStatus(CallStatus.connected);
+                        });
+                });
+        $('#hangup')
+            .on('click',
+                function ()
+                {
+                    var cid = $('#cid2').val();
+                    console.log('hangup call', cid);
+
+                    stopVideo();
+                    setStatus(CallStatus.connected);
+                    hub.exitCall(cid);
+                });
+        $('#acceptCall')
+            .on('click',
+                function ()
+                {
+                    var cid = $('#cid2').val();
+                    console.log('accept call', cid);
+
+                    var sendAcceptCall = function ()
+                    {
+                        hub.acceptCall(cid)
+                            .then(
+                                function ()
+                                {
+                                    setStatus(CallStatus.callRequestAccepted);
+                                });
+                    };
+
+                    if (pc == null)
+                    {
+                        attachMedia(
+                            function ()
+                            {
+                                createPeerConnection(
+                                    cid,
+                                    function ()
+                                    {
+                                        stopVideo();
+                                        setStatus(CallStatus.connected);
+                                        hub.rejectCall(cid, 'createPeerConnection() failed');
+                                    });
+                                sendAcceptCall();
+                            },
+                            function ()
+                            {
+                                stopVideo();
+                                setStatus(CallStatus.connected);
+                                hub.rejectCall(cid, 'getUserMedia() failed');
+                            });
+                    } else sendAcceptCall();
+                });
+        $('#rejectCall')
+            .on('click',
+                function ()
+                {
+                    var cid = $('#cid2').val();
+
+                    console.log('rejecting call to', cid);
+                    hub.rejectCall(cid)
+                        .then(
+                            function ()
+                            {
+                                stopVideo();
+                                setStatus(CallStatus.connected);
+                            });
+                });
+
+
+        $('#cid1').text('');
+        $('#cid2').val('');
+        setStatus(CallStatus.connecting);
+
+        hub.start();
+
+        function attachMedia(fnSuccess, fnFailure)
+        {
+            console.log('getting user media with constraints', mediaConstraints);
+            getUserMedia(
+                mediaConstraints,
+                function (stream)
+                {
+                    console.log('adding local stream.');
+                    localStream = stream;
+                    localVideo.src = window.URL.createObjectURL(stream);
+                    console.log('local stream added.');
+
+                    fnSuccess();
+                },
+                function (e)
+                {
+                    console.log('getUserMedia error', e);
+                    if (e.name === 'DevicesNotFoundError')
+                    {
+                        console.log('no device');
+                        fnFailure('no device');
+                    } else if (e.name === 'PermissionDeniedError')
+                    {
+                        console.log('no permissions');
+                        fnFailure('no permissions');
+                    } else fnFailure('');
+                });
+        }
+
+        function setStatus(status)
+        {
+            callStatus = status;
+            switch (callStatus)
+            {
+            case CallStatus.connecting:
+                $('#call').attr('disabled', true);
+                $('#hangup').attr("disabled", true);
+                $('#acceptCall').attr("disabled", true);
+                $('#rejectCall').attr("disabled", true);
+                $('#cid2').attr('readonly', true);
+                $('#status').text('connecting...');
+                break;
+            case CallStatus.connected:
+                $('#call').removeAttr('disabled');
+                $('#hangup').attr("disabled", true);
+                $('#acceptCall').attr("disabled", true);
+                $('#rejectCall').attr("disabled", true);
+                $('#cid2').removeAttr('readonly');
+                $('#status').text('Can initiate call; Accepting calls...');
+                break;
+            case CallStatus.initiating:
+                $('#call').attr('disabled', true);
+                $('#hangup').removeAttr('disabled');
+                $('#acceptCall').attr("disabled", true);
+                $('#rejectCall').attr("disabled", true);
+                $('#cid2').attr('readonly', true);
+                $('#status').text('initiating call...');
+                break;
+            case CallStatus.callRequestSent:
+                $('#call').attr('disabled', true);
+                $('#hangup').removeAttr('disabled');
+                $('#acceptCall').attr("disabled", true);
+                $('#rejectCall').attr("disabled", true);
+                $('#cid2').attr('readonly', true);
+                $('#status').text('waiting for accept or reject from peer');
+                break;
+            case CallStatus.callRequestAccepted:
+                $('#call').attr('disabled', true);
+                $('#hangup').removeAttr('disabled');
+                $('#acceptCall').attr("disabled", true);
+                $('#rejectCall').attr("disabled", true);
+                $('#cid2').attr('readonly', true);
+                $('#status').text('Call accepted, establishing connection...');
+                break;
+            case CallStatus.callRequestReceived:
+                $('#cid2').attr('readonly', true);
+                $('#call').attr("disabled", true);
+                $('#hangup').attr("disabled", true);
+                $('#acceptCall').removeAttr("disabled");
+                $('#rejectCall').removeAttr("disabled");
+                $('#status').text('Received call, please answer or reject.');
+                break;
+            case CallStatus.established:
+                $('#cid2').attr('readonly', true);
+                $('#call').attr("disabled", true);
+                $('#hangup').removeAttr('disabled');
+                $('#acceptCall').attr("disabled", true);
+                $('#rejectCall').attr("disabled", true);
+                $('#status').text('Call connection established.');
+                break;
+            }
+        }
+
+        function stopVideo()
+        {
+            remoteVideo.src = '';
+            if (remoteStream != null)
+            {
+                if (webrtcDetectedBrowser !== 'firefox') remoteStream.stop();
+                remoteStream = null;
+            }
+            if (pc != null)
+            {
+                pc.close();
+                pc = null;
+            }
+
+            localVideo.src = '';
+            if (localStream != null)
+            {
+                localStream.stop();
+                localStream = null;
+            }
+        }
+
+        function createPeerConnection(cid, fnFailure)
+        {
+            try
+            {
+                pc = new RTCPeerConnection(connectionConfig, connectionConstraints);
+                console.log('Created RTCPeerConnnection');
+            }
+            catch (e)
+            {
+                console.log('Failed to create PeerConnection, exception', e);
+                fnFailure(e);
+                return;
+            }
+            pc.onicecandidate = function (event)
+            {
+                console.log('local IceCandidate event', event);
+                if (event.candidate)
+                {
+                    var x = JSON.stringify(
+                        {
+                            label: event.candidate.sdpMLineIndex,
+                            candidate: event.candidate.candidate
+                        });
+                    hub.sendIceCandidate(cid, x);
+                } else console.log('End of candidates.');
+            };
+            pc.oniceconnectionstatechange = function ()
+            {
+                if (!pc) return;
+                console.log('peer connection oniceconnectionstatechange: ', pc.iceConnectionState);
+            };
+            pc.onsignalingstatechange = function ()
+            {
+                if (!pc) return;
+                console.log('peer connection onsignalingstatechange: ', pc.signalingState);
+            };
+            pc.onaddstream = function (event)
+            {
+                console.log('Remote stream added.');
+                remoteStream = event.stream;
+                attachMediaStream(remoteVideo, remoteStream);
+                remoteVideo.src = window.URL.createObjectURL(remoteStream);
+
+                // connection established
+                setStatus(CallStatus.established);
+            };
+            pc.onremovestream = function (event)
+            {
+                console.log('Remote stream removed. Event: ', event);
+            };
+            pc.addStream(localStream);
+        }
+    });
+
+    function preferOpus(sdp)
+    {
+        var sdpLines = sdp.split('\r\n');
+        var mLineIndex = null;
+        // Search for m line.
+        for (var i = 0; i < sdpLines.length; i++)
+        {
+            if (sdpLines[i].search('m=audio') !== -1)
+            {
+                mLineIndex = i;
+                break;
+            }
+        }
+        if (mLineIndex === null) return sdp;
+
+        // If Opus is available, set it as the default in m line.
+        for (i = 0; i < sdpLines.length; i++)
+        {
+            if (sdpLines[i].search('opus/48000') !== -1)
+            {
+                var opusPayload = extractSdp(sdpLines[i], /:(\d+) opus\/48000/i);
+                if (opusPayload) sdpLines[mLineIndex] = setDefaultCodec(sdpLines[mLineIndex], opusPayload);
+                break;
+            }
+        }
+
+        // Remove CN in m line and sdp.
+        sdpLines = removeCN(sdpLines, mLineIndex);
+
+        sdp = sdpLines.join('\r\n');
+        return sdp;
+    }
+
+    function extractSdp(sdpLine, pattern)
+    {
+        var result = sdpLine.match(pattern);
+        return result && result.length === 2 ? result[1] : null;
+    }
+
+    // Set the selected codec to the first in m line.
+    function setDefaultCodec(mLine, payload)
+    {
+        var elements = mLine.split(' ');
+        var newLine = [];
+        var index = 0;
+        for (var i = 0; i < elements.length; i++)
+        {
+            if (index === 3)
+            { // Format of media starts from the fourth.
+                newLine[index++] = payload; // Put target payload to the first.
+            }
+            if (elements[i] !== payload) newLine[index++] = elements[i];
+        }
+        return newLine.join(' ');
+    }
+
+    // Strip CN from sdp before CN constraints is ready.
+    function removeCN(sdpLines, mLineIndex)
+    {
+        var line = sdpLines[mLineIndex];
+        var mLineElements = line != undefined ? line.split(' ') : [];
+        // Scan from end for the convenience of removing an item.
+        for (var i = sdpLines.length - 1; i >= 0; i--)
+        {
+            var payload = extractSdp(sdpLines[i], /a=rtpmap:(\d+) CN\/\d+/i);
+            if (payload)
+            {
+                var cnPos = mLineElements.indexOf(payload);
+                if (cnPos !== -1)
+                {
+                    // Remove CN payload from m line.
+                    mLineElements.splice(cnPos, 1);
+                }
+                // Remove CN line in sdp
+                sdpLines.splice(i, 1);
+            }
+        }
+
+        sdpLines[mLineIndex] = mLineElements.join(' ');
+        return sdpLines;
+    }
+
+</script>
+</body>
+</html>

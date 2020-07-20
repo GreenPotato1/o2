@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{017F459A-D86B-4DD9-BC8C-2D73568C76DA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Com.O2Bionics.ChatService.Contract</RootNamespace>
+    <AssemblyName>Com.O2Bionics.ChatService.Contract</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ERRORTRACKERTEST</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Jil, Version=2.15.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Jil.2.15.4\lib\net45\Jil.dll</HintPath>
+    </Reference>
+    <Reference Include="Sigil, Version=4.7.0.0, Culture=neutral, PublicKeyToken=2d06c3494341c8ab, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Sigil.4.7.0\lib\net45\Sigil.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\common\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="AuditTrail\OperationKind.cs" />
+    <Compile Include="AuditTrail\OperationKindGroups.cs" />
+    <Compile Include="AuditTrail\OperationStatus.cs" />
+    <Compile Include="AuditTrail\ProductCodes.cs" />
+    <Compile Include="MailerService\TemplateIds.cs" />
+    <Compile Include="CallResultStatus.cs" />
+    <Compile Include="CallResultStatusCode.cs" />
+    <Compile Include="CannedMessageInfo.cs" />
+    <Compile Include="WidgetLoadSatusCode.cs" />
+    <Compile Include="CustomerEntry.cs" />
+    <Compile Include="CustomerInfo.cs" />
+    <Compile Include="ICustomerCacheNotifier.cs" />
+    <Compile Include="Widget\WidgetViewStatisticsEntry.cs" />
+    <Compile Include="IErrorTrackerTest.cs" />
+    <Compile Include="GetCannedMessagesResult.cs" />
+    <Compile Include="IHasCompositeFullName.cs" />
+    <Compile Include="Settings\ChatServiceClientSettings.cs" />
+    <Compile Include="UpdateCannedMessageResult.cs" />
+    <Compile Include="GetSessionResult.cs" />
+    <Compile Include="SessionSearchFilter.cs" />
+    <Compile Include="GetSessionMessagesResult.cs" />
+    <Compile Include="SessionSearchResult.cs" />
+    <Compile Include="ChatWidgetAppearanceInfo.cs" />
+    <Compile Include="GetDepartmentsResult.cs" />
+    <Compile Include="CreateCustomerParameters.cs" />
+    <Compile Include="CreateCustomerResult.cs" />
+    <Compile Include="GetUserResult.cs" />
+    <Compile Include="SaveChatWidgetAppearanceJsonResult.cs" />
+    <Compile Include="UpdateDepartmentResult.cs" />
+    <Compile Include="UpdateUserResult.cs" />
+    <Compile Include="AgentConnectResult.cs" />
+    <Compile Include="AgentConsoleInfo.cs" />
+    <Compile Include="AgentConsoleSettingsInfo.cs" />
+    <Compile Include="AgentInfo.cs" />
+    <Compile Include="ChatFrameLoadResult.cs" />
+    <Compile Include="ChatMessageSender.cs" />
+    <Compile Include="ChatSessionAgentInfo.cs" />
+    <Compile Include="ChatSessionInviteInfo.cs" />
+    <Compile Include="ChatSessionInviteType.cs" />
+    <Compile Include="ChatSessionMessageInfo.cs" />
+    <Compile Include="ChatWindowOpenResult.cs" />
+    <Compile Include="CustomerSettingsInfo.cs" />
+    <Compile Include="FullChatSessionInfo.cs" />
+    <Compile Include="GetUsersResult.cs" />
+    <Compile Include="IManagementService.cs" />
+    <Compile Include="LoginParameters.cs" />
+    <Compile Include="AgentLoginResult.cs" />
+    <Compile Include="ChatSessionInfo.cs" />
+    <Compile Include="IAgentConsoleEventReceiver.cs" />
+    <Compile Include="IPingable.cs" />
+    <Compile Include="IVisitorChatEventReceiver.cs" />
+    <Compile Include="LoginResultStatus.cs" />
+    <Compile Include="MediaCallStatus.cs" />
+    <Compile Include="MediaSupportInfo.cs" />
+    <Compile Include="OnlineStatusInfo.cs" />
+    <Compile Include="ResetPasswordCodeStatus.cs" />
+    <Compile Include="ResetPasswordResult.cs" />
+    <Compile Include="UserAgentInfo.cs" />
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="ValidationMessage.cs" />
+    <Compile Include="VisitorInfo.cs" />
+    <Compile Include="ObjectStatus.cs" />
+    <Compile Include="ChatEventType.cs" />
+    <Compile Include="ChatSessionStatus.cs" />
+    <Compile Include="DepartmentInfo.cs" />
+    <Compile Include="IAgentConsoleService.cs" />
+    <Compile Include="IVisitorChatService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisitorSendTranscriptMode.cs" />
+    <Compile Include="WidgetAppearance\ChatWidgetAppearance.cs" />
+    <Compile Include="WidgetAppearance\ChatWidgetLocation.cs" />
+    <Compile Include="WidgetAppearance\ChatWidgetThemes.cs" />
+    <Compile Include="Widget\WidgetDailyViewCountExceededEvent.cs" />
+    <Compile Include="Widget\WidgetLoadRequest.cs" />
+    <Compile Include="Widget\WidgetUnknownDomain.cs" />
+    <Compile Include="Widget\WidgetUnknownDomainTooManyEvent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.Utils\Com.O2Bionics.Utils.csproj">
+      <Project>{0e93b727-715a-4e47-9c1c-9ba6afd5829e}</Project>
+      <Name>Com.O2Bionics.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

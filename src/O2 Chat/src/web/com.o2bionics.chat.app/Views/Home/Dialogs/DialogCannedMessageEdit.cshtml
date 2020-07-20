@@ -1,0 +1,36 @@
+<script id="dialog-canned-message-edit-tmpl" type="text/html" height="550" width="300">
+    <div id="dialog-edit-canned-message" data-bind="dialog: dialog" title="Edit">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group label-floating canned-input_pos">
+                    <label class="control-label" for="dialog-edit-canned-message-key">Please enter key</label>
+                    <input data-bind="textInput: editItem().key" class="form-control" id="dialog-edit-canned-message-key" />
+                    <strong class="text-warning small" data-bind="validationMessage: editItem().key"></strong>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group label-floating">
+                    <label class="control-label" for="dialog-edit-canned-message-value">Please enter text</label>
+                    <textarea data-bind="textInput: editItem().value" class="canned_textarea form-control " id="dialog-edit-canned-message-value"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-sm-offset-2 col-sm-4" data-bind="foreach: editItem().errorMessages">
+                    <strong class="text-warning" data-bind="text: $data"></strong>
+                </div>
+            </div>
+        </div>
+        <div class="dialog-button-set">
+            <button class="btn btn-primary" data-bind="command: commands.save">
+                save
+            </button>
+            <button class="btn btn-default" data-bind="command: commands.close">
+                cancel
+            </button>
+        </div>
+    </div>
+</script>

@@ -1,0 +1,1 @@
+iex "$PSScriptRoot\..\..\src\featureService\Com.O2Bionics.FeatureService.SelfHostWeb\bin\Debug\Com.O2Bionics.FeatureService.SelfHostWeb.exe --reload-data --quiet"

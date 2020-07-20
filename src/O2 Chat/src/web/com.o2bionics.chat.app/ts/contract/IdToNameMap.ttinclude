@@ -1,0 +1,98 @@
+<#@ include file="CSharpToTs.ttinclude" once="true" #>
+export class IdToNameMap {
+  protected readonly idNameMap = new Map<string, string>();
+
+  public get(value: string): string
+  {
+    const result = this.idNameMap.get(value) as string;
+    if (null == result)
+      return '';
+    return result;
+  }
+}
+<#+
+    public string EnumsAndNameMap(Assembly assembly, string typeName)
+    {
+        var t = GetUnregisteredType(assembly, typeName, out var error);
+        if (t == null) return error;
+
+        var sb = new StringBuilder(Enums(assembly, typeName)).AppendLine();
+        AppendNamesClassBeginning(sb, t);
+
+        foreach (var field in GetStaticFields(t))
+        {
+            // Look for [Display(Name = "Update widget appearance")].
+            var name = GetNameAttributeValue(field, "DisplayAttribute");
+            if (null == name)
+                sb.AppendLine(FormatError($"{t.FullName}.{field.Name} must have the DisplayAttribute applied."));
+            else if (0 < name.Length)
+                sb.AppendLine($"    m.set('{field.GetRawConstantValue()}', '{name}');");
+        }
+
+        sb.AppendLine(@"  }
+}");
+        return sb.ToString();
+    }
+
+    public string KeyValueConstantStrings(Assembly assembly, string typeName)
+    {
+        var t = GetUnregisteredType(assembly, typeName, out var error);
+        if (t == null) return error;
+
+        var sb = new StringBuilder();
+        AppendNamesClassBeginning(sb, t);
+
+        var keys = new Dictionary<string, string>();
+        var values = new Dictionary<string, string>();
+        foreach (var field in GetStaticFields(t))
+        {
+            // public const string UserChangePasswordKey = "UserChangePasswordOrSomeOtherKey";
+            // public const string UserChangePasswordValue = "Change user password";
+            var value = field.GetValue(null) as string;
+            if (!string.IsNullOrEmpty(value) &&
+                !SetFieldValue(t, field.Name, "Key", value, keys, sb))
+                SetFieldValue(t, field.Name, "Value", value, values, sb);
+        }
+
+        if (0 == keys.Count)
+            sb.AppendLine(FormatError($"The type {t.Name} must have keys."));
+        else if (keys.Count != values.Count)
+            sb.AppendLine(FormatError($"The type {t.Name} has {keys.Count} keys which must be equal to {values.Count} values."));
+        else
+            foreach (var p in keys)
+                sb.AppendLine(
+                    values.TryGetValue(p.Key, out var value)
+                        ? $"    m.set('{p.Value}', '{value}');"
+                        : FormatError($"The type {t.Name} must have a constant field {p.Key}Value."));
+
+        sb.AppendLine(@"  }
+}");
+        m_knownTypes.Add(t);
+        return sb.ToString();
+    }
+
+    private static void AppendNamesClassBeginning(StringBuilder sb, Type t)
+        => 
+            sb.AppendLine($@"export class {t.Name}Names extends IdToNameMap {{
+  constructor()
+  {{
+    super();
+
+    const m = this.idNameMap;
+");
+
+    private bool SetFieldValue(
+        Type t, string fieldName, string suffix, string value, Dictionary<string, string> dict, StringBuilder sb)
+    {
+        if (!fieldName.EndsWith(suffix))
+            return false;
+        if (suffix.Length == fieldName.Length)
+        {
+            sb.AppendLine(FormatError($"The field {t.Name}.{fieldName} must be {suffix} with some prefix."));
+            return false;
+        }
+
+        dict[fieldName.Substring(0, fieldName.Length - suffix.Length)] = value;
+        return true;
+    }
+#>

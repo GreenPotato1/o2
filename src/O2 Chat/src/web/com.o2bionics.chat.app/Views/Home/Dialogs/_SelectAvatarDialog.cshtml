@@ -1,0 +1,23 @@
+﻿<script type="text/html" id="dialog-select-avatar" height="570" width="430">
+    <div data-bind="with: $root.dialogSelectAvatar" style="display: none;">
+        <div title="Select avatar" data-bind="dialog: dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <ul class="user-avatar-list" data-bind="foreach: predefinedAvatars">
+                        <li>
+                            <a href="#" data-bind="click: $parent.selectAvatar, event:{ dblclick: $parent.onDblClick }">
+                                <span class="user-avatar" data-bind="css: { 'active-avatar': ($parent.selected() === $data) }">
+                                    <img data-bind="attr: { src: AvatarConstants.toAvatarUrl($data) }" />
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-bind="click: onCancel">Cancel</button>
+                    <button class="btn btn-primary" data-bind="click: onOk">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

@@ -1,0 +1,1 @@
+iex "$PSScriptRoot\..\..\src\chat\Com.O2Bionics.ChatService.Host\bin\Debug\Com.O2Bionics.ChatService.Host.exe --recreate-schema --quiet"

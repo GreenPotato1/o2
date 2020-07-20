@@ -1,0 +1,14 @@
+﻿<#@ include file="CSharpToTs.ttinclude" once="true" #>
+<#
+    LoadAssembly("..\\..\\..\\..\\pageTracker\\Com.O2Bionics.PageTracker\\bin\\Debug\\Nest.dll");
+    var aUt = LoadAssembly("..\\..\\..\\..\\common\\Com.O2Bionics.Utils\\bin\\Debug\\Com.O2Bionics.Utils.dll");
+    var a = LoadAssembly("..\\..\\..\\..\\pageTracker\\Com.O2Bionics.PageTracker\\bin\\Debug\\Com.O2Bionics.PageTracker.dll");
+#>
+<#= Interface(a, "Com.O2Bionics.PageTracker.Contract.Point") #>
+<#= Interface(aUt, "Com.O2Bionics.Utils.SearchPositionInfo") #>
+<#= Interface(a, "Com.O2Bionics.PageTracker.Contract.UserAgentInfo") #>
+<#= Interface(a, "Com.O2Bionics.PageTracker.Contract.TimeZoneDescription") #>
+<#= Interface(a, "Com.O2Bionics.PageTracker.Contract.GeoLocation") #>
+<#= Interface(a, "Com.O2Bionics.PageTracker.Contract.PageHistoryRecord") #>
+<#= Interface(a, "Com.O2Bionics.PageTracker.Contract.PageHistoryVisitorInfo") #>
+<#= Interface(a, "Com.O2Bionics.PageTracker.Contract.GetHistoryResult") #>

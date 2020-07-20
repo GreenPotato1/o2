@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="language" content="en"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:;base64,=">
+    <title>@ViewBag.Title</title>
+
+    @* TODO: move to @Styles.Render("~/bundles/account/css") *@
+    <link rel="stylesheet" href="~/st/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/st/lib/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css"/>
+    <link rel="stylesheet" href="~/st/lib/jquery-ui/themes/base/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="~/st/lib/bootstrap-material-design/dist/css/bootstrap-material-design.min.css"/>
+    <link rel="stylesheet" href="~/st/lib/bootstrap-material-design/dist/css/ripples.min.css"/>
+    <link rel="stylesheet" href="~/st/lib/material-design-icons-iconfont/dist/fonts/material-icons.css"/>
+
+    <link rel="stylesheet" href="~/st/css/widgets.css"/>
+    <link rel="stylesheet" href="~/st/css/style.css"/>
+    <link rel="stylesheet" href="~/st/css/style-account.css"/>
+</head>
+<body>
+<div class="center-form ">
+    <div class="admin-form ">
+        <div class="widget widget-login center-form panel panel-primary">
+            <div class="widget-head panel-heading">
+                <h3 class="panel-title"> @ViewBag.Title</h3>
+            </div>
+
+            @RenderBody()
+
+        </div>
+    </div>
+</div>
+
+@* TODO: move to @Scripts.Render("~/bundles/account/js") *@
+<script type="text/javascript" src="~/st/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="~/st/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script type="text/javascript" src="~/st/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script type="text/javascript" src="~/st/lib/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="~/st/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/st/lib/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+<script type="text/javascript" src="~/st/lib/bootstrap-material-design/dist/js/material.min.js"></script>
+<script type="text/javascript" src="~/st/lib/bootstrap-material-design/dist/js/ripples.min.js"></script>
+    
+<script type="text/javascript" src="~/st/js/jquery.validate.unobtrusive.mustbetrue.js"></script>
+<script type="text/javascript" src="~/st/js/ErrorLogger.js"></script>
+
+
+@RenderSection("scripts", required: false)
+
+<script language="javascript">
+    $(document).ready(function ()
+    {
+         $.material.init();
+    });
+</script>
+</body>
+</html>

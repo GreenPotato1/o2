@@ -1,0 +1,29 @@
+﻿{
+  "compilerOptions": {
+    "module": "amd",
+    "target": "es2015",
+    "lib": [ "dom", "es2015" ],
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitThis": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": false,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "importHelpers": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "baseUrl": "../",
+    "outDir": "../st/tsjs",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "paths": {
+      "tslib": [ "bower_components/tslib/tslib.d.ts" ]
+    }
+  },
+    "exclude": ["node_modules", "dist"],
+    "compileOnSave": true
+  }

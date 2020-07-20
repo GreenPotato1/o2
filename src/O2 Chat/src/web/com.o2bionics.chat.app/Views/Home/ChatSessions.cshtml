@@ -1,0 +1,782 @@
+﻿@using Com.O2Bionics.Utils
+
+@{
+    ViewBag.Title = "O2Chat Agent Console";
+
+    var pageTrackerUrl = GlobalContainer.Resolve<WorkspaceSettings>().PageTrackerClient.Url.ToString();
+}
+
+@section style {
+    <link rel="stylesheet" href="~/st/css/minsession-style.css" />
+    <link rel="stylesheet" href="~/st/css/style-console.css" />
+    <link rel="stylesheet" href="~/st/lib/jquery-emojiarea/jquery.emojiarea.css" />
+    <style>
+        .chats{
+        color: rgba(0, 0, 0, 0.87) !important;
+        }       
+
+    </style>
+}
+
+@section agent_status {
+    <li class="dropdown dropdown-big" data-bind="with: agentStatusModel, visible: agentStatusModel.agentStatusText ">
+        <a class="dropdown-toggle" href="#" data-bind="click: onSwitchOnlineStatus ">
+            <div style="display: inline;">
+                <i class="material-icons"
+                   data-bind="html: agentCheckboxSymbol, style: agentStatusStyle">
+                </i>
+                <span data-bind="text: agentStatusText"></span>
+            </div>
+        </a>
+    </li>
+}
+
+<div class="m-tabs-row">
+    <div class="m-head_left m-tabs-row_col_1">
+        <ul id="session-tab-buttons" class="nav nav-tabs m-nav-tabs">
+            <li>
+                <a id="new-sessions-tab-header" href="#new-sessions-tab" data-toggle="tab" aria-expanded="true">
+                    <div>
+                        <i class="material-icons" data-bind="html: (newSessionsUnreadCount() > 0) ? '&#xE7F7;' : '&#xE7F4;'">&#xE7F7;</i>
+                        <span class="badge" data-bind="visible: newSessionsUnreadCount() > 0, text: newSessionsUnreadCount"></span>
+                        <span class="text">Новый диалог</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a id="private-sessions-tab-header" href="#private-sessions-tab" data-toggle="tab" aria-expanded="true">
+                    <div>
+                        <i class="material-icons">&#xE7FB;</i>
+                        <span class="text">Пользователи / Группы</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a id="active-sessions-tab-header" href="#active-sessions-tab" data-toggle="tab" aria-expanded="true">
+                    <div>
+                        <i class="material-icons">&#xE0BF;</i>
+                        <span class="badge" data-bind="visible: activeSessionsUnreadCount() > 0, text: activeSessionsUnreadCount"></span>
+                        <span class="text">В ожидании</span>
+                    </div>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="m-head_center m-tabs-row_col_2">
+        <ul class="nav nav-tabs m-nav-tabs">
+            <li class="text-center">
+                <a>
+                    <div class="" title="Video Call to Visitor" data-bind="click: onClickStartVideoCall, attr: { disabled: !canStartVideoCall() ? 'yes' : null }">
+                        <i class="material-icons" title="Video Call">&#xE04B;</i><span class="text">Видео звонок</span>
+                    </div>
+                </a>
+            </li>
+            <li class=" text-center">
+                <a>
+                    <div class="" title="Voice Call to Visitor" data-bind="click: onClickStartAudioCall, attr: { disabled: !canStartAudioCall() ? 'yes' : null }">
+                        <i class="material-icons" title="Voice Call">&#xE0CD;</i><span class="text">Аудио звонок</span>
+                    </div>
+                </a>
+            </li>
+            <li class="text-center">
+                <a>
+                    <div class="" title="Invite an Agent or Department" data-bind="click: onClickInvite, attr: { disabled: !canInvite() ? 'yes' : null }">
+
+                        <i class="material-icons" title="Invite">&#xE7FE;</i><span class="text">Пригласить</span>
+                    </div>
+
+                </a>
+            </li>
+            <li class="text-center">
+                <a>
+                    <div class="" title="Send Transcript to Visitor's Email" data-bind="click: onClickSendTranscript, attr: { disabled: !canSendTranscript() ? 'yes' : null }">
+                        <i class="material-icons">&#xE15E;</i><span class="text">Отправить транскрипт</span>
+                    </div>
+                </a>
+            </li>
+            <li class="text-center">
+                <a>
+                    <div class="" title="Exit the Session" data-bind="click: onClickExitSession(), attr: { disabled: !canExitSession() ? 'yes' : null }">
+                        <i class="material-icons">&#xE879;</i><span class="text">Покинуть диалог</span>
+                    </div>
+                </a>
+            </li>
+            <li class="text-center">
+                <a>
+                    <div class="" title="Close the Session" data-bind="click: onClickCloseSession(), attr: { disabled: !canCloseSession() ? 'yes' : null}">
+                        <i class="material-icons">&#xE14C;</i><span class="text">Закрыть сессию</span>
+                    </div>
+                </a>
+            </li>
+            <li class="hidden-lg  m-head_right">
+                <a class="show-info-btn" data-bind="click: sessionInfoPanel.toggle">
+                    <div>
+                        <i class="material-icons">&#xE88E;</i>
+                        <span class="text">Информация о сессии</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="m-head_right m-tabs-row_col_1">
+        <ul class="nav nav-tabs m-nav-tabs">
+            <li class="hidden-md hidden-sm hidden-xs">
+                <a href="#" class="show-info-btn" data-bind="click: sessionInfoPanel.toggle">
+                    <i class="material-icons show-info-btn_h show-info-btn_h_r">&#xE314;</i>
+                    <i class="material-icons show-info-btn_h show-info-btn_h_l">&#xE315;</i>
+                    <div>
+                        <i class="material-icons">&#xE88E;</i>
+                        <span class="text">Информация о сессии</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="m-content container">
+
+    <div class="m-content-row">
+        <div id="session-actions-panel" class="m-content-row_col-1" data-bind="style: { display: sessionActionsPanel.visible() ? 'block' : 'none'}">
+            <div class="close-xs-content-btn hidden-lg hidden-md text-left" data-bind="click: sessionActionsPanel.close">
+                <i class="material-icons">&#xE5CD;</i>
+            </div>
+            <div class="close-xs-content-btn hidden-sm hidden-xs text-center" data-bind="click: sessionActionsPanel.close">
+                <i class="material-icons">&#xE5CE;</i>
+            </div>
+
+            <div class="tab-content" id="myTabContent">
+                <div style="padding: 0 0 0 0; margin: 0 0 0 0;" class="tab-pane fade btn-group-sm" id="new-sessions-tab">
+                    <a href="" class="btn btn-success btn-fab" data-bind="click: onClickNewSession">
+                        <i class="material-icons">&#xE145;</i>
+                    </a>
+                    <div class="tab-pane_inner">
+                        <ul class="sessions" data-bind="foreach: newSessions">
+                            <li data-bind="click: onSelectSession, css: $root.currentSession() === $data ? 'active' : null">
+                                <i class="material-icons" style="visibility: hidden;">&#xE15E;</i>
+                                <i class="material-icons" style="visibility: hidden;">&#xE645;</i>
+                                <i class="material-icons" data-bind="html: isOnline() ? '&#xE8F4;' : '&#xE8F5;'"></i>
+                                <span class="item" data-bind="text: title"></span>
+                                <span class="badge" data-bind="visible: unreadMessagesCount() > 0, text: unreadMessagesCount"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="padding: 0 0 0 0; margin: 0 0 0 0;" class="tab-pane fade btn-group-sm" id="active-sessions-tab">
+                    <a href="" class="btn btn-success btn-fab" data-bind="click: onClickNewSession">
+                        <i class="material-icons">&#xE145;</i>
+                    </a>
+                    <div class="tab-pane_inner">
+                        <ul class="sessions" data-bind="foreach: activeSessions">
+                            <li data-bind="click: onSelectSession, css: $root.currentSession() === $data ? 'active' : null">
+                                <i class="material-icons" style="visibility: hidden;">&#xE15E;</i>
+                                <i class="material-icons" style="visibility: hidden;">&#xE645;</i>
+                                <i class="material-icons" data-bind="html: isOnline() ? '&#xE8F4;' : '&#xE8F5;'"></i>
+                                <span class="item" data-bind="text: title"></span>
+                                <span class="badge" data-bind="visible: unreadMessagesCount() > 0, text: unreadMessagesCount"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="private-sessions-tab">
+                    <div class="tab-pane_inner">
+                        <ul class="agents" data-bind="foreach: visibleAgents">
+                            <li>
+                                <i class="material-icons"
+                                   data-bind="html:  (isActive() ? '&#xE7FD;' : '&#xE7FF;'), style: { color: (isOnline() ? '#43A047' : null) }">
+                                </i>
+                                <span class="item" data-bind="text: name"></span>
+                            </li>
+                        </ul>
+                        <ul class="agents" data-bind="foreach: visibleDepartments">
+                            <li data-bind="">
+                                <i class="material-icons" data-bind="html: (isActive() ? '&#xE7FB;' : '&#xE7FC;'), style: { color: (isOnline() ? '#43A047' : null) }"></i>
+                                <span class="item" data-bind="text: name"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="m-content-row_col-2">
+            <div id="media-call" class="media-call_area" style="display: none;">
+                <span class="label label-info">media call</span>
+                <span class="label label-success">
+                    <span data-bind="text: mediaCallStatusText"></span>
+                    <span data-bind="text: mediaCallTimeTillTimeout"></span>
+                </span>
+                <div style="height: auto; width: 100%; text-align: center;" data-bind="visible: isMediaCallInProgress">
+                    <div style="width: 100%; position: relative;">
+                        <span class="videolp">
+                            <video id="localVideo" autoplay muted
+                                   data-bind="visible: isMediaCallHasAgentVideo"></video>
+                        </span>
+                        <div style="width: 100%; height: 60px;"
+                             data-bind="visible: !isMediaCallHasAgentVideo()">
+                        </div>
+
+                        <div class="media-call_controls">
+                            <span class="btn media-call_back-btn"
+                                  data-bind="visible: isNotInMediaCallSession, click: onClickMediaCallOpenSession"
+                                  title="back to the call session">
+                                <i class="material-icons">&#xE317;</i>
+                            </span>
+                            <button class="media-control btn" title="Mute"
+                                    data-bind="click: onClickMediaCallPauseAudio,
+                                        enable: isMediaCallInProgress">
+                                <i class="material-icons"
+                                   data-bind="html: isMediaCallAudioPaused() ? '&#xE04F;' : '&#xE050;' ">
+                                </i>
+                            </button>
+                            <button class="media-control btn" title="Pause Video"
+                                    data-bind="click: onClickMediaCallPauseVideo,
+                                        enable: isMediaCallInProgress,
+                                        visible: isMediaCallHasAgentVideo">
+                                <i class="material-icons"
+                                   data-bind="html: isMediaCallVideoPaused() ? '&#xE037;' : ' &#xE034;'">
+                                </i>
+                            </button>
+                            <button class="media-control btn" title="End Call"
+                                    data-bind="click: onClickMediaCallStop, enable: isMediaCallInProgress">
+                                <i class="material-icons">&#xE033;</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="session-flow-container" class="ui-widget-content session-history">
+
+                <div id="video-call-container" style="display: /*flex*/ none; align-content: center;">
+                    <video id="remoteVideo" autoplay style="max-width: 100%; max-height: 100%; margin: auto; border: 1px solid black;"></video>
+                </div>
+
+                <div class="m-chat-area">
+
+                    <div id="messages-container" style="overflow-y: auto; overflow-x: hidden;">
+
+
+                        <div class="m-content-row_inner">
+                            <ul class="chats" data-bind="visible: currentSession() != null, foreach: currentSession() ? currentSession().messages : []">
+                                <li data-bind="css: senderClass">
+                                    <div class="chat-content">
+                                        <div class="chat-meta">
+                                            <span class="image">
+                                                <img src="~/st/i/avatars/avatar.png" />
+                                            </span>
+                                            <div class="info">
+                                                <span class="test-name" data-bind="text: senderName"></span><span class="test-name" data-bind="visible: senderName"></span>
+                                                <span class="time" data-bind="text: timestamp.toMessageTimeString()"></span>
+                                            </div>
+                                        </div>
+                                        <div class="message-text">
+                                            <!-- ko foreach: lines -->
+                                            <p data-bind="html: $data"></p>
+                                            <!-- /ko -->
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="message-text-panel" class="session-message">
+                    <div class="message-text-panel_inner" data-bind="visible: currentSession() != null && currentSession().canWrite()">
+                        <div id="message-text-panel-text" style="position: relative;" class="m-chat-textarea">
+                            <textarea rows="5" id="message-reply" class="selectable"
+                                      maxlength="3000"
+                                      contenteditable="true"
+                                      spellcheck="true"
+                                      data-bind="textInput: messageText,
+                                                disable: messageTextDisable,
+                                                valueUpdate: 'afterkeydown',
+                                                event: { keypress: onMessageTextKeyPress }"></textarea>
+                            <span class="button button-send btn btn-fab"
+                                  data-bind="disable: messageTextDisable,event: { click: onClickSendButton }">
+                                <i class="material-icons">&#xE163;</i>
+                            </span>
+                            <div class="message-text-panel_btns">
+
+                                <span class="button" data-bind="click: dialogCannedMessagesShow">
+                                    <i class="material-icons">&#xE86D;</i>
+                                </span>
+                                <span class="button">
+                                    <i class="material-icons">&#xE226;</i>
+                                </span>
+
+                                <!-- emojiarea requires a button. this hidden button is inteneded to be given to ours
+                                     emojiarea. -->
+                                <span id="smilesButton2" class="button" style="display: none">
+                                    <i class="material-icons">&#xE420;</i>
+                                </span>
+                                <span id="smilesButton" class="button" data-bind="click: smileModelShow">
+                                    <i class="material-icons">&#xE420;</i>
+                                </span>
+
+                                <label class="button button_agent"
+                                       data-bind="attr: { disabled: !currentSession() ? 'yes' : null}">
+                                    <input type="checkbox" data-bind="checked: sendToAgentsOnly" />
+                                    <span style="font-size: 12px;">to Agents only</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ko if: currentSession() != null -->
+                    <div id="accept-session-panel" data-bind="visible: currentSession().canAccept()">
+                        <div class="btn btn-primary" data-bind="click: onClickAcceptSession">Принять сессию</div>
+                        <div class="btn btn-primary" data-bind="click: onClickAcceptSessionWithVideo, visible: canAcceptSessionWithVideo">Accept with Video</div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ko with: sessionInfoPanel -->
+        <div id="session-panel-info" class="m-content-row_col-1" data-bind="style: { display: visible() ? 'block' : 'none'}">
+            <div class="close-xs-content-btn hidden-lg" data-bind="click: toggle">
+                <i class="material-icons">&#xE5CD;</i>
+            </div>
+            <div class="close-xs-content-btn hidden-md hidden-lg hidden-xs hidden-sm text-center" data-bind="click: toggle">
+                <i class="material-icons">&#xE5CE;</i>
+            </div>
+            <div class="panel panel-info " data-bind="with: $root.currentSession">
+                <div id="current-session-info-tab-headers" class="basic">
+                    <ul class="nav nav-tabs">
+                        <li>
+                            <a id="session-info-tab-header" href="#session-info-tab" data-toggle="tab" aria-expanded="true">
+                                Детали сессии
+                            </a>
+                        </li>
+                        <li data-bind="if: visitor, visible: visitor">
+                            <a id="visitor-details-tab-header" href="#visitor-details-tab" data-toggle="tab" aria-expanded="true">
+                               Инфо.о посетителе
+                            </a>
+                        </li>
+                        <li data-bind="if: visitor, visible: visitor">
+                            <a id="page-history-tab-header" href="#page-history-tab" data-toggle="tab" aria-expanded="true">
+                                Посещенные страницы
+                            </a>
+                        </li>
+                        <li>
+                            <a id="session-attachments-tab-header" href="#session-attachments-tab" data-toggle="tab" aria-expanded="true">
+                                Прикрепленные файлы
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="current-session-info-tab-content" class="tab-content">
+
+                    <div style="padding: 0 0 0 0; margin: 0 0 0 0; height: 100%; overflow-y: auto;" class="tab-pane fade" id="session-info-tab">
+
+                        <table class="table table-hover table-default-color">
+                            <tr>
+                                <td style="width: 120px;">Создана:</td>
+                                <td data-bind="text: addTimestamp.toVisitorDateTimeString()"></td>
+                            </tr>
+                            <tr>
+                                <td>Is&#160;Online&#160;Session:</td>
+                                <td data-bind="text: isStartedOnline() ? 'Yes' : 'No'"></td>
+                            </tr>
+                            <tr>
+                                <td>Started&#160;By:</td>
+                                <td data-bind="text: starter"></td>
+                            </tr>
+                            <tr>
+                                <td>Started&#160;To:</td>
+                                <td data-bind="text: target"></td>
+                            </tr>
+                            <tr data-bind="if: visitor">
+                                <td title="Transcript sent to Visitor">Transcript&#160;sent:</td>
+                                <td data-bind="text: transcriptSentTime() ? transcriptSentTime().toVisitorDateTimeString() : 'No'"></td>
+                            </tr>
+                        </table>
+
+                        <h5>История приглашений</h5>
+                        <table class="table table-hover">
+                            <tbody data-bind="foreach: invites">
+                                <tr>
+                                    <td>
+                                        <table class="table-default-color">
+                                            <tr>
+                                                <td>Created:</td>
+                                                <td>
+                                                    <span data-bind="text: createdTime.toVisitorDateTimeString()"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Started&#160;By:</td>
+                                                <td>
+                                                    <span data-bind="text: createdBy"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Started&#160;To:</td>
+                                                <td>
+                                                    <span data-bind="text: createdFor"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 120px;">Status:</td>
+                                                <td>
+                                                    <span data-bind="text: status"></span>
+                                                </td>
+                                            </tr>
+                                            <!-- ko if: statusChangeTime -->
+                                            <tr>
+                                                <td>Accepted&#160;at:</td>
+                                                <td>
+                                                    <span data-bind="text: statusChangeTime.toVisitorDateTimeString()"></span>
+                                                </td>
+                                            </tr>
+                                            <!-- /ko -->
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h5>Участвующие агенты</h5>
+                        <table class="table table-hover">
+                            <tbody data-bind="foreach: agents">
+                                <tr>
+                                    <td>
+                                        <span data-bind="text: $data"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="padding: 0 0 0 0; margin: 0 0 0 0; height: 100%; overflow-y: auto;" class="tab-pane fade" id="visitor-details-tab" data-bind="if: visitor">
+                        <table data-bind="with: visitor" class="table table-hover table-default-color">
+                            <tr>
+                                <td style="width: 120px;">Местное время:</td>
+                                <td>
+                                    <offset-clock-component params="offset: timeZoneOffset"></offset-clock-component>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Media:</td>
+                                <td>
+                                    <!-- ko if: mediaSupport -->
+                                    <!-- ko if: mediaSupportVideo --><i class="fa fa-video-camera"></i>&nbsp;<!-- /ko -->
+                                    <!-- ko if: mediaSupportAudio --><i class="fa fa-microphone"></i>&nbsp;<!-- /ko -->
+                                    <!-- /ko -->
+                                    <!-- ko if: !mediaSupport -->
+                                    No Media Support
+                                    <!-- /ko -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Имя:</td>
+                                <td data-bind="text: name() ? name() : 'Not specified'"></td>
+                            </tr>
+                            <tr>
+                                <td>адрес Email:</td>
+                                <td data-bind="text: email() ? email() : 'Not specified'"></td>
+                            </tr>
+                            <tr data-bind="if: phone">
+                                <td>Номер телефона:</td>
+                                <td data-bind="text: phone() ? phone() : ''"></td>
+                            </tr>
+                            <tr>
+                                <td>Added:</td>
+                                <td data-bind="text: addTimestamp.toVisitorDateTimeString()"></td>
+                            </tr>
+                            <tr data-bind="if: externalId">
+                                <td>External Id:</td>
+                                <td data-bind="text: externalId"></td>
+                            </tr>
+                            <tr>
+                                <td>Id:</td>
+                                <td data-bind="text: uniqueId"></td>
+                            </tr>
+                            <tr data-bind="if: location">
+                                <td>Месторасположение:</td>
+                                <td data-bind="text: location"></td>
+                            </tr>
+                            <tr>
+                                <td>UA:</td>
+                                <td data-bind="text: userAgent"></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="padding: 0 0 0 0; margin: 0 0 0 0; height: 100%; overflow-y: auto;" class="tab-pane fade" id="page-history-tab" data-bind="if: visitor">
+                        <div class="page-history-table" data-bind="foreach: visitor.pageHistory">
+                            <div>
+                                <div class="page-history-url-text">
+                                    <span class="small-text" data-bind="text: timestampText, attr: { title: visitorZoneTimestamp } "></span><a href="" data-bind="text: getUrlPass, attr: { href: url, title: url }" target="_blank"></a>
+                                </div>
+                                <div class="page-history-custom-text small-text" data-bind="text: customText, attr: { title: customText }"></div>
+                            </div>
+                        </div>
+                        <div id="pageHistoryEnd" data-bind="visible: null != visitor && visitor.hasMorePageHistory()" class="text-center" style="display: none;">
+                            <div class="btn btn-primary" data-bind="text: morePageHistoryButtonText, click: function(){if (null != visitor) visitor.loadTrackerInfo();}"></div>
+                        </div>
+                    </div>
+
+                    <div style="padding: 0 0 0 0; margin: 0 0 0 0; height: 100%; overflow-y: auto;" class="tab-pane fade" id="session-attachments-tab" data-bind="">
+                        <table class="table table-hover">
+                            <tbody data-bind="">
+                                <tr>
+                                    <td>attachment link 1</td>
+                                </tr>
+                                <tr>
+                                    <td>attachment link 2</td>
+                                </tr>
+                                <tr>
+                                    <td>attachment link 3</td>
+                                </tr>
+                                <tr>
+                                    <td>attachment link 4</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+
+
+@section dialogs {
+
+    <div id="dialog-message" title="Download complete alert alert-success" style="display: none;">
+        <p>
+            Your files have downloaded successfully into the My Downloads folder.
+        </p>
+        <p>
+            Currently using <b>36% of your storage space</b>.
+        </p>
+    </div>
+
+    <div data-bind="with: dialogStartSessionModel">
+        <div id="dialog-start-new-session"
+             title="Start New Session"
+             data-bind="dialog: dialog">
+            <p>Please select an Agent or Department to chat with:</p>
+            <div data-bind="validationMessage: selected" class="error"></div>
+            <div class="session-target-list" tabindex="0">
+                <ul data-bind="foreach: targets, validationOptions: { insertMessages: false }">
+                    <li data-bind="css: css, click: onClick" style="cursor: pointer;">
+                        <span class="radio radio-primary">
+                            <label>
+                                <input type="radio" name="target" data-bind="checked: $parent.selected, checkedValue: value" style="margin-right: 5px;" />
+                                <span class="circle"></span>
+                                <span class="check"></span>
+                            </label>
+                        </span>
+                        <i class="fa" data-bind="css: iconCss, style: iconStyle" style="width: 15px;"></i>
+                        <i class="material-icons" data-bind="html: isAgent() ? '&#xE7FD;' : '&#xE7EF;'"></i>
+                        <span class="name" data-bind="text: name"></span>
+                    </li>
+                </ul>
+            </div>
+            <br />
+            <div class="form-group label-floating" data-bind="validationOptions: { insertMessages: false }">
+                <div data-bind="validationMessage: message" class="error"></div>
+                <label class="control-label" for="StartNewSessionTexarea">Please, enter your message</label>
+                <textarea data-bind="textInput: message"
+                          class="form-control" id="StartNewSessionTexarea"
+                          contenteditable="true" spellcheck="true"></textarea>
+
+            </div>
+            <div class="dialog-button-set">
+                <button class="btn btn-default" data-bind="click: onCancel">Cancel</button>
+                <button class="btn btn-primary" data-bind="click: onOk, enable: okEnabled">Ok</button>
+            </div>
+        </div>
+    </div>
+
+    <div data-bind="with: dialogSessionInviteModel">
+        <div id="dialog-session-invite"
+             title="Invite To Session"
+             data-bind="dialog: dialog">
+            <p>Please select an Agent or Department to invite:</p>
+            <div class="session-target-list" tabindex="0">
+                <ul data-bind="foreach: targets">
+                    <li data-bind="css: css, click: onClick, attr: attr" style="cursor: pointer;">
+                        <div class="radio radio-primary">
+                            <label>
+                                <input type="radio" name="target" data-bind="checked: $parent.selected, checkedValue: value, disable: isDisabled" style="margin-right: 5px;" />
+                                <span class="circle"></span>
+                                <span class="check"></span>
+                            </label>
+                        </div>
+                        <i class="fa" data-bind="css: iconCss, style: iconStyle" style="width: 15px;"></i>
+                        <span class="name" data-bind="text: name"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <p>
+                <div class="checkbox">
+                    <label for="inviteOfBehalfOfSelf">
+                        <input id="inviteOfBehalfOfSelf" type="checkbox" data-bind="checked: actOnBehalfOfInvitor" />
+                        Invited Participant will be seen by Visitors as Me.
+                    </label>
+                </div>
+            </p>
+
+            <div class="form-group label-floating">
+                <label class="control-label" for="IntiteToSessionTexarea">Please, enter your message</label>
+                <textarea data-bind="textInput: message" id="IntiteToSessionTexarea" class="form-control" contenteditable="true" spellcheck="true"></textarea>
+            </div>
+            <div class="dialog-button-set">
+                <button class="btn btn-default" data-bind="click: onCancel">Cancel</button>
+                <button class="btn btn-primary" data-bind="click: onOk, enable: okEnabled">Ok</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div data-bind="with: dialogSessionTranscriptWasntSentModel">
+        <div id="dialog-session-transcript-wasnt-sent"
+             title="Транскрипт сесиии не был отправлен"
+             data-bind="dialog: dialog">
+            <p>Сессия, которую вы собираетесь закрыть, является Оффлайн сессией. Транскрипт сессии должнен быть отправлен посетителю.</p>
+            <p></p>
+            <div class="dialog-button-set button-set-small">
+                <button data-bind="click: onCancel" class="btn btn-default">Отмена</button>
+                <button data-bind="click: onCloseSession" class="btn btn-default">Просто закрыть</button>
+                <button data-bind="click: onSendTranscriptAndCloseSession" class="btn btn-primary">Отправить транскрипт и закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ko with: dialogSmileModel -->
+    <div data-bind="dialog: dialog" id="dialog-smiley" title="Emotify :)" style="display: none">
+
+        <table class="table table-bordered text-center">
+            <tbody>
+                <!-- ko foreach: rows -->
+                <tr>
+                    <!-- ko foreach: $data -->
+                    <td data-bind="click: onClick" style="cursor: pointer;">
+                        <img data-bind="attr: { src: $data.image, alt: $data.desc }" />
+                        <div data-bind="html: $data.text"></div>
+                    </td>
+                    <!-- /ko -->
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
+
+    </div>
+    <!-- /ko -->
+
+    @Html.Partial("DialogEditCannedMessage")
+    @Html.Partial("DialogCannedMessages")
+
+}
+
+<!-- Appending HTML5 Audio Tag in HTML Body -->
+<audio id="chat.visitor.message.new">
+    <source src="~/st/audio/chat.visitor.message.new.ogg" type="audio/ogg" />
+    <source src="~/st/audio/chat.visitor.message.new.mp3" type="audio/mpeg" />
+    <source src="~/st/audio/chat.visitor.message.new.wav" type="audio/wav" />
+</audio>
+<audio id="chat.visitor.session.new">
+    <source src="~/st/audio/chat.visitor.session.new.mp3" type="audio/mpeg" />
+</audio>
+<audio id="chat.visitor.session.ended">
+    <source src="~/st/audio/chat.visitor.session.ended.mp3" type="audio/mpeg" />
+</audio>
+
+
+@section scripts_include {
+
+    <script type="text/javascript" src="~/st/js/ChatSessions/Common.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/DetectRTCHelper.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/AgentConsoleHubProxy.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/RtcChannel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/Tracker.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/components/OffsetClockComponent.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/ChatSessionTargetModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/DepartmentModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/AgentStatusModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/AgentModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/ChatMessageModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/VisitorPageHistoryEntryModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/VisitorModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/VisitorStorage.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/AgentStorage.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/ChatSessionModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/CannedMessageModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/dialogs/DialogStartSessionModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/dialogs/DialogSessionInviteModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/EmojiAreaModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/dialogs/DialogSmileModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/dialogs/DialogSessionTranscriptWasntSentModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/dialogs/DialogCannedMessagesModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/dialogs/DialogEditCannedMessageModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/ConsoleModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/models/PanelModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ChatSessions/App.js"></script>
+    <script type="text/javascript" src="~/st/lib/jquery-emojiarea/jquery.emojiarea.js"></script>
+
+}
+
+@section scripts {
+    <script type="text/javascript">
+
+        $(
+            function ()
+            {
+                var pageTrackerUrl = '@Html.Raw(HttpUtility.JavaScriptStringEncode(pageTrackerUrl))';
+                var agentSessionGuidCandidate = '@Guid.NewGuid().AsWebString()';
+
+                console.log('sessionGuid before:', window.name);
+                var agentSessionGuid = window.name;
+                if (!agentSessionGuid)
+                {
+                    agentSessionGuid = agentSessionGuidCandidate;
+                    window.name = agentSessionGuid;
+                }
+                console.log('sessionGuid after:', window.name);
+                DetectRTCHelper.load()
+                    .done(
+                        function (mediaSupport)
+                        {
+                            console.log(mediaSupport, pageTrackerUrl);
+                            new ConsoleApp(agentSessionGuid, mediaSupport, pageTrackerUrl).start();
+                        });
+            })
+
+        $(".show-info-btn").click(
+            function ()
+            {
+                if (($(window).width() > 1200) && ($("#session-panel-info").css("display") == "none"))
+                {
+                    $(".m-head_right").removeClass("skew-r");
+                    $(".m-head_center").removeClass("skew-c");
+                }
+                else
+                {
+                    $(".m-head_right").addClass("skew-r");
+                    $(".m-head_center").addClass("skew-c");
+                }
+            });
+
+        require(
+            ['Dt'],
+            function (x)
+            {
+                $(
+                    function ()
+                    {
+                        if (!window.Dt)
+                            window.Dt = x;
+                    });
+            });
+
+    </script>
+}

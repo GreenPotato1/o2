@@ -1,0 +1,229 @@
+@using Com.O2Bionics.ChatService.Contract.WidgetAppearance
+@using Com.O2Bionics.Utils
+@model Com.O2Bionics.ChatService.Web.Console.Models.ChatCustomization.ChatWidgetAppearanceViewModel
+@{
+    ViewBag.Title = "Chat Widget Appearance";
+
+    var chatIframeId = "com-o2bionics-webchat-iframe";
+
+    var locationTypes = Enum.GetValues(typeof(ChatWidgetLocation)).Cast<int>()
+        .Select(x => new { Text = (ChatWidgetLocation)x, Value = x });
+}
+
+<!-- Matter -->
+<div class="matter">
+    <div style="width: 100%; position: relative; z-index: 300; overflow: hidden;">
+        @if (Model.EnabledFeatures.Count == 0)
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-warning">
+                            Your subscription plan doesn't allow to edit any features. Please upgrade your subscription plan to make it possible.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div id="external-frame-overlay" class="container" style="opacity: 0.3; position: absolute; top: 0; left: 0; bottom: 0; right: 0; z-index: 400;"></div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 widget-content_area">
+                <div id="widget-settings" class="widget-content">
+                    <div id="objectTable" class="widget panel-heading">
+                        <h3>Chat Widget Settings</h3>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-body_inner-scroll">
+                            <div class="row form-group">
+                                <label class="col-md-5 control-label">Background Page</label>
+                                <div class="col-md-7">
+                                    <input id="sample-page" type="text" class="form-control" data-bind="value: backgroundPageUrl, event: { change: changeBackgroundPageUrl }"/>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-md-5 control-label">Theme</label>
+                                <div class="col-md-7">
+                                    <select id="@Html.IdFor(x => x.ThemeSelector.ThemeSelectedId)"
+                                            name="@Html.NameFor(x => x.ThemeSelector.ThemeSelectedId)"
+                                            @(Model.ThemeSelector.IsEnabled ? "" : "disabled='disabled'")
+                                            class="form-control"
+                                            data-bind="options: themes, value: selectedThemeId, event: { change: themeChange }">
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="full-customization-container" class="row form-group" data-bind="visible: isCustomThemeSelectorVisible">
+                                <label class="col-md-5 control-label">Get Current</label>
+                                <div class="col-md-7">
+                                    <a href="@Model.FullCustomization.DownloadCssUrl" class="btn btn-default" target="_blank">Download</a>
+                                </div>
+                                <label class="col-md-5 control-label">Custom CSS Url</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control"
+                                           id="@Html.IdFor(x => x.FullCustomization.CssFileUrl)"
+                                           name="@Html.NameFor(x => x.FullCustomization.CssFileUrl)"
+                                           data-bind="value: customCssUrl"
+                                           @(Model.FullCustomization.IsEnabled ? "" : "disabled='disabled'")/>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-md-5 control-label">Theme minimized</label>
+                                <div class="col-md-7">
+                                    <select id="@Html.IdFor(x => x.ThemeMinSelector.ThemeSelectedId)"
+                                            name="@Html.NameFor(x => x.ThemeMinSelector.ThemeSelectedId)"
+                                            @(Model.ThemeMinSelector.IsEnabled ? "" : "disabled='disabled'")
+                                            class="form-control"
+                                            data-bind="options: themesMin, value: selectedThemeMinId, event: { change: themeMinChange }"></select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-md-5 control-label">Location</label>
+                                <div class="col-md-7">
+                                    <select id="@Html.IdFor(x => x.Positioning.Location)"
+                                            name="@Html.NameFor(x => x.Positioning.Location)"
+                                            @(Model.Positioning.IsEnabled ? "" : "disabled='disabled'")
+                                            class="form-control"
+                                            data-bind="options: locations, value: selectedLocation, optionsText: 'Text', optionsValue: 'Value', event: { change: positioningChange }">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-md-5 control-label">Offset X</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control"
+                                           id="@Html.IdFor(x => x.Positioning.OffsetX)"
+                                           name="@Html.NameFor(x => x.Positioning.OffsetX)"
+                                           data-bind="value: offsetX, event: { change: positioningChange }"
+                                           @(Model.Positioning.IsEnabled ? "" : "disabled='disabled'")/>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-md-5 control-label">Offset Y</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control"
+                                           id="@Html.IdFor(x => x.Positioning.OffsetY)"
+                                           name="@Html.NameFor(x => x.Positioning.OffsetY)"
+                                           data-bind="value: offsetY, event: { change: positioningChange }"
+                                           @(Model.Positioning.IsEnabled ? "" : "disabled='disabled'")/>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-md-5 control-label">Minimized State Title</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control"
+                                           id="@Html.IdFor(x => x.MinimizedState.Title)"
+                                           name="@Html.NameFor(x => x.MinimizedState.Title)"
+                                           data-bind="value: minimizedStateTitle, event: { change: minimizedStateTitleChange }"
+                                           @(Model.MinimizedState.IsEnabled ? "" : "disabled='disabled'")/>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-md-5 control-label">Hide "Powered By" message</label>
+                                <div class="col-md-7">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"
+                                                   id="@Html.IdFor(x => x.PoweredBy.Hide)"
+                                                   name="@Html.NameFor(x => x.PoweredBy.Hide)"
+                                                   data-bind="checked: isHidePoweredBy, click: hidePoweredByClick"
+                                                   @(Model.PoweredBy.IsEnabled ? "" : "disabled='disabled'")/>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" col-md-12 text-center">
+                                <button class="btn btn-primary" type="button" data-bind="click: saveClick">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="com-o2bionics-webchat-container" class="col-lg-9 col-md-9 col-sm-8 hidden-xs">        
+                <iframe id="ext-site" data-bind="attr: {src: backgroundPageUrl}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%; z-index: 200;" frameborder="0" scrolling="no"></iframe>
+            </div>
+    
+        </div>
+    </div>
+</div>
+
+@section scripts_include {
+    <script type="text/javascript" src="~/st/js/ChatWidgetAppearance/ChatWidgetAppearanceViewModel.js"></script>
+}
+
+@section scripts {
+    @Html.Raw(Model.WidgetScript)
+
+    <script type="text/javascript">
+
+        $(function ()
+        {
+            var minWidgetThemes;
+            var maxWidgetThemes;
+
+            function recalcSettingsPanelHeight()
+            {
+                if($(window).width() < 768 )
+                {
+                    $("#ext-site").height($("body").height());
+                    $("#widget-settings").height($("#ext-site").height() -14);
+                    $("#@chatIframeId").hide();
+                } else {
+                    $("#ext-site").height($("body").height());
+                    $("#widget-settings").height($("#ext-site").height() -14); 
+                    $("#@chatIframeId").show();
+                }
+            }
+
+            recalcSettingsPanelHeight();
+
+            $(window).resize(function ()
+            {
+                recalcSettingsPanelHeight();
+            });
+
+            var chatIframeId = '@chatIframeId';
+
+            var enabledFeatures = @Html.Raw(Model.EnabledFeatures.JsonStringify2());
+
+            var themeModel = {
+                    selectedThemeId: '@Model.ThemeSelector.ThemeSelectedId',
+                    customTheme: '@ChatWidgetThemes.Custom',
+                    defaultTheme: '@ChatWidgetThemes.Default',
+                    fullCustomizationAllowed: @(Model.ThemeSelector.FullCssCustomizationAllowed ? "true" : "false")
+                };
+
+            var themeMinModel = {
+                    selectedThemeId: '@Model.ThemeMinSelector.ThemeSelectedId',
+                };
+
+            var positioningModel = {
+                    locations: @Html.Raw(locationTypes.JsonStringify2()),
+                    selectedLocation: '@((int)Model.Positioning.Location)',
+                    offsetX: '@Model.Positioning.OffsetX',
+                    offsetY: '@Model.Positioning.OffsetY',
+                };
+
+            var minimizedStateTitle = '@Model.MinimizedState.Title';
+            var hidePoweredBy = @(Model.PoweredBy.Hide ? "true" : "false");
+            var backgroundPageUrl = '@Model.BackgroundPageUrl';
+            var saveUrl = '@Url.Action("SaveChatWidgetAppearance")';
+
+            var viewModel = new ChatWidgetAppearanceViewModel(
+                chatIframeId,
+                enabledFeatures,
+                themeModel,
+                themeMinModel,
+                positioningModel,
+                minimizedStateTitle,
+                hidePoweredBy,
+                backgroundPageUrl,
+                saveUrl,
+                '@Model.ThemesUrl');
+
+            ko.applyBindings(viewModel);
+        });
+
+    </script>
+}

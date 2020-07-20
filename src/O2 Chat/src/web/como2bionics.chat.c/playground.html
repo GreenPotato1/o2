@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>tests</title>
+    <script type='text/javascript' src="Scripts/jquery-1.11.3.min.js"></script>
+    <script type='text/javascript' src="Scripts/adapter-4.2.1.js"></script>
+</head>
+<body>
+
+<script type='text/javascript' src="Scripts/lodash-3.7.0.min.js"></script>
+
+<script language="javascript">
+    $(function ()
+    {
+        var hasMicrofone = false;
+        var hasWebcam = false;
+
+        $.when(
+                (navigator && navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
+                ? (function ()
+                {
+                    var x = $.Deferred();
+                    navigator.mediaDevices.enumerateDevices().then(function (r) { x.resolve(r); });
+                    return x;
+                })()
+                : [])
+            .done(function (devices)
+            {
+                console.log('enumerateDevices', devices);
+                hasMicrofone = _.some(devices, { kind: 'audioinput' });
+                hasWebcam = _.some(devices, { kind: 'videoinput' });
+
+                console.log(hasMicrofone);
+                console.log(hasWebcam);
+            });
+    });
+
+</script>
+</body>
+</html>

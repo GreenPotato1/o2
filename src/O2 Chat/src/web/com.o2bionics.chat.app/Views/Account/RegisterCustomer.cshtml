@@ -1,0 +1,100 @@
+﻿@model Com.O2Bionics.ChatService.Web.Console.Models.Account.RegisterCustomerViewModel
+@{
+    ViewBag.Title = "Register new O2Chat Customer";
+}
+
+<div class="widget-content  panel-body">
+
+        @using (Html.BeginForm("RegisterCustomer", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.LocalDate)
+            @Html.HiddenFor(m => m.O2BionicsAccountData)
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.FirstName, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.FirstName), })
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.LastName, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.LastName), })
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Email), })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.CustomerName, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.CustomerName, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.CustomerName), })
+                    @Html.ValidationMessageFor(m => m.CustomerName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.WebSiteAddress, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.WebSiteAddress, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.WebSiteAddress), })
+                    @Html.ValidationMessageFor(m => m.WebSiteAddress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Password), })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-3">
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(m => m.AgreedToTermsOfService)
+                            <span class="checkbox-material"><span class="check"></span></span>
+                            I agree to the O2Chat @Html.ActionLink("Terms of Service", "TermsOfService", null, new { target = "blank" })
+                        </label>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.AgreedToTermsOfService, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-9 col-md-offset-3">
+                    <input type="submit" value="Register" class="btn btn-primary"/>
+                </div>
+            </div>
+        }
+</div>
+                <div class="widget-foot">
+                    <div class="horizontal-links">
+                         <i class="material-icons">&#xE897;</i> @Html.ActionLink("Log In to existing account", "Login")
+                    </div>
+                </div>
+
+
+@section scripts {
+    <script language="javascript">
+
+        $(document)
+            .ready(function ()
+            {
+                $('#LocalDate').val(new Date().toLocaleString());
+
+                $.validator.setDefaults({
+                        onkeyup: false,
+                        onfocusout: true,
+                        onsubmit: true
+                    });
+            });
+
+
+    </script>
+}

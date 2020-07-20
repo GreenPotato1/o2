@@ -1,0 +1,24 @@
+body {
+    background: none!important;
+}
+#collapsed-state {    
+    position: relative;
+}
+#collapsed-state .chat-title-bar {
+    background: none!important;
+    position: relative;
+}
+#collapsed-state .title-text {
+    display: none;
+}
+#collapsed-state .chat-title-img {
+    width: 110px;
+    height: 110px;
+    background: url("cs-4.png");
+    display: block;
+    background-size: 110px 110px;
+    -webkit-box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+    position: relative;
+    z-index: -2
+}

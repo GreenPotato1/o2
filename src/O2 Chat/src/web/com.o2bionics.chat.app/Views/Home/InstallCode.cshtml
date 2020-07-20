@@ -1,0 +1,73 @@
+@{
+    ViewBag.Title = "Install Chat on your Site";
+}
+
+<!-- Main bar -->
+<div class="mainbar">
+    <!-- Page heading ends -->
+    <!-- Matter -->
+    <div class="matter">
+        <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                    <h1 class="pull-left single-title">
+                        Install Chat on your Site
+                    </h1>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                            <label class="chat-script_label">To accept chat messages from your visitors you should insert the following code on every page of your site before the closing &lt;/body&gt; tag:</label>
+                            <textarea id="chat-script">@ViewBag.ChatJs</textarea>
+                    </div>
+                    <div>
+                        <button class="btn btn-default btn-primary btn-raised chat-js-copy" data-clipboard-action="copy" data-clipboard-target="#chat-script">
+                            Copy to Clipboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/st/lib/clipboard/dist/clipboard.min.js"></script>
+
+@section scripts_include {
+}
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        $('.chat-js-copy').tooltip({
+            trigger: 'click',
+            placement: 'bottom'
+        });
+
+        function setTooltip(btn, message) {
+            $(btn).tooltip('hide')
+              .attr('data-original-title', message)
+              .tooltip('show');
+        }
+
+        function hideTooltip(btn) {
+            setTimeout(function () {
+                $(btn).tooltip('hide');
+            }, 1000);
+        }
+
+        var clipboard = new Clipboard('.chat-js-copy');
+
+        clipboard.on('success', function (e) {
+            setTooltip(e.trigger, 'Copied!');
+            hideTooltip(e.trigger);
+        });
+        clipboard.on('error', function (e) {
+            setTooltip(e.trigger, 'Failed!');
+            hideTooltip(e.trigger);
+        });
+
+    </script>
+}

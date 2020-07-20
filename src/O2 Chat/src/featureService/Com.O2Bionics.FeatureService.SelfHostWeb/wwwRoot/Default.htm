@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        pre.log {
+            font-family: monospace;
+            width: 100%;
+            height: 10em;
+            border: 1px solid gray;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <h4>Get Value</h4>
+    <p>
+        Product Code = <input type="text" id="textProductCode" value="test"/> (required)
+    </p>
+    <p>
+        User Id = <input type="text" id="textUserId" value="1"/> (required)
+    </p>
+    <p>
+        Feature Codes = <input type="text" id="textFeatureCodes" value="testFeature1"/> (required, comma separated list)
+    </p>
+    <p>
+        Ignore Cache = <input type="text" id="textIgnoreCache" value=""/> (optional, 1 means true)
+    </p>
+    <p>
+        Time To Live = <input type="text" id="textTimeToLive" value=""/> (optional, int value in seconds)
+    </p>
+    <p>
+        Log Processing = <input type="text" id="textLogProcessing" value=""/> (optional, 1 means true)
+    </p>
+    <p>
+        Log Sql Query = <input type="text" id="textLogQuery" value=""/> (optional, 1 means true)
+    </p>
+    <p>
+        <button onclick="onClickGetValue()">GetValue</button>
+    </p>
+    <pre id="logGetValue" class="log"></pre>
+</div>
+<div>
+    <h4>Reset Cache</h4>
+    <p>
+        <button onclick="onClickResetCache()">ResetCache</button>
+    </p>
+    <pre id="logResetCache" class="log"></pre>
+</div>
+<div>
+    <h4>Ping</h4>
+    <p>
+        <button onclick="onClickPing()">Ping</button>
+    </p>
+    <pre id="logPing" class="log"></pre>
+</div>
+
+<script type="text/javascript" src="jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+
+    function onClickGetValue()
+    {
+        var data = {
+                pc: $('#textProductCode').val(),
+                uid: $('#textUserId').val(),
+                fc: $('#textFeatureCodes').val(),
+            };
+        add(data, 'ic', $('#textIgnoreCache'));
+        add(data, 'ttl', $('#textTimeToLive'));
+        add(data, 'logp', $('#textLogProcessing'));
+        add(data, 'logq', $('#textLogQuery'));
+
+        callServer("get", data, $('#logGetValue'));
+    }
+
+    function onClickResetCache()
+    {
+        callServer("resetCache", null, $('#logResetCache'));
+    }
+
+    function onClickPing()
+    {
+        callServer("ping", null, $('#logPing'));
+    }
+
+    function add(d, name, valElt)
+    {
+        var v = valElt.val();
+        if (v.length > 0) d[name] = v;
+    }
+
+    function callServer(command, args, logElt)
+    {
+        $.ajax({
+                    method: 'GET',
+                    url: command,
+                    data: args,
+                    dataType: 'json',
+                    beforeSend: function (_, request)
+                    {
+                        logElt.append(request.type + ' ' + request.url + '\n');
+                        logElt.scrollTop(logElt.prop("scrollHeight"));
+                    },
+                })
+            .then(function (result)
+            {
+                var x = JSON.stringify(result);
+                logElt.append(' --> ' + x + '\n\n');
+                logElt.scrollTop(logElt.prop("scrollHeight"));
+            })
+            .fail(function (e)
+            {
+                logElt.append(' --> error: status=' + e.status + ' statusText=' + e.statusText + '\n\n');
+                logElt.scrollTop(logElt.prop("scrollHeight"));
+            });
+    }
+
+</script>
+
+</body>
+</html>

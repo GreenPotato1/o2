@@ -1,0 +1,31 @@
+<!-- ko with: dialogEditCannedMessage -->
+<div data-bind="dialog: dialog" id="dialog-edit-canned-message" title="" style="display: none;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group label-floating canned-input_pos">
+                <label class="control-label" for="dialog-edit-canned-message-key">Please enter key</label>
+                <input data-bind="textInput: key" class="form-control" id="dialog-edit-canned-message-key"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group label-floating">
+                <label class="control-label" for="dialog-edit-canned-message-value">Please enter text</label>
+                <textarea data-bind="textInput: value" class="canned_textarea form-control " id="dialog-edit-canned-message-value"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog-button-set">
+        <button class="btn btn-primary" data-bind="click: onSave">
+            save
+        </button>
+        <button class="btn btn-default" data-bind="click: onCancel">
+            cancel
+        </button>
+    </div>
+
+</div>
+<!-- /ko -->

@@ -1,0 +1,95 @@
+<#@ template language="C#" debug="True" hostSpecific="True"                                #>
+<#@ output extension=".generated.cs"                                                       #>
+<#@ include file="$(ProjectDir)LinqToDB.Templates\LinqToDB.Oracle.Managed.Tools.ttinclude" #>
+<#@ include file="$(ProjectDir)LinqToDB.Templates\PluralizationService.ttinclude"          #>
+<#
+    // See at https://github.com/linq2db/t4models/blob/master/Templates/!ReadMe.LinqToDB.md.
+
+    NamespaceName = "Com.O2Bionics.ChatService.DataModel";
+    DataContextName = "ChatDatabase";
+    GenerateConstructors = false;
+    IncludeDefaultSchema = false;
+	NormalizeNames = false;
+
+    LoadOracleMetadata("User ID=PROKHORCHIK_DA;Password=02061989;Data Source=//46.216.180.166:1521/orcl;");
+
+    // assign identity columns and sequences
+    {
+        var beforeGenerateModel = BeforeGenerateModel;
+        BeforeGenerateModel = () =>
+            {
+                beforeGenerateModel();
+
+                var classes = GetTreeNodes(Model).OfType<Class>().ToDictionary(x => x.Name);
+
+				GetTreeNodes(classes["FORGOT_PASSWORD"]).OfType<Property>().First(p => p.Name.Trim() == "SKEY")
+                    .Attributes.AddRange(
+                        new[]
+                            {
+                                new Attribute("Identity"),
+                                new Attribute("SequenceName", "\"SEQ_FORGOT_PASSWORD\"")
+                            });
+				
+                foreach (var name in new[]
+                    {
+						"PROPERTY_BAG"
+                    })
+                {
+                    var props = GetTreeNodes(classes[name]).OfType<Property>();
+                    var prop = props.FirstOrDefault(p => p.Name.Trim() == name + "_SKEY")
+                               ?? props.FirstOrDefault(p => p.Name.Trim() == "ID");
+                    if (prop == null) throw new InvalidOperationException("key property not found for table " + name);
+                    prop.Attributes.AddRange(
+                        new[]
+                            {
+                                new Attribute("Identity"),
+                                new Attribute("SequenceName", "\"SEQ_" + name + "\"")
+                            });
+                }
+            };
+    }
+
+	GetColumn("DEPARTMENT", "ID").Type = "uint"; 
+
+	foreach(var t in Tables.Select(x=>x.Value))
+	{		
+		foreach(var c in t.Columns.Where(x=>x.Key.EndsWith("DEPARTMENT_ID")))
+		{
+			GetColumn(t.TableName, c.Key).Type = "uint?";
+		}
+	}
+
+	GetColumn("CANNED_MESSAGE", "ID").Type = "uint"; 
+
+	foreach(var t in Tables.Select(x=>x.Value))
+	{		
+		foreach(var c in t.Columns.Where(x=>x.Key.EndsWith("CANNED_MESSAGE_ID")))
+		{
+			GetColumn(t.TableName, c.Key).Type = "uint?";
+		}
+	}
+
+	GetColumn("CUSTOMER", "ID").Type = "uint"; 
+
+	GetColumn("WIDGET_LOAD", "CUSTOMER_ID").Type = "uint"; 
+
+	foreach(var t in Tables.Select(x=>x.Value).Where(x=>x.TableName != "WIDGET_LOAD"))
+	{		
+		foreach(var c in t.Columns.Where(x=>x.Key.EndsWith("CUSTOMER_ID")))
+		{
+			GetColumn(t.TableName, c.Key).Type = "uint?";
+		}
+	}
+
+	GetColumn("CUSTOMER_USER", "ID").Type = "uint";
+
+	foreach(var t in Tables.Select(x=>x.Value))
+	{
+		foreach(var c in t.Columns.Where(x=>x.Key.EndsWith("USER_ID") || x.Key.EndsWith("AGENT_ID")))
+		{
+			GetColumn(t.TableName, c.Key).Type = "uint?";
+		}
+	}
+
+    GenerateModel();
+#>

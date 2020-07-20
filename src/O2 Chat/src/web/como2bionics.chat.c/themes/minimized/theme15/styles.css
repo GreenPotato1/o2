@@ -1,0 +1,32 @@
+body {
+    background: none!important;
+}
+#collapsed-state {
+    width: 280px;
+    position: relative;
+}
+#collapsed-state .chat-title-bar {
+    background: none!important;
+    position: relative;
+    width: 280px;
+}
+#collapsed-state .title-text {
+    background-color: #3eb5f1!important;
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+    padding: 14px 50px 14px 14px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    font-size: 14px;
+    line-height: 14px;
+    background-image: url(ic_send.png);
+    background-size: 20px auto;
+    background-repeat: no-repeat;
+    background-position: 95% 12px;
+}
+
+#collapsed-state .chat-title-img {
+    display: none;
+}

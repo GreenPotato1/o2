@@ -1,0 +1,203 @@
+﻿@{
+}
+
+<div id="objectTable" class="mainbar">
+    <!-- Matter -->
+    <div class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget">
+                        <div class="widget-head">
+                            <div class="pull-left">
+                                <h1>Customer</h1>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="widget-content">
+                            <div class="row customers-steps-row">
+                                <div class="col-sm-2 customers-step text-center">
+                                    <div class="step-circle step-done">
+                                        <a href="javascript:void(0)" class="step-text">add domain</a>
+                                    </div>
+                                    <i class="material-icons">navigate_next</i>
+                                </div>
+                                <div class="col-sm-2 customers-step text-center">
+                                    <div class="step-circle">
+                                        <a href="javascript:void(0)" class="step-text">insert a widget onto your page</a>
+                                    </div>
+                                    <i class="material-icons">navigate_next</i>
+                                </div>
+                                <div class="col-sm-2 customers-step text-center">
+                                    <div class="step-circle">
+                                        <a href="javascript:void(0)" class="step-text">create<br> an agent</a>
+                                    </div>
+                                    <i class="material-icons">navigate_next</i>
+                                </div>
+                                <div class="col-sm-2 customers-step text-center">
+                                    <div class="step-circle">
+                                        <a href="javascript:void(0)" class="step-text">set up departments</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="text01">Name:</label>
+                                    <div class="col-sm-4">
+                                        <strong class="text-warning"></strong>
+                                        <input type="text" id="text01" class="form-control" placeholder="Enter customer name" value="O2Bionics"/>
+                                        <label>since 10.02.2018</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="text0">Subscription:</label>
+                                    <div class="col-sm-4">
+                                        <span>subscribed to the plan1</span>
+                                        <span class="label label-success">till 10.05.2018</span>
+                                        <ul class="c-list">
+                                            <li>addon1 5 users</li>
+                                            <li>addon1 15 users</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="javascript:void(0)" class="btn btn-default">Manage subscription</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 control-label" for="text1">Domain:</label>
+                                <div class="col-sm-4">
+                                    <ul class="c-list">
+                                        <li>
+                                            <span>o2bionics.com</span>
+                                            <a href="javascript:void(0)" class="c-remove-btn">
+                                                <i class="material-icons">close</i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <span>o2bionics.com</span>
+                                            <a href="javascript:void(0)" class="c-remove-btn">
+                                                <i class="material-icons">close</i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <span>o2bionics.com</span>
+                                            <a href="javascript:void(0)" class="c-remove-btn">
+                                                <i class="material-icons">close</i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-2">
+                                    <a href="javascript:void(0)" class="btn btn-default">add domain</a>
+                                </div>
+                            </div>
+                            <!--<div class="row">
+                            <div class="col-sm-8">
+                                    
+                            <i class="material-icons">info</i> to insert a widget onto your page, copy the code <a href="javascript:void(0)">here</a>
+                            <!--<div class="panel panel-default">
+                                <div class="panel-body text-center">
+                                            
+                                </div>
+                            </div>
+                            </div>
+                            </div>-->
+                            <div class="row">
+                                <label class="col-sm-2 control-label" for="text1">Site owner users:</label>
+                                <div class="col-sm-4">
+                                    <ul class="c-list">
+                                        <li>Andrew Pupkin, fff@gmail.com</li>
+                                        <li>Alla Pupkina, fff@gmail.com</li>
+                                        <li>Robert Artist, fff@gmail.com</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-2">
+                                    <a href="javascript:void(0)" class="btn btn-default">MANAGE USERS</a>
+                                </div>
+                            </div>
+                            <!--<div class="row">
+                                <div class="col-sm-8">
+                                    <i class="material-icons">info</i>to start working, <a href="javascript:void(0)">create users</a>, assign roles to them, <a href="javascript:void(0)">set up departments</a>                                   
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3>Statistics</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 control-label" for="text1"></label>
+                                <div class="col-sm-4">
+                                    Now <span>5</span> agents of 6 is online
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="chart-container" style="position: relative;">
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(
+            ctx,
+            {
+                type: 'bar',
+                data: {
+                        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                        datasets: [
+                                {
+                                    label: '# of Votes',
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54, 162, 235, 0.2)',
+                                            'rgba(255, 206, 86, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(153, 102, 255, 0.2)',
+                                            'rgba(255, 159, 64, 0.2)'
+                                        ],
+                                    borderColor: [
+                                            'rgba(255,99,132,1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)'
+                                        ],
+                                    borderWidth: 1
+                                }
+                            ]
+                    },
+                options: {
+                        scales: {
+                                yAxes: [
+                                        {
+                                            ticks: {
+                                                    beginAtZero: true
+                                                }
+                                        }
+                                    ]
+                            }
+                    }
+            });
+
+    </script>
+}

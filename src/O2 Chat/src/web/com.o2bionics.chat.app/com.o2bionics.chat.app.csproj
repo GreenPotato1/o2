@@ -1,0 +1,726 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\..\..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2D971433-EE15-47FA-A0D1-E2A4E0E30D7E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Com.O2Bionics.ChatService.Web.Console</RootNamespace>
+    <AssemblyName>Com.O2Bionics.ChatService.Web.Console</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort>44301</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ERRORTRACKERTEST</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>None</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir>C:\Work\O2Bionics\src\web\com.o2bionics.chat.app\st\js\compiled</TypeScriptOutDir>
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot>C:\Work\O2Bionics\src\web\com.o2bionics.chat.app\ts</TypeScriptSourceRoot>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>None</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir>C:\Work\O2Bionics\src\web\com.o2bionics.chat.app\st\js\compiled</TypeScriptOutDir>
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot>C:\Work\O2Bionics\src\web\com.o2bionics.chat.app\ts</TypeScriptSourceRoot>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Jil, Version=2.15.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Jil.2.15.4\lib\net45\Jil.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.SignalR.Core.2.2.3\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.3\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Sigil, Version=4.7.0.0, Culture=neutral, PublicKeyToken=2d06c3494341c8ab, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Sigil.4.7.0\lib\net45\Sigil.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization.HashCache, Version=1.0.5493.16874, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Web.Optimization.HashCache.1.0.5493.16874\lib\net40\System.Web.Optimization.HashCache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Configuration, Version=5.2.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.8.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception, Version=5.5.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception.Configuration, Version=5.1.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RegistrationByConvention, Version=2.1.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ServiceLocation, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.5\lib\net47\Unity.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\common\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\Startup.Container.cs" />
+    <Compile Include="App_Start\Startup.EventReceiver.cs" />
+    <Compile Include="Code\FeatureServiceHelper.cs" />
+    <Compile Include="Code\GroupManager.cs" />
+    <Compile Include="Code\GroupNames.cs" />
+    <Compile Include="Code\Constants.cs" />
+    <Compile Include="Code\RoleNames.cs" />
+    <Compile Include="Code\UserIdentifierReader.cs" />
+    <Compile Include="Code\WorkspaceSettings.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Code\UserIdentity.cs" />
+    <Compile Include="Controllers\CannedMessagesController.cs" />
+    <Compile Include="Controllers\WidgetController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\SessionController.cs" />
+    <Compile Include="Controllers\TestO2BionicsMockController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManagementControllerBase.cs" />
+    <Compile Include="Controllers\AuditTrailController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Hubs\AgentConsoleHub.cs" />
+    <Compile Include="Code\AgentConsoleEventReceiver.cs" />
+    <Compile Include="Hubs\VideoHub.cs" />
+    <Compile Include="Models\AuditTrail\AuditTrailModel.cs" />
+    <Compile Include="Models\ChatCustomization\ChatWidgetAppearanceViewModel.cs" />
+    <Compile Include="Models\TestO2BionicsMock\ChatSourceViewModel.cs" />
+    <Compile Include="Models\Account\FailureConditionViewModel.cs" />
+    <Compile Include="Models\Account\ForgotPasswordViewModel.cs" />
+    <Compile Include="Models\Account\RegisterCustomerViewModel.cs" />
+    <Compile Include="Models\Account\ResetPasswordEmailViewModel.cs" />
+    <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <TypeScriptCompile Include="ts\components\DateRangeOptionsFactory.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\common\Com.O2Bionics.Utils.Web\Scripts\AvatarConstants.js">
+      <Link>st\js\AvatarConstants.js</Link>
+    </Content>
+    <Content Include="..\..\..\src\common\Com.O2Bionics.Utils.Web\Scripts\Common.js">
+      <Link>st\js\chatSessions\Common.js</Link>
+    </Content>
+    <Content Include="..\..\..\src\common\Com.O2Bionics.Utils.Web\Scripts\DetectRTCHelper.js">
+      <Link>st\js\chatSessions\DetectRTCHelper.js</Link>
+    </Content>
+    <Content Include="..\..\..\src\common\Com.O2Bionics.Utils.Web\Scripts\Enums.js">
+      <Link>st\js\Enums.js</Link>
+    </Content>
+    <Content Include="..\..\..\src\common\Com.O2Bionics.Utils.Web\Scripts\jquery.validate.unobtrusive.mustbetrue.js">
+      <Link>st\js\jquery.validate.unobtrusive.mustbetrue.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\src\common\Com.O2Bionics.Utils.Web\Scripts\RtcChannel.js">
+      <Link>st\js\chatSessions\RtcChannel.js</Link>
+    </Content>
+    <Content Include="Errors\403.html" />
+    <Content Include="Errors\404.html" />
+    <Content Include="Errors\404.aspx" />
+    <Content Include="Errors\500.aspx" />
+    <Content Include="Errors\500.html" />
+    <Content Include="..\..\common\Com.O2Bionics.Utils.Web\Scripts\ErrorLogger.js">
+      <Link>st\js\ErrorLogger.js</Link>
+    </Content>
+    <Content Include="st\css\priority-nav-core.css" />
+    <Content Include="st\i\backgrounds\dark-material-bg.jpg" />
+    <Content Include="st\js\chatSessions\dialogs\DialogSmileModel.js" />
+    <Content Include="st\css\wpopup.css" />
+    <Content Include="st\js\ChatSessions\models\CannedMessageModel.js" />
+    <Content Include="st\js\chatSessions\models\EmojiAreaModel.js" />
+    <Content Include="st\js\require-config.js" />
+    <Content Include="st\audio\chat.visitor.message.new.mp3" />
+    <Content Include="st\audio\chat.visitor.message.new.wav" />
+    <Content Include="st\audio\chat.visitor.session.ended.mp3" />
+    <Content Include="st\audio\chat.visitor.session.new.mp3" />
+    <Content Include="st\css\minsession-style.css" />
+    <Content Include="st\css\style-console.css" />
+    <Content Include="st\i\avatar-loading.png" />
+    <Content Include="st\i\avatars\agent.jpg" />
+    <Content Include="st\i\emotify\cry.png" />
+    <Content Include="st\i\emotify\grin.png" />
+    <Content Include="st\i\emotify\happy.png" />
+    <Content Include="st\i\emotify\neutral.png" />
+    <Content Include="st\i\emotify\puzzled.png" />
+    <Content Include="st\i\emotify\sad.png" />
+    <Content Include="st\i\emotify\suprised.png" />
+    <Content Include="st\i\emotify\worried.png" />
+    <Content Include="st\css\style-account.css" />
+    <Content Include="st\css\style.css" />
+    <Content Include="st\i\gritter-close.png" />
+    <Content Include="st\i\logo_small.png" />
+    <Content Include="st\css\widgets.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Compile Include="App_Start\Startup.SignalR.cs" />
+    <Content Include="st\audio\chat.visitor.message.new.ogg" />
+    <Content Include="gulpfile.js" />
+    <Content Include="st\i\avatars\avatar.png" />
+    <Content Include="st\i\avatars\boy.png" />
+    <Content Include="st\i\avatars\girl.png" />
+    <Content Include="st\i\avatars\man.png" />
+    <Content Include="st\i\avatars\man2.png" />
+    <Content Include="st\i\avatars\man3.png" />
+    <Content Include="st\i\visitor.jpg" />
+    <Content Include="st\i\avatars\woman.png" />
+    <Content Include="st\i\avatars\woman2.png" />
+    <Content Include="st\i\avatars\woman3.png" />
+    <Content Include="st\js\ChatSessions\models\AgentStorage.js" />
+    <Content Include="st\js\ChatSessions\dialogs\DialogEditCannedMessageModel.js" />
+    <Content Include="st\js\ChatSessions\models\PanelModel.js" />
+    <Content Include="st\js\ChatSessions\dialogs\DialogSessionTranscriptWasntSentModel.js" />
+    <Content Include="st\js\ChatSessions\dialogs\DialogSessionInviteModel.js" />
+    <Content Include="st\js\ChatSessions\models\VisitorModel.js" />
+    <Content Include="st\js\ChatSessions\dialogs\DialogCannedMessagesModel.js" />
+    <Content Include="st\js\ChatSessions\models\VisitorPageHistoryEntryModel.js" />
+    <Content Include="st\js\ChatSessions\models\VisitorStorage.js" />
+    <Content Include="st\js\ChatSessions\Tracker.js" />
+    <Content Include="st\js\ChatWidgetAppearance\ChatWidgetAppearanceViewModel.js" />
+    <Content Include="st\js\ManageUsers\models\DialogSelectAvatarModel.js" />
+    <Content Include="st\js\ManageUsers\models\ManageUserViewModel.js" />
+    <Content Include="buildTsContract.cmd" />
+    <Content Include="st\lib\bootstrap-dialog\dist\less\bootstrap-dialog.less" />
+    <Content Include="st\lib\bootstrap-multiselect\dist\less\bootstrap-multiselect.less" />
+    <Content Include="st\lib\bootstrap-sass\assets\stylesheets\_bootstrap.scss" />
+    <Content Include="st\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="st\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="st\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="st\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="st\lib\jquery\dist\jquery.min.map" />
+    <Content Include="st\lib\material-design-icons-iconfont\dist\fonts\codepoints" />
+    <Content Include="st\lib\material-design-icons-iconfont\dist\fonts\MaterialIcons-Regular.eot" />
+    <Content Include="st\lib\material-design-icons-iconfont\dist\fonts\MaterialIcons-Regular.ijmap" />
+    <Content Include="st\lib\material-design-icons-iconfont\dist\fonts\MaterialIcons-Regular.ttf" />
+    <Content Include="st\lib\material-design-icons-iconfont\dist\fonts\MaterialIcons-Regular.woff" />
+    <Content Include="st\lib\material-design-icons-iconfont\dist\fonts\MaterialIcons-Regular.woff2" />
+    <Content Include="st\lib\material-design-icons-iconfont\dist\material-design-icons.css.map" />
+    <Content Include="st\lib\material-design-icons-iconfont\dist\material-design-icons.scss" />
+    <None Include="ts\contract\CSharpToTs.ttinclude" />
+    <Content Include="st\lib\arrive\minified\arrive.min.js" />
+    <Content Include="st\lib\arrive\src\arrive.js" />
+    <Content Include="st\lib\autolinker\Autolinker.js" />
+    <Content Include="st\lib\autolinker\Autolinker.min.js" />
+    <Content Include="st\lib\blockui\jquery.blockUI.js" />
+    <Content Include="st\lib\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="st\lib\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="st\lib\bootstrap-dialog\dist\css\bootstrap-dialog.min.css" />
+    <Content Include="st\lib\bootstrap-dialog\dist\js\bootstrap-dialog.min.js" />
+    <Content Include="st\lib\bootstrap-material-design\dist\css\bootstrap-material-design.css" />
+    <Content Include="st\lib\bootstrap-material-design\dist\css\bootstrap-material-design.min.css" />
+    <Content Include="st\lib\bootstrap-material-design\dist\css\ripples.css" />
+    <Content Include="st\lib\bootstrap-material-design\dist\css\ripples.min.css" />
+    <Content Include="st\lib\bootstrap-material-design\dist\js\material.js" />
+    <Content Include="st\lib\bootstrap-material-design\dist\js\material.min.js" />
+    <Content Include="st\lib\bootstrap-material-design\dist\js\ripples.js" />
+    <Content Include="st\lib\bootstrap-material-design\dist\js\ripples.min.js" />
+    <Content Include="st\lib\bootstrap-multiselect\dist\css\bootstrap-multiselect.css" />
+    <Content Include="st\lib\bootstrap-multiselect\dist\js\bootstrap-multiselect.js" />
+    <Content Include="st\lib\bootstrap-sass\assets\javascripts\bootstrap.js" />
+    <Content Include="st\lib\bootstrap-switch\dist\css\bootstrap3\bootstrap-switch.css" />
+    <Content Include="st\lib\bootstrap-switch\dist\css\bootstrap3\bootstrap-switch.min.css" />
+    <Content Include="st\lib\bootstrap-switch\dist\js\bootstrap-switch.js" />
+    <Content Include="st\lib\bootstrap-switch\dist\js\bootstrap-switch.min.js" />
+    <Content Include="st\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="st\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="st\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="st\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="st\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="st\lib\chart.js\dist\Chart.js" />
+    <Content Include="st\lib\chart.js\dist\Chart.min.js" />
+    <Content Include="st\lib\clipboard\dist\clipboard.js" />
+    <Content Include="st\lib\clipboard\dist\clipboard.min.js" />
+    <Content Include="st\lib\detectrtc\DetectRTC.js" />
+    <Content Include="st\lib\detectrtc\DetectRTC.min.js" />
+    <Content Include="st\lib\enjoyhint\enjoyhint.js" />
+    <Content Include="st\lib\enjoyhint\enjoyhint.min.js" />
+    <Content Include="st\lib\es5-shim\es5-shim.js" />
+    <Content Include="st\lib\es5-shim\es5-shim.min.js" />
+    <Content Include="st\lib\es6-shim\es6-shim.js" />
+    <Content Include="st\lib\es6-shim\es6-shim.min.js" />
+    <Content Include="st\lib\javascript-emotify\ba-emotify.js" />
+    <Content Include="st\lib\javascript-emotify\ba-emotify.min.js" />
+    <Content Include="st\lib\jquery-emojiarea\jquery.emojiarea.css" />
+    <Content Include="st\lib\jquery-emojiarea\jquery.emojiarea.js" />
+    <Content Include="st\lib\jquery-emojiarea\jquery.emojiarea.min.js" />
+    <Content Include="st\lib\jquery-textcomplete\dist\jquery.textcomplete.js" />
+    <Content Include="st\lib\jquery-textcomplete\dist\jquery.textcomplete.min.js" />
+    <Content Include="st\lib\jquery-ui\jquery-ui.js" />
+    <Content Include="st\lib\jquery-ui\jquery-ui.min.js" />
+    <Content Include="st\lib\jquery-ui\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="st\lib\jquery-ui\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="st\lib\jquery-ui\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="st\lib\jquery-ui\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="st\lib\jquery-ui\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="st\lib\jquery-ui\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="st\lib\jquery-ui\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="st\lib\jquery-ui\themes\base\jquery-ui.css" />
+    <Content Include="st\lib\jquery-ui\themes\base\jquery-ui.min.css" />
+    <Content Include="st\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <Content Include="st\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <Content Include="st\lib\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="st\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="st\lib\jquery.gritter\css\jquery.gritter.css" />
+    <Content Include="st\lib\jquery.gritter\images\gritter-light.png" />
+    <Content Include="st\lib\jquery.gritter\images\gritter-long.png" />
+    <Content Include="st\lib\jquery.gritter\images\gritter.png" />
+    <Content Include="st\lib\jquery.gritter\images\ie-spacer.gif" />
+    <Content Include="st\lib\jquery.gritter\images\trees.jpg" />
+    <Content Include="st\lib\jquery.gritter\js\jquery.gritter.js" />
+    <Content Include="st\lib\jquery.gritter\js\jquery.gritter.min.js" />
+    <Content Include="st\lib\jquery.scrollTo\jquery.scrollTo.js" />
+    <Content Include="st\lib\jquery.scrollTo\jquery.scrollTo.min.js" />
+    <Content Include="st\lib\jquery.signalr\jquery.signalR.js" />
+    <Content Include="st\lib\jquery.signalr\jquery.signalR.min.js" />
+    <Content Include="st\lib\jquery\dist\jquery.js" />
+    <Content Include="st\lib\jquery\dist\jquery.min.js" />
+    <Content Include="st\lib\kineticjs\kinetic.js" />
+    <Content Include="st\lib\knockout-jqueryui\dist\knockout-jqueryui.js" />
+    <Content Include="st\lib\knockout-jqueryui\dist\knockout-jqueryui.min.js" />
+    <Content Include="st\lib\knockout-mapping\build\output\knockout.mapping-latest.debug.js" />
+    <Content Include="st\lib\knockout-mapping\build\output\knockout.mapping-latest.js" />
+    <Content Include="st\lib\knockout-validation\dist\knockout.validation.js" />
+    <Content Include="st\lib\knockout-validation\dist\knockout.validation.min.js" />
+    <Content Include="st\lib\knockout\dist\knockout.debug.js" />
+    <Content Include="st\lib\knockout\dist\knockout.js" />
+    <Content Include="st\lib\kolite\knockout.activity.js" />
+    <Content Include="st\lib\kolite\knockout.command.js" />
+    <Content Include="st\lib\kolite\knockout.dirtyFlag.js" />
+    <Content Include="st\lib\lodash\dist\lodash.js" />
+    <Content Include="st\lib\lodash\dist\lodash.min.js" />
+    <Content Include="st\lib\material-design-icons-iconfont\dist\fonts\iconjar-map.js" />
+    <Content Include="st\lib\material-design-icons-iconfont\dist\fonts\material-icons.css" />
+    <Content Include="st\lib\material-design-icons-iconfont\dist\fonts\MaterialIcons-Regular.svg" />
+    <Content Include="st\lib\material-design-icons-iconfont\dist\material-design-icons.css" />
+    <Content Include="st\lib\moment\min\moment-with-locales.js" />
+    <Content Include="st\lib\moment\min\moment-with-locales.min.js" />
+    <Content Include="st\lib\moment\min\moment.min.js" />
+    <Content Include="st\lib\moment\moment.js" />
+    <Content Include="st\lib\priority-nav.js\dist\priority-nav-core.css" />
+    <Content Include="st\lib\priority-nav.js\dist\priority-nav.js" />
+    <Content Include="st\lib\priority-nav.js\dist\priority-nav.min.js" />
+    <Content Include="st\lib\requirejs\require.js" />
+    <Content Include="st\lib\tslib\tslib.es6.js" />
+    <Content Include="st\lib\tslib\tslib.js" />
+    <Content Include="st\lib\webrtc-adapter\release\adapter.js" />
+    <Content Include="ts\tsconfig.json" />
+    <None Include="ts\contract\IdToNameMap.ttinclude" />
+    <None Include="ts\contract\TrackerContract.t4">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TrackerContract.ts</LastGenOutput>
+    </None>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="ts\contract\Contract.t4">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Contract.ts</LastGenOutput>
+    </None>
+    <Content Include="widget-script.txt" />
+    <Content Include="st\js\ManageDepartments\App.js" />
+    <Content Include="st\js\ManageDepartments\models\ManageDepartmentsModel.js" />
+    <Content Include="st\js\ManageDepartments\models\DepartmentModel.js" />
+    <Content Include="st\js\ManageUsers\models\UserModel.js" />
+    <Content Include="st\js\ChatSessions\AgentConsoleHubProxy.js" />
+    <Content Include="st\js\ChatSessions\components\OffsetClockComponent.js" />
+    <Content Include="st\js\ChatSessions\App.js" />
+    <Content Include="st\js\ChatSessions\models\AgentStatusModel.js" />
+    <Content Include="st\js\ChatSessions\models\AgentModel.js" />
+    <Content Include="st\js\ChatSessions\models\ChatMessageModel.js" />
+    <Content Include="st\js\ChatSessions\models\ChatSessionModel.js" />
+    <Content Include="st\js\ChatSessions\models\ChatSessionTargetModel.js" />
+    <Content Include="st\js\ChatSessions\models\DepartmentModel.js" />
+    <Content Include="st\js\ChatSessions\dialogs\DialogStartSessionModel.js" />
+    <Content Include="st\js\ChatSessions\models\ConsoleModel.js" />
+    <Content Include="st\js\Helpers.js" />
+    <Content Include="st\js\events.js" />
+    <Content Include="bower.json" />
+    <Content Include=".bowerrc" />
+    <Content Include="package.json" />
+    <Content Include="Transcript.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\ChatSessions.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\FailureCondition.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\_AccountLayout.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Vid.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Home\ManageUsers.cshtml" />
+    <Content Include="Views\Home\_HomeLayout.cshtml" />
+    <Content Include="Views\Account\_ViewStart.cshtml" />
+    <Content Include="Views\Email\_ViewStart.cshtml" />
+    <Content Include="Views\Home\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\ChatSessionHistory.cshtml" />
+    <Content Include="Views\Home\ManageCustomer.cshtml" />
+    <Content Include="Views\Home\ManageCustomerFeatures.cshtml" />
+    <Content Include="Views\Home\ManageDepartments.cshtml" />
+    <Content Include="Views\Home\AdminAuditTrail.cshtml" />
+    <Content Include="Views\Home\ManageUser.cshtml" />
+    <Content Include="Views\Home\AgentStatistics.cshtml" />
+    <Content Include="Views\Account\RegisterCustomer.cshtml" />
+    <Content Include="Views\Account\TermsOfService.cshtml" />
+    <Content Include="Views\TestO2BionicsMock\ChatSource.cshtml" />
+    <Content Include="Views\Home\InstallCode.cshtml" />
+    <Content Include="Views\Home\ChatWidgetAppearance.cshtml" />
+    <Content Include="Views\Home\WidgetLoadStatistics.cshtml" />
+    <Content Include="Views\Home\Dialogs\DialogDeleteObject.cshtml" />
+    <Content Include="Views\Home\Dialogs\DialogDepartmentEdit.cshtml" />
+    <Content Include="Views\Home\DialogCannedMessages.cshtml" />
+    <Content Include="Views\Home\DialogEditCannedMessage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\auditTrail\Com.O2Bionics.AuditTrail.Client\Com.O2Bionics.AuditTrail.Client.csproj">
+      <Project>{c99575a7-bfd2-4f3e-831a-ccd7836e4b06}</Project>
+      <Name>Com.O2Bionics.AuditTrail.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\auditTrail\Com.O2Bionics.AuditTrail.Contract\Com.O2Bionics.AuditTrail.Contract.csproj">
+      <Project>{7f960e94-73e9-4c84-9741-7b08f10043bd}</Project>
+      <Name>Com.O2Bionics.AuditTrail.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\chat\Com.O2Bionics.ChatService.Contract\Com.O2Bionics.ChatService.Contract.csproj">
+      <Project>{017F459A-D86B-4DD9-BC8C-2D73568C76DA}</Project>
+      <Name>Com.O2Bionics.ChatService.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.ErrorTracker.Web\Com.O2Bionics.ErrorTracker.Web.csproj">
+      <Project>{4d53a19c-991f-448e-a0ec-dc4d266be0d2}</Project>
+      <Name>Com.O2Bionics.ErrorTracker.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.ErrorTracker\Com.O2Bionics.ErrorTracker.csproj">
+      <Project>{6b74f4bb-8587-4af6-a404-0d2f4d8665df}</Project>
+      <Name>Com.O2Bionics.ErrorTracker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.Utils\Com.O2Bionics.Utils.csproj">
+      <Project>{0E93B727-715A-4E47-9C1C-9BA6AFD5829E}</Project>
+      <Name>Com.O2Bionics.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\common\Com.O2Bionics.Utils.Web\Com.O2Bionics.Utils.Web.csproj">
+      <Project>{4CE4A4C2-FD6F-4A23-B5B9-01D5DCFE4C9B}</Project>
+      <Name>Com.O2Bionics.Utils.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\featureService\Com.O2Bionics.FeatureService.Client\Com.O2Bionics.FeatureService.Client.csproj">
+      <Project>{58a3a5c2-da25-4760-9ea8-1975776f2dd3}</Project>
+      <Name>Com.O2Bionics.FeatureService.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\featureService\Com.O2Bionics.FeatureService.Constants\Com.O2Bionics.FeatureService.Constants.csproj">
+      <Project>{e97e7e6a-63fa-4d71-bfd6-f0b916db97bd}</Project>
+      <Name>Com.O2Bionics.FeatureService.Constants</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Dialogs\_SelectAvatarDialog.cshtml" />
+    <Content Include="Views\Home\Dialogs\DialogCannedMessages.cshtml" />
+    <Content Include="Views\Home\ChatSessionDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="ts\AppBase.ts" />
+    <TypeScriptCompile Include="ts\Common.ts" />
+    <TypeScriptCompile Include="ts\bindings\daterangepicker.ts" />
+    <TypeScriptCompile Include="ts\components\OffsetClockComponent.ts" />
+    <TypeScriptCompile Include="ts\contract\AuditTrailContract.ts" />
+    <TypeScriptCompile Include="ts\contract\Contract.ts">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Contract.t4</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ts\contract\TrackerContract.ts">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrackerContract.t4</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ts\Deferred.ts" />
+    <TypeScriptCompile Include="ts\dialogs\DialogBase.ts" />
+    <TypeScriptCompile Include="ts\dialogs\DialogDepartmentEdit.ts" />
+    <TypeScriptCompile Include="ts\dialogs\DialogDeleteObject.ts" />
+    <TypeScriptCompile Include="ts\dialogs\DialogCannedMessages.ts" />
+    <TypeScriptCompile Include="ts\dialogs\DialogCannedMessageEdit.ts" />
+    <TypeScriptCompile Include="ts\Dt.ts" />
+    <TypeScriptCompile Include="ts\dialogs\SelectAvatarDialog.ts" />
+    <TypeScriptCompile Include="ts\ErrorHandler.ts" />
+    <TypeScriptCompile Include="ts\MainModelBase.ts" />
+    <TypeScriptCompile Include="ts\AvatarHelper.ts" />
+    <TypeScriptCompile Include="ts\contract\Controllers.ts" />
+    <TypeScriptCompile Include="ts\imports.ts" />
+    <TypeScriptCompile Include="ts\IServerTransport.ts" />
+    <TypeScriptCompile Include="ts\models\EditCannedMessageModel.ts" />
+    <TypeScriptCompile Include="ts\models\ErrorModel.ts" />
+    <TypeScriptCompile Include="ts\models\CannedMessageModel.ts" />
+    <TypeScriptCompile Include="ts\models\CannedMessageStorage.ts" />
+    <TypeScriptCompile Include="ts\models\EditDepartmentModel.ts" />
+    <TypeScriptCompile Include="ts\models\SessionInviteModel.ts" />
+    <TypeScriptCompile Include="ts\models\SessionMessageModel.ts" />
+    <TypeScriptCompile Include="ts\models\SessionBriefModel.ts" />
+    <TypeScriptCompile Include="ts\models\SessionModel.ts" />
+    <TypeScriptCompile Include="ts\models\VisitorModel.ts" />
+    <TypeScriptCompile Include="ts\pages\AuditTrailFormat.ts" />
+    <TypeScriptCompile Include="ts\pages\ChatSessionDetails.ts" />
+    <TypeScriptCompile Include="ts\pages\ChatSessionHistory.ts" />
+    <TypeScriptCompile Include="ts\pages\ManageDepartments.ts" />
+    <TypeScriptCompile Include="ts\pages\AuditTrail.ts" />
+    <TypeScriptCompile Include="ts\pages\ManageUsers.ts" />
+    <TypeScriptCompile Include="ts\models\DepartmentModel.ts" />
+    <TypeScriptCompile Include="ts\models\DepartmentStorage.ts" />
+    <TypeScriptCompile Include="ts\models\EditUserModel.ts" />
+    <TypeScriptCompile Include="ts\models\UserModel.ts" />
+    <TypeScriptCompile Include="ts\models\UserStorage.ts" />
+    <TypeScriptCompile Include="ts\models\VisitorStorage.ts" />
+    <TypeScriptCompile Include="ts\pages\WidgetLoadStatistics.ts" />
+    <TypeScriptCompile Include="ts\typings\ba-emotify\index.d.ts" />
+    <TypeScriptCompile Include="ts\typings\bootstrap-daterangepicker\index.d.ts" />
+    <TypeScriptCompile Include="ts\typings\jquery.gritter\index.d.ts" />
+    <TypeScriptCompile Include="ts\typings\moment\moment.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Dialogs\DialogCannedMessageEdit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>12499</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://app.chat.o2bionics.com/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="BeforeBuild">
+    <Copy SourceFiles="%(Content.Identity)" DestinationFiles="%(Content.Link)" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Condition="'%(Content.Link)' != ''" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.props'))" />
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.targets'))" />
+  </Target>
+  <Import Project="..\..\..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\..\..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.targets')" />
+</Project>

@@ -1,0 +1,14 @@
+﻿@model Com.O2Bionics.ChatService.Web.Console.Models.Account.FailureConditionViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div class="widget-content panel-body">
+        <h2 class="text-danger">@Model.Message</h2>
+        <div class="clearfix"></div>
+</div>
+<div class="widget-foot">
+    <div class="horizontal-links">
+       <i class="material-icons">&#xE897;</i> @Html.ActionLink("Log in", "Login")
+    </div>
+</div>

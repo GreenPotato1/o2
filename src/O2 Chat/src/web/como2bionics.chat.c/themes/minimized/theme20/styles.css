@@ -1,0 +1,34 @@
+body {
+    background: none!important;
+}
+#collapsed-state .chat-title-bar {
+    background: none!important;
+    color: #fff !important;
+    border: 0 !important;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+#collapsed-state .chat-title-bar.disconnected {
+    background: #774444 !important;
+}
+#collapsed-state .chat-title-bar .title-text {
+    display: none;
+}
+#collapsed-state .chat-title-bar .chat-title-img {  
+    background: url(ic_email.png) no-repeat 22px 22px;
+    background-size: auto 36px;
+    background-color: #ef5350;
+    border-radius: 80px;
+    -moz-border-radius: 80px;
+    -webkit-border-radius: 80px; 
+    color: #fff;
+    display: block;
+    margin: 0 10px;
+    width: 80px;
+    height: 80px;
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+    position: relative;
+    z-index: -2;
+}

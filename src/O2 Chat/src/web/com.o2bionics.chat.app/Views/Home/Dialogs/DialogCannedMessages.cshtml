@@ -1,0 +1,59 @@
+<script id="dialog-canned-messages-tmpl" type="text/html" height="480" width="500">
+    <div data-bind="dialog: dialog" id="dialog-canned-messages" title="Canned Messages">
+        <div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-8 col-sm-6 col-xs-6 search-area_pos">
+                        <div class="form-group label-floating">
+                            <label class="control-label" for="dialog-canned-messages-search">Search</label>
+                            <input class="form-control" data-bind="value: filterString, valueUpdate: 'keyup'" id="dialog-canned-messages-search" autocomplete="off"/>
+                            <button class="btn btn-default clear-icon_pos" data-bind="command: commands.resetSearch">
+                                <i class="material-icons">&#xE14C;</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-6 text-right btn-group-sm">
+                        <button class="btn btn btn-fab btn-success" data-bind="command: commands.addNew">
+                            <i class="material-icons">&#xE145;</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="dialog-canned-messages-list-container" style="overflow-y: auto; overflow-x: hidden; height: 270px;">
+                <table id="dialog-canned-messages-table" class="table">
+                    <tbody data-bind="template: { name: 'dialog-canned-messages-item-tmpl', foreach: filtered }"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="dialog-button-set">
+            <button class="btn" data-bind="command: commands.close">Close</button>
+        </div>
+    </div>
+</script>
+<script id="dialog-canned-messages-item-tmpl" type="text/html">
+    <tr>
+        <td style="width: 80px;">
+            <div>
+                <span data-bind="text: key"></span>
+            </div>
+        </td>
+        <td>
+            <div>
+                <span data-bind="text: value"></span>
+            </div>
+        </td>
+        <td style="width: 40px;">
+            <button class="btn" data-bind="click: $parent.clickInsertMessage, visible: $parent.canInsertMessageText($data)" title="Insert">
+                <i class="material-icons">&#xE24C;</i>
+            </button>
+        </td>
+        <td style="width: 60px;">
+            <button class="btn" data-bind="click: $parent.clickEdit, visible: $parent.canEdit($data)" title="Edit">
+                <i class="material-icons">&#xE254;</i>
+            </button>
+            <button class="btn" data-bind="click: $parent.clickDelete, visible: $parent.canEdit($data)" title="Remove">
+                <i class="material-icons">&#xE92B;</i>
+            </button>
+        </td>
+    </tr>
+</script>

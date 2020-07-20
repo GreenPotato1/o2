@@ -1,0 +1,123 @@
+﻿@{
+}
+
+<div id="objectTable" class="mainbar">
+    <!-- Matter -->
+    <div class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget">
+                        <div class="widget-head">
+                            <div class="pull-left">
+                                <h1>Управление аккаунтом</h1>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="widget-content" data-bind="style: { display: userModel() ? 'block' : 'none' }" style="display: none;">
+                            <div class="row" data-bind="with: userModel">
+                                <form autocomplete="false">
+                                    <!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+                                    <input style="display: none" type="text" name="fakeusernameremembered"/>
+                                    <input style="display: none" type="email" name="fakeuseremailremembered"/>
+                                    <input style="display: none" type="password" name="fakepasswordremembered"/>
+                                    <div class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="textEmail">Email</label>
+                                            <div class="col-sm-4">
+                                                <strong class="text-warning" data-bind="validationMessage: Email"></strong>
+                                                <input type="email" class="form-control" placeholder="Email" id="textEmail" data-bind="textInput: Email"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" data-bind="visible: Id() === 0">
+                                            <label class="col-sm-2 control-label" for="textPassword">Password</label>
+                                            <div class="col-sm-4">
+                                                <strong class="text-warning" data-bind="validationMessage: Password"></strong>
+                                                <input type="password" class="form-control" placeholder="Password" id="textPassword" autocomplete="new-password" data-bind="textInput: Password"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" data-bind="visible: Id() === 0">
+                                            <label class="col-sm-2 control-label" for="textPassword2">&nbsp;</label>
+                                            <div class="col-sm-4">
+                                                <strong class="text-warning" data-bind="validationMessage: Password2"></strong>
+                                                <input type="password" class="form-control" placeholder="Repeat Password" id="textPassword2" data-bind="textInput: Password2"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="textFirstName">Имя</label>
+                                            <div class="col-sm-4">
+                                                <strong class="text-warning" data-bind="validationMessage: FirstName"></strong>
+                                                <input type="text" class="form-control" placeholder="First Name" id="textFirstName" data-bind="textInput: FirstName"/>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="textLastName">Фамилия</label>
+                                            <div class="col-sm-4">
+                                                <strong class="text-warning" data-bind="validationMessage: LastName"></strong>
+                                                <input type="text" class="form-control" placeholder="Last Name" id="textLastName" data-bind="textInput: LastName"/>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <span class="user-avatar">
+                                                    <img data-bind="attr: { src: AvatarUrl }"/>
+                                                </span>
+                                            </div>
+                                            <label class="col-sm-2 control-label" for="inputFile">Загрузить Аватарку</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" readonly="" class="form-control" placeholder="Обзор...">
+                                                <input type="file" id="inputFile" multiple="" data-bind="click: $parent.uploadAvatar">
+                                            </div>
+                                            <label class="col-sm-1 control-label align-left">ИЛИ </label>
+                                            <div class="col-sm-2 ">
+                                                <button class="btn btn-default" data-bind="click: $parent.showSelectAvatarDialog">Выбрать аватарку</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-4" data-bind="foreach: serverMessages">
+                                                <strong class="text-warning" data-bind="text: $data"></strong>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-4">
+                                                <button class="btn btn-primary" data-bind="click: $root.update">Сохранить</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-bind="template: { name: 'dialog-select-avatar' }"></div>
+
+@Html.Partial("Dialogs/_SelectAvatarDialog")
+
+@section scripts_include {
+
+    <script type="text/javascript" src="~/st/js/ManageUsers/models/UserModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ManageUsers/models/DialogSelectAvatarModel.js"></script>
+    <script type="text/javascript" src="~/st/js/ManageUsers/models/ManageUserViewModel.js"></script>
+}
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(function ()
+        {
+            var viewModel = new ManageUserViewModel();
+            ko.applyBindings(viewModel, document.getElementById('all-body'));
+            viewModel.load();
+        });
+    </script>
+}

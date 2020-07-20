@@ -1,0 +1,239 @@
+{
+  "name": "com.o2bionics.chat.app",
+  "private": true,
+  "dependencies": {
+    "blockui": "malsup/blockui",
+    "requirejs": "2.3.6",
+    "lodash": "4.17.15",
+    "moment": "2.24.0",
+    "jquery": "3.4.1",
+    "jquery-ui": "1.12.1",
+    "jquery.gritter": "1.7.4",
+    "jquery.scrollTo": "2.1.2",
+    "jquery-validation": "1.19.1",
+    "jquery-validation-unobtrusive": "v3.2.11",
+    "jquery-textcomplete": "v1.8.5",
+    "priority-nav.js": "1.0.12",
+    "webrtc-adapter": "v7.3.0",
+    "detectrtc": "1.3.8",
+    "knockout": "v3.5.1",
+    "knockout-mapping": "2.4.1",
+    "knockout-validation": "2.0.4",
+    "knockout-jqueryui": "2.2.3",
+    "kolite": "",
+    "bootstrap": "v4.4.1",
+    "bootstrap-switch": "3.3.4",
+    "bootstrap-material-design": "v4.1.2",
+    "arrive": "v2.4.1",
+    "material-design-icons-iconfont": "5.0.1",
+    "bootstrap-dialog": "1.35.4",
+    "bootstrap-multiselect": "v0.9.15",
+    "bootstrap-daterangepicker": "2.1.25",
+    "javascript-emotify": "0.6.0",
+    "tslib": "1.10.0",
+    "es5-shim": "v4.5.13",
+    "es6-shim": "0.35.5",
+    "clipboard": "v2.0.4",
+    "jquery-emojiarea": "v0.2.0",
+    "chart.js": "^2.7.1",
+    "enjoyhint": "3.1.0",
+    "daterangepicker": "bootstrap-daterangepicker#v3.0.5",
+    "bootstrap-sass": "v3.4.1",
+    "jQuery": "2.2.4"
+  },
+  "overrides": {
+    "requirejs": {
+      "main": [
+        "require.js"
+      ]
+    },
+    "lodash": {
+      "main": [
+        "dist/lodash?(.min).js"
+      ]
+    },
+    "moment": {
+      "main": [
+        "moment.js",
+        "min/langs*",
+        "min/moment*"
+      ]
+    },
+    "chart.js": {
+      "main": [
+        "dist/Chart?(.min).js"
+      ]
+    },
+    "enjoyhint": {
+      "main": [
+        "enjoyhint?(.min).js"
+      ]
+    },
+    "jquery": {
+      "main": [
+        "dist/*.*"
+      ]
+    },
+    "jquery-ui": {
+      "main": [
+        "jquery-ui?(.min).js",
+        "themes/base/jquery-ui*.css",
+        "themes/base/images/*"
+      ]
+    },
+    "jquery.gritter": {
+      "main": [
+        "js/jquery.gritter?(.min).js",
+        "css/jquery.gritter?(.min).css",
+        "images/*"
+      ]
+    },
+    "jquery.scrollTo": {
+      "main": [
+        "jquery.scrollTo?(.min).js"
+      ]
+    },
+    "jquery-validation": {
+      "main": [
+        "dist/jquery.validate?(.min).js"
+      ]
+    },
+    "jquery-validation-unobtrusive": {
+      "main": [
+        "jquery.validate.unobtrusive?(.min).js"
+      ]
+    },
+    "detectrtc": {
+      "main": [
+        "DetectRTC?(.min).js"
+      ]
+    },
+    "knockout": {
+      "main": [
+        "dist/knockout?(.debug).js"
+      ]
+    },
+    "knockout-mapping": {
+      "main": [
+        "build/output/knockout.mapping-latest?(.debug).js"
+      ]
+    },
+    "knockout-validation": {
+      "main": [
+        "dist/knockout.validation?(.min).js"
+      ]
+    },
+    "knockout-jqueryui": {
+      "main": [
+        "dist/knockout-jqueryui?(.min).js"
+      ]
+    },
+    "kolite": {
+      "main": [
+        "knockout.*.js"
+      ]
+    },
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap?(.min).js",
+        "dist/css/bootstrap?(.min).css",
+        "dist/fonts/*"
+      ]
+    },
+    "bootstrap-switch": {
+      "main": [
+        "dist/css/bootstrap3/bootstrap-switch*.css",
+        "dist/js/bootstrap-switch*.js"
+      ]
+    },
+    "bootstrap-material-design": {
+      "main": [
+        "dist/js/material?(.min).js",
+        "dist/js/ripples?(.min).js",
+        "dist/css/bootstrap-material-design?(.min).css",
+        "dist/css/ripples?(.min).css"
+      ]
+    },
+    "bootstrap-daterangepicker": {
+      "main": [
+        "daterangepicker.css",
+        "daterangepicker.js"
+      ]
+    },
+    "arrive": {
+      "main": [
+        "src/arrive.js",
+        "minified/arrive.min.js"
+      ]
+    },
+    "javascript-emotify": {
+      "main": [
+        "ba-emotify?(.min).js"
+      ]
+    },
+    "tslib": {
+      "main": [
+        "tslib.js",
+        "tslib.es6.js"
+      ]
+    },
+    "es5-shim": {
+      "main": [
+        "es5-shim?(.min).js"
+      ]
+    },
+    "es6-shim": {
+      "main": [
+        "es6-shim?(.min).js"
+      ]
+    },
+    "clipboard": {
+      "main": [
+        "dist/clipboard?(.min).js"
+      ]
+    },
+    "priority-nav.js": {
+      "main": [
+        "dist/priority-nav?(.min).js",
+        "dist/priority-nav-core.css"
+      ]
+    },
+    "jquery-textcomplete": {
+      "main": [
+        "dist/jquery.textcomplete?(.min).js",
+        "dist/jquery.textcomplete?(.min).css"
+      ]
+    },
+    "jquery-emojiarea": {
+      "main": [
+        "jquery.emojiarea?(.min).js",
+        "jquery.emojiarea?(.min).css"
+      ]
+    }
+  },
+  "resolutions": {
+    "jquery": "3.4.1",
+    "jquery.scrollTo": "2.1.2",
+    "jquery-emojiarea": "v0.2.0",
+    "es6-shim": "0.35.5",
+    "es5-shim": "v4.5.13",
+    "detectrtc": "1.3.8",
+    "clipboard": "v2.0.4",
+    "webrtc-adapter": "v7.3.0",
+    "requirejs": "2.3.6",
+    "arrive": "v2.4.1",
+    "moment": "2.24.0",
+    "knockout": "v3.5.1",
+    "lodash": "4.17.15",
+    "jquery-textcomplete": "v1.8.5",
+    "tslib": "1.10.0",
+    "knockout-validation": "2.0.4",
+    "jquery-validation-unobtrusive": "v3.2.11",
+    "material-design-icons-iconfont": "5.0.1",
+    "jquery-validation": "1.19.1",
+    "bootstrap-material-design": "v4.1.2",
+    "bootstrap-multiselect": "v0.9.15",
+    "bootstrap": "v4.4.1",
+    "bootstrap-sass": "v3.4.1"
+  }
+}

@@ -1,0 +1,70 @@
+﻿<#@ include file="CSharpToTs.ttinclude" once="true" #>
+<#@ include file="IdToNameMap.ttinclude" once="true" #>
+<#
+    // Jil is required when loading [JilDirective("minStateTitle")].
+    LoadAssembly("..\\..\\..\\..\\chat\\Com.O2Bionics.ChatService.Contract\\bin\\Debug\\Jil.dll");
+
+    var aUt = LoadAssembly("..\\..\\..\\..\\common\\Com.O2Bionics.Utils\\bin\\Debug\\Com.O2Bionics.Utils.dll");
+    var a = LoadAssembly("..\\..\\..\\..\\chat\\Com.O2Bionics.ChatService.Contract\\bin\\Debug\\Com.O2Bionics.ChatService.Contract.dll");
+    var au = LoadAssembly("..\\..\\..\\..\\auditTrail\\Com.O2Bionics.AuditTrail.Contract\\bin\\Debug\\Com.O2Bionics.AuditTrail.Contract.dll");
+#>
+export interface INamed {
+  Name: string;
+}
+
+export interface IdName<T> extends INamed {
+  Id: T;
+  Name: string;
+}
+
+export interface ILimit {
+  Limit: number;
+}
+
+<#= Enums(a, "Com.O2Bionics.ChatService.Contract.CallResultStatusCode") #>
+<#= Enums(a, "Com.O2Bionics.ChatService.Contract.MediaCallStatus") #>
+<#= Enums(a, "Com.O2Bionics.ChatService.Contract.MediaSupport") #>
+<#= EnumsAndNameMap(a, "Com.O2Bionics.ChatService.Contract.ObjectStatus") #>
+<#= Enums(a, "Com.O2Bionics.ChatService.Contract.ChatSessionStatus") #>
+<#= Enums(a, "Com.O2Bionics.ChatService.Contract.ChatMessageSender") #>
+<#= Enums(a, "Com.O2Bionics.ChatService.Contract.ChatSessionInviteType") #>
+<#= Enums(a, "Com.O2Bionics.ChatService.Contract.VisitorSendTranscriptMode") #>
+<#= Enums(a, "Com.O2Bionics.ChatService.Contract.WidgetAppearance.ChatWidgetLocation") #>
+
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.ValidationMessage") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.CallResultStatus") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.UserInfo") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.VisitorInfo") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.DepartmentInfo", "INamed") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.ChatSessionInviteInfo") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.ChatSessionAgentInviteInfo") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.ChatSessionDepartmentInviteInfo") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.ChatSessionAgentInfo") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.ChatSessionMessageInfo") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.ChatSessionInfo") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.FullChatSessionInfo") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.SessionSearchResult") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.GetSessionMessagesResult") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.GetSessionResult") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.GetUsersResult") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.UpdateUserResult") #>
+
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.GetDepartmentsResult") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.UpdateDepartmentResult") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.CannedMessageInfo") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.UpdateCannedMessageResult") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.GetCannedMessagesResult") #>
+
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.WidgetAppearance.ChatWidgetAppearance") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.CustomerInfo", "INamed") #>
+<#= Class(a, "Com.O2Bionics.ChatService.Contract.Widget.WidgetLoadRequest") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.Widget.WidgetViewStatisticsEntry") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.Widget.WidgetDailyViewCountExceededEvent", "ILimit") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.Widget.WidgetUnknownDomain", "INamed") #>
+<#= Interface(a, "Com.O2Bionics.ChatService.Contract.Widget.WidgetUnknownDomainTooManyEvent", "ILimit") #>
+<#= Class(au, "Com.O2Bionics.AuditTrail.Contract.Facet") #>
+<#= Class(aUt, "Com.O2Bionics.Utils.SearchPositionInfo") #>
+<#= Class(au, "Com.O2Bionics.AuditTrail.Contract.Filter") #>
+<#= Class(au, "Com.O2Bionics.AuditTrail.Contract.FacetResponse") #>
+<#= KeyValueConstantStrings(a, "Com.O2Bionics.ChatService.Contract.AuditTrail.OperationStatus") #>
+<#= KeyValueConstantStrings(a, "Com.O2Bionics.ChatService.Contract.AuditTrail.OperationKind") #>

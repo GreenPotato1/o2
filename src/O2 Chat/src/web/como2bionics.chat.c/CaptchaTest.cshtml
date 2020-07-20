@@ -1,0 +1,16 @@
+﻿@using Com.O2Bionics.Utils.Web
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CAPTCHA test</title>
+</head>
+<body>
+<div>
+    @for (var i = 0; i < 100; i++)
+    {
+        var src = "captcha/a.png?h=" + Uri.EscapeDataString(Captcha.CreateHash());
+        <img src="@src"/>
+    }
+</div>
+</body>
+</html>

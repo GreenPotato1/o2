@@ -1,0 +1,55 @@
+<script id="dialog-department-edit-tmpl" type="text/html" height="650" width="400">
+    <div id="dialog-department-edit" data-bind="dialog: dialog" title="Department">
+
+        <form1 autocomplete="false" data-bind="validationOptions: { insertMessages: false, messagesOnModified: true }, with: editItem">
+            <div class="row m-t-md">
+                <label class="col-sm-3 control-label" for="textName">Name</label>
+                <div class="col-sm-9">
+                    <label class="control-label control-label_warning" data-bind="validationMessage: name"></label>
+                    <input type="text" class="form-control" placeholder="Name" id="textName" data-bind="textInput: name"/>
+                </div>
+            </div>
+            <div class="row m-t-sm">
+                <label class="col-sm-3 control-label" for="textDescription">Description</label>
+                <div class="col-sm-9">
+                    <label class="control-label control-label_warning" data-bind="validationMessage: description"></label>
+                    <input type="text" class="form-control" placeholder="Description" id="textDescription" data-bind="textInput: description"/>
+                </div>
+            </div>
+            <div class="row m-t-sm">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" class="" data-bind="checked: isPublic"/>
+                            Is Public
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-t-sm">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" class="" data-bind="checked: isDisabled"/>
+                            Is Disabled
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-t-sm">
+                <div class="col-sm-offset-3 col-sm-9" data-bind="foreach: errorMessages">
+                    <strong class="text-warning" data-bind="text: $data"></strong>
+                </div>
+            </div>
+        </form1>
+
+        <div class="dialog-button-set">
+            <button class="btn btn-primary" data-bind="command: commands.save">
+                save
+            </button>
+            <button class="btn btn-default" data-bind="command: commands.close">
+                cancel
+            </button>
+        </div>
+    </div>
+</script>

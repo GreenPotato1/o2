@@ -1,0 +1,6 @@
+﻿<script type="text/javascript">
+	!function(a,b,c,d,e,f){a[d]=a[d]||function(){(a[d].p=a[d].p||[]).push(arguments[0])},e=b.createElement("script"),e.async=1,
+	e.type="text/javascript",e.id="com-o2bionics-webchat-script",e.src=c,f=b.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)}(window,document,
+	"%%domainUri%%/bootchat.js","O2WebChat");
+	O2WebChat({ cid: %%customerId%% });
+</script>

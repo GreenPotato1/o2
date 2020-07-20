@@ -11,3 +11,6 @@ Consist of:
 | Image | Status | Image | Status |
 | ------------- | ------------- | ------------- | ------------- |
 | Api Identity  |  [![Api Gateways base image](https://dev.azure.com/o2-bionics/O2/_apis/build/status/identity-api?branchName=dev)](https://dev.azure.com/o2-bionics/O2/_apis/build/status/identity-api?branchName=dev) |
+| Api Certificate  | 
+| Api Payment  | 
+| Api Catalog  | 
